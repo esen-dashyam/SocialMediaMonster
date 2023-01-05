@@ -1,0 +1,92 @@
+﻿<div style="display:flex">
+    <div class="card" style="width:80vh; float:left; display:inline-block; padding-left:20px; padding-right:20px; padding-top:5px;">
+        <div class="container" id="comment" data-spy="scroll" data-target=".navbar" data-offset="50" style="width:100%; max-height:200px; overflow-y:scroll">
+            <div class="container-fluid">
+                @foreach (var post in ViewBag.Comments)
+                {
+                    <div class="card text-white" id="single" style="background-color:#f2f3f4; padding:5px 5px 5px 5px;">
+                        <p style="color:black; font-weight:bold; font-size:small">
+                            @post.FromName
+                        </p>
+                        <div style="text-align:justify;">
+                            <a href="https://www.facebook.com/statuses/@post.CommentID" target="_blank" style="color:black; font-size:small">@post.Message</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <h6 class="ff-label-wrapper" style="position:absolute; top:-55px; font-family:sans-serif; font-weight:600; right:10px; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                    <i class="ff-icon-inner" style="margin-bottom:0; background-color:#3b5998; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                        <span class="ff-label-text" style="margin-bottom:0">Фэйсбүүк Коммент</span>
+                    </i>
+                </i>
+            </h6>
+        </div>
+    </div>
+
+    <div class="card" style="width:80vh; display:inline-block; padding-left:20px; padding-right:20px; padding-top:5px; margin-left:20px" id="tweetCard">
+        <div class="container" id="tweets" data-spy="scroll" data-target=".navbar" data-offset="50" style="width:100%; max-height:200px; overflow-y:scroll">
+            <div class="container-fluid">
+                @foreach (var post in ViewBag.Tweets)
+                {
+                    <div class="card text-white" id="single" style="background-color:#f2f3f4; padding:5px 5px 5px 5px;">
+                        @if (post.ScreenName != null)
+                        {
+                            <a href="https://www.twitter.com/@post.ScreenNameResponse" target="_blank" style="color:black; font-size:small; font-weight:bold">
+                                @post.ScreenName
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="https://www.twitter.com/@post.ScreenNameResponse" target="_blank" style="color:black; font-size:small; font-weight:bold">
+                                @post.Name
+                            </a>
+                        }
+                        <div style="text-align:justify;">
+                            <a href="https://www.twitter.com/statuses/@post.StatusID" target="_blank" style="color:black; font-size:small">@post.Text</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <h6 class="ff-label-wrapper" style="position:absolute; top:-55px; right:10px; font-family:sans-serif; font-weight:600; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                    <i class="ff-icon-inner" style="margin-bottom:0; background-color:#1dcaff; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                        <span class="ff-label-text" style="margin-bottom:0">twitter</span>
+                    </i>
+                </i>
+            </h6>
+        </div>
+    </div>
+</div>
+<script>
+     function refreshComment() {
+
+            $.ajax({
+                type: "GET",
+                url: '/Home/Comment',
+                success: function (data) {
+                    //alert(data);
+                    $("#comment").prepend(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+        function refreshTweets() {
+            $.ajax({
+                type: "GET",
+                url: '/Home/Tweets',
+                success: function (data) {
+                    //alert(data);
+                    $("#tweets").prepend(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    
+    //setInterval(refreshTweets, 1000);
+    //setInterval(refreshComment, 1000);
+</script>

@@ -1,0 +1,270 @@
+﻿@model IEnumerable<SocialMonster.Models.FbComment>
+@{
+    ViewBag.Title = "PersonComments";
+}
+
+<div class="card">
+    <div class="card-header"><span style="padding-bottom:4px;border-bottom:2px solid #d9d9d9">Сүүлийн 30 хоногийн хандалт</span></div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div id="chartdiv"></div>
+            </div>
+            <div class="table-responsive mb-2" style="display:none">
+                <table id="ListPost" class="table table-striped">
+                    <thead class="bg-warning text-white">
+                        <tr>
+                            <th class="border-top-0">Хэрэглэгчийн нэр</th>
+                            <th class="border-top-0">Текст</th>
+                            <th class="border-top-0">Огноо</th>
+                            <th class="border-top-0">Агуулга</th>
+                            <th class="border-top-0">Устгах</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var comment in Model)
+                        {
+                            <tr>
+                                <td style="color:#005DD4">@comment.FromName</td>
+                                <td>@comment.Message</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #chartdiv {
+        width: 100%;
+        height: 400px;
+    }
+</style>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script>
+    am4core.ready(function () {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create chart instance
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+        // Add data
+        chart.data = [
+            {
+            "year": "30",
+            "facebook": 13,
+            "twitter": 5,
+            "web": 2
+        }, {
+            "year": "29",
+            "facebook": 1,
+            "twitter": 5,
+            "web": 0
+        }, {
+            "year": "28",
+            "facebook": 8,
+            "twitter": 1,
+            "web": 3
+            }
+        , {
+            "year": "27",
+            "facebook": 1,
+            "twitter": 6,
+            "web": 4
+            }
+        , {
+            "year": "26",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "25",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "24",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "23",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "22",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "21",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "20",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "19",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+        }, {
+            "year": "18",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "17",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "16",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "15",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "14",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "13",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "12",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "11",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "10",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "9",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "8",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "7",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "6",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "5",
+            "facebook": 2,
+            "twitter": 1,
+            "web": 1
+            }
+        , {
+            "year": "4",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "3",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "2",
+            "facebook": 2.5,
+            "twitter": 2.5,
+            "web": 2.1
+            }
+        , {
+            "year": "1",
+            "facebook": 11,
+            "twitter": 4,
+            "web": 7
+            }
+        ];
+
+        // Create axes
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "year";
+        categoryAxis.title.text = "Нийгмийн сүлжээ";
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.renderer.minGridDistance = 20;
+        categoryAxis.renderer.cellStartLocation = 0.1;
+        categoryAxis.renderer.cellEndLocation = 0.9;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = 0;
+        valueAxis.title.text = "Expenditure (M)";
+
+        // Create series
+        function createSeries(field, name, stacked) {
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.dataFields.valueY = field;
+            series.dataFields.categoryX = "year";
+            series.name = name;
+            series.columns.template.tooltipText = "{name}: [bold]{valueY}[/]";
+            series.stacked = stacked;
+            series.columns.template.width = am4core.percent(95);
+        }
+
+        createSeries("facebook", "Фэйсбүүк", false);
+        createSeries("twitter", "Твиттер", true);
+        createSeries("web", "Вэб мэдээ", true);
+
+        // Add legend
+        chart.legend = new am4charts.Legend();
+
+    }); // end am4core.ready()
+</script>

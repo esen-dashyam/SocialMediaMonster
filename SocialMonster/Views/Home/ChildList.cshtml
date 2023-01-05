@@ -1,0 +1,29 @@
+﻿@foreach (var m in ViewBag.ChildList)
+{
+<div>
+    @if (m.ChildCount > 0)
+    {
+        <span id="@m.ID" onclick="childGroup(this);" val="1" data-id="@m.ID" style="float:left; font-size:22px; padding-right:10px; margin-top:-7px; cursor:pointer;">
+            +
+        </span>
+    }
+    else
+    {
+        <span id="@m.ID" val="1" data-id="@m.ID" style="float:left; font-size:22px; padding-right:10px; margin-top:-7px; cursor:pointer; color:#fff;">
+            +
+        </span>
+    }
+
+    <label>
+        <input type="checkbox" name="childCheck-@m.ID " val1="0" data-id="@m.ID" class="childCheck-@m.ID getGroupPerson" index="0" data-name="@m.Name" value="@m.ID" val="1" IsParent="0" id="@m.ID" onclick="PersonList(this);" />
+        @m.Name
+    </label>
+    <div id="@m.ID-childs" style="margin-left:10px;">
+
+
+
+
+    </div>
+</div>
+}
+

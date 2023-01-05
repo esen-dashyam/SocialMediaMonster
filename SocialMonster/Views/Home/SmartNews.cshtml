@@ -1,0 +1,271 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+@{
+    ViewBag.Title = "Ухаалаг мэдээ";
+}
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400&amp;subset=cyrillic" rel="stylesheet">
+<link href="~/Content/app-assets/css/pages/search.css" rel="stylesheet" type="text/css">
+<!-- JavaScript Bundle with Popper -->
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<input type="hidden" id="FbLatestID" value="1" />
+<input type="hidden" id="TwLatestID" value="1" />
+<input type="hidden" id="WebLatestID" value="1" />
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="card box-shadow-0">
+            <div class="card-content">
+                <div class="card-body border-top-blue-grey border-top-lighten-5">
+                    <p><span class="h3"><code><i class="fa fa-dot-circle-o"></i> LIVE</code></span> Таньд интернэт дэх мэдээний урсгалыг гурван эх сурвалжаас цаг тухай бүрт нь харуулж байна.</p>
+                </div>
+            </div>
+        </div>
+
+        @*<button onclick="search()" class="btn btn-primary">Хайх</button>*@
+    </div>
+</div>
+
+<div class="row" id="SmartMain">
+    <div class="col-sm-4 mb-2" style="border-right:1px dashed #ccc;">
+        @*<div class="card">
+                <div class="card-body text-center"><h4 style="color:#3b5998"><i class="fa fa-facebook-square"></i> Фэйсбүүк постууд</h4></div>
+            </div>*@
+        <div class="list-group1" style="padding:5px;" id="FbList">
+            <div id="FbData">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="FbDataExpand"></div>
+            <div id="FbSpinner"></div>
+            <a onclick="LoadFb()" class="view-more-btn">Цааш үзэх</a>
+        </div>
+    </div>
+
+    <div class="col-sm-4 mb-2" style="border-right:1px dashed #ccc;" id="TwitterLoad">
+        @*<div class="card">
+                <div class="card-body text-center"><h4 style="color:#1DA1F2"><i class="fa fa-twitter-square"></i> Твитүүд</h4></div>
+            </div>*@
+        <div class="list-group2" style="padding:5px;">
+            <div id="TwData">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="TwDataExpand"></div>
+            <div id="TwSpinner"></div>
+            <a onclick="LoadTw()" class="view-more-btn">Цааш үзэх</a>
+        </div>
+    </div>
+
+    <div class="col-sm-4 mb-2" id="WebSiteLoad">
+        @*<div class="card">
+                <div class="card-body text-center"><h4 class="text-danger"><i class="fa fa-newspaper-o"></i> Сайтын нийтлэлүүд</h4></div>
+            </div>*@
+        <div class="list-group3" style="padding:5px;" id="WebSiteList">
+            <div id="WebData">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="WebDataExpand"></div>
+            <div id="WebSpinner"></div>
+            <a onclick="LoadWeb()" class="view-more-btn">Цааш үзэх</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: '/Home/SmartNewsALoadFb',
+            data: { 'count': 0 },
+            success: function (data) {
+                $("#FbData").html(data);
+            }
+        });
+    });
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: '/Home/SmartNewsALoadTw',
+            data: { 'count': 0 },
+            success: function (data) {
+                $("#TwData").html(data);
+            }
+        });
+    });
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: '/Home/SmartNewsALoadWeb',
+            data: { 'count': 0 },
+            success: function (data) {
+                $("#WebData").html(data);
+            }
+        });
+    });
+    //window.addEventListener('load', function () {
+    //    $.ajax({
+    //        type: "POST",
+    //        url: '/Home/SmartNewsALoadFb',
+    //        data: { 'count': 0 },
+    //        success: function (data) {
+    //            $("#FbData").html(data);
+    //        }
+    //    });
+    //});
+    //window.addEventListener('load', function () {
+    //    $.ajax({
+    //        type: "POST",
+    //        url: '/Home/SmartNewsALoadTw',
+    //        data: { 'count': 0 },
+    //        success: function (data) {
+    //            $("#TwData").html(data);
+    //        }
+    //    });
+    //});
+ 
+
+    function checkFbID() {
+        var LatestID = document.getElementById("FbLatestID").value;
+        $.ajax({
+            type: "POST",
+            url: '/Home/LatestIDCheckFb',
+            data: { 'LatestID': LatestID },
+            success: function (data) {
+                var FbData = $("#FbData");
+                FbData.append(CheckCount);
+                if (LatestID != data) {
+                    document.getElementById("FbLatestID").value = data;
+                    $.ajax({
+                        type: "POST",
+                        url: '/Home/SmartNewsALoadFb',
+                        data: { 'count': 0 },
+                        success: function (data) {
+                            $("#FbData").html(data);
+                            var FbData = $("#FbData");
+                            FbData.append(CheckCount);
+                        }
+                    });
+                };
+            }
+        });
+    }
+    function checkTwID() {
+        var LatestID = document.getElementById("TwLatestID").value;
+        $.ajax({
+            type: "POST",
+            url: '/Home/LatestIDCheckTw',
+            data: { 'LatestID': LatestID },
+            success: function (data) {
+                if (LatestID != data) {
+                    document.getElementById("TwLatestID").value = data;
+                    $.ajax({
+                        type: "POST",
+                        url: '/Home/SmartNewsALoadTw',
+                        data: { 'count': 0 },
+                        success: function (data) {
+                            $("#TwData").html(data);
+                        }
+                    });
+                };
+            }
+        });
+    }
+    function checkWebID() {
+        var LatestID = document.getElementById("WebLatestID").value;
+        $.ajax({
+            type: "POST",
+            url: '/Home/LatestIDCheckWeb',
+            data: { 'LatestID': LatestID },
+            success: function (data) {
+                if (LatestID != data) {
+                    document.getElementById("WebLatestID").value = data;
+                    $.ajax({
+                        type: "POST",
+                        url: '/Home/SmartNewsALoadWeb',
+                        data: { 'count': 0 },
+                        success: function (data) {
+                            $("#WebData").html(data);
+                        }
+                    });
+                };
+            }
+        });
+    }
+    setInterval(checkFbID, 20000);
+    setInterval(checkTwID, 25000);
+    setInterval(checkWebID, 30000);
+    var counterFb = 1;
+    var counterTw = 1;
+    var counterWeb = 1;
+    function LoadFb() {
+        $("#FbSpinner").html('<div class="card"><div class="card-body"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div><div></div>');
+        $.ajax({
+            type: "POST",
+            url: '/Home/SmartNewsALoadFb',
+            data: { 'count': counterFb },
+            success: function (data) {
+                $("#FbSpinner").html("");
+                $("#FbDataExpand").append(data);
+                counterFb++;
+            },
+            //error: function () {
+            //    alert('Фэйсбүүкийн мэдээлэл таталтад алдаа гарлаа');
+            //}
+        });
+    }
+    function LoadTw() {
+        $("#TwSpinner").html('<div class="card"><div class="card-body"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div><div></div>');
+        $.ajax({
+            type: "POST",
+            url: '/Home/SmartNewsALoadTw',
+            data: { 'count': counterTw },
+            success: function (data) {
+                $("#TwSpinner").html("");
+                $("#TwDataExpand").append(data);
+                counterFb++;
+            },
+            //error: function () {
+            //    alert('Твиттэрийн мэдээ таталтад алдаа гарлаа');
+            //}
+        });
+    }
+    function LoadWeb() {
+        $("#WebSpinner").html('<div class="card"><div class="card-body"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div><div></div>');
+        $.ajax({
+            type: "POST",
+            url: '/Home/SmartNewsALoadWeb',
+            data: { 'count': counterWeb },
+            success: function (data) {
+                $("#WebSpinner").html("");
+                $("#WebDataExpand").append(data);
+                counterWeb++;
+            },
+            //error: function () {
+            //    alert('Вэбсайтын мэдээ таталтад алдаа гарлаа');
+            //}
+        });
+    }
+    
+</script>

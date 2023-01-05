@@ -1,0 +1,89 @@
+﻿@*@model SocialMonster.Models.RegisterViewModel
+    @{
+        ViewBag.Title = "Register";
+    }
+
+    <h2>@ViewBag.Title.</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+@{
+    Layout = "";
+}
+<html>
+<head>
+    <title>BOARD.MN - БҮРТГҮҮЛЭХ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/app-assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/app-assets/images/logo/favicon-32x32.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-5 col-md-12 p-3 m-2 pt-5">
+                <div class="row text-center">
+                    <div class="col">
+                        <a href="http://www.online-solution.mn" class="text-danger" target="_blank"><img src="~/Content/app-assets/images/logo/unitlogo.png" width="140"></a>
+                    </div>
+                </div>
+                <div class="row text-center mb-2">
+                    <div class="col">
+                        <h5 id="title"><span class="text-danger">BOARD.MN</span> - Бүртгэл</h5>
+                    </div>
+                </div>
+                @*<div id="formFooter">
+                        <a class="underlineHover" href="#">Нууц үгээ мартсан уу?</a>
+                    </div>*@
+                <div class="col">
+                    <p>Та бүртгүүлэхийг хүсвэл "Юу Эн Ай Ти" ХХК-тай холбоо барина уу</p>
+                    <center><a href="http://www.online-solution.mn" class="text-danger" target="_blank"><strong>www.online-solution.mn</strong></a></center>
+                    <center><a href="https://www.facebook.com/unitmongolia" class="text-danger" target="_blank"><strong>facebook.com/unitmongolia</strong></a></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+</html>
+

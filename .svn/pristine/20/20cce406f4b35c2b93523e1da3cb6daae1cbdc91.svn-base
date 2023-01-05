@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert</h2>
+
+<h2>Data Saved Suuceessfully.</h2>

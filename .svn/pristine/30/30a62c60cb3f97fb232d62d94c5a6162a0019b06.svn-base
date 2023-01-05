@@ -1,0 +1,505 @@
+﻿@model IEnumerable<SocialMonster.Models.Group>
+
+@{
+    ViewBag.Title = "HotTopic";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<div id="HotTopicTitle" style="font-size:18px;"></div>
+<div id="SystemMainDiv" data-id="0" data-name="0">
+
+    <section>
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <div class="form-group">
+                    <input type="button" class="btn btn-md btn-block btn-success addBtn" value="Нэмэх" />
+                </div>
+                <hr />
+                <div class="form-group">
+                    <button class="btn btn-primary dropdown-toggle" id="DropDown" val="1"> Бүлэг сонгох </button>
+                    <div id="DropDownList" style="display:none; background:#fff; border:1px solid #ccc; border-radius:5px; position:absolute;z-index:9999; width:300px; padding:10px;">
+                        <div class="col-md-12">
+                        </div>
+
+                        @foreach (var m in Model)
+            {
+
+                <span onclick="childGroup(this);" id="@m.ID" val="1" data-id="@m.ID" style="float:left; font-size:22px; padding-right:10px; margin-top:-7px; cursor:pointer;">+</span>
+
+                <label>
+                    <input type="checkbox" name="parentCheck" class="parentCheck getGroupPerson" data-name="@m.Name" data-id="@m.ID" value="@m.ID" val="1" id="@m.ID" IsParent="1" onclick="PersonList(this);" />
+                    @m.Name
+                </label>
+                <div id="@m.ID-childs" style="margin-left:10px;">
+
+
+
+                </div>
+}
+
+                    </div>
+                </div>
+
+                <div class="" id="messageDiv"></div>
+
+
+                <div class="form-group table-responsive" id="MainTbl">
+                    <table class="table table-bordered table-striped" id="mainTbl">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th></th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle">Add Hottopic</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="">Бүлэг</label>
+
+                                <select class="form-control groupCombo" name="group" id="groupModal" style="display:none;">
+                                    @foreach (var m in ViewBag.GroupCombo)
+            {
+                        <option value="@m.ID">@m.Name</option>
+}
+                                </select>
+
+                                <input type="text" class="form-control groupComboDisabled" name="group1" id="groupModal1" disabled style="display:none;" />
+                                <input type="hidden" class="form-control" name="group" id="groupModal" />
+
+                                <span class="groupSpan"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="">Title</label>
+                                <input type="text" class="form-control" name="Title" id="Title" value="" />
+                                <span class="TitleSpan"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="">Description</label>
+                                <input type="text" class="form-control" name="Description" id="Description" value="" />
+                                <input type="hidden" name="ID" id="ID" />
+                                <span class="DescriptionSpan"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="">ImageURL</label>
+                                <input type="text" class="form-control" name="ImageURL" id="ImageURL" value="" />
+                                <span class="ImageURLSpan"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary submit" val="1">Save</button>
+                    <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModalDel" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="hidden" name="ID" id="DelID" value="" />
+
+                    <h5 class="modal-title">Delete hottopic</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary delete" val="1">Delete</button>
+                    <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+    var check = "";
+    $("#DropDown").click(function () {
+
+        if ($(this).attr("val") == "1") {
+            $(this).attr("val", "0");
+            $("#DropDownList").css("display", "block");
+        } else {
+            $(this).attr("val", "1");
+            $("#DropDownList").css("display", "none");
+        }
+    });
+
+
+
+
+    window.addEventListener('click', function (e) {
+        if (document.getElementById('DropDownList').contains(e.target) || document.getElementById('DropDown').contains(e.target)) {
+
+        } else {
+            $("#DropDown").attr("val", "1");
+            $("#DropDownList").css("display", "none");
+        }
+    });
+
+
+
+
+
+    function childGroup(e) {
+
+        if ($(e).attr("val") == "1") {
+
+
+            $('#' + $(e).attr("data-id") + '-childs').css("display", "block");
+            $('#' + $(e).attr("data-id") + '').html(" - ");
+            $.ajax({
+                type: "POST",
+                url: '/Home/ChildList',
+                data: { 'ID': $(e).attr("data-id") },
+
+                success: function (data) {
+                    console.log(data);
+                    $('#' + $(e).attr("data-id") + '-childs').html(data);
+
+
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+            $(e).attr("val", "0");
+        } else {
+            $('#' + $(e).attr("data-id") + '').html("+");
+            $('#' + $(e).attr("data-id") + '-childs').css("display", "none");
+            $(e).attr("val", "1");
+        }
+
+    }
+
+
+    function PersonList(e) {
+        check = "";
+
+
+        $('input:checked').each(function () {
+
+            check += "'" + $(this).val() + "',";
+        });
+        check = check.substring(0, check.length - 1);
+
+
+        var groupID = $(e).attr("data-id");
+        var childGroups = $(".childGroup-" + groupID).val();
+
+        if ($(e).attr("val") == "1") {
+
+          /*  var instate = (e.checked);
+            var cbs = document.getElementsByClassName("getGroupPerson");
+            for (var i = 0; i < cbs.length; i++) {
+                cbs[i].checked = false;
+                cbs[i].setAttribute("val", "1");
+            }
+            if (instate) { e.checked = true; } else { e.checked = false; }*/
+
+
+            $("#SystemMainDiv").attr("data-id", $(e).val());
+            $("#SystemMainDiv").attr("data-name", $(e).attr("data-name"));
+
+            $(e).attr("val", "0");
+       
+            $.ajax({
+                type: "POST",
+                url: '/Home/HotTopicList',
+                data: { 'ID': check },
+
+                success: function (data) {
+
+                    $('#mainTbl tbody').empty();
+                    $('#mainTbl tbody').append(data);
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+        } else {
+
+            var checkValue;
+            if (check == "") {
+                checkValue = 0;
+            } else {
+                checkValue = check;
+            }
+
+            $(e).attr("val", "1");
+            $("#SystemMainDiv").attr("data-id", "0");
+            $("#SystemMainDiv").attr("data-name", "0");
+
+            $.ajax({
+                type: "POST",
+                url: '/Home/HotTopicList',
+                data: { 'ID': checkValue },
+
+                success: function (data) {
+
+                    $('#mainTbl tbody').empty();
+                    $('#mainTbl tbody').append(data);
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+        }
+
+    }
+
+
+
+    function HottopicSocial(e) {
+        $("#HotTopicTitle").html($(e).attr("data-name") + "<hr />");
+        $.ajax({
+            type: "GET",
+            url: '/Home/HottopicSocial',
+            data: { 'ID': $(e).attr("data-id") },
+
+            success: function (data) {
+
+                $('#SystemMainDiv').html(data);
+            },
+            error: function () {
+                alert('Error occured');
+            }
+        });
+    }
+
+
+    function TopicKeyList(e) {
+        var ID = $(e).attr("data-id");
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/HotTopicKey",
+            contentType: "application/json; charset=utf-8",
+            data: '{"topicID":"' + $(e).attr("data-id") + '"}',
+            dataType: "html",
+            success: function (result, status, xhr) {
+                $("#SystemMainDiv").html(result);
+            },
+            error: function (xhr, status, error) {
+                $("#messageDiv").html(status);
+            }
+        });
+    }
+
+    function UpdateModal(e) {
+
+        $("#Title").val($(e).attr("data-id1"));
+        $("#Description").val($(e).attr("data-id2"));
+        $("#ImageURL").val($(e).attr("data-id3"));
+        $("#ID").val($(e).attr("id"));
+        $("#groupModal").val($(e).attr("data-id"));
+        $(".submit").attr("val", "0");
+        $("#ModalTitle").html("Update Hottopic");
+        $(".groupCombo").css("display", "block");
+        $(".groupComboDisabled").css("display", "none");
+        $("#myModal").modal('show');
+
+    }
+
+    $(".addBtn").click(function () {
+       
+            $("#Title").val("");
+            $("#Description").val("");
+            $("#ImageURL").val("");
+            $("#groupModal").val($("#SystemMainDiv").attr("data-id"));
+            $("#groupModal1").val($("#SystemMainDiv").attr("data-name"));
+            $("#ModalTitle").html("Insert Hottopic");
+            $(".groupCombo").css("display", "block");
+            $(".groupComboDisabled").css("display", "none");
+            $(".submit").attr("val", "1");
+            $("#myModal").modal('show');
+        
+    });
+
+    function DeleteModal(e) {
+        $("#DelID").val($(e).attr("data-ID"));
+        $("#myModalDel").modal('show');
+    }
+
+
+
+
+    $(".submit").click(function () {
+        var Title = $("#Title").val();
+        var Description = $("#Description").val();
+        var ImageURL = $("#ImageURL").val();
+
+        var returnValidate = Validate();
+
+        if (returnValidate) {
+            if ($(this).attr("val") == "1") {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/InsertHotTopic",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{"Title":"' + $("#Title").val() + '","Description":"' + $("#Description").val() + '","ImageURL":"' + $("#ImageURL").val() + '", "groupID":"' + $("#groupModal").val() + '"}',
+                    dataType: "html",
+                    success: function (result, status, xhr) {
+                        $("#myModal").modal('hide');
+                        $.ajax({
+                            type: "POST",
+                            url: '/Home/HotTopicList',
+                            data: { 'ID': "'" + $("#groupModal").val() + "'" },
+                            success: function (data) {
+
+                                $('#mainTbl tbody').empty();
+                                $('#mainTbl tbody').append(data);
+                            },
+                            error: function () {
+                                alert('Error occured');
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        $("#messageDiv").html(status);
+                    }
+                });
+            } else {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/UpdateHotTopic",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{"Title":"' + $("#Title").val() + '","Description":"' + $("#Description").val() + '","ImageURL":"' + $("#ImageURL").val() + '","groupID":"' + $("#groupModal").val() + '", "ID":"' + $("#ID").val() + '"}',
+                    dataType: "html",
+                    success: function (result, status, xhr) {
+                        $("#myModal").modal('hide');
+                        $.ajax({
+                            type: "POST",
+                            url: '/Home/HotTopicList',
+                            data: { 'ID': "'" + $("#groupModal").val() + "'" },
+                            success: function (data) {
+
+                                $('#mainTbl tbody').empty();
+                                $('#mainTbl tbody').append(data);
+                            },
+                            error: function () {
+                                alert('Error occured');
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        $("#messageDiv").html(status);
+                    }
+                });
+                var cbs = document.getElementsByClassName("getGroupPerson");
+                for (var i = 0; i < cbs.length; i++) {
+                    if (cbs[i].getAttribute("value") == $("#groupModal").val()) {
+                        cbs[i].checked = true;
+                        cbs[i].setAttribute("val", "0");
+                    } else {
+                        cbs[i].checked = false;
+                        cbs[i].setAttribute("val", "1");
+                    }
+                }
+            }
+        }
+        return false;
+
+        function Validate() {
+            var errorCounter = 0;
+            $(".TitleSpan").text("");
+            $(".DescriptionSpan").text("");
+
+
+            if ($("#Title").val() == "") {
+                $(".TitleSpan").text("Please enter Title");
+                errorCounter++;
+            }
+
+            if ($("#Description").val() == "") {
+                $(".DescriptionSpan").text("Please enter Description");
+                errorCounter++;
+            }
+
+
+
+            if (errorCounter == 0) {
+                return true;
+            }
+
+        }
+
+
+    });
+
+
+    $(".delete").click(function () {
+
+        $.ajax({
+            type: "GET",
+            url: '/Home/DeleteHotTopic',
+            data: { "ID": " " + $("#DelID").val() + " " },
+            success: function (data) {
+                $("#myModalDel").modal('hide');
+                $.ajax({
+                    type: "POST",
+                    url: '/Home/HotTopicList',
+                    data: { 'ID': "'" + $("#groupModal").val() + "'" },
+                    success: function (data) {
+
+                        $('#mainTbl tbody').empty();
+                        $('#mainTbl tbody').append(data);
+                    },
+                    error: function () {
+                        alert('Error occured');
+                    }
+                });
+            },
+            error: function () {
+
+            }
+        });
+
+    });
+
+
+
+
+</script>
+
+
+
+
+

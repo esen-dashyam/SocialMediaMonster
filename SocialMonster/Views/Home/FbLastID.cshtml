@@ -1,0 +1,8 @@
+﻿@{ViewBag.Title = "FbLastID";}@foreach (var post in ViewBag.FbLastData)
+{if (ViewBag.FbLastID == @post.ID.ToString()) {
+@post.ID;
+}
+else{
+@ViewBag.Title;
+}
+}

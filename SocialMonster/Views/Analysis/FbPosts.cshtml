@@ -1,0 +1,37 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+
+@{
+    ViewBag.Title = "FbPosts";
+}
+
+<div class="col-md-12 mt-12">
+    <div class="card profile-card-4">
+        <div class="card-img-block">
+            <div class="info-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+            <img class="img-fluid" src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="Card image cap" style="width:100%;">
+        </div>
+        <div class="card-body pt-5">
+            <img src="@ViewBag.PicturePerson" alt="profile-image" class="profile" style="width:100px; height:100px;" />
+            <h4 class="card-title text-center">@ViewBag.CusName</h4>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-header">Фэйсбүүк Пост</div>
+    <div class="card-body">
+
+       @foreach (var post in Model)
+        {
+            <div style="padding:10px; border-bottom:1px solid #eee; font-family:Roboto;">
+                <div style="float:left;"><a href="@post.Link" target="_blank"><B>@post.FromName</B></a></div>
+                <div align="right" style="font-style:italic; color:#ccc;">@post.UpdateTime</div>
+                <div style="text-align:justify;">@post.Story</div>
+                <div align="center"><img src="@post.Picture" /></div>
+            </div>
+        }
+
+    </div>
+</div>

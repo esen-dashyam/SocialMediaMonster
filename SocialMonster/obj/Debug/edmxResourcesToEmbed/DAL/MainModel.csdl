@@ -1,0 +1,1859 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MonitoringEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNet_ViewersInfo" EntityType="MonitoringModel.AspNet_ViewersInfo" />
+    <EntitySet Name="AspNetUserActivityLogs" EntityType="MonitoringModel.AspNetUserActivityLog" />
+    <EntitySet Name="AspNetUsers" EntityType="MonitoringModel.AspNetUser" />
+    <EntitySet Name="AspNetUserToSystemPersons" EntityType="MonitoringModel.AspNetUserToSystemPerson" />
+    <EntitySet Name="AspNetUserToSystemUsers" EntityType="MonitoringModel.AspNetUserToSystemUser" />
+    <EntitySet Name="AspNetUserToSystemViews" EntityType="MonitoringModel.AspNetUserToSystemView" />
+    <EntitySet Name="Facebook_Accounts_Confirmed" EntityType="MonitoringModel.Facebook_Accounts_Confirmed" />
+    <EntitySet Name="Facebook_Accounts_Crawler" EntityType="MonitoringModel.Facebook_Accounts_Crawler" />
+    <EntitySet Name="Facebook_CommentRemover" EntityType="MonitoringModel.Facebook_CommentRemover" />
+    <EntitySet Name="Facebook_Groups" EntityType="MonitoringModel.Facebook_Groups" />
+    <EntitySet Name="Facebook_Messenger_Conversations" EntityType="MonitoringModel.Facebook_Messenger_Conversations" />
+    <EntitySet Name="Facebook_Messenger_Messages" EntityType="MonitoringModel.Facebook_Messenger_Messages" />
+    <EntitySet Name="Facebook_Pages" EntityType="MonitoringModel.Facebook_Pages" />
+    <EntitySet Name="Facebook_Post_Attachment" EntityType="MonitoringModel.Facebook_Post_Attachment" />
+    <EntitySet Name="Facebook_Post_Comment_Reply" EntityType="MonitoringModel.Facebook_Post_Comment_Reply" />
+    <EntitySet Name="Facebook_Post_Comment_Sentiment" EntityType="MonitoringModel.Facebook_Post_Comment_Sentiment" />
+    <EntitySet Name="Facebook_Post_Comment_Write_Keys" EntityType="MonitoringModel.Facebook_Post_Comment_Write_Keys" />
+    <EntitySet Name="Facebook_Post_Comment_Writes" EntityType="MonitoringModel.Facebook_Post_Comment_Writes" />
+    <EntitySet Name="Facebook_Post_Comments" EntityType="MonitoringModel.Facebook_Post_Comments" />
+    <EntitySet Name="Facebook_Post_Hottopic" EntityType="MonitoringModel.Facebook_Post_Hottopic" />
+    <EntitySet Name="Facebook_Post_Person" EntityType="MonitoringModel.Facebook_Post_Person" />
+    <EntitySet Name="Facebook_Post_Reactions" EntityType="MonitoringModel.Facebook_Post_Reactions" />
+    <EntitySet Name="Facebook_Post_Reply" EntityType="MonitoringModel.Facebook_Post_Reply" />
+    <EntitySet Name="Facebook_Post_SubAttachment" EntityType="MonitoringModel.Facebook_Post_SubAttachment" />
+    <EntitySet Name="Facebook_Posts" EntityType="MonitoringModel.Facebook_Posts" />
+    <EntitySet Name="News_Newspaper_New" EntityType="MonitoringModel.News_Newspaper_New" />
+    <EntitySet Name="News_Newspaper_Person" EntityType="MonitoringModel.News_Newspaper_Person" />
+    <EntitySet Name="Person_User" EntityType="MonitoringModel.Person_User" />
+    <EntitySet Name="System_Aimag" EntityType="MonitoringModel.System_Aimag" />
+    <EntitySet Name="System_Aimag_Code" EntityType="MonitoringModel.System_Aimag_Code" />
+    <EntitySet Name="System_BagKhoroo" EntityType="MonitoringModel.System_BagKhoroo" />
+    <EntitySet Name="System_Cars" EntityType="MonitoringModel.System_Cars" />
+    <EntitySet Name="System_Categories" EntityType="MonitoringModel.System_Categories" />
+    <EntitySet Name="System_Facebook_Reports" EntityType="MonitoringModel.System_Facebook_Reports" />
+    <EntitySet Name="System_Facebook_Reports_Posts" EntityType="MonitoringModel.System_Facebook_Reports_Posts" />
+    <EntitySet Name="System_Groups" EntityType="MonitoringModel.System_Groups" />
+    <EntitySet Name="System_GroupToPerson" EntityType="MonitoringModel.System_GroupToPerson" />
+    <EntitySet Name="System_Hottopics" EntityType="MonitoringModel.System_Hottopics" />
+    <EntitySet Name="System_JobCategories" EntityType="MonitoringModel.System_JobCategories" />
+    <EntitySet Name="System_Jobs" EntityType="MonitoringModel.System_Jobs" />
+    <EntitySet Name="System_Key_Exclude" EntityType="MonitoringModel.System_Key_Exclude" />
+    <EntitySet Name="System_Keys" EntityType="MonitoringModel.System_Keys" />
+    <EntitySet Name="System_KeyTypes" EntityType="MonitoringModel.System_KeyTypes" />
+    <EntitySet Name="System_Person" EntityType="MonitoringModel.System_Person" />
+    <EntitySet Name="System_Regions" EntityType="MonitoringModel.System_Regions" />
+    <EntitySet Name="System_Resource_Electricity_Types" EntityType="MonitoringModel.System_Resource_Electricity_Types" />
+    <EntitySet Name="System_Sum_Code" EntityType="MonitoringModel.System_Sum_Code" />
+    <EntitySet Name="System_SumDuureg" EntityType="MonitoringModel.System_SumDuureg" />
+    <EntitySet Name="System_View" EntityType="MonitoringModel.System_View" />
+    <EntitySet Name="System_Voters" EntityType="MonitoringModel.System_Voters" />
+    <EntitySet Name="System_Voters_Party" EntityType="MonitoringModel.System_Voters_Party" />
+    <EntitySet Name="System_Voters_PhoneNumber_old" EntityType="MonitoringModel.System_Voters_PhoneNumber_old" />
+    <EntitySet Name="Testing_CommentID" EntityType="MonitoringModel.Testing_CommentID" />
+    <EntitySet Name="Testing_Profile" EntityType="MonitoringModel.Testing_Profile" />
+    <EntitySet Name="Testing_Report_Comments" EntityType="MonitoringModel.Testing_Report_Comments" />
+    <EntitySet Name="TopNews" EntityType="MonitoringModel.TopNew" />
+    <EntitySet Name="TopNewsForTopics" EntityType="MonitoringModel.TopNewsForTopic" />
+    <EntitySet Name="TopTweets" EntityType="MonitoringModel.TopTweet" />
+    <EntitySet Name="Twitter_DeleteUser" EntityType="MonitoringModel.Twitter_DeleteUser" />
+    <EntitySet Name="Twitter_Tweet_Hottopic" EntityType="MonitoringModel.Twitter_Tweet_Hottopic" />
+    <EntitySet Name="Twitter_Tweet_Person" EntityType="MonitoringModel.Twitter_Tweet_Person" />
+    <EntitySet Name="Twitter_Tweets" EntityType="MonitoringModel.Twitter_Tweets" />
+    <EntitySet Name="Twitter_User_Details" EntityType="MonitoringModel.Twitter_User_Details" />
+    <EntitySet Name="Twitter_Users" EntityType="MonitoringModel.Twitter_Users" />
+    <EntitySet Name="UserMenus" EntityType="MonitoringModel.UserMenu" />
+    <EntitySet Name="WebSite_Post_Comments" EntityType="MonitoringModel.WebSite_Post_Comments" />
+    <EntitySet Name="Website_Post_Hottopic" EntityType="MonitoringModel.Website_Post_Hottopic" />
+    <EntitySet Name="Website_Post_Person" EntityType="MonitoringModel.Website_Post_Person" />
+    <EntitySet Name="WebSite_PostList" EntityType="MonitoringModel.WebSite_PostList" />
+    <EntitySet Name="WebSite_Posts" EntityType="MonitoringModel.WebSite_Posts" />
+    <EntitySet Name="WebSites" EntityType="MonitoringModel.WebSite" />
+    <EntitySet Name="XBACKUP_Facebook_Comments_Old" EntityType="MonitoringModel.XBACKUP_Facebook_Comments_Old" />
+    <EntitySet Name="XBACKUP_System_Voters_Party" EntityType="MonitoringModel.XBACKUP_System_Voters_Party" />
+    <EntitySet Name="AspNetRoles" EntityType="MonitoringModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="MonitoringModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="MonitoringModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUserRoles" EntityType="MonitoringModel.AspNetUserRole" />
+    <EntitySet Name="Electricities" EntityType="MonitoringModel.Electricity" />
+    <EntitySet Name="Facebook_Account_More" EntityType="MonitoringModel.Facebook_Account_More" />
+    <EntitySet Name="Facebook_Accounts" EntityType="MonitoringModel.Facebook_Accounts" />
+    <EntitySet Name="Facebook_Accounts_Fake" EntityType="MonitoringModel.Facebook_Accounts_Fake" />
+    <EntitySet Name="Facebook_Comment_PhoneNumber" EntityType="MonitoringModel.Facebook_Comment_PhoneNumber" />
+    <EntitySet Name="Facebook_Phones" EntityType="MonitoringModel.Facebook_Phones" />
+    <EntitySet Name="Facebook_Settings" EntityType="MonitoringModel.Facebook_Settings" />
+    <EntitySet Name="Facebook_Videos" EntityType="MonitoringModel.Facebook_Videos" />
+    <EntitySet Name="Google_Categories" EntityType="MonitoringModel.Google_Categories" />
+    <EntitySet Name="Google_Category_Key" EntityType="MonitoringModel.Google_Category_Key" />
+    <EntitySet Name="Google_PhoneNumber" EntityType="MonitoringModel.Google_PhoneNumber" />
+    <EntitySet Name="Google_Register" EntityType="MonitoringModel.Google_Register" />
+    <EntitySet Name="Google_Result_Category" EntityType="MonitoringModel.Google_Result_Category" />
+    <EntitySet Name="Google_SearchResult" EntityType="MonitoringModel.Google_SearchResult" />
+    <EntitySet Name="Statistics" EntityType="MonitoringModel.Statistic" />
+    <EntitySet Name="sysdiagrams" EntityType="MonitoringModel.sysdiagram" />
+    <EntitySet Name="System_Candidates" EntityType="MonitoringModel.System_Candidates" />
+    <EntitySet Name="System_Facebook_Reports_Comments" EntityType="MonitoringModel.System_Facebook_Reports_Comments" />
+    <EntitySet Name="System_Questions" EntityType="MonitoringModel.System_Questions" />
+    <EntitySet Name="System_Report" EntityType="MonitoringModel.System_Report" />
+    <EntitySet Name="System_Resource_WAT" EntityType="MonitoringModel.System_Resource_WAT" />
+    <EntitySet Name="System_Sentiment" EntityType="MonitoringModel.System_Sentiment" />
+    <EntitySet Name="System_Student_Email" EntityType="MonitoringModel.System_Student_Email" />
+    <EntitySet Name="System_Sum" EntityType="MonitoringModel.System_Sum" />
+    <EntitySet Name="System_User" EntityType="MonitoringModel.System_User" />
+    <EntitySet Name="System_Voters_Multiple" EntityType="MonitoringModel.System_Voters_Multiple" />
+    <EntitySet Name="System_Voters_PhoneNumber" EntityType="MonitoringModel.System_Voters_PhoneNumber" />
+    <EntitySet Name="TopSpecifiedNewsForTopics" EntityType="MonitoringModel.TopSpecifiedNewsForTopic" />
+    <EntitySet Name="TopTopics" EntityType="MonitoringModel.TopTopic" />
+    <EntitySet Name="WebSite_Banks_Posts" EntityType="MonitoringModel.WebSite_Banks_Posts" />
+    <EntitySet Name="WebSite_Banks_Posts_Comments" EntityType="MonitoringModel.WebSite_Banks_Posts_Comments" />
+    <EntitySet Name="XBackup_Facebook_Accounts" EntityType="MonitoringModel.XBackup_Facebook_Accounts" />
+    <EntitySet Name="XBackup_Facebook_Accounts_Old" EntityType="MonitoringModel.XBackup_Facebook_Accounts_Old" />
+    <EntitySet Name="XBACKUP_Facebook_Post_Comments_Backup" EntityType="MonitoringModel.XBACKUP_Facebook_Post_Comments_Backup" />
+    <EntitySet Name="XBACKUP_Facebook_Posts_Backup" EntityType="MonitoringModel.XBACKUP_Facebook_Posts_Backup" />
+    <EntitySet Name="XBACKUP_Facebook_Posts_Old" EntityType="MonitoringModel.XBACKUP_Facebook_Posts_Old" />
+    <EntitySet Name="XBACKUP_Google_SearchResult_backup" EntityType="MonitoringModel.XBACKUP_Google_SearchResult_backup" />
+    <EntitySet Name="xBackup_System_Aimag" EntityType="MonitoringModel.xBackup_System_Aimag" />
+    <EntitySet Name="xBackup_System_Bag" EntityType="MonitoringModel.xBackup_System_Bag" />
+    <EntitySet Name="XBACKUP_System_Voters_Fixed" EntityType="MonitoringModel.XBACKUP_System_Voters_Fixed" />
+  </EntityContainer>
+  <EntityType Name="AspNet_ViewersInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ViewTime" Type="DateTime" Precision="3" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ISP" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserActivityLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="SureName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="IsManual" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="AspNetUserToSystemPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PersonID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="AspNetUserToSystemUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="AspNetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="SystemPersonID" Type="Guid" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserToSystemView">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ViewID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Facebook_Accounts_Confirmed">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="AccountID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsReal" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Facebook_Accounts_Crawler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="GroupURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Uid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfilePicture" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AdditionalData" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AimagName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SumName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fname_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lname_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_CommentRemover">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ObjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ObjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SourceName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Guid" />
+    <Property Name="ParentID" Type="Guid" />
+    <Property Name="IsRealTimeMonitor" Type="Boolean" />
+    <Property Name="IsElectional" Type="Boolean" />
+    <Property Name="IsRemove" Type="Boolean" />
+    <Property Name="IsAds" Type="Boolean" />
+    <Property Name="AccessToken" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AimagID" Type="Guid" />
+    <Property Name="SumID" Type="Guid" />
+    <Property Name="IsChecked" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Facebook_Messenger_Conversations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ConversationID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Can_reply" Type="Boolean" />
+    <Property Name="Is_subscribed" Type="Boolean" />
+    <Property Name="MessageCount" Type="Int32" />
+    <Property Name="link" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Sender1_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sender1_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sender1_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sender2_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sender2_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sender2_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sender3_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sender3_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sender3_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Snippet" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Unread_count" Type="Int32" />
+    <Property Name="Updated_time" Type="DateTime" Precision="3" />
+    <Property Name="Participant1_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Participant1_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Participant1_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Participant2_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Participant2_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Participant2_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Participant3_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Participant3_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Participant3_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Messenger_Messages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ConversationID" Type="Guid" />
+    <Property Name="MessageID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FromID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FromName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FromEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ToEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tag1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tag2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tag3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tag4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShareID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShareLink" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Created_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Facebook_Pages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ObjectID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPrivateAccout" Type="Boolean" />
+    <Property Name="IsRealTimeMonitor" Type="Boolean" />
+    <Property Name="IsElectional" Type="Boolean" />
+    <Property Name="IsRemove" Type="Boolean" />
+    <Property Name="IsAds" Type="Boolean" />
+    <Property Name="AccessToken" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AimagID" Type="Guid" />
+    <Property Name="SumID" Type="Guid" />
+    <Property Name="IsChecked" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Attachment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="MediaURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="TargetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TargetURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Reply">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="CommentID" Type="Guid" />
+    <Property Name="WriteID" Type="Guid" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Sentiment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="CommentID" Type="Guid" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Write_Keys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WriteID" Type="Guid" />
+    <Property Name="Scope" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Writes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PageOrGroupID" Type="Guid" />
+    <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Scope" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" Nullable="false" />
+    <Property Name="CommentID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ObjectID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FromID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FromName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="PositiveCount" Type="Int32" />
+    <Property Name="NegativeCount" Type="Int32" />
+    <Property Name="Sentiment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment_Confirmed" Type="Boolean" />
+    <Property Name="Question" Type="Boolean" />
+    <Property Name="Likes" Type="Int32" />
+    <Property Name="RegisteredDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Hottopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="HottopicID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Reactions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="FromID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FromName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Reply">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="WriteID" Type="Guid" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_SubAttachment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="AttachmentID" Type="Guid" />
+    <Property Name="TargetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TargetURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PageID" Type="Guid" />
+    <Property Name="GroupID" Type="Guid" />
+    <Property Name="PostID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FromID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FromName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Story" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="SharedCount" Type="Int32" />
+    <Property Name="PermalinkUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Caption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FullPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ObjectID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SearchKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="News_Newspaper_New">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Title" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="NewsPaperUrl" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="FullText" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PaperFullPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="News_Newspaper_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Person_User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Aimag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_float" Type="Int32" Nullable="false" />
+    <Property Name="FullID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegionID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="System_Aimag_Code">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_BagKhoroo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_FLOAT" Type="Int32" Nullable="false" />
+    <Property Name="IDNUM" Type="Int32" />
+    <Property Name="FullID" Type="Int32" />
+    <Property Name="FullID2" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SumDuuregID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="System_Cars">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="FlatNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Manifacture" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Purpose" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SureName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber5" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber6" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber7" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber8" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsMain" Type="Boolean" />
+    <Property Name="ParentID" Type="Guid" />
+    <Property Name="Level" Type="Int32" />
+  </EntityType>
+  <EntityType Name="System_Facebook_Reports">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Facebook_Reports_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ReportID" Type="Guid" />
+    <Property Name="PostID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Guid" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Level" Type="Int32" />
+  </EntityType>
+  <EntityType Name="System_GroupToPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="GroupID" Type="Guid" />
+    <Property Name="PersonID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_Hottopics">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImageURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="GroupID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_JobCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_Float" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Jobs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_FLOAT" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Key_Exclude">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="Word" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Keys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Key1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Key2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Key3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Key4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="KeyTypeID" Type="Guid" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="GroupID" Type="Guid" />
+    <Property Name="HoptopicID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_KeyTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Order" Type="Int32" />
+  </EntityType>
+  <EntityType Name="System_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupID" Type="Guid" />
+    <Property Name="FacebookPageID1" Type="Guid" />
+    <Property Name="FacebookPageID2" Type="Guid" />
+    <Property Name="FacebookPageID3" Type="Guid" />
+    <Property Name="FacebookGroupID1" Type="Guid" />
+    <Property Name="FacebookGroupID2" Type="Guid" />
+    <Property Name="FacebookGroupID3" Type="Guid" />
+    <Property Name="TwitterUserID1" Type="Guid" />
+    <Property Name="TwitterUserID2" Type="Guid" />
+    <Property Name="TwitterUserID3" Type="Guid" />
+    <Property Name="WebSiteID1" Type="Guid" />
+    <Property Name="WebSiteID2" Type="Guid" />
+    <Property Name="WebSiteID3" Type="Guid" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookAccount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TwitterAccount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Guid" />
+    <Property Name="userID" Type="Guid" />
+    <Property Name="Level" Type="Int32" />
+    <Property Name="childMenu" Type="Int32" />
+    <Property Name="Tittlename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Regions">
+    <Key>
+      <PropertyRef Name="ID_Float" />
+    </Key>
+    <Property Name="ID" Type="Guid" />
+    <Property Name="ID_Float" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Resource_Electricity_Types">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Purpose" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SubType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Sum_Code">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_SumDuureg">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_FLOAT" Type="Int32" />
+    <Property Name="IDNUM" Type="Int32" />
+    <Property Name="FullID" Type="Int32" />
+    <Property Name="FullID2" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AimagID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="System_View">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonID1" Type="Guid" />
+    <Property Name="PersonID2" Type="Guid" />
+    <Property Name="PersonID3" Type="Guid" />
+    <Property Name="GroupID1" Type="Guid" />
+    <Property Name="GroupID2" Type="Guid" />
+    <Property Name="GroupID3" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_Voters">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="SureName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Aimag" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sum" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Party" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PartyTendence" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="AimagGaral" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SumGaral" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Khoroo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BirthdayHalf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthdayFull" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsNew" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="System_Voters_Party">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SureName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Double" />
+    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RegionID_Float" Type="Double" />
+    <Property Name="RegionID" Type="Guid" />
+    <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AimagID_Float" Type="Double" />
+    <Property Name="AimagID" Type="Guid" />
+    <Property Name="AimagName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SumDuuregID_Float" Type="Double" />
+    <Property Name="SumDuuregID" Type="Guid" />
+    <Property Name="SumDuuregName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BagKhorooID_Float" Type="Double" />
+    <Property Name="BagKhorooID" Type="Guid" />
+    <Property Name="BagKhorooName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Party" Type="Double" />
+    <Property Name="FacebookName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="JobID" Type="Guid" />
+    <Property Name="JobID_Float" Type="Int32" />
+    <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="JobCategoryID" Type="Guid" />
+    <Property Name="JobCategoryID_Float" Type="Int32" />
+    <Property Name="JobCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookID1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookID2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthAimag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthSum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AgeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Voters_PhoneNumber_old">
+    <Key>
+      <PropertyRef Name="VoterId" />
+    </Key>
+    <Property Name="VoterId" Type="Guid" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Testing_CommentID">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Testing_Profile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Testing_Report_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TopNew">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ViralCount" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SourceLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TopNewsForTopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="TopicID" Type="Guid" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ViralCount" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SourceLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TopTweet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Twitter_DeleteUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Twitter_Tweet_Hottopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="TweetID" Type="Guid" />
+    <Property Name="HottopicID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Twitter_Tweet_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="TweetID" Type="Guid" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Twitter_Tweets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="TwitterUserID" Type="Guid" />
+    <Property Name="TweetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ScreenName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RetweetCount" Type="Int32" />
+    <Property Name="Retweeted" Type="Boolean" />
+    <Property Name="FullText" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Language" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TrimUser" Type="Boolean" />
+    <Property Name="Truncated" Type="Boolean" />
+    <Property Name="UserID" Type="Int64" />
+    <Property Name="HashEntity1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="HashEntity2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="HashEntity3" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="SymbolEntity1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="SymbolEntity2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="SymbolEntity3" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntity1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntityDisplayUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntityExpandedUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntity2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntityDisplayUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntityExpandedUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntity3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntityDisplayUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UrlEntityExpandedUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiy1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyDisplayUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyMediaUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyVideoInfo1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntity2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyDisplayUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyMediaUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyVideoInfo2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntity3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyDisplayUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyMediaUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MediaEntitiyVideoInfo3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UserMentionEntity1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UserMentionEntityScreenName1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UserMentionEntity2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UserMentionEntityScreenName2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UserMentionEntity3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UserMentionEntityScreenName3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="RegisteredDate" Type="DateTime" Precision="3" />
+    <Property Name="IsManual" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TwFullPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Twitter_User_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="TwitterUserID" Type="Guid" />
+    <Property Name="ContributorsEnabled" Type="Boolean" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Cursor" Type="Int64" />
+    <Property Name="DefaultProfile" Type="Boolean" />
+    <Property Name="DefaultProfileImage" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FavoritesCount" Type="Int32" />
+    <Property Name="FollowRequestSent" Type="Boolean" />
+    <Property Name="FollowersCount" Type="Int32" />
+    <Property Name="Following" Type="Boolean" />
+    <Property Name="FriendsCount" Type="Int32" />
+    <Property Name="GeoEnabled" Type="Boolean" />
+    <Property Name="ImageSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IncludeEntities" Type="Boolean" />
+    <Property Name="IsTranslator" Type="Boolean" />
+    <Property Name="Lang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LangResponse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ListedCount" Type="Int32" />
+    <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Notifications" Type="Boolean" />
+    <Property Name="Page" Type="Int32" />
+    <Property Name="ProfileBackgroundColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileBackgroundImageUrl" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileBackgroundImageUrlHttps" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileBackgroundTile" Type="Boolean" />
+    <Property Name="ProfileBannerUrl" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImageUrl" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImageUrlHttps" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileLinkColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileSidebarBorderColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileSidebarFillColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileTextColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileUseBackgroundImage" Type="Boolean" />
+    <Property Name="Protected" Type="Boolean" />
+    <Property Name="Query" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ScreenName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ScreenNameList" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ScreenNameResponse" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ShowAllInlineMedia" Type="Boolean" />
+    <Property Name="SkipStatus" Type="Boolean" />
+    <Property Name="Slug" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="StatusesCount" Type="Int32" />
+    <Property Name="TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int64" />
+    <Property Name="UserIDResponse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserIdList" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UtcOffset" Type="Int32" />
+    <Property Name="Verified" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Twitter_Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SureName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Followers" Type="Int32" />
+    <Property Name="Following" Type="Int32" />
+    <Property Name="Likes" Type="Int32" />
+    <Property Name="TweetNumber" Type="Int32" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="JoinedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isChecked" Type="Boolean" />
+    <Property Name="ReadDate" Type="DateTime" Precision="3" />
+    <Property Name="Level" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CommentCheckedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UserMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="parentID" Type="Guid" />
+    <Property Name="Level" Type="Int32" />
+    <Property Name="userID" Type="Guid" />
+    <Property Name="childMenu" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WebSite_Post_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="WebSiteID" Type="Guid" />
+    <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Website_Post_Hottopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="HottopicID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Website_Post_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="PersonID" Type="Guid" />
+    <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="WebSite_PostList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="WebSiteID" Type="Guid" />
+    <Property Name="RawData" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="WebSite_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Reporter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CommentCount" Type="Int32" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PostListID" Type="Guid" />
+    <Property Name="CoverUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RawData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WbFullPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WebSite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SiteName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ImageRoot" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+    <Property Name="SiteColorCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PostListTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HtmlTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TitleTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CoverTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BodyTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DateTimeTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ReporterTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CommentTagID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CommentInput" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CommentSubmit" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="isHiddenHTML" Type="Boolean" />
+    <Property Name="isContainComments" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="XBACKUP_Facebook_Comments_Old">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="From" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="ObjectID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="PositiveCount" Type="Int32" />
+    <Property Name="NegativeCount" Type="Int32" />
+    <Property Name="Sentiment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment_Confirmed" Type="Boolean" />
+    <Property Name="Question" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="XBACKUP_System_Voters_Party">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SureName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialStatus" Type="Int32" />
+    <Property Name="PartyStatus" Type="Int32" />
+    <Property Name="Facebook_Display" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Electricity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="SureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Account_More">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="about" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="age_range_min" Type="Int32" />
+    <Property Name="age_range_max" Type="Int32" />
+    <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="hometown_id" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="hometown_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="install_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="installed" Type="Boolean" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="location_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="location_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name_format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cover_link" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCityId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HometownName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HometownId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WorkName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WorkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UniversityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UniversityUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Checked" Type="Boolean" />
+    <Property Name="UpdateOwnerUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileId" Type="Int64" />
+    <Property Name="PoliticalParty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OperationDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="DTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProfileImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FName_Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName_Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="FName_UserName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName_UserName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="FName_Facebook" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName_Facebook" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="FName_Name_M" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName_Name_M" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="FName_UserName_M" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName_UserName_M" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="FName_Facebook_M" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName_Facebook_M" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Accounts_Fake">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="AccountID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Comment_PhoneNumber">
+    <Key>
+      <PropertyRef Name="PostID" />
+      <PropertyRef Name="ObjectID" />
+    </Key>
+    <Property Name="ID" Type="Guid" />
+    <Property Name="PostID" Type="Guid" Nullable="false" />
+    <Property Name="ObjectID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FromID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FromName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Phones">
+    <Key>
+      <PropertyRef Name="PhoneNo" />
+      <PropertyRef Name="IsChecked" />
+    </Key>
+    <Property Name="PhoneNo" Type="Int64" Nullable="false" />
+    <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Html" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsChecked" Type="Boolean" Nullable="false" />
+    <Property Name="Id" Type="Int64" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Update" Type="DateTime" Precision="0" />
+    <Property Name="UpdateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateRepeatIdx" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Facebook_Settings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Facebook_Videos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ParrentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParrentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Updated_Time" Type="DateTime" Precision="3" />
+    <Property Name="TotalReactionCount" Type="Int32" />
+    <Property Name="WowCount" Type="Int32" />
+    <Property Name="AngryCount" Type="Int32" />
+    <Property Name="SadCount" Type="Int32" />
+    <Property Name="YayCount" Type="Int32" />
+    <Property Name="HahaCount" Type="Int32" />
+    <Property Name="LoveCount" Type="Int32" />
+    <Property Name="LikesCount" Type="Int32" />
+    <Property Name="SharesCount" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Google_Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Google_Category_Key">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="CategoryID" Type="Guid" />
+    <Property Name="Key" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="KeyType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Google_PhoneNumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+    <Property Name="ClientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Google_Register">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+    <Property Name="ClientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Google_Result_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ResultID" Type="Guid" />
+    <Property Name="CategoryID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Google_SearchResult">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SearchKeyID" Type="Guid" />
+    <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="SearchType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Statistic">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="defaultValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="System_Candidates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsOwn" Type="Boolean" />
+    <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" />
+  </EntityType>
+  <EntityType Name="System_Facebook_Reports_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ReportID" Type="Guid" />
+    <Property Name="CommentID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_Questions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Report">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="SortOrder" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="TeamName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Report" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Resource_WAT">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Register" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Register" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NameOld" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Sentiment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Word" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lattin3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PageID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_Student_Email">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Register" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Sum">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AimagID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KhorooID" Type="Guid" />
+    <Property Name="CandiateID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="System_Voters_Multiple">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Registernumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ForeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SureName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AimagCity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SumDuureg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BagKhoroo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Apartment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Door" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ElectionPlaceName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AgeGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="System_Voters_PhoneNumber">
+    <Key>
+      <PropertyRef Name="VoterId" />
+    </Key>
+    <Property Name="VoterId" Type="Guid" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TopSpecifiedNewsForTopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="TopicID" Type="Guid" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ViralCount" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SourceLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TopTopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="TopicID" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ViralCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WebSite_Banks_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="Reporter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="CommentCount" Type="Int32" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Sentement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ViewCount" Type="Int32" />
+    <Property Name="PostLike" Type="Int32" />
+    <Property Name="PostDisLike" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WebSite_Banks_Posts_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="LikeCount" Type="Int32" />
+    <Property Name="DisLikeCount" Type="Int32" />
+    <Property Name="Sentment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="XBackup_Facebook_Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCityId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HometownName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HometownId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WorkName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WorkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UniversityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UniversityUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Checked" Type="Boolean" />
+    <Property Name="UpdateOwnerUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileId" Type="Int64" />
+    <Property Name="PoliticalParty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OperationDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="DTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProfileImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="XBackup_Facebook_Accounts_Old">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCityId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HometownName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HometownId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WorkName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WorkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UniversityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UniversityUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Checked" Type="Boolean" />
+    <Property Name="UpdateOwnerUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileId" Type="Int64" />
+    <Property Name="PoliticalParty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OperationDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="DTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="XBACKUP_Facebook_Post_Comments_Backup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PostID" Type="Guid" />
+    <Property Name="ObjectID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="PositiveCount" Type="Int32" />
+    <Property Name="NegativeCount" Type="Int32" />
+    <Property Name="Sentiment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Sentiment_Confirmed" Type="Boolean" />
+    <Property Name="Question" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="XBACKUP_Facebook_Posts_Backup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ParrentObjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageID" Type="Guid" />
+    <Property Name="GroupID" Type="Guid" />
+    <Property Name="ObjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Story" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TotalReactionCount" Type="Int32" />
+    <Property Name="WowCount" Type="Int32" />
+    <Property Name="AngryCount" Type="Int32" />
+    <Property Name="SadCount" Type="Int32" />
+    <Property Name="YayCount" Type="Int32" />
+    <Property Name="HahaCount" Type="Int32" />
+    <Property Name="LoveCount" Type="Int32" />
+    <Property Name="LikesCount" Type="Int32" />
+    <Property Name="SharesCount" Type="Int32" />
+    <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Sentiment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="XBACKUP_Facebook_Posts_Old">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ParrentObjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageID" Type="Guid" />
+    <Property Name="GroupID" Type="Guid" />
+    <Property Name="ObjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Story" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TotalReactionCount" Type="Int32" />
+    <Property Name="WowCount" Type="Int32" />
+    <Property Name="AngryCount" Type="Int32" />
+    <Property Name="SadCount" Type="Int32" />
+    <Property Name="YayCount" Type="Int32" />
+    <Property Name="HahaCount" Type="Int32" />
+    <Property Name="LoveCount" Type="Int32" />
+    <Property Name="LikesCount" Type="Int32" />
+    <Property Name="SharesCount" Type="Int32" />
+    <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Sentiment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="XBACKUP_Google_SearchResult_backup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SearchKeyID" Type="Guid" />
+    <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SearchType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="xBackup_System_Aimag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="NameEng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="Int32" />
+  </EntityType>
+  <EntityType Name="xBackup_System_Bag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Bag" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SumID" Type="Guid" />
+    <Property Name="AimagID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="XBACKUP_System_Voters_Fixed">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="SureName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Aimag" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sum" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Party" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PartyTendence" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FacebookID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="AimagGaral" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SumGaral" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Khoroo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BirthdayHalf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthdayFull" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

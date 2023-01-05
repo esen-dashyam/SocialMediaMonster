@@ -1,0 +1,419 @@
+﻿
+@{
+    ViewBag.Title = "HotTopicRating";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+    #mainTbl {
+        border-right: 1px solid #eee !important;
+        border-left: 1px solid #eee !important;
+    }
+
+        #mainTbl th {
+            background: #e5f3fe;
+            padding-left: 2px !important;
+            padding-right: 2px !important;
+            text-align: center;
+            font-family: 'Roboto';
+        }
+
+        #mainTbl td {
+            vertical-align: middle;
+            text-align: center;
+            border-right: none !important;
+            border-left: none !important;
+        }
+
+
+    .head {
+        color: #252525 !important;
+    }
+
+    .btn1 {
+        border: none;
+        outline: none;
+        padding: 10px 16px;
+        background-color: #6abf6a;
+        cursor: pointer;
+        color: white;
+        border-radius: 5px;
+    }
+
+        .actives, .btn1:hover {
+            background-color: #40a73f;
+            color: white;
+            border-radius: 5px;
+        }
+</style>
+
+
+<div id="SystemMainDiv" data-id="0" data-id1="0">
+    <section style="background:none;">
+        <div id="dateDIV" class="row">
+            <div class="col-md-12" id="DtlUnLoad" style="background:none;">
+                <div class="form-group">
+                    <div align="left" style="float:left;">
+                        <button class="btn btn-primary dropdown-toggle" id="DropDown" val="1"> Бүлэг сонгох </button>
+                        <div id="DropDownDiv" val="1">
+                            <div class="col-md-12">
+                            </div>
+                            <div id="DropDownList" style="display:none; background:#fff; border:1px solid #ccc; border-radius:5px; position:absolute;z-index:9999; width:300px; padding:10px;">
+                                @foreach (var m in Model)
+                        {
+
+                            <span onclick="childGroup(this);" id="@m.ID" val="1" data-id="@m.ID" style="float:left; font-size:22px; padding-right:10px; margin-top:-7px; cursor:pointer;">+</span>
+
+                            <label>
+                                <input type="checkbox" name="parentCheck" class="parentCheck getGroupPerson"  data-id="@m.ID" value="@m.ID" val="1" id="@m.ID" IsParent="1" onclick="PersonList(this);" />
+                                @m.Name
+                            </label>
+                            <div id="@m.ID-childs" style="margin-left:10px;">
+
+
+
+                            </div>
+                }
+                            </div>
+                        </div>
+                    </div>
+                    <div align="right">
+                        <input type="hidden" name="hidID" id="hidID" value="" />
+                        <button type="button" class="btn1 actives dateBtn" value="0">Бүгд</button>
+                        <button type="button" class="btn1 dateBtn" value="1">Сүүлийн 1 өдөр</button>
+                        <button type="button" class="btn1 dateBtn" value="5"> Сүүлийн 5 өдөр</button>
+                        <button type="button" class="btn1 dateBtn" value="7">Сүүлийн 7 өдөр</button>
+                        <button type="button" class="btn1 dateBtn" value="14">Сүүлийн 14 өдөр</button>
+                        <button type="button" class="btn1 dateBtn" value="m">Сүүлийн 1 сар</button>
+                        <button type="button" class="btn1 dateBtn" value="y">Сүүлийн 1 жил</button>
+                    </div>
+                </div>
+                <div class="" id="messageDiv"></div>
+                <div class="form-group table-responsive" id="MainTbl">
+                    <table class=" table table-striped table-bordered" id="mainTbl">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" style="width:150px;">Rank</th>
+
+                                <th colspan="3">Facebook</th>
+                                <th colspan="3">Twitter</th>
+                                <th colspan="3">WebSite</th>
+                                <th class="numeric-sort" rowspan="2" valign="middle"><a href="javascript:SortTable(10,'N');" class="head">Нийт (Fb)</a></th>
+                                <th class="numeric-sort" rowspan="2" valign="middle"><a href="javascript:SortTable(11,'N');" class="head">Нийт (Tw)</a></th>
+                                <th class="numeric-sort" rowspan="2" valign="middle"><a href="javascript:SortTable(12,'N');" class="head">Нийт (Web)</a></th>
+                                <th class="numeric-sort" rowspan="2" valign="middle"><a href="javascript:SortTable(13,'N');" class="head">Нийт </a></th>
+                            </tr>
+
+                            <tr>
+
+                                <th class="numeric-sort"><a href="javascript:SortTable(1,'N');" class="head">Эерэг </a></th>
+                                <th class="numeric-sort"><a href="javascript:SortTable(2,'N');" class="head">Саармаг</a></th>
+                                <th class="numeric-sort"><a href="javascript:SortTable(3,'N');" class="head">Сөрөг</a></th>
+
+                                <th class="numeric-sort"><a href="javascript:SortTable(4,'N');" class="head">Эерэг</a></th>
+                                <th class="numeric-sort"><a href="javascript:SortTable(5,'N');" class="head">Саармаг</a></th>
+                                <th class="numeric-sort"><a href="javascript:SortTable(6,'N');" class="head">Сөрөг</a></th>
+
+                                <th class="numeric-sort"><a href="javascript:SortTable(7,'N');" class="head">Эерэг</a></th>
+                                <th class="numeric-sort"><a href="javascript:SortTable(8,'N');" class="head">Саармаг</a></th>
+                                <th class="numeric-sort"><a href="javascript:SortTable(9,'N');" class="head">Сөрөг</a></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>          </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12" id="DtlLoad" style="background:none;">
+
+            </div>
+
+            </div>
+</section>
+</div>
+
+<script>
+    var TableIDvalue = "mainTbl";
+    var TableLastSortedColumn = -1;
+    function SortTable() {
+        var sortColumn = parseInt(arguments[0]);
+        var type = arguments.length > 1 ? arguments[1] : 'T';
+        var dateformat = arguments.length > 2 ? arguments[2] : '';
+        var table = document.getElementById(TableIDvalue);
+        var tbody = table.getElementsByTagName("tbody")[0];
+        var rows = tbody.getElementsByTagName("tr");
+        var arrayOfRows = new Array();
+        type = type.toUpperCase();
+        dateformat = dateformat.toLowerCase();
+        for (var i = 0, len = rows.length; i < len; i++) {
+            arrayOfRows[i] = new Object;
+            arrayOfRows[i].oldIndex = i;
+            var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g, "");
+            if (type == 'D') { arrayOfRows[i].value = GetDateSortingKey(dateformat, celltext); }
+            else {
+                var re = type == "N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
+                arrayOfRows[i].value = celltext.replace(re, "").substr(0, 25).toLowerCase();
+            }
+        }
+        if (sortColumn == TableLastSortedColumn) { arrayOfRows.reverse(); }
+        else {
+            TableLastSortedColumn = sortColumn;
+            switch (type) {
+                case "N": arrayOfRows.sort(CompareRowOfNumbers); break;
+                case "D": arrayOfRows.sort(CompareRowOfNumbers); break;
+                default: arrayOfRows.sort(CompareRowOfText);
+            }
+        }
+        var newTableBody = document.createElement("tbody");
+        for (var i = 0, len = arrayOfRows.length; i < len; i++) {
+            newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+        }
+        table.replaceChild(newTableBody, tbody);
+    } // function SortTable()
+
+    function CompareRowOfText(a, b) {
+        var aval = a.value;
+        var bval = b.value;
+        return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+    } // function CompareRowOfText()
+
+    function CompareRowOfNumbers(a, b) {
+        var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
+        var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
+        return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+    } // function CompareRowOfNumbers()
+
+
+</script>
+
+<script>
+
+    var check = "";
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("dateDIV");
+    var btns = header.getElementsByClassName("btn1");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("actives");
+            current[0].className = current[0].className.replace(" actives", "");
+            this.className += " actives";
+        });
+    }
+
+
+    $("#DropDown").click(function () {
+
+        if ($(this).attr("val") == "1") {
+            $(this).attr("val", "0");
+            $("#DropDownList").css("display", "block");
+        } else {
+            $(this).attr("val", "1");
+            $("#DropDownList").css("display", "none");
+        }
+    });
+
+
+
+
+    window.addEventListener('click', function (e) {
+        if (document.getElementById('DropDownList').contains(e.target) || document.getElementById('DropDown').contains(e.target)) {
+
+        } else {
+            $("#DropDown").attr("val", "1");
+            $("#DropDownList").css("display", "none");
+        }
+    });
+
+
+
+
+
+    function PersonList(e) {
+        check = "";
+
+
+        $('input:checked').each(function () {
+
+            check += "'" + $(this).val() + "',";
+        });
+        check = check.substring(0, check.length - 1);
+
+
+        if ($(e).attr("val") == "1") {
+
+            $("#SystemMainDiv").attr("data-id", $(e).val());
+            $(e).attr("val", "0");
+
+            $.ajax({
+                type: "POST",
+                url: '/Home/HotTopicRatingResult',
+                data: { 'ID': check, 'Date': $("#SystemMainDiv").attr("data-id1") },
+
+                success: function (data) {
+
+                    $('#mainTbl tbody').empty();
+                    $('#mainTbl tbody').append(data);
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+        } else {
+
+
+
+            var checkValue;
+            if (check == "") {
+                checkValue = 0;
+            } else {
+                checkValue = check;
+            }
+
+
+            $("#SystemMainDiv").attr("data-id", "0");
+            $(e).attr("val")
+            $(e).attr("val", "1");
+
+            $.ajax({
+                type: "POST",
+                url: '/Home/HotTopicRatingResult',
+                data: { 'ID': checkValue, 'Date': $("#SystemMainDiv").attr("data-id1") },
+
+                success: function (data) {
+
+                    $('#mainTbl tbody').empty();
+                    $('#mainTbl tbody').append(data);
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+        }
+
+    }
+
+
+
+
+
+    function childGroup(e) {
+
+        if ($(e).attr("val") == "1") {
+
+
+            $('#' + $(e).attr("data-id") + '-childs').css("display", "block");
+            $('#' + $(e).attr("data-id") + '').html(" - ");
+            $.ajax({
+                type: "POST",
+                url: '/Home/ChildList',
+                data: { 'ID': $(e).attr("data-id") },
+
+                success: function (data) {
+                    console.log(data);
+                    $('#' + $(e).attr("data-id") + '-childs').html(data);
+
+
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+            $(e).attr("val", "0");
+        } else {
+            $('#' + $(e).attr("data-id") + '').html("+");
+            $('#' + $(e).attr("data-id") + '-childs').css("display", "none");
+            $(e).attr("val", "1");
+        }
+
+    }
+
+
+
+
+
+    $(".dateBtn").click(function () {
+        var ID = $("#hidID").val();
+        var date = $(this).val();
+        if (check == "") {
+            checkValue = 0;
+        } else {
+            checkValue = check;
+        }
+        $("#SystemMainDiv").attr("data-id1", date);
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/HotTopicRatingResult',
+            data: { 'ID': checkValue, 'Date': date },
+            success: function (data) {
+                $('#mainTbl tbody').empty();
+                $('#mainTbl tbody').append(data);
+            },
+            error: function () {
+                alert('Error occured');
+            }
+        });
+    });
+
+
+        function LoadDtl(e) {
+        var id = $(e).attr("data-id");
+        var sentiment = $(e).attr("data-sentiment");
+        var type = $(e).attr("data-type");
+        var groupID = $(e).attr("group-id");
+        $.ajax({
+            type: "POST",
+            url: '/Home/HotTopicRatingResultDtl',
+            data: {'ID': id, 'sentiment': sentiment, 'type': type, 'groupID': groupID },
+
+            success: function (data) {
+                $('#DtlUnLoad').css("display", "none");
+                $('#DtlLoad').css("display", "block");
+                $('#DtlLoad').html(data);
+                
+     
+            },
+            error: function () {
+            alert('Error occured');
+        }
+        });
+
+    }
+
+
+
+
+    function backHotTopicDtl(e) {
+       
+        $.ajax({
+            type: "POST",
+            url: '/Home/HotTopicRatingResult',
+            data: { 'ID': "'"+e+"'", 'Date': "0" },
+
+            success: function (data) {
+                $('#DtlUnLoad').css("display", "block");
+                $('#DtlLoad').css("display", "none");
+                $('#mainTbl tbody').empty();
+                $('#mainTbl tbody').append(data);
+
+            },
+            error: function () {
+                alert('Error occured');
+            }
+        });
+        var cbs = document.getElementsByClassName("getGroupPerson");
+        for (var i = 0; i < cbs.length; i++) {
+            if (cbs[i].getAttribute("value") == e) {
+                cbs[i].checked = true;
+                cbs[i].setAttribute("val", "0");
+            } else {
+                cbs[i].checked = false;
+                cbs[i].setAttribute("val", "1");
+            }
+        }
+    }
+
+</script>
+
+

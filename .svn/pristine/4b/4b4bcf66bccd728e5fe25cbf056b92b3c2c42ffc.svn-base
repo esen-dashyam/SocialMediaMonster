@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Notification";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+@{ int @counter = 0; }
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Овог</th>
+                    <th>Нэр</th>
+                    <th>Утасны дугаар</th>
+                    <th>Имэйл</th>
+                    <th>Хэрэглэгчийн нэр</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in ViewBag.AspUserData)
+                {
+                    counter = counter + 1;
+                    <tr>
+                        <td>@counter</td>
+                        <td>@m.SureName</td>
+                        <td>@m.Name</td>
+                        <td>@m.PhoneNumber</td>
+                        <td>@m.Email</td>
+                        <td>@m.UserName</td>
+                        <td>
+                            <a href="~/Home/NotfUser/@m.Id/" class="btn btn-success btn-block btn-sm"> Notification </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

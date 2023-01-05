@@ -1,0 +1,52 @@
+﻿<style>
+    .list-group2 span {
+        display: none;
+    }
+</style>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+    $(".list-group2 span")
+        .slice(0, 10)
+        .show();
+    $(".list-group2 span:hidden").css("opacity", 0);
+    $("#viewAll2").on("click", function (e) {
+        $(".list-group2 span:hidden")
+            .slice(0, 10)
+            .slideDown("slow")
+            .animate(
+            {
+                opacity: 1
+            },
+            {
+                queue: false,
+                duration: "slow"
+            }
+            );
+        if ($(".list-group2 span:hidden").length == 0) {
+            $("#viewAll2").fadeOut("slow");
+        }
+        e.preventDefault();
+    });
+
+</script>
+<h3>Твиттер жиргээ</h3>
+<div class="list-group2" id="TwitterList" data-id="@ViewBag.TwitterLastID">
+    @foreach (var post in ViewBag.TwitterData)
+    {
+        <span>
+            <div class="border card news-feed-card-bg text-black " style=" font-family:Roboto;padding:10px; color:black;border-left:none !important;border-top:none !important; border-right:none !important;">
+                <blockquote class="twitter-tweet" data-lang="en">
+                    @if (@post.ScreenName is null)
+                    {
+                                    <a href="http://twitter.com/@post.ScreenNameResponse/status/@post.StatusID"></a>
+                    }
+                    else
+                    {
+                                    <a href="http://twitter.com/@post.ScreenName/status/@post.StatusID"></a>
+                    }
+                </blockquote>
+                </div>
+            </span>
+                }
+<a id="viewAll2" class="view-more-btn" href="#">Цааш үзэх</a>
+            </div>

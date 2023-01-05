@@ -1,0 +1,16 @@
+﻿<div class="container-fluid">
+    @foreach (var post in ViewBag.Comment)
+    {
+        <div class="card" id="single" style="padding:10px;font-size:small">
+            <header>
+                <div class="comment-user"><i class="fa fa-user"></i>@post.FromName</div>
+                <time class="comment-date" datetime="16-12-2014" style="float:right; margin-top:0"><i class="fa fa-clock-o"></i> @post.CreateTime</time>
+            </header>
+            <div class="comment-post">
+                <p>
+                    @post.Message
+                </p>
+            </div>
+        </div>
+    }
+</div>

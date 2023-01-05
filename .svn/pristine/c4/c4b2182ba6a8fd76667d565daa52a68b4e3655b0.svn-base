@@ -1,0 +1,23 @@
+﻿@{ int @counter = 0; }
+@if (@ViewBag.HotTopic != null)
+{
+    foreach (var m in ViewBag.HotTopic)
+    {
+        counter = counter + 1;
+        <tr>
+            <td>@counter</td>
+            <td><img src="@m.ImageURL" style="width:150px;" /></td>
+            <td> @m.Title </td>
+            <td>@m.Description</td>
+
+            <td>
+
+                <input type="button" class="btn btn-sm btn-success btn-block" onclick="TopicKeyList(this);" value="keys" data-id="@m.ID" />
+                <input type="button" class="btn btn-sm btn-success btn-block" value="social" onclick="HottopicSocial(this);" data-id="@m.ID" data-name="@m.Title" />
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Update" onclick="UpdateModal(this);" data-id="@m.GroupID" id="@m.ID" data-id1="@m.Title" data-id2="@m.Description" data-id3="@m.ImageURL" />
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Delete" onclick="DeleteModal(this);" id="del" data-id="@m.ID" />
+            </td>
+        </tr>
+
+    }
+}

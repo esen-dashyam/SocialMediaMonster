@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+
+@{
+    ViewBag.Title = "FbInfo";
+}
+
+
+
+<div class="card">
+    <div class="card-header">Фэйсбүүк Пост</div>
+    <div class="card-body" >
+
+        @foreach (var post in Model)
+        {
+        <span>
+            <div style="padding:10px; border-bottom:1px solid #eee; font-family:Roboto;">
+                <div style="float:left;"><a href="@post.Link" target="_blank"><B>@post.FromName</B></a></div>
+                <div align="right" style="font-style:italic; color:#ccc;">@post.UpdateTime</div>
+                <div style="text-align:justify;">@post.Story</div>
+                <div align="center"><img src="@post.Picture" /></div>
+            </div>
+        </span>
+        }
+
+        <div align="right"><a id="@ViewData["peopleID"]" class="btn btn-sm fbDetail" name="seeBtn"> Дэлгэрэнгүй </a></div>
+    </div>
+</div>
+
+
+<script>
+
+    $(".fbDetail").click(function () {
+        var PersonID = $(this).attr("id");
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/FbPosts',
+            data: { 'PeopleID': PersonID },
+            success: function (data) {
+                // alert(data);
+                $("#MainSection").html(data);
+            },
+            error: function () {
+                alert('Error occured');
+            }
+        });
+    });
+
+
+</script>

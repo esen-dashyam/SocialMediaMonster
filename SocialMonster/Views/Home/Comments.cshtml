@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Коммент";
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<div class="row" style="padding-left:20px; padding-right:20px;">
+    <div class="card col-sm-12" style="display:table-cell; padding:10px; ">
+        <div style="float:left; padding-right:10px;">
+            <input type="text" class="form-control" id="searchInp" placeholder="Хайлт хийх">
+        </div>
+
+        <div style="float:left; padding-right:10px;">
+            <button class="btn btn-success" onclick="searchTxt();">Хайх</button>
+        </div>
+        <div style="float:left; padding-right:10px;">
+            <button class="btn btn-danger" id="clearTxt" onclick="clearTxt();">Хайлт цэвэрлэх</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-left:20px; padding-right:20px;">
+    <div class="card col-sm-12" id="mainDiv">
+        <br />
+        @foreach (var comm in ViewBag.FbCommData)
+        {
+            <div style="float:left;"> <span class="badge badge-info">@comm.FromName</span></div>
+            <div align="right" style="font-style:italic; color:#ccc;">@comm.CreateTime</div>
+            <div style="text-align:justify;">@comm.Message</div>
+            <hr />
+        }
+        <!--
+     @foreach (var comm in ViewBag.FbCommData)
+    {
+    <div class="row" style="border-bottom:solid; border-width:1px">
+        <div class="col-lg-2"><span class="badge badge-info"> @comm.FromName </span></div>
+        <div class="col-lg-8" style="text-align:justify;">@comm.Message</div>
+        <div class="col-lg-2" style="font-style:italic; color:#ccc;" align="right">@comm.CreateTime</div>
+    </div>
+    } -->
+    </div>
+</div>
+
+
+<div style="position:fixed; z-index:9999; top:0px; padding-top:12%; left:-30px; text-align:center; background:rgba(0,0,0,0.5);font-size:25px; width:110%; height:100%;color:#fff; display:none; line-height:200px;" id="search">
+    <div style="vertical-align: middle;">
+        Processing ...
+    </div>
+</div>
+
+
+<script>
+
+    function clearTxt() {
+        if ($("#searchInp").val() == "") {
+
+        } else {
+            $("#search").css("display", "block");
+            $.ajax({
+                type: "GET",
+                url: '/Home/CommentSearch',
+                data: { 'txt': "" },
+                success: function (data) {
+
+                    $("#mainDiv").html(data);
+                    $("#search").css("display", "none");
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+            $("#searchInp").val("");
+        }
+
+    }
+    
+    function searchTxt() {
+        if ($("#searchInp").val() == "") {
+            alert("Хайх утгаа оруулна уу !!!");
+        } else {
+            $("#search").css("display", "block");
+
+            $.ajax({
+                type: "GET",
+                url: '/Home/CommentSearch',
+                data: { 'txt': $("#searchInp").val() },
+                success: function (data) {
+
+                    $("#mainDiv").html(data);
+                    $("#search").css("display", "none");
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+        }
+
+    }
+    
+</script>

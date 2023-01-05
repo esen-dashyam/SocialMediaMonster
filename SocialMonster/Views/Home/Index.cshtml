@@ -1,0 +1,442 @@
+﻿@{
+    if (this.User.IsInRole("Shunkhlai") || !this.User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_Layout3.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+@{
+    ViewBag.Title = "Board.mn";
+}
+
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="row">
+                <div class="col">
+                    <h4 class="page-title text-secondary">Анализ</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Board.mn</a></li>
+                        <li class="breadcrumb-item active">Хяналтын хэсэг</li>
+                    </ol>
+                </div><!--end col-->
+                <!--<div class="col-auto align-self-center">
+                    <a href="#" class="btn btn-sm btn-outline-primary" id="Dash_Date">
+                        <span class="ay-name" id="Day_Name">Өнөөдөр:</span>&nbsp;
+                        <span class="" id="Select_date">Jan 11</span>
+                        <i data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
+                    </a>
+                    <a href="#" class="btn btn-sm btn-outline-primary">
+                        <i data-feather="download" class="align-self-center icon-xs"></i>
+                    </a>
+                </div>-->
+                <!--end col-->
+            </div><!--end row-->
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- end page title end breadcrumb -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold" style="color: #3b5998">Фэйсбүүк пост</p>
+                                <h3 class="m-0">@ViewBag.FacebookPostCount.ToString("#,##0")</h3>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill=" #1877F2" class="bi bi-facebook" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold" style="color: #3b5998">Фэйсбүүк сэтгэгдэл</p>
+                                <h3 class="m-0">@ViewBag.CommentCount.ToString("#,##0")</h3>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill=" #1877F2" class="bi bi-facebook" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold" style="color: #3b5998">Фэйсбүүк хуудас</p>
+                                <h3 class="m-0">@ViewBag.FbGroupCount.ToString("#,##0")</h3>
+                                @*                                <h3 class="m-0">@ViewBag.FbGroupCount</h3>*@
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#1877F2" class="bi bi-facebook" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold">Твиттер жиргээ</p>
+                                <h3 class="m-0">@ViewBag.TwitterTweetCount.ToString("#,##0")</h3>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#00acee" class="bi bi-twitter" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+        </div><!--end row-->
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold">Твиттер хэрэглэгч</p>
+                                <h3 class="m-0">@ViewBag.TwitterUserCount.ToString("#,##0")</h3>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#00acee" class="bi bi-twitter" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                                    </svg>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold">Вэб нийтлэл</p>
+                                <h3 class="m-0" id="webPost">@ViewBag.WebPostCount.ToString("#,##0")</h3>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#FFA500" class="bi bi-globe2" viewBox="0 0 16 16">
+                                        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold">Вэб хуудас</p>
+                                <h3 class="m-0">@ViewBag.WebsiteCount.ToString("#,##0")</h3>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#FFA500" class="bi bi-globe2" viewBox="0 0 16 16">
+                                        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+            <div class="col-md-6 col-lg-3">
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col">
+                                <p class="text-secondary mb-0 fw-semibold" style="color: #91E8E8;">Нийгмийн хандлага</p>
+                                <h3 class="m-0">@ViewBag.TotalPostivePercent%</h3>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <div class="report-main-icon bg-light-alt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#ff6347" class="bi bi-heart-fill" viewBox="0 0 16 14">
+                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+        </div><!--end row-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h4 class="card-title text-secondary">НИЙТ БҮРТГЭЛ</h4>
+                    </div><!--end col-->
+                    <!--<div class="col-auto">
+                        <div class="dropdown">
+                            <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                This Year<i class="las la-angle-down ms-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Today</a>
+                                <a class="dropdown-item" href="#">Last Week</a>
+                                <a class="dropdown-item" href="#">Last Month</a>
+                                <a class="dropdown-item" href="#">This Year</a>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!--end col-->
+                </div>  <!--end row-->
+            </div><!--end card-header-->
+            <div class="card-body">
+                <div class="">
+                    <div id="ana_dash_1" class="apex-charts"></div>
+                </div>
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+    @*donut chart bayarjii egch hereggui gesen bolhoor hasaw*@
+    <!--<div class="col-lg-3">
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h4 class="card-title text-secondary">Нийгмийн хандлага</h4>
+                    </div>-->
+    <!--end col-->
+    <!--<div class="col-auto">
+        <div class="dropdown">
+            <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                All<i class="las la-angle-down ms-1"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="#">Purchases</a>
+                <a class="dropdown-item" href="#">Emails</a>
+            </div>
+        </div>
+    </div>-->
+    <!--end col-->
+    <!--</div>-->  <!--end row-->
+    <!--</div>--><!--end card-header-->
+    <!--<div class="card-body">
+        <div class="text-center">
+            <div id="ana_device" class="apex-charts"></div>
+            <h6 class="bg-light-alt py-3 px-2 mb-0">
+                <i data-feather="calendar" class="align-self-center icon-xs me-1"></i>
+                01 January 2020 to 31 December 2020
+            </h6>
+        </div>
+        <div class="table-responsive mt-2">
+            <table class="table border-dashed mb-0">
+                <thead>
+                    <tr>
+                        <th class="text-secondary">Device</th>
+                        <th class="text-end text-secondary">Твиттер жиргээ</th>
+                        <th class="text-end text-secondary">Фэйсбүүк пост</th>
+                        <th class="text-end text-secondary">Вэб нийтлэл</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-secondary">Dasktops</td>
+                        <td class="text-end text-muted">1843</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">Tablets</td>
+                        <td class="text-end text-muted">2543</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">Mobiles</td>
+                        <td class="text-end text-muted">3654</td>
+                    </tr>
+
+                </tbody>
+            </table>-->
+    <!--end /table-->
+    <!--</div>--><!--end /div-->
+    <!--</div>--><!--end card-body-->
+    <!--</div>--><!--end card-->
+    <!--</div>--> <!--end col-->
+</div><!--end row-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function GetMainGraph() {
+        $("#graphCardBody").html("");
+        $("#graphCardBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/LoadDashboardMainGraph',
+                success: function (data) {
+                    //alert(data);
+                    $("#ecommerceChartView").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    function GetTopTwitterUsers() {
+        $("#twitterUserBody").html("");
+        $("#twitterUserBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/TopUserTwitter',
+                success: function (data) {
+                    //alert(data);
+                    $("#topUsers").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    function GetLatestCommentAndTweets() {
+        $("#commentTweetBody").html("");
+        $("#commentTweetBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/DashboardSectionSecond',
+                success: function (data) {
+                    //alert(data);
+                    $("#CommentAndTweets").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    function GetLatestPosts() {
+        $("#recentPostBody").html("");
+        $("#recentPostBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/DashboardSectionThird',
+                success: function (data) {
+                    //alert(data);
+                    $("#recentPosts").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    function getPositivePercent() {
+         $.ajax({
+                type: "GET",
+                url: '/Home/PositivePercent',
+                success: function (data) {
+                    //alert(data);
+                    $("#positivePercent").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+@*bulgaa 2022-05-02 begin toolj baigaa processiig boliulaj baazaas shuud value awdag baihaar oorchlow
+    setInterval(function () {
+        var SetData = $("#fbCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/FbCountCustom",
+            //contentType: "html",
+            //cache: false,
+            //async: false,
+            success: function (result) {
+                SetData.html("");
+                var Data = '<p class="text-secondary mb-0 fw-semibold"> Фэйсбүүк пост</p><h3 class="m-0" id="fbPost">' + result.toLocaleString('en') +'</h3>';
+                SetData.append(Data);
+            }
+        });
+    }, 11000);
+    setInterval(function () {
+        var SetData = $("#commentCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/CommentCountCustom",
+            success: function (result) {
+                SetData.html("");
+                var Data = '<p class="text-secondary mb-0 fw-semibold">Фэйсбүүк сэтгэгдэл</p><h3 class="m-0">' + result.toLocaleString('en') + '</h3>';
+                SetData.append(Data);
+            }
+        });
+    }, 3500);
+   setInterval(function () {
+        var SetData = $("#webCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/WebPostCountCustom",
+            success: function (result) {
+                SetData.html("");
+                var Data = '<p class="text-dark mb-0 fw-semibold">Фэйсбүүк сэтгэгдэл</p><h3 class="m-0">' + result.toLocaleString('en') + '</h3>';
+                SetData.append(Data);
+            }
+        });
+    }, 20000);
+
+
+    setInterval(function () {
+        var SetData = $("#tweetCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/TweetCountCustom",
+            success: function (result) {
+                SetData.html("");
+                var Data = '<p class="text-secondary mb-0 fw-semibold">Твиттер жиргээ</p><h3 class="m-0" id="tweetPost">' + result.toLocaleString('en') + '</h3>';
+                SetData.append(Data);
+            }
+        });
+    }, 3000);
+       bulgaa 2022 - 05 - 02 end toolj baigaa processiig boliulaj baazaas shuud value awdag baihaar oorchlow *@
+
+
+    var fbPost = $('#fbPost').attr('value');
+    var webPost = $('#webPost').attr('value');
+
+    const websiteChartCount1 = @ViewBag.websiteChartCount1;
+    const facebookChartCount1 = @ViewBag.facebookChartCount1;
+    const twitterChartCount1 = @ViewBag.twitterChartCount1;
+
+
+
+</script>
+

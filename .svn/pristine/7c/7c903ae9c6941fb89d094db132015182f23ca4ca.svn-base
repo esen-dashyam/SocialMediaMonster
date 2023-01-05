@@ -1,0 +1,71 @@
+﻿@model SocialMonster.Models.VotersModel
+@{
+    ViewBag.Title = "Иргэний дэлгэрэнгүй";
+}
+<input type="hidden" id="personID" value="@Model.ID" />
+<div class="card border-danger">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 text-center mb-2 pt-2">
+                <img src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png" height="150" width="150" alt="user picture" class="" />
+                
+            </div>
+            <div class="col-md-4 col-sm-12" style="border-left:1px dashed #d9d9d9">
+                <div class="media">
+                    <div class="media-body">
+                        <ul class="ml-2 px-0 list-unstyled">
+                            <li class="text-bold-800">Овог: <strong>@Model.Surename</strong></li>
+                            <li class="text-bold-800">Нэр: <strong>@Model.Name</strong></li>
+                            <li>Нас: <strong>@Model.Age</strong></li>
+                            <li>Хүйс: <strong>@Model.Sex</strong></li>
+                            <li>Регистр: <strong>@Model.Register</strong></li>
+                            <li>Утасны дугаар: <strong>@Model.PhoneNumber</strong></li>
+                            <li>И-мэйл: <strong>@Model.Email</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12" style="border-left:1px dashed #d9d9d9">
+                <ul class="ml-2 px-0 list-unstyled">
+                    <li class="text-bold-800">Аймаг: <strong>@Model.Aimag</strong></li>
+                    <li class="text-bold-800">Сум: <strong>@Model.Sum</strong></li>
+                    <li class="text-bold-800">Баг: <strong>@Model.Khoroo</strong></li>
+                    <li class="text-bold-800">Хаяг: <strong>@Model.Address</strong></li>
+                    <li class="text-bold-800">Төрсөн аймаг: <strong>@Model.AimagGaral</strong></li>
+                    <li class="text-bold-800">Төрсөн сум: <strong>@Model.SumGaral</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">Фэйсбүүкийн постууд</div>
+    <div class="card-body" id="fbPosts">
+    </div>
+</div>
+<script>
+    window.addEventListener('load', function () {
+        var personID = document.getElementById("personID").value;
+        var fbPosts = $("#fbPosts");
+        $.ajax({
+            type: "GET",
+            url: '/Users/PersonFbPosts',
+            data: { 'personID': personID },
+            success: function (result) {
+                    if (result.length > 0) {
+                        $.each(result, function (index, value) {
+                            //var dt = new Date(response.d);
+                            //var Data = '<div class="card shadow-none border-info mb-2"><div class="catd-body"><div class="col mt-2"><h5 class="m-0">' + value.Name + '</h5><p>' + value.UpdateTime.Date + '</p></div><div class="write-post"><div class="col-sm-12 px-2"><p>' + value.Message + '</p></div><hr class="m-0"><div class="row p-1"><div class="col-6"><span><i class="ft-user h4 align-middle danger"></i> ' + value.FromName + '</span></div><div class="col-6"><div class="pull-right"><span class="pr-1"><i class="ft-message-square h4 align-middle"></i> 44</span><span class="pr-1"><i class="ft-corner-up-right h4 align-middle"></i>' + value.SharedCount + '</span></div></div></div></div></div></div>';
+                            var Data = '<div class="card border-success mb-2"><div class="card-body pb-0"><div class="row mb-1"><div class="col-lg-4 mb-1"><img src="'+value.FullPicture+'" class="img-fluid" /></div><div class="col-lg-8"><a class="text-dark" href="'+value.PermalinkUrl+'" target="_blank"><h4>' + value.Name + '</h4></a><p>' + value.UpdateTime.Date + '</p><p>'+ value.Message+'</p></div></div><hr class="m-0"><div class="row p-1 mb-0"><div class="col-4"><span><i class="ft-heart h4 align-middle danger"></i> 0</span></div><div class="col-8"><div class="pull-right"><span class="pr-1"><i class="ft-message-square h4 align-middle"></i> 0</span><span class="pr-1"><i class="ft-corner-up-right h4 align-middle"></i> ' + value.SharedCount + '</span></div></div></div></div></div>';
+                            fbPosts.append(Data);
+                        });
+                    }
+                    else {
+                        var Data = '<p>Пост байхгүй байна</p>';
+                        fbPosts.append(Data);
+                        alert('fkafadfljasl');
+                    }
+            }
+        });
+    });
+</script>

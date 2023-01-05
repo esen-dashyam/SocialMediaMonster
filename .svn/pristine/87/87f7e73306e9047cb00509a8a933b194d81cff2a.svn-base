@@ -1,0 +1,194 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+@*bulgaa grid view nemew*@
+    <div style="column-count: 3; column-gap: 1rem; width: 100%;">
+        @foreach (var post in Model)
+        {
+            <div style="break-inside: avoid; margin-bottom: 1rem;">
+                <div class="card h-auto">
+                    <div style="border-radius: 10px;">
+
+                        <div class="card-content mb-1 " name="post">
+                            @if (!post.PermalinkUrl.Contains("group"))
+                            {
+                                <div class="card-body">
+                                    <div class="fb-post" data-href="@post.PermalinkUrl" data-width="auto"></div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="card-body">
+                                    <div class="" style="width:100%; height:100%; overflow:hidden;">
+                                        @if (@post.FullPicture != null)
+                                        {
+                                            {
+                                                <a href="@post.Link" class="" target="_blank">
+                                                    <img src="@post.FullPicture" style="width:100%; height:100%">
+                                                </a>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div style="line-height:18px;">
+                                        <a href="https://www.facebook.com/@post.FromID" class="float-left" style="color:#0067D4 !important" target="_blank">
+                                            @post.FromName
+                                        </a><br>
+                                        <div class="float-right" style="font-style:italic; color:#ccc;"> @post.UpdateTime </div><br />
+                                        <div style="text-align:justify;">
+                                            <a href="https://www.facebook.com/@post.PostID" class="float-left text-dark" target="_blank">
+                                                @if (post.Message != null)
+                                                {
+                                                    @post.Message
+                                                }
+                                                else if (post.Story != null)
+                                                {
+                                                    @post.Story
+                                                }
+                                                else if (post.Caption != null)
+                                                {
+                                                    @post.Caption
+                                                }
+                                                else if (post.Description != null)
+                                                {
+                                                    <a href="@post.ID"></a>
+                                                    @post.Description
+                                                }
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="container" style=" border-top: 1px solid #e3ebf6;">
+                            <div style="display:flex;align-items:center; justify-content:end" class="row">
+                                <div class=" col-sm-auto">
+                                    <input type="checkbox" class="checkbox" data-type="Facebook" data-postid="@post.ID" />
+                                </div>
+                                <div style="border-right: 1px solid #e3ebf6" class="col-sm-auto">
+                                    @if (post.Sentiment == null)
+                                    {
+                                        <div align="right" style="width: 19px !important; height: 19px; background: #ffc107; padding: 3px; border-radius: 5px; color: #fff;"></div>
+                                    }
+                                    else if (post.Sentiment == "Positive")
+                                    {
+                                        <div align="right" style="width: 19px !important; height: 19px; background: #28a745; padding: 3px; border-radius: 5px; color: #fff; "></div>
+
+                                    }
+                                    else if (post.Sentiment == "Negative")
+                                    {
+                                        <div align="right" style="width: 19px !important; height: 19px; background: #dc3545; padding: 3px; color: #fff; border-radius: 5px; "></div>
+                                    }
+                                    else if (post.Sentiment == "Neutral")
+                                    {
+                                        <div align="right" style="width:19px !important; height: 19px; background: #6c757d; padding: 3px; border-radius: 5px; color: #fff; "></div>
+                                    }
+                                </div>
+                                <div class="col-sm-auto">
+                                    <button onclick="Modal('Facebook','@post.ID')" data-toggle="modal" data-target="#ModalControl"
+                                            class="btn btn-block" style="padding: 2px 0 0 0 ; border-radius: 5px; color: #7081b9; font-size: 19px">
+                                        <i class="fa fa-cog"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+<script>
+    function Modal(type, ID) {
+        //   alert(type);
+        //   alert(ID);
+        $('#PostID').val(ID);
+        $('#Type').val(type);
+
+        $("#ModalControlFblist").modal('show');
+    }
+    function Control(IsEdit) {
+        if (IsEdit == false) {
+            if (window.confirm("Та устгахдаа итгэлтэй байна уу?") == false)
+                return;
+        }
+
+
+        var PostID = $("#PostID").val();
+        var Type = $("#Type").val();
+       @* var PostID = 'all';
+        var Type = 'all';*@
+        var Sentiment = $('#Sentiment4').val();
+        var UserId = document.getElementById("UserID").value;
+
+        if (Type == 'all') {
+            var checkboxes = document.querySelectorAll('.checkbox[type=checkbox]:checked')
+            for (var i = 0; i < checkboxes.length; i++) {
+                console.log(checkboxes[i].getAttribute('data-type'));
+                console.log(checkboxes[i].getAttribute('data-postId'));
+
+                Type = checkboxes[i].getAttribute('data-type');
+                PostID = checkboxes[i].getAttribute('data-postId');
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Home/Control',
+                    async: false,
+                    data: { 'PostID': PostID, 'Type': Type, 'Sentiment': Sentiment, 'IsEdit': IsEdit, 'UserId': UserId },
+                    success: function (data) {
+                        //console.log(data);
+                        //alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+                        //$('#ModalControl').modal('hide');
+                        console.log(i + ': succeed');
+                    },
+                    error: function () {
+                        alert('Алдаа гарлаа');
+                    }
+                });
+                new Promise(done => setTimeout(() => done(), 500));
+            }
+            alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+            $('#ModalControlFblist').modal('hide');
+            checkCheckbox(false);
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/Control',
+            data: { 'PostID': PostID, 'Type': Type, 'Sentiment': Sentiment, 'IsEdit': IsEdit, 'UserId': UserId },
+            success: function (data) {
+                //console.log(data);
+                alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+                $('#ModalControlFblist').modal('hide');
+                checkCheckbox(false);
+            },
+            error: function () {
+                alert('Алдаа гарлаа');
+            }
+        });
+    }
+
+    var typeAll = false;
+    function checkCheckbox(value) {
+        var checkboxes = document.querySelectorAll('.checkbox[type=checkbox]')
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = value;
+        }
+        typeAll = value;
+    }
+
+    $("#type-selector").change(function () {
+        if ($("#type-selector").val() == 'list') {
+            var UserId = document.getElementById("UserID").value;
+            document.getElementById('main-body').style.display = "none";
+            $.ajax({
+                type: "POST",
+                url: '/Home/SmartNewsCusList',
+                data: { 'ID': UserId },
+                success: function (data) {
+                    $("#main-body").html(data);
+                    //console.log(data);
+                },
+            });
+        }
+    });
+
+</script>

@@ -1,0 +1,2569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNet_ViewersInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" />
+    <Property Name="ViewTime" Type="datetime" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="ISP" Type="nvarchar" MaxLength="150" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserActivityLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Activity" Type="nvarchar" MaxLength="50" />
+    <Property Name="Time" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetUserClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="SureName" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="IsManual" Type="bit" />
+  </EntityType>
+  <EntityType Name="AspNetUserToSystemPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="AspNetUserToSystemUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AspNetUserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="SystemPersonID" Type="uniqueidentifier" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AspNetUserToSystemView">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="ViewID" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Electricity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Electricity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber4" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber5" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Facebook.Account.More' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Facebook_Account_More">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="about" Type="nvarchar" MaxLength="300" />
+    <Property Name="address" Type="nvarchar" MaxLength="300" />
+    <Property Name="birthday" Type="nvarchar" MaxLength="50" />
+    <Property Name="age_range.min" Type="int" />
+    <Property Name="age_range.max" Type="int" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="gender" Type="nvarchar" MaxLength="5" />
+    <Property Name="hometown.id" Type="nvarchar" MaxLength="15" />
+    <Property Name="hometown.name" Type="nvarchar" MaxLength="50" />
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="install_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="installed" Type="bit" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="link" Type="nvarchar" MaxLength="100" />
+    <Property Name="location.id" Type="nvarchar" MaxLength="50" />
+    <Property Name="location.name" Type="nvarchar" MaxLength="200" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="name_format" Type="nvarchar" MaxLength="50" />
+    <Property Name="cover_link" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Facebook.Accounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Facebook_Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="CurrentCityName" Type="nvarchar(max)" />
+    <Property Name="CurrentCityId" Type="nvarchar" MaxLength="200" />
+    <Property Name="HometownName" Type="nvarchar(max)" />
+    <Property Name="HometownId" Type="nvarchar" MaxLength="200" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="200" />
+    <Property Name="Twitter" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Birthday" Type="nvarchar" MaxLength="200" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="200" />
+    <Property Name="Job" Type="nvarchar(max)" />
+    <Property Name="WorkName" Type="nvarchar(max)" />
+    <Property Name="WorkUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Profession" Type="nvarchar(max)" />
+    <Property Name="UniversityName" Type="nvarchar(max)" />
+    <Property Name="UniversityUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Checked" Type="bit" />
+    <Property Name="UpdateOwnerUserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProfileId" Type="bigint" />
+    <Property Name="PoliticalParty" Type="nvarchar(max)" />
+    <Property Name="OperationDirection" Type="nvarchar(max)" />
+    <Property Name="Sentiment" Type="nvarchar(max)" />
+    <Property Name="FName" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName" Type="nvarchar" MaxLength="400" />
+    <Property Name="DTE" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartyName" Type="nchar" MaxLength="50" />
+    <Property Name="RegistrationDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="ProfileImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="URL" Type="nvarchar" MaxLength="500" />
+    <Property Name="FName_Name" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName_Name" Type="nvarchar" MaxLength="400" />
+    <Property Name="FName_UserName" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName_UserName" Type="nvarchar" MaxLength="400" />
+    <Property Name="FName_Facebook" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName_Facebook" Type="nvarchar" MaxLength="400" />
+    <Property Name="FName_Name_M" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName_Name_M" Type="nvarchar" MaxLength="400" />
+    <Property Name="FName_UserName_M" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName_UserName_M" Type="nvarchar" MaxLength="400" />
+    <Property Name="FName_Facebook_M" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName_Facebook_M" Type="nvarchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Facebook_Accounts_Confirmed">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AccountID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsReal" Type="bit" />
+  </EntityType>
+  <EntityType Name="Facebook_Accounts_Crawler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GroupURL" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProfileURL" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Uid" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfilePicture" Type="nvarchar" MaxLength="500" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AdditionalData" Type="nvarchar" MaxLength="500" />
+    <Property Name="AimagName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SumName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fname_UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lname_UserName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Facebook.Accounts.Fake' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Facebook_Accounts_Fake">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AccountID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Facebook.Comment.PhoneNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Facebook_Comment_PhoneNumber">
+    <Key>
+      <PropertyRef Name="PostID" />
+      <PropertyRef Name="ObjectID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" />
+    <Property Name="PostID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FromID" Type="nvarchar" MaxLength="150" />
+    <Property Name="FromName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="phoneNumber" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Facebook_CommentRemover">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Facebook_Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ObjectName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProfileID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfileName" Type="nvarchar" MaxLength="200" />
+    <Property Name="SourceName" Type="nvarchar" MaxLength="200" />
+    <Property Name="CategoryID" Type="uniqueidentifier" />
+    <Property Name="ParentID" Type="uniqueidentifier" />
+    <Property Name="IsRealTimeMonitor" Type="bit" />
+    <Property Name="IsElectional" Type="bit" />
+    <Property Name="IsRemove" Type="bit" />
+    <Property Name="IsAds" Type="bit" />
+    <Property Name="AccessToken" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="AimagID" Type="uniqueidentifier" />
+    <Property Name="SumID" Type="uniqueidentifier" />
+    <Property Name="IsChecked" Type="bit" />
+  </EntityType>
+  <EntityType Name="Facebook_Messenger_Conversations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ConversationID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Can_reply" Type="bit" />
+    <Property Name="Is_subscribed" Type="bit" />
+    <Property Name="MessageCount" Type="int" />
+    <Property Name="link" Type="nvarchar" MaxLength="3000" />
+    <Property Name="Sender1_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sender1_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sender1_Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sender2_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sender2_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sender2_Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sender3_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sender3_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sender3_Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Snippet" Type="nvarchar" MaxLength="300" />
+    <Property Name="Unread_count" Type="int" />
+    <Property Name="Updated_time" Type="datetime" />
+    <Property Name="Participant1_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Participant1_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Participant1_Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Participant2_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Participant2_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Participant2_Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Participant3_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Participant3_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Participant3_Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Facebook_Messenger_Messages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ConversationID" Type="uniqueidentifier" />
+    <Property Name="MessageID" Type="nvarchar" MaxLength="200" />
+    <Property Name="FromID" Type="nvarchar" MaxLength="50" />
+    <Property Name="FromName" Type="nvarchar" MaxLength="200" />
+    <Property Name="FromEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ToEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tag1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tag2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tag3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tag4" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShareID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShareLink" Type="nvarchar" MaxLength="3000" />
+    <Property Name="Message" Type="nvarchar" MaxLength="3000" />
+    <Property Name="Created_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Facebook_Pages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="CheckedDate" Type="datetime" />
+    <Property Name="IsPrivateAccout" Type="bit" />
+    <Property Name="IsRealTimeMonitor" Type="bit" />
+    <Property Name="IsElectional" Type="bit" />
+    <Property Name="IsRemove" Type="bit" />
+    <Property Name="IsAds" Type="bit" />
+    <Property Name="AccessToken" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="AimagID" Type="uniqueidentifier" />
+    <Property Name="SumID" Type="uniqueidentifier" />
+    <Property Name="IsChecked" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Facebook.Phones' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Facebook_Phones">
+    <Key>
+      <PropertyRef Name="PhoneNo" />
+      <PropertyRef Name="IsChecked" />
+    </Key>
+    <Property Name="PhoneNo" Type="bigint" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" />
+    <Property Name="Html" Type="nvarchar(max)" />
+    <Property Name="IsChecked" Type="bit" Nullable="false" />
+    <Property Name="Id" Type="bigint" />
+    <Property Name="Username" Type="nvarchar(max)" />
+    <Property Name="RegisterNo" Type="nvarchar" MaxLength="200" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Update" Type="smalldatetime" />
+    <Property Name="UpdateUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateRepeatIdx" Type="int" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Attachment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="MediaURL" Type="nvarchar" MaxLength="1000" />
+    <Property Name="TargetID" Type="nvarchar" MaxLength="50" />
+    <Property Name="TargetURL" Type="nvarchar" MaxLength="500" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Url" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Reply">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CommentID" Type="uniqueidentifier" />
+    <Property Name="WriteID" Type="uniqueidentifier" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Sentiment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CommentID" Type="uniqueidentifier" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Write_Keys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="50" />
+    <Property Name="Condition" Type="nvarchar" MaxLength="50" />
+    <Property Name="WriteID" Type="uniqueidentifier" />
+    <Property Name="Scope" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comment_Writes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PageOrGroupID" Type="uniqueidentifier" />
+    <Property Name="Text" Type="nvarchar" MaxLength="500" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+    <Property Name="Scope" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CommentID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FromID" Type="nvarchar" MaxLength="150" />
+    <Property Name="FromName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="PositiveCount" Type="int" />
+    <Property Name="NegativeCount" Type="int" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="10" />
+    <Property Name="Sentiment_Confirmed" Type="bit" />
+    <Property Name="Question" Type="bit" />
+    <Property Name="Likes" Type="int" />
+    <Property Name="RegisteredDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Hottopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="HottopicID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Reactions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="FromID" Type="nvarchar" MaxLength="100" />
+    <Property Name="FromName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_Reply">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="WriteID" Type="uniqueidentifier" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Facebook_Post_SubAttachment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AttachmentID" Type="uniqueidentifier" />
+    <Property Name="TargetID" Type="nvarchar" MaxLength="50" />
+    <Property Name="TargetURL" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="URL" Type="nvarchar" MaxLength="1000" />
+    <Property Name="MediaURL" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Facebook_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PageID" Type="uniqueidentifier" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+    <Property Name="PostID" Type="nvarchar" MaxLength="100" />
+    <Property Name="FromID" Type="nvarchar" MaxLength="500" />
+    <Property Name="FromName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="Story" Type="nvarchar(max)" />
+    <Property Name="Type" Type="nvarchar" MaxLength="500" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="SharedCount" Type="int" />
+    <Property Name="PermalinkUrl" Type="nvarchar(max)" />
+    <Property Name="Caption" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="FullPicture" Type="nvarchar(max)" />
+    <Property Name="Link" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Picture" Type="nvarchar(max)" />
+    <Property Name="Icon" Type="nvarchar(max)" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ParentID" Type="nvarchar" MaxLength="100" />
+    <Property Name="SearchKey" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Facebook.Settings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Facebook_Settings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Value" Type="nvarchar" MaxLength="400" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Facebook.Videos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Facebook_Videos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ParrentID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParrentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+    <Property Name="Updated_Time" Type="datetime" />
+    <Property Name="TotalReactionCount" Type="int" />
+    <Property Name="WowCount" Type="int" />
+    <Property Name="AngryCount" Type="int" />
+    <Property Name="SadCount" Type="int" />
+    <Property Name="YayCount" Type="int" />
+    <Property Name="HahaCount" Type="int" />
+    <Property Name="LoveCount" Type="int" />
+    <Property Name="LikesCount" Type="int" />
+    <Property Name="SharesCount" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Google.Categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Google_Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Google.Category.Key' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Google_Category_Key">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CategoryID" Type="uniqueidentifier" />
+    <Property Name="Key" Type="nvarchar" MaxLength="150" />
+    <Property Name="KeyType" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Google.PhoneNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Google_PhoneNumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="50" />
+    <Property Name="CheckedDate" Type="datetime" />
+    <Property Name="ClientID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Google.Register' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Google_Register">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="100" />
+    <Property Name="CheckedDate" Type="datetime" />
+    <Property Name="ClientID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Google.Result.Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Google_Result_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ResultID" Type="uniqueidentifier" />
+    <Property Name="CategoryID" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Google.SearchResult' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Google_SearchResult">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SearchKeyID" Type="uniqueidentifier" />
+    <Property Name="Title" Type="nvarchar" MaxLength="300" />
+    <Property Name="Url" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SearchType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Monitoring.dbo.News.Newspaper' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="News_Newspaper">
+          <Property Name="Title" Type="nvarchar" MaxLength="400" />
+          <Property Name="NewsPaperUrl" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Fulltext" Type="nvarchar" MaxLength="4000" />
+          <Property Name="PaperFullPicture" Type="nvarchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="ID" Type="uniqueidentifier" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>-->
+  <EntityType Name="News_Newspaper_New">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Title" Type="nvarchar" MaxLength="400" />
+    <Property Name="NewsPaperUrl" Type="nvarchar" MaxLength="400" />
+    <Property Name="FullText" Type="nvarchar" MaxLength="4000" />
+    <Property Name="PaperFullPicture" Type="nvarchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Date" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="News_Newspaper_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Person_User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="personID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Statistics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Statistics">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="defaultValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="System_Aimag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_float" Type="int" Nullable="false" />
+    <Property Name="FullID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegionID" Type="int" />
+  </EntityType>
+  <EntityType Name="System_Aimag_Code">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="System_BagKhoroo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_FLOAT" Type="int" Nullable="false" />
+    <Property Name="IDNUM" Type="int" />
+    <Property Name="FullID" Type="int" />
+    <Property Name="FullID2" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="SumDuuregID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Candidates' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Candidates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsOwn" Type="bit" />
+    <Property Name="PartyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SortOrder" Type="int" />
+  </EntityType>
+  <EntityType Name="System_Cars">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FlatNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Color" Type="nvarchar" MaxLength="200" />
+    <Property Name="Model" Type="nvarchar" MaxLength="200" />
+    <Property Name="Manifacture" Type="nvarchar" MaxLength="200" />
+    <Property Name="Type" Type="nvarchar" MaxLength="200" />
+    <Property Name="Purpose" Type="nvarchar" MaxLength="200" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber4" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber5" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber6" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber7" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber8" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="System_Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsMain" Type="bit" />
+    <Property Name="ParentID" Type="uniqueidentifier" />
+    <Property Name="Level" Type="int" />
+  </EntityType>
+  <EntityType Name="System_Facebook_Reports">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Type" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Facebook.Reports.Comments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Facebook_Reports_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ReportID" Type="uniqueidentifier" />
+    <Property Name="CommentID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_Facebook_Reports_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ReportID" Type="uniqueidentifier" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentID" Type="uniqueidentifier" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="Level" Type="int" />
+  </EntityType>
+  <EntityType Name="System_GroupToPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_Hottopics">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="300" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImageURL" Type="nvarchar" MaxLength="1000" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_JobCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Float" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="System_Jobs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_FLOAT" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="System_Key_Exclude">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="Word" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="System_Keys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Key1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Key2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Key3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Key4" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin4" Type="nvarchar" MaxLength="100" />
+    <Property Name="KeyTypeID" Type="uniqueidentifier" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+    <Property Name="HoptopicID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_KeyTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="Order" Type="int" />
+  </EntityType>
+  <EntityType Name="System_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Surename" Type="nvarchar" MaxLength="50" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+    <Property Name="FacebookPageID1" Type="uniqueidentifier" />
+    <Property Name="FacebookPageID2" Type="uniqueidentifier" />
+    <Property Name="FacebookPageID3" Type="uniqueidentifier" />
+    <Property Name="FacebookGroupID1" Type="uniqueidentifier" />
+    <Property Name="FacebookGroupID2" Type="uniqueidentifier" />
+    <Property Name="FacebookGroupID3" Type="uniqueidentifier" />
+    <Property Name="TwitterUserID1" Type="uniqueidentifier" />
+    <Property Name="TwitterUserID2" Type="uniqueidentifier" />
+    <Property Name="TwitterUserID3" Type="uniqueidentifier" />
+    <Property Name="WebSiteID1" Type="uniqueidentifier" />
+    <Property Name="WebSiteID2" Type="uniqueidentifier" />
+    <Property Name="WebSiteID3" Type="uniqueidentifier" />
+    <Property Name="Picture" Type="varchar(max)" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="FacebookAccount" Type="nvarchar" MaxLength="100" />
+    <Property Name="TwitterAccount" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Website" Type="nvarchar" MaxLength="100" />
+    <Property Name="ParentID" Type="uniqueidentifier" />
+    <Property Name="userID" Type="uniqueidentifier" />
+    <Property Name="Level" Type="int" />
+    <Property Name="childMenu" Type="int" />
+    <Property Name="Tittlename" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Questions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Questions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Question" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin3" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="System_Regions">
+    <Key>
+      <PropertyRef Name="ID_Float" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" />
+    <Property Name="ID_Float" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Report' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Report">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="SortOrder" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="TeamName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Report" Type="ntext" />
+  </EntityType>
+  <EntityType Name="System_Resource_Electricity_Types">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Purpose" Type="nvarchar" MaxLength="200" />
+    <Property Name="Type" Type="nvarchar" MaxLength="200" />
+    <Property Name="SubType" Type="nvarchar" MaxLength="200" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Resource.WAT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Resource_WAT">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Register" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Register" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="NameOld" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Sentiment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Sentiment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Word" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lattin3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="10" />
+    <Property Name="PageID" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Student.Email' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Student_Email">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Register" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Sum' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Sum">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="AimagID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_Sum_Code">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="System_SumDuureg">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_FLOAT" Type="int" />
+    <Property Name="IDNUM" Type="int" />
+    <Property Name="FullID" Type="int" />
+    <Property Name="FullID2" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="AimagID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="KhorooID" Type="uniqueidentifier" />
+    <Property Name="CandiateID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_View">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonID1" Type="uniqueidentifier" />
+    <Property Name="PersonID2" Type="uniqueidentifier" />
+    <Property Name="PersonID3" Type="uniqueidentifier" />
+    <Property Name="GroupID1" Type="uniqueidentifier" />
+    <Property Name="GroupID2" Type="uniqueidentifier" />
+    <Property Name="GroupID3" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="System_Voters">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aimag" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sum" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="Party" Type="nvarchar" MaxLength="10" />
+    <Property Name="PartyTendence" Type="nvarchar" MaxLength="10" />
+    <Property Name="FacebookID" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber4" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber5" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber6" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber7" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber8" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber9" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber10" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="smalldatetime" />
+    <Property Name="AimagGaral" Type="nvarchar" MaxLength="500" />
+    <Property Name="SumGaral" Type="nvarchar" MaxLength="500" />
+    <Property Name="Khoroo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="BirthdayHalf" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthdayFull" Type="nvarchar" MaxLength="50" />
+    <Property Name="FName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsNew" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Voters.Multiple' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Voters_Multiple">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Registernumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="ForeName" Type="nvarchar" MaxLength="255" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="255" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="AimagCity" Type="nvarchar" MaxLength="255" />
+    <Property Name="SumDuureg" Type="nvarchar" MaxLength="255" />
+    <Property Name="BagKhoroo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Street" Type="nvarchar" MaxLength="255" />
+    <Property Name="Apartment" Type="nvarchar" MaxLength="255" />
+    <Property Name="Door" Type="nvarchar" MaxLength="255" />
+    <Property Name="ElectionPlaceName" Type="nvarchar" MaxLength="255" />
+    <Property Name="AgeGroup" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Monitoring.dbo.System.Voters.New' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="System_Voters_New">
+          <Property Name="ID" Type="uniqueidentifier" />
+          <Property Name="RegisterNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="ForeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Surename" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="255" />
+          <Property Name="BirthDay" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="AimagCity" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sumduureg" Type="nvarchar" MaxLength="255" />
+          <Property Name="BagKhoroo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Street" Type="nvarchar" MaxLength="255" />
+          <Property Name="Apartment" Type="nvarchar" MaxLength="255" />
+          <Property Name="Door" Type="nvarchar" MaxLength="255" />
+          <Property Name="ElectionPlaceName" Type="nvarchar" MaxLength="255" />
+          <Property Name="AgeGroup" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="System_Voters_Party">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Age" Type="float" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="RegionID_Float" Type="float" />
+    <Property Name="RegionID" Type="uniqueidentifier" />
+    <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AimagID_Float" Type="float" />
+    <Property Name="AimagID" Type="uniqueidentifier" />
+    <Property Name="AimagName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SumDuuregID_Float" Type="float" />
+    <Property Name="SumDuuregID" Type="uniqueidentifier" />
+    <Property Name="SumDuuregName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BagKhorooID_Float" Type="float" />
+    <Property Name="BagKhorooID" Type="uniqueidentifier" />
+    <Property Name="BagKhorooName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Party" Type="float" />
+    <Property Name="FacebookName" Type="nvarchar" MaxLength="250" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="nvarchar" MaxLength="350" />
+    <Property Name="JobID" Type="uniqueidentifier" />
+    <Property Name="JobID_Float" Type="int" />
+    <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobCategoryID" Type="uniqueidentifier" />
+    <Property Name="JobCategoryID_Float" Type="int" />
+    <Property Name="JobCategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FacebookID" Type="nvarchar" MaxLength="50" />
+    <Property Name="FacebookID1" Type="nvarchar" MaxLength="50" />
+    <Property Name="FacebookID2" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthAimag" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthSum" Type="nvarchar" MaxLength="50" />
+    <Property Name="AgeGroup" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Monitoring.dbo.System.Voters.Party.New' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="System_Voters_Party_New">
+          <Property Name="ID" Type="float" />
+          <Property Name="SureName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Age" Type="float" />
+          <Property Name="Sex" Type="float" />
+          <Property Name="RegisterNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="AimagID" Type="float" />
+          <Property Name="BagKhoroodID" Type="float" />
+          <Property Name="HesegID" Type="float" />
+          <Property Name="RegionID" Type="float" />
+          <Property Name="SumduuregID" Type="float" />
+          <Property Name="Party" Type="float" />
+          <Property Name="FacebookID" Type="nvarchar" MaxLength="255" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="JobCategory" Type="float" />
+          <Property Name="Job" Type="float" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Voters.PhoneNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="System_Voters_PhoneNumber">
+    <Key>
+      <PropertyRef Name="VoterId" />
+    </Key>
+    <Property Name="VoterId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="System_Voters_PhoneNumber_old">
+    <Key>
+      <PropertyRef Name="VoterId" />
+    </Key>
+    <Property Name="VoterId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Testing_CommentID">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="FacebookID" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Testing_Profile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Testing_Report_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="FacebookID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TopNews">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Source" Type="nvarchar(max)" />
+    <Property Name="Date" Type="nvarchar(max)" />
+    <Property Name="ViralCount" Type="int" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="Link" Type="nvarchar(max)" />
+    <Property Name="SourceLink" Type="nvarchar(max)" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="Profile" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TopNewsForTopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TopicID" Type="uniqueidentifier" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Source" Type="nvarchar(max)" />
+    <Property Name="Date" Type="nvarchar(max)" />
+    <Property Name="ViralCount" Type="int" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="Link" Type="nvarchar(max)" />
+    <Property Name="SourceLink" Type="nvarchar(max)" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="Profile" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.TopSpecifiedNewsForTopic' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TopSpecifiedNewsForTopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TopicID" Type="uniqueidentifier" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Source" Type="nvarchar(max)" />
+    <Property Name="Date" Type="nvarchar(max)" />
+    <Property Name="ViralCount" Type="int" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="Link" Type="nvarchar(max)" />
+    <Property Name="SourceLink" Type="nvarchar(max)" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="Profile" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.TopTopics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TopTopics">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TopicID" Type="uniqueidentifier" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Picture" Type="nvarchar(max)" />
+    <Property Name="ViralCount" Type="int" />
+  </EntityType>
+  <EntityType Name="TopTweets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Twitter_DeleteUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Twitter_Tweet_Hottopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TweetID" Type="uniqueidentifier" />
+    <Property Name="HottopicID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Twitter_Tweet_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TweetID" Type="uniqueidentifier" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Twitter_Tweets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TwitterUserID" Type="uniqueidentifier" />
+    <Property Name="TweetID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="ScreenName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Source" Type="nvarchar" MaxLength="3000" />
+    <Property Name="StatusID" Type="nvarchar" MaxLength="50" />
+    <Property Name="RetweetCount" Type="int" />
+    <Property Name="Retweeted" Type="bit" />
+    <Property Name="FullText" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Language" Type="nvarchar" MaxLength="100" />
+    <Property Name="Text" Type="nvarchar" MaxLength="500" />
+    <Property Name="TrimUser" Type="bit" />
+    <Property Name="Truncated" Type="bit" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="HashEntity1" Type="nvarchar" MaxLength="1000" />
+    <Property Name="HashEntity2" Type="nvarchar" MaxLength="1000" />
+    <Property Name="HashEntity3" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SymbolEntity1" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SymbolEntity2" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SymbolEntity3" Type="nvarchar" MaxLength="1000" />
+    <Property Name="UrlEntity1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntityDisplayUrl1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntityExpandedUrl1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntity2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntityDisplayUrl2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntityExpandedUrl2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntity3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntityDisplayUrl3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UrlEntityExpandedUrl3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiy1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyDisplayUrl1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyMediaUrl1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyVideoInfo1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntity2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyDisplayUrl2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyMediaUrl2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyVideoInfo2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntity3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyDisplayUrl3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyMediaUrl3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MediaEntitiyVideoInfo3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UserMentionEntity1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UserMentionEntityScreenName1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UserMentionEntity2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UserMentionEntityScreenName2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UserMentionEntity3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UserMentionEntityScreenName3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="RegisteredDate" Type="datetime" />
+    <Property Name="IsManual" Type="nvarchar" MaxLength="50" />
+    <Property Name="TwFullPicture" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Twitter_User_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TwitterUserID" Type="uniqueidentifier" />
+    <Property Name="ContributorsEnabled" Type="bit" />
+    <Property Name="Count" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Cursor" Type="bigint" />
+    <Property Name="DefaultProfile" Type="bit" />
+    <Property Name="DefaultProfileImage" Type="bit" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="FavoritesCount" Type="int" />
+    <Property Name="FollowRequestSent" Type="bit" />
+    <Property Name="FollowersCount" Type="int" />
+    <Property Name="Following" Type="bit" />
+    <Property Name="FriendsCount" Type="int" />
+    <Property Name="GeoEnabled" Type="bit" />
+    <Property Name="ImageSize" Type="nvarchar" MaxLength="50" />
+    <Property Name="IncludeEntities" Type="bit" />
+    <Property Name="IsTranslator" Type="bit" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="50" />
+    <Property Name="LangResponse" Type="nvarchar" MaxLength="50" />
+    <Property Name="ListedCount" Type="int" />
+    <Property Name="Location" Type="nvarchar" MaxLength="500" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Notifications" Type="bit" />
+    <Property Name="Page" Type="int" />
+    <Property Name="ProfileBackgroundColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfileBackgroundImageUrl" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ProfileBackgroundImageUrlHttps" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ProfileBackgroundTile" Type="bit" />
+    <Property Name="ProfileBannerUrl" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ProfileImage" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ProfileImageUrl" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ProfileImageUrlHttps" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ProfileLinkColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfileSidebarBorderColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfileSidebarFillColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfileTextColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfileUseBackgroundImage" Type="bit" />
+    <Property Name="Protected" Type="bit" />
+    <Property Name="Query" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ScreenName" Type="nvarchar" MaxLength="300" />
+    <Property Name="ScreenNameList" Type="nvarchar" MaxLength="300" />
+    <Property Name="ScreenNameResponse" Type="nvarchar" MaxLength="300" />
+    <Property Name="ShowAllInlineMedia" Type="bit" />
+    <Property Name="SkipStatus" Type="bit" />
+    <Property Name="Slug" Type="nvarchar" MaxLength="4000" />
+    <Property Name="StatusesCount" Type="int" />
+    <Property Name="TimeZone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Url" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="UserIDResponse" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserIdList" Type="nvarchar" MaxLength="50" />
+    <Property Name="UtcOffset" Type="int" />
+    <Property Name="Verified" Type="bit" />
+  </EntityType>
+  <EntityType Name="Twitter_Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="300" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Followers" Type="int" />
+    <Property Name="Following" Type="int" />
+    <Property Name="Likes" Type="int" />
+    <Property Name="TweetNumber" Type="int" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthDay" Type="nvarchar" MaxLength="50" />
+    <Property Name="Url" Type="nvarchar" MaxLength="500" />
+    <Property Name="JoinedDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="isChecked" Type="bit" />
+    <Property Name="ReadDate" Type="datetime" />
+    <Property Name="Level" Type="int" />
+    <Property Name="Status" Type="nvarchar" MaxLength="500" />
+    <Property Name="CommentCheckedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="parentID" Type="uniqueidentifier" />
+    <Property Name="Level" Type="int" />
+    <Property Name="userID" Type="uniqueidentifier" />
+    <Property Name="childMenu" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.WebSite.Banks.Posts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WebSite_Banks_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Link" Type="nvarchar" MaxLength="800" />
+    <Property Name="Reporter" Type="nvarchar" MaxLength="100" />
+    <Property Name="Title" Type="nvarchar" MaxLength="800" />
+    <Property Name="CommentCount" Type="int" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="Sentement" Type="nvarchar" MaxLength="50" />
+    <Property Name="ViewCount" Type="int" />
+    <Property Name="PostLike" Type="int" />
+    <Property Name="PostDisLike" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.WebSite.Banks.Posts.Comments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WebSite_Banks_Posts_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="IP" Type="nvarchar" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="LikeCount" Type="int" />
+    <Property Name="DisLikeCount" Type="int" />
+    <Property Name="Sentment" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WebSite_Post_Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WebSiteID" Type="uniqueidentifier" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Website_Post_Hottopic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="HottopicID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Website_Post_Person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="PersonID" Type="uniqueidentifier" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="WebSite_PostList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WebSiteID" Type="uniqueidentifier" />
+    <Property Name="RawData" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="WebSite_Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Link" Type="nvarchar(max)" />
+    <Property Name="Reporter" Type="nvarchar(max)" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="CommentCount" Type="int" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="Url" Type="nvarchar(max)" />
+    <Property Name="PostListID" Type="uniqueidentifier" />
+    <Property Name="CoverUrl" Type="nvarchar(max)" />
+    <Property Name="Body" Type="nvarchar(max)" />
+    <Property Name="RawData" Type="nvarchar(max)" />
+    <Property Name="WbFullPicture" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="WebSites">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SiteName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ImageRoot" Type="nvarchar" MaxLength="200" />
+    <Property Name="Url" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="SiteColorCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="PostListTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="HtmlTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="TitleTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="CoverTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="BodyTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="DateTimeTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="ReporterTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="CommentTagID" Type="nvarchar" MaxLength="200" />
+    <Property Name="CommentInput" Type="nvarchar" MaxLength="200" />
+    <Property Name="CommentSubmit" Type="nvarchar" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="Logo" Type="image" />
+    <Property Name="isHiddenHTML" Type="bit" />
+    <Property Name="isContainComments" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.XBackup.Facebook.Accounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="XBackup_Facebook_Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="CurrentCityName" Type="nvarchar(max)" />
+    <Property Name="CurrentCityId" Type="nvarchar" MaxLength="200" />
+    <Property Name="HometownName" Type="nvarchar(max)" />
+    <Property Name="HometownId" Type="nvarchar" MaxLength="200" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="200" />
+    <Property Name="Twitter" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Birthday" Type="nvarchar" MaxLength="200" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="200" />
+    <Property Name="Job" Type="nvarchar(max)" />
+    <Property Name="WorkName" Type="nvarchar(max)" />
+    <Property Name="WorkUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Profession" Type="nvarchar(max)" />
+    <Property Name="UniversityName" Type="nvarchar(max)" />
+    <Property Name="UniversityUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Checked" Type="bit" />
+    <Property Name="UpdateOwnerUserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProfileId" Type="bigint" />
+    <Property Name="PoliticalParty" Type="nvarchar(max)" />
+    <Property Name="OperationDirection" Type="nvarchar(max)" />
+    <Property Name="Sentiment" Type="nvarchar(max)" />
+    <Property Name="FName" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName" Type="nvarchar" MaxLength="400" />
+    <Property Name="DTE" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartyName" Type="nchar" MaxLength="50" />
+    <Property Name="RegistrationDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="ProfileImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="URL" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.XBackup.Facebook.Accounts.Old' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="XBackup_Facebook_Accounts_Old">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="CurrentCityName" Type="nvarchar(max)" />
+    <Property Name="CurrentCityId" Type="nvarchar" MaxLength="200" />
+    <Property Name="HometownName" Type="nvarchar(max)" />
+    <Property Name="HometownId" Type="nvarchar" MaxLength="200" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="200" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="200" />
+    <Property Name="Twitter" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Birthday" Type="nvarchar" MaxLength="200" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="200" />
+    <Property Name="Job" Type="nvarchar(max)" />
+    <Property Name="WorkName" Type="nvarchar(max)" />
+    <Property Name="WorkUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Profession" Type="nvarchar(max)" />
+    <Property Name="UniversityName" Type="nvarchar(max)" />
+    <Property Name="UniversityUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Checked" Type="bit" />
+    <Property Name="UpdateOwnerUserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProfileId" Type="bigint" />
+    <Property Name="PoliticalParty" Type="nvarchar(max)" />
+    <Property Name="OperationDirection" Type="nvarchar(max)" />
+    <Property Name="Sentiment" Type="nvarchar(max)" />
+    <Property Name="FName" Type="nvarchar" MaxLength="400" />
+    <Property Name="LName" Type="nvarchar" MaxLength="400" />
+    <Property Name="DTE" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartyName" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="XBACKUP_Facebook_Comments_Old">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="150" />
+    <Property Name="From" Type="nvarchar" MaxLength="150" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="PositiveCount" Type="int" />
+    <Property Name="NegativeCount" Type="int" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="10" />
+    <Property Name="Sentiment_Confirmed" Type="bit" />
+    <Property Name="Question" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.XBACKUP_Facebook.Post.Comments.Backup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="XBACKUP_Facebook_Post_Comments_Backup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostID" Type="uniqueidentifier" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="PositiveCount" Type="int" />
+    <Property Name="NegativeCount" Type="int" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="10" />
+    <Property Name="Sentiment_Confirmed" Type="bit" />
+    <Property Name="Question" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.XBACKUP_Facebook.Posts.Backup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="XBACKUP_Facebook_Posts_Backup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ParrentObjectID" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageID" Type="uniqueidentifier" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Link" Type="nvarchar" MaxLength="400" />
+    <Property Name="Text" Type="ntext" />
+    <Property Name="Story" Type="nvarchar" MaxLength="200" />
+    <Property Name="TotalReactionCount" Type="int" />
+    <Property Name="WowCount" Type="int" />
+    <Property Name="AngryCount" Type="int" />
+    <Property Name="SadCount" Type="int" />
+    <Property Name="YayCount" Type="int" />
+    <Property Name="HahaCount" Type="int" />
+    <Property Name="LoveCount" Type="int" />
+    <Property Name="LikesCount" Type="int" />
+    <Property Name="SharesCount" Type="int" />
+    <Property Name="CheckedDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.XBACKUP_Facebook.Posts.Old' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="XBACKUP_Facebook_Posts_Old">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ParrentObjectID" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageID" Type="uniqueidentifier" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+    <Property Name="ObjectID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Link" Type="nvarchar" MaxLength="400" />
+    <Property Name="Text" Type="ntext" />
+    <Property Name="Story" Type="nvarchar" MaxLength="200" />
+    <Property Name="TotalReactionCount" Type="int" />
+    <Property Name="WowCount" Type="int" />
+    <Property Name="AngryCount" Type="int" />
+    <Property Name="SadCount" Type="int" />
+    <Property Name="YayCount" Type="int" />
+    <Property Name="HahaCount" Type="int" />
+    <Property Name="LoveCount" Type="int" />
+    <Property Name="LikesCount" Type="int" />
+    <Property Name="SharesCount" Type="int" />
+    <Property Name="CheckedDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Sentiment" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.XBACKUP_Google.SearchResult.backup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="XBACKUP_Google_SearchResult_backup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SearchKeyID" Type="uniqueidentifier" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" />
+    <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="SearchType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.xBackup_System.Aimag' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="xBackup_System_Aimag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Code" Type="nvarchar" MaxLength="10" />
+    <Property Name="NameEng" Type="nvarchar" MaxLength="50" />
+    <Property Name="ZipCode" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.xBackup_System.Bag' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="xBackup_System_Bag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Bag" Type="nvarchar" MaxLength="100" />
+    <Property Name="SumID" Type="uniqueidentifier" />
+    <Property Name="AimagID" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Monitoring.dbo.XBACKUP_System.Comments.PhoneNumber' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="XBACKUP_System_Comments_PhoneNumber">
+          <Property Name="ID" Type="uniqueidentifier" />
+          <Property Name="FromID" Type="nvarchar" MaxLength="150" />
+          <Property Name="FromName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber1" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber2" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber3" Type="nvarchar(max)" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.XBACKUP_System.Voters.Fixed' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="XBACKUP_System_Voters_Fixed">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aimag" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sum" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="Party" Type="nvarchar" MaxLength="10" />
+    <Property Name="PartyTendence" Type="nvarchar" MaxLength="10" />
+    <Property Name="FacebookID" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber4" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber5" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber6" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber7" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber8" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber9" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber10" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="smalldatetime" />
+    <Property Name="AimagGaral" Type="nvarchar" MaxLength="500" />
+    <Property Name="SumGaral" Type="nvarchar" MaxLength="500" />
+    <Property Name="Khoroo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="BirthdayHalf" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthdayFull" Type="nvarchar" MaxLength="50" />
+    <Property Name="FName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="XBACKUP_System_Voters_Party">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SureName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Age" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegisterNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="MaterialStatus" Type="int" />
+    <Property Name="PartyStatus" Type="int" />
+    <Property Name="Facebook_Display" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityContainer Name="MonitoringModelStoreContainer">
+    <EntitySet Name="AspNet_ViewersInfo" EntityType="Self.AspNet_ViewersInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserActivityLog" EntityType="Self.AspNetUserActivityLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserToSystemPerson" EntityType="Self.AspNetUserToSystemPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserToSystemUser" EntityType="Self.AspNetUserToSystemUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserToSystemView" EntityType="Self.AspNetUserToSystemView" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facebook_Accounts_Confirmed" EntityType="Self.Facebook_Accounts_Confirmed" Schema="dbo" Table="Facebook.Accounts.Confirmed" store:Type="Tables" />
+    <EntitySet Name="Facebook_Accounts_Crawler" EntityType="Self.Facebook_Accounts_Crawler" Schema="dbo" Table="Facebook.Accounts.Crawler" store:Type="Tables" />
+    <EntitySet Name="Facebook_CommentRemover" EntityType="Self.Facebook_CommentRemover" Schema="dbo" Table="Facebook.CommentRemover" store:Type="Tables" />
+    <EntitySet Name="Facebook_Groups" EntityType="Self.Facebook_Groups" Schema="dbo" Table="Facebook.Groups" store:Type="Tables" />
+    <EntitySet Name="Facebook_Messenger_Conversations" EntityType="Self.Facebook_Messenger_Conversations" Schema="dbo" Table="Facebook.Messenger.Conversations" store:Type="Tables" />
+    <EntitySet Name="Facebook_Messenger_Messages" EntityType="Self.Facebook_Messenger_Messages" Schema="dbo" Table="Facebook.Messenger.Messages" store:Type="Tables" />
+    <EntitySet Name="Facebook_Pages" EntityType="Self.Facebook_Pages" Schema="dbo" Table="Facebook.Pages" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Attachment" EntityType="Self.Facebook_Post_Attachment" Schema="dbo" Table="Facebook.Post.Attachment" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Comment_Reply" EntityType="Self.Facebook_Post_Comment_Reply" Schema="dbo" Table="Facebook.Post.Comment.Reply" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Comment_Sentiment" EntityType="Self.Facebook_Post_Comment_Sentiment" Schema="dbo" Table="Facebook.Post.Comment.Sentiment" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Comment_Write_Keys" EntityType="Self.Facebook_Post_Comment_Write_Keys" Schema="dbo" Table="Facebook.Post.Comment.Write.Keys" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Comment_Writes" EntityType="Self.Facebook_Post_Comment_Writes" Schema="dbo" Table="Facebook.Post.Comment.Writes" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Comments" EntityType="Self.Facebook_Post_Comments" Schema="dbo" Table="Facebook.Post.Comments" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Hottopic" EntityType="Self.Facebook_Post_Hottopic" Schema="dbo" Table="Facebook.Post.Hottopic" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Person" EntityType="Self.Facebook_Post_Person" Schema="dbo" Table="Facebook.Post.Person" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Reactions" EntityType="Self.Facebook_Post_Reactions" Schema="dbo" Table="Facebook.Post.Reactions" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_Reply" EntityType="Self.Facebook_Post_Reply" Schema="dbo" Table="Facebook.Post.Reply" store:Type="Tables" />
+    <EntitySet Name="Facebook_Post_SubAttachment" EntityType="Self.Facebook_Post_SubAttachment" Schema="dbo" Table="Facebook.Post.SubAttachment" store:Type="Tables" />
+    <EntitySet Name="Facebook_Posts" EntityType="Self.Facebook_Posts" Schema="dbo" Table="Facebook.Posts" store:Type="Tables" />
+    <EntitySet Name="News_Newspaper_New" EntityType="Self.News_Newspaper_New" Schema="dbo" Table="News.Newspaper.New" store:Type="Tables" />
+    <EntitySet Name="News_Newspaper_Person" EntityType="Self.News_Newspaper_Person" Schema="dbo" Table="News.Newspaper.Person" store:Type="Tables" />
+    <EntitySet Name="Person_User" EntityType="Self.Person_User" Schema="dbo" Table="Person.User" store:Type="Tables" />
+    <EntitySet Name="System_Aimag" EntityType="Self.System_Aimag" Schema="dbo" Table="System.Aimag" store:Type="Tables" />
+    <EntitySet Name="System_Aimag_Code" EntityType="Self.System_Aimag_Code" Schema="dbo" Table="System.Aimag.Code" store:Type="Tables" />
+    <EntitySet Name="System_BagKhoroo" EntityType="Self.System_BagKhoroo" Schema="dbo" Table="System.BagKhoroo" store:Type="Tables" />
+    <EntitySet Name="System_Cars" EntityType="Self.System_Cars" Schema="dbo" Table="System.Cars" store:Type="Tables" />
+    <EntitySet Name="System_Categories" EntityType="Self.System_Categories" Schema="dbo" Table="System.Categories" store:Type="Tables" />
+    <EntitySet Name="System_Facebook_Reports" EntityType="Self.System_Facebook_Reports" Schema="dbo" Table="System.Facebook.Reports" store:Type="Tables" />
+    <EntitySet Name="System_Facebook_Reports_Posts" EntityType="Self.System_Facebook_Reports_Posts" Schema="dbo" Table="System.Facebook.Reports.Posts" store:Type="Tables" />
+    <EntitySet Name="System_Groups" EntityType="Self.System_Groups" Schema="dbo" Table="System.Groups" store:Type="Tables" />
+    <EntitySet Name="System_GroupToPerson" EntityType="Self.System_GroupToPerson" Schema="dbo" Table="System.GroupToPerson" store:Type="Tables" />
+    <EntitySet Name="System_Hottopics" EntityType="Self.System_Hottopics" Schema="dbo" Table="System.Hottopics" store:Type="Tables" />
+    <EntitySet Name="System_JobCategories" EntityType="Self.System_JobCategories" Schema="dbo" Table="System.JobCategories" store:Type="Tables" />
+    <EntitySet Name="System_Jobs" EntityType="Self.System_Jobs" Schema="dbo" Table="System.Jobs" store:Type="Tables" />
+    <EntitySet Name="System_Key_Exclude" EntityType="Self.System_Key_Exclude" Schema="dbo" Table="System.Key.Exclude" store:Type="Tables" />
+    <EntitySet Name="System_Keys" EntityType="Self.System_Keys" Schema="dbo" Table="System.Keys" store:Type="Tables" />
+    <EntitySet Name="System_KeyTypes" EntityType="Self.System_KeyTypes" Schema="dbo" Table="System.KeyTypes" store:Type="Tables" />
+    <EntitySet Name="System_Person" EntityType="Self.System_Person" Schema="dbo" Table="System.Person" store:Type="Tables" />
+    <EntitySet Name="System_Regions" EntityType="Self.System_Regions" Schema="dbo" Table="System.Regions" store:Type="Tables" />
+    <EntitySet Name="System_Resource_Electricity_Types" EntityType="Self.System_Resource_Electricity_Types" Schema="dbo" Table="System.Resource.Electricity.Types" store:Type="Tables" />
+    <EntitySet Name="System_Sum_Code" EntityType="Self.System_Sum_Code" Schema="dbo" Table="System.Sum.Code" store:Type="Tables" />
+    <EntitySet Name="System_SumDuureg" EntityType="Self.System_SumDuureg" Schema="dbo" Table="System.SumDuureg" store:Type="Tables" />
+    <EntitySet Name="System_View" EntityType="Self.System_View" Schema="dbo" Table="System.View" store:Type="Tables" />
+    <EntitySet Name="System_Voters" EntityType="Self.System_Voters" Schema="dbo" Table="System.Voters" store:Type="Tables" />
+    <EntitySet Name="System_Voters_Party" EntityType="Self.System_Voters_Party" Schema="dbo" Table="System.Voters.Party" store:Type="Tables" />
+    <EntitySet Name="System_Voters_PhoneNumber_old" EntityType="Self.System_Voters_PhoneNumber_old" Schema="dbo" Table="System.Voters.PhoneNumber.old" store:Type="Tables" />
+    <EntitySet Name="Testing_CommentID" EntityType="Self.Testing_CommentID" Schema="dbo" Table="Testing.CommentID" store:Type="Tables" />
+    <EntitySet Name="Testing_Profile" EntityType="Self.Testing_Profile" Schema="dbo" Table="Testing.Profile" store:Type="Tables" />
+    <EntitySet Name="Testing_Report_Comments" EntityType="Self.Testing_Report_Comments" Schema="dbo" Table="Testing.Report.Comments" store:Type="Tables" />
+    <EntitySet Name="TopNews" EntityType="Self.TopNews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TopNewsForTopic" EntityType="Self.TopNewsForTopic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TopTweets" EntityType="Self.TopTweets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Twitter_DeleteUser" EntityType="Self.Twitter_DeleteUser" Schema="dbo" Table="Twitter.DeleteUser" store:Type="Tables" />
+    <EntitySet Name="Twitter_Tweet_Hottopic" EntityType="Self.Twitter_Tweet_Hottopic" Schema="dbo" Table="Twitter.Tweet.Hottopic" store:Type="Tables" />
+    <EntitySet Name="Twitter_Tweet_Person" EntityType="Self.Twitter_Tweet_Person" Schema="dbo" Table="Twitter.Tweet.Person" store:Type="Tables" />
+    <EntitySet Name="Twitter_Tweets" EntityType="Self.Twitter_Tweets" Schema="dbo" Table="Twitter.Tweets" store:Type="Tables" />
+    <EntitySet Name="Twitter_User_Details" EntityType="Self.Twitter_User_Details" Schema="dbo" Table="Twitter.User.Details" store:Type="Tables" />
+    <EntitySet Name="Twitter_Users" EntityType="Self.Twitter_Users" Schema="dbo" Table="Twitter.Users" store:Type="Tables" />
+    <EntitySet Name="UserMenu" EntityType="Self.UserMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WebSite_Post_Comments" EntityType="Self.WebSite_Post_Comments" Schema="dbo" Table="WebSite.Post.Comments" store:Type="Tables" />
+    <EntitySet Name="Website_Post_Hottopic" EntityType="Self.Website_Post_Hottopic" Schema="dbo" Table="Website.Post.Hottopic" store:Type="Tables" />
+    <EntitySet Name="Website_Post_Person" EntityType="Self.Website_Post_Person" Schema="dbo" Table="Website.Post.Person" store:Type="Tables" />
+    <EntitySet Name="WebSite_PostList" EntityType="Self.WebSite_PostList" Schema="dbo" Table="WebSite.PostList" store:Type="Tables" />
+    <EntitySet Name="WebSite_Posts" EntityType="Self.WebSite_Posts" Schema="dbo" Table="WebSite.Posts" store:Type="Tables" />
+    <EntitySet Name="WebSites" EntityType="Self.WebSites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XBACKUP_Facebook_Comments_Old" EntityType="Self.XBACKUP_Facebook_Comments_Old" Schema="dbo" Table="XBACKUP_Facebook.Comments.Old" store:Type="Tables" />
+    <EntitySet Name="XBACKUP_System_Voters_Party" EntityType="Self.XBACKUP_System_Voters_Party" Schema="dbo" Table="XBACKUP_System.Voters.Party" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AspNetRoles].[Id] AS [Id], 
+    [AspNetRoles].[Name] AS [Name]
+    FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AspNetUserClaims].[Id] AS [Id], 
+    [AspNetUserClaims].[UserId] AS [UserId], 
+    [AspNetUserClaims].[ClaimType] AS [ClaimType], 
+    [AspNetUserClaims].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [AspNetUserClaims]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AspNetUserLogins].[LoginProvider] AS [LoginProvider], 
+    [AspNetUserLogins].[ProviderKey] AS [ProviderKey], 
+    [AspNetUserLogins].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [AspNetUserLogins]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AspNetUserRoles].[UserId] AS [UserId], 
+    [AspNetUserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Electricity" EntityType="Self.Electricity" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Electricity].[ID] AS [ID], 
+    [Electricity].[SortOrder] AS [SortOrder], 
+    [Electricity].[SureName] AS [SureName], 
+    [Electricity].[Name] AS [Name], 
+    [Electricity].[RegisterNumber] AS [RegisterNumber], 
+    [Electricity].[Address] AS [Address], 
+    [Electricity].[PhoneNumber1] AS [PhoneNumber1], 
+    [Electricity].[PhoneNumber2] AS [PhoneNumber2], 
+    [Electricity].[PhoneNumber3] AS [PhoneNumber3], 
+    [Electricity].[PhoneNumber4] AS [PhoneNumber4], 
+    [Electricity].[PhoneNumber5] AS [PhoneNumber5]
+    FROM [dbo].[Electricity] AS [Electricity]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Facebook_Account_More" EntityType="Self.Facebook_Account_More" store:Type="Tables" store:Schema="dbo" store:Name="Facebook.Account.More">
+      <DefiningQuery>SELECT 
+    [Facebook_Account_More].[UserID] AS [UserID], 
+    [Facebook_Account_More].[about] AS [about], 
+    [Facebook_Account_More].[address] AS [address], 
+    [Facebook_Account_More].[birthday] AS [birthday], 
+    [Facebook_Account_More].[age_range.min] AS [age_range.min], 
+    [Facebook_Account_More].[age_range.max] AS [age_range.max], 
+    [Facebook_Account_More].[first_name] AS [first_name], 
+    [Facebook_Account_More].[gender] AS [gender], 
+    [Facebook_Account_More].[hometown.id] AS [hometown.id], 
+    [Facebook_Account_More].[hometown.name] AS [hometown.name], 
+    [Facebook_Account_More].[id] AS [id], 
+    [Facebook_Account_More].[email] AS [email], 
+    [Facebook_Account_More].[install_type] AS [install_type], 
+    [Facebook_Account_More].[installed] AS [installed], 
+    [Facebook_Account_More].[last_name] AS [last_name], 
+    [Facebook_Account_More].[link] AS [link], 
+    [Facebook_Account_More].[location.id] AS [location.id], 
+    [Facebook_Account_More].[location.name] AS [location.name], 
+    [Facebook_Account_More].[name] AS [name], 
+    [Facebook_Account_More].[name_format] AS [name_format], 
+    [Facebook_Account_More].[cover_link] AS [cover_link]
+    FROM [dbo].[Facebook.Account.More] AS [Facebook_Account_More]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Facebook_Accounts" EntityType="Self.Facebook_Accounts" store:Type="Tables" store:Schema="dbo" store:Name="Facebook.Accounts">
+      <DefiningQuery>SELECT 
+    [Facebook_Accounts].[Id] AS [Id], 
+    [Facebook_Accounts].[UserName] AS [UserName], 
+    [Facebook_Accounts].[DisplayName] AS [DisplayName], 
+    [Facebook_Accounts].[CurrentCityName] AS [CurrentCityName], 
+    [Facebook_Accounts].[CurrentCityId] AS [CurrentCityId], 
+    [Facebook_Accounts].[HometownName] AS [HometownName], 
+    [Facebook_Accounts].[HometownId] AS [HometownId], 
+    [Facebook_Accounts].[Mobile] AS [Mobile], 
+    [Facebook_Accounts].[Facebook] AS [Facebook], 
+    [Facebook_Accounts].[Twitter] AS [Twitter], 
+    [Facebook_Accounts].[Email] AS [Email], 
+    [Facebook_Accounts].[Birthday] AS [Birthday], 
+    [Facebook_Accounts].[Gender] AS [Gender], 
+    [Facebook_Accounts].[Job] AS [Job], 
+    [Facebook_Accounts].[WorkName] AS [WorkName], 
+    [Facebook_Accounts].[WorkUrl] AS [WorkUrl], 
+    [Facebook_Accounts].[Profession] AS [Profession], 
+    [Facebook_Accounts].[UniversityName] AS [UniversityName], 
+    [Facebook_Accounts].[UniversityUrl] AS [UniversityUrl], 
+    [Facebook_Accounts].[Checked] AS [Checked], 
+    [Facebook_Accounts].[UpdateOwnerUserName] AS [UpdateOwnerUserName], 
+    [Facebook_Accounts].[ProfileId] AS [ProfileId], 
+    [Facebook_Accounts].[PoliticalParty] AS [PoliticalParty], 
+    [Facebook_Accounts].[OperationDirection] AS [OperationDirection], 
+    [Facebook_Accounts].[Sentiment] AS [Sentiment], 
+    [Facebook_Accounts].[FName] AS [FName], 
+    [Facebook_Accounts].[LName] AS [LName], 
+    [Facebook_Accounts].[DTE] AS [DTE], 
+    [Facebook_Accounts].[PartyName] AS [PartyName], 
+    [Facebook_Accounts].[RegistrationDate] AS [RegistrationDate], 
+    [Facebook_Accounts].[UpdatedDate] AS [UpdatedDate], 
+    [Facebook_Accounts].[ProfileImage] AS [ProfileImage], 
+    [Facebook_Accounts].[URL] AS [URL], 
+    [Facebook_Accounts].[FName_Name] AS [FName_Name], 
+    [Facebook_Accounts].[LName_Name] AS [LName_Name], 
+    [Facebook_Accounts].[FName_UserName] AS [FName_UserName], 
+    [Facebook_Accounts].[LName_UserName] AS [LName_UserName], 
+    [Facebook_Accounts].[FName_Facebook] AS [FName_Facebook], 
+    [Facebook_Accounts].[LName_Facebook] AS [LName_Facebook], 
+    [Facebook_Accounts].[FName_Name_M] AS [FName_Name_M], 
+    [Facebook_Accounts].[LName_Name_M] AS [LName_Name_M], 
+    [Facebook_Accounts].[FName_UserName_M] AS [FName_UserName_M], 
+    [Facebook_Accounts].[LName_UserName_M] AS [LName_UserName_M], 
+    [Facebook_Accounts].[FName_Facebook_M] AS [FName_Facebook_M], 
+    [Facebook_Accounts].[LName_Facebook_M] AS [LName_Facebook_M]
+    FROM [dbo].[Facebook.Accounts] AS [Facebook_Accounts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Facebook_Accounts_Fake" EntityType="Self.Facebook_Accounts_Fake" store:Type="Tables" store:Schema="dbo" store:Name="Facebook.Accounts.Fake">
+      <DefiningQuery>SELECT 
+    [Facebook_Accounts_Fake].[ID] AS [ID], 
+    [Facebook_Accounts_Fake].[AccountID] AS [AccountID], 
+    [Facebook_Accounts_Fake].[Description] AS [Description]
+    FROM [dbo].[Facebook.Accounts.Fake] AS [Facebook_Accounts_Fake]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Facebook_Comment_PhoneNumber" EntityType="Self.Facebook_Comment_PhoneNumber" store:Type="Tables" store:Schema="dbo" store:Name="Facebook.Comment.PhoneNumber">
+      <DefiningQuery>SELECT 
+    [Facebook_Comment_PhoneNumber].[ID] AS [ID], 
+    [Facebook_Comment_PhoneNumber].[PostID] AS [PostID], 
+    [Facebook_Comment_PhoneNumber].[ObjectID] AS [ObjectID], 
+    [Facebook_Comment_PhoneNumber].[FromID] AS [FromID], 
+    [Facebook_Comment_PhoneNumber].[FromName] AS [FromName], 
+    [Facebook_Comment_PhoneNumber].[Message] AS [Message], 
+    [Facebook_Comment_PhoneNumber].[phoneNumber] AS [phoneNumber]
+    FROM [dbo].[Facebook.Comment.PhoneNumber] AS [Facebook_Comment_PhoneNumber]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Facebook_Phones" EntityType="Self.Facebook_Phones" store:Type="Tables" store:Schema="dbo" store:Name="Facebook.Phones">
+      <DefiningQuery>SELECT 
+    [Facebook_Phones].[PhoneNo] AS [PhoneNo], 
+    [Facebook_Phones].[Url] AS [Url], 
+    [Facebook_Phones].[Html] AS [Html], 
+    [Facebook_Phones].[IsChecked] AS [IsChecked], 
+    [Facebook_Phones].[Id] AS [Id], 
+    [Facebook_Phones].[Username] AS [Username], 
+    [Facebook_Phones].[RegisterNo] AS [RegisterNo], 
+    [Facebook_Phones].[FirstName] AS [FirstName], 
+    [Facebook_Phones].[LastName] AS [LastName], 
+    [Facebook_Phones].[Gender] AS [Gender], 
+    [Facebook_Phones].[Email] AS [Email], 
+    [Facebook_Phones].[Update] AS [Update], 
+    [Facebook_Phones].[UpdateUserId] AS [UpdateUserId], 
+    [Facebook_Phones].[UpdateRepeatIdx] AS [UpdateRepeatIdx]
+    FROM [dbo].[Facebook.Phones] AS [Facebook_Phones]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Facebook_Settings" EntityType="Self.Facebook_Settings" store:Type="Tables" store:Schema="dbo" store:Name="Facebook.Settings">
+      <DefiningQuery>SELECT 
+    [Facebook_Settings].[ID] AS [ID], 
+    [Facebook_Settings].[Name] AS [Name], 
+    [Facebook_Settings].[Value] AS [Value]
+    FROM [dbo].[Facebook.Settings] AS [Facebook_Settings]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Facebook_Videos" EntityType="Self.Facebook_Videos" store:Type="Tables" store:Schema="dbo" store:Name="Facebook.Videos">
+      <DefiningQuery>SELECT 
+    [Facebook_Videos].[ID] AS [ID], 
+    [Facebook_Videos].[ParrentID] AS [ParrentID], 
+    [Facebook_Videos].[ParrentName] AS [ParrentName], 
+    [Facebook_Videos].[PostID] AS [PostID], 
+    [Facebook_Videos].[Description] AS [Description], 
+    [Facebook_Videos].[Updated_Time] AS [Updated_Time], 
+    [Facebook_Videos].[TotalReactionCount] AS [TotalReactionCount], 
+    [Facebook_Videos].[WowCount] AS [WowCount], 
+    [Facebook_Videos].[AngryCount] AS [AngryCount], 
+    [Facebook_Videos].[SadCount] AS [SadCount], 
+    [Facebook_Videos].[YayCount] AS [YayCount], 
+    [Facebook_Videos].[HahaCount] AS [HahaCount], 
+    [Facebook_Videos].[LoveCount] AS [LoveCount], 
+    [Facebook_Videos].[LikesCount] AS [LikesCount], 
+    [Facebook_Videos].[SharesCount] AS [SharesCount], 
+    [Facebook_Videos].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[Facebook.Videos] AS [Facebook_Videos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Google_Categories" EntityType="Self.Google_Categories" store:Type="Tables" store:Schema="dbo" store:Name="Google.Categories">
+      <DefiningQuery>SELECT 
+    [Google_Categories].[ID] AS [ID], 
+    [Google_Categories].[Name] AS [Name]
+    FROM [dbo].[Google.Categories] AS [Google_Categories]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Google_Category_Key" EntityType="Self.Google_Category_Key" store:Type="Tables" store:Schema="dbo" store:Name="Google.Category.Key">
+      <DefiningQuery>SELECT 
+    [Google_Category_Key].[ID] AS [ID], 
+    [Google_Category_Key].[CategoryID] AS [CategoryID], 
+    [Google_Category_Key].[Key] AS [Key], 
+    [Google_Category_Key].[KeyType] AS [KeyType]
+    FROM [dbo].[Google.Category.Key] AS [Google_Category_Key]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Google_PhoneNumber" EntityType="Self.Google_PhoneNumber" store:Type="Tables" store:Schema="dbo" store:Name="Google.PhoneNumber">
+      <DefiningQuery>SELECT 
+    [Google_PhoneNumber].[ID] AS [ID], 
+    [Google_PhoneNumber].[Key] AS [Key], 
+    [Google_PhoneNumber].[CheckedDate] AS [CheckedDate], 
+    [Google_PhoneNumber].[ClientID] AS [ClientID]
+    FROM [dbo].[Google.PhoneNumber] AS [Google_PhoneNumber]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Google_Register" EntityType="Self.Google_Register" store:Type="Tables" store:Schema="dbo" store:Name="Google.Register">
+      <DefiningQuery>SELECT 
+    [Google_Register].[ID] AS [ID], 
+    [Google_Register].[Key] AS [Key], 
+    [Google_Register].[CheckedDate] AS [CheckedDate], 
+    [Google_Register].[ClientID] AS [ClientID]
+    FROM [dbo].[Google.Register] AS [Google_Register]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Google_Result_Category" EntityType="Self.Google_Result_Category" store:Type="Tables" store:Schema="dbo" store:Name="Google.Result.Category">
+      <DefiningQuery>SELECT 
+    [Google_Result_Category].[ID] AS [ID], 
+    [Google_Result_Category].[ResultID] AS [ResultID], 
+    [Google_Result_Category].[CategoryID] AS [CategoryID]
+    FROM [dbo].[Google.Result.Category] AS [Google_Result_Category]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Google_SearchResult" EntityType="Self.Google_SearchResult" store:Type="Tables" store:Schema="dbo" store:Name="Google.SearchResult">
+      <DefiningQuery>SELECT 
+    [Google_SearchResult].[ID] AS [ID], 
+    [Google_SearchResult].[SearchKeyID] AS [SearchKeyID], 
+    [Google_SearchResult].[Title] AS [Title], 
+    [Google_SearchResult].[Url] AS [Url], 
+    [Google_SearchResult].[Description] AS [Description], 
+    [Google_SearchResult].[SearchType] AS [SearchType]
+    FROM [dbo].[Google.SearchResult] AS [Google_SearchResult]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Statistics" EntityType="Self.Statistics" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Statistics].[Name] AS [Name], 
+    [Statistics].[defaultValue] AS [defaultValue], 
+    [Statistics].[Value] AS [Value], 
+    [Statistics].[ID] AS [ID]
+    FROM [dbo].[Statistics] AS [Statistics]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sysdiagrams].[name] AS [name], 
+    [sysdiagrams].[principal_id] AS [principal_id], 
+    [sysdiagrams].[diagram_id] AS [diagram_id], 
+    [sysdiagrams].[version] AS [version], 
+    [sysdiagrams].[definition] AS [definition]
+    FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Candidates" EntityType="Self.System_Candidates" store:Type="Tables" store:Schema="dbo" store:Name="System.Candidates">
+      <DefiningQuery>SELECT 
+    [System_Candidates].[ID] AS [ID], 
+    [System_Candidates].[Name] AS [Name], 
+    [System_Candidates].[IsOwn] AS [IsOwn], 
+    [System_Candidates].[PartyName] AS [PartyName], 
+    [System_Candidates].[SortOrder] AS [SortOrder]
+    FROM [dbo].[System.Candidates] AS [System_Candidates]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Facebook_Reports_Comments" EntityType="Self.System_Facebook_Reports_Comments" store:Type="Tables" store:Schema="dbo" store:Name="System.Facebook.Reports.Comments">
+      <DefiningQuery>SELECT 
+    [System_Facebook_Reports_Comments].[ID] AS [ID], 
+    [System_Facebook_Reports_Comments].[ReportID] AS [ReportID], 
+    [System_Facebook_Reports_Comments].[CommentID] AS [CommentID]
+    FROM [dbo].[System.Facebook.Reports.Comments] AS [System_Facebook_Reports_Comments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Questions" EntityType="Self.System_Questions" store:Type="Tables" store:Schema="dbo" store:Name="System.Questions">
+      <DefiningQuery>SELECT 
+    [System_Questions].[ID] AS [ID], 
+    [System_Questions].[Question] AS [Question], 
+    [System_Questions].[Lattin1] AS [Lattin1], 
+    [System_Questions].[Lattin2] AS [Lattin2], 
+    [System_Questions].[Lattin3] AS [Lattin3]
+    FROM [dbo].[System.Questions] AS [System_Questions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Report" EntityType="Self.System_Report" store:Type="Tables" store:Schema="dbo" store:Name="System.Report">
+      <DefiningQuery>SELECT 
+    [System_Report].[ID] AS [ID], 
+    [System_Report].[SortOrder] AS [SortOrder], 
+    [System_Report].[Date] AS [Date], 
+    [System_Report].[TeamName] AS [TeamName], 
+    [System_Report].[Report] AS [Report]
+    FROM [dbo].[System.Report] AS [System_Report]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Resource_WAT" EntityType="Self.System_Resource_WAT" store:Type="Tables" store:Schema="dbo" store:Name="System.Resource.WAT">
+      <DefiningQuery>SELECT 
+    [System_Resource_WAT].[ID] AS [ID], 
+    [System_Resource_WAT].[Register] AS [Register], 
+    [System_Resource_WAT].[SureName] AS [SureName], 
+    [System_Resource_WAT].[Name] AS [Name], 
+    [System_Resource_WAT].[NameOld] AS [NameOld], 
+    [System_Resource_WAT].[PhoneNumber] AS [PhoneNumber]
+    FROM [dbo].[System.Resource.WAT] AS [System_Resource_WAT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Sentiment" EntityType="Self.System_Sentiment" store:Type="Tables" store:Schema="dbo" store:Name="System.Sentiment">
+      <DefiningQuery>SELECT 
+    [System_Sentiment].[ID] AS [ID], 
+    [System_Sentiment].[Word] AS [Word], 
+    [System_Sentiment].[Lattin1] AS [Lattin1], 
+    [System_Sentiment].[Lattin2] AS [Lattin2], 
+    [System_Sentiment].[Lattin3] AS [Lattin3], 
+    [System_Sentiment].[Sentiment] AS [Sentiment], 
+    [System_Sentiment].[PageID] AS [PageID]
+    FROM [dbo].[System.Sentiment] AS [System_Sentiment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Student_Email" EntityType="Self.System_Student_Email" store:Type="Tables" store:Schema="dbo" store:Name="System.Student.Email">
+      <DefiningQuery>SELECT 
+    [System_Student_Email].[ID] AS [ID], 
+    [System_Student_Email].[Register] AS [Register], 
+    [System_Student_Email].[Email] AS [Email]
+    FROM [dbo].[System.Student.Email] AS [System_Student_Email]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Sum" EntityType="Self.System_Sum" store:Type="Tables" store:Schema="dbo" store:Name="System.Sum">
+      <DefiningQuery>SELECT 
+    [System_Sum].[ID] AS [ID], 
+    [System_Sum].[Name] AS [Name], 
+    [System_Sum].[Code] AS [Code], 
+    [System_Sum].[AimagID] AS [AimagID]
+    FROM [dbo].[System.Sum] AS [System_Sum]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_User" EntityType="Self.System_User" store:Type="Tables" store:Schema="dbo" store:Name="System.User">
+      <DefiningQuery>SELECT 
+    [System_User].[ID] AS [ID], 
+    [System_User].[LoginName] AS [LoginName], 
+    [System_User].[Password] AS [Password], 
+    [System_User].[SureName] AS [SureName], 
+    [System_User].[Name] AS [Name], 
+    [System_User].[KhorooID] AS [KhorooID], 
+    [System_User].[CandiateID] AS [CandiateID]
+    FROM [dbo].[System.User] AS [System_User]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Voters_Multiple" EntityType="Self.System_Voters_Multiple" store:Type="Tables" store:Schema="dbo" store:Name="System.Voters.Multiple">
+      <DefiningQuery>SELECT 
+    [System_Voters_Multiple].[ID] AS [ID], 
+    [System_Voters_Multiple].[Registernumber] AS [Registernumber], 
+    [System_Voters_Multiple].[ForeName] AS [ForeName], 
+    [System_Voters_Multiple].[SureName] AS [SureName], 
+    [System_Voters_Multiple].[Name] AS [Name], 
+    [System_Voters_Multiple].[Sex] AS [Sex], 
+    [System_Voters_Multiple].[BirthDate] AS [BirthDate], 
+    [System_Voters_Multiple].[Address] AS [Address], 
+    [System_Voters_Multiple].[AimagCity] AS [AimagCity], 
+    [System_Voters_Multiple].[SumDuureg] AS [SumDuureg], 
+    [System_Voters_Multiple].[BagKhoroo] AS [BagKhoroo], 
+    [System_Voters_Multiple].[Street] AS [Street], 
+    [System_Voters_Multiple].[Apartment] AS [Apartment], 
+    [System_Voters_Multiple].[Door] AS [Door], 
+    [System_Voters_Multiple].[ElectionPlaceName] AS [ElectionPlaceName], 
+    [System_Voters_Multiple].[AgeGroup] AS [AgeGroup]
+    FROM [dbo].[System.Voters.Multiple] AS [System_Voters_Multiple]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="System_Voters_PhoneNumber" EntityType="Self.System_Voters_PhoneNumber" store:Type="Tables" store:Schema="dbo" store:Name="System.Voters.PhoneNumber">
+      <DefiningQuery>SELECT 
+    [System_Voters_PhoneNumber].[VoterId] AS [VoterId], 
+    [System_Voters_PhoneNumber].[PhoneNumber] AS [PhoneNumber], 
+    [System_Voters_PhoneNumber].[RegisterNumber] AS [RegisterNumber]
+    FROM [dbo].[System.Voters.PhoneNumber] AS [System_Voters_PhoneNumber]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TopSpecifiedNewsForTopic" EntityType="Self.TopSpecifiedNewsForTopic" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TopSpecifiedNewsForTopic].[ID] AS [ID], 
+    [TopSpecifiedNewsForTopic].[TopicID] AS [TopicID], 
+    [TopSpecifiedNewsForTopic].[Type] AS [Type], 
+    [TopSpecifiedNewsForTopic].[Title] AS [Title], 
+    [TopSpecifiedNewsForTopic].[Source] AS [Source], 
+    [TopSpecifiedNewsForTopic].[Date] AS [Date], 
+    [TopSpecifiedNewsForTopic].[ViralCount] AS [ViralCount], 
+    [TopSpecifiedNewsForTopic].[Image] AS [Image], 
+    [TopSpecifiedNewsForTopic].[Link] AS [Link], 
+    [TopSpecifiedNewsForTopic].[SourceLink] AS [SourceLink], 
+    [TopSpecifiedNewsForTopic].[Text] AS [Text], 
+    [TopSpecifiedNewsForTopic].[Profile] AS [Profile]
+    FROM [dbo].[TopSpecifiedNewsForTopic] AS [TopSpecifiedNewsForTopic]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TopTopics" EntityType="Self.TopTopics" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TopTopics].[ID] AS [ID], 
+    [TopTopics].[TopicID] AS [TopicID], 
+    [TopTopics].[Name] AS [Name], 
+    [TopTopics].[Picture] AS [Picture], 
+    [TopTopics].[ViralCount] AS [ViralCount]
+    FROM [dbo].[TopTopics] AS [TopTopics]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WebSite_Banks_Posts" EntityType="Self.WebSite_Banks_Posts" store:Type="Tables" store:Schema="dbo" store:Name="WebSite.Banks.Posts">
+      <DefiningQuery>SELECT 
+    [WebSite_Banks_Posts].[ID] AS [ID], 
+    [WebSite_Banks_Posts].[BankName] AS [BankName], 
+    [WebSite_Banks_Posts].[Link] AS [Link], 
+    [WebSite_Banks_Posts].[Reporter] AS [Reporter], 
+    [WebSite_Banks_Posts].[Title] AS [Title], 
+    [WebSite_Banks_Posts].[CommentCount] AS [CommentCount], 
+    [WebSite_Banks_Posts].[Text] AS [Text], 
+    [WebSite_Banks_Posts].[SortOrder] AS [SortOrder], 
+    [WebSite_Banks_Posts].[Date] AS [Date], 
+    [WebSite_Banks_Posts].[Sentement] AS [Sentement], 
+    [WebSite_Banks_Posts].[ViewCount] AS [ViewCount], 
+    [WebSite_Banks_Posts].[PostLike] AS [PostLike], 
+    [WebSite_Banks_Posts].[PostDisLike] AS [PostDisLike]
+    FROM [dbo].[WebSite.Banks.Posts] AS [WebSite_Banks_Posts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WebSite_Banks_Posts_Comments" EntityType="Self.WebSite_Banks_Posts_Comments" store:Type="Tables" store:Schema="dbo" store:Name="WebSite.Banks.Posts.Comments">
+      <DefiningQuery>SELECT 
+    [WebSite_Banks_Posts_Comments].[ID] AS [ID], 
+    [WebSite_Banks_Posts_Comments].[PostID] AS [PostID], 
+    [WebSite_Banks_Posts_Comments].[IP] AS [IP], 
+    [WebSite_Banks_Posts_Comments].[Name] AS [Name], 
+    [WebSite_Banks_Posts_Comments].[Text] AS [Text], 
+    [WebSite_Banks_Posts_Comments].[DateTime] AS [DateTime], 
+    [WebSite_Banks_Posts_Comments].[LikeCount] AS [LikeCount], 
+    [WebSite_Banks_Posts_Comments].[DisLikeCount] AS [DisLikeCount], 
+    [WebSite_Banks_Posts_Comments].[Sentment] AS [Sentment]
+    FROM [dbo].[WebSite.Banks.Posts.Comments] AS [WebSite_Banks_Posts_Comments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="XBackup_Facebook_Accounts" EntityType="Self.XBackup_Facebook_Accounts" store:Type="Tables" store:Schema="dbo" store:Name="XBackup.Facebook.Accounts">
+      <DefiningQuery>SELECT 
+    [XBackup_Facebook_Accounts].[Id] AS [Id], 
+    [XBackup_Facebook_Accounts].[UserName] AS [UserName], 
+    [XBackup_Facebook_Accounts].[DisplayName] AS [DisplayName], 
+    [XBackup_Facebook_Accounts].[CurrentCityName] AS [CurrentCityName], 
+    [XBackup_Facebook_Accounts].[CurrentCityId] AS [CurrentCityId], 
+    [XBackup_Facebook_Accounts].[HometownName] AS [HometownName], 
+    [XBackup_Facebook_Accounts].[HometownId] AS [HometownId], 
+    [XBackup_Facebook_Accounts].[Mobile] AS [Mobile], 
+    [XBackup_Facebook_Accounts].[Facebook] AS [Facebook], 
+    [XBackup_Facebook_Accounts].[Twitter] AS [Twitter], 
+    [XBackup_Facebook_Accounts].[Email] AS [Email], 
+    [XBackup_Facebook_Accounts].[Birthday] AS [Birthday], 
+    [XBackup_Facebook_Accounts].[Gender] AS [Gender], 
+    [XBackup_Facebook_Accounts].[Job] AS [Job], 
+    [XBackup_Facebook_Accounts].[WorkName] AS [WorkName], 
+    [XBackup_Facebook_Accounts].[WorkUrl] AS [WorkUrl], 
+    [XBackup_Facebook_Accounts].[Profession] AS [Profession], 
+    [XBackup_Facebook_Accounts].[UniversityName] AS [UniversityName], 
+    [XBackup_Facebook_Accounts].[UniversityUrl] AS [UniversityUrl], 
+    [XBackup_Facebook_Accounts].[Checked] AS [Checked], 
+    [XBackup_Facebook_Accounts].[UpdateOwnerUserName] AS [UpdateOwnerUserName], 
+    [XBackup_Facebook_Accounts].[ProfileId] AS [ProfileId], 
+    [XBackup_Facebook_Accounts].[PoliticalParty] AS [PoliticalParty], 
+    [XBackup_Facebook_Accounts].[OperationDirection] AS [OperationDirection], 
+    [XBackup_Facebook_Accounts].[Sentiment] AS [Sentiment], 
+    [XBackup_Facebook_Accounts].[FName] AS [FName], 
+    [XBackup_Facebook_Accounts].[LName] AS [LName], 
+    [XBackup_Facebook_Accounts].[DTE] AS [DTE], 
+    [XBackup_Facebook_Accounts].[PartyName] AS [PartyName], 
+    [XBackup_Facebook_Accounts].[RegistrationDate] AS [RegistrationDate], 
+    [XBackup_Facebook_Accounts].[UpdatedDate] AS [UpdatedDate], 
+    [XBackup_Facebook_Accounts].[ProfileImage] AS [ProfileImage], 
+    [XBackup_Facebook_Accounts].[URL] AS [URL]
+    FROM [dbo].[XBackup.Facebook.Accounts] AS [XBackup_Facebook_Accounts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="XBackup_Facebook_Accounts_Old" EntityType="Self.XBackup_Facebook_Accounts_Old" store:Type="Tables" store:Schema="dbo" store:Name="XBackup.Facebook.Accounts.Old">
+      <DefiningQuery>SELECT 
+    [XBackup_Facebook_Accounts_Old].[Id] AS [Id], 
+    [XBackup_Facebook_Accounts_Old].[UserName] AS [UserName], 
+    [XBackup_Facebook_Accounts_Old].[DisplayName] AS [DisplayName], 
+    [XBackup_Facebook_Accounts_Old].[CurrentCityName] AS [CurrentCityName], 
+    [XBackup_Facebook_Accounts_Old].[CurrentCityId] AS [CurrentCityId], 
+    [XBackup_Facebook_Accounts_Old].[HometownName] AS [HometownName], 
+    [XBackup_Facebook_Accounts_Old].[HometownId] AS [HometownId], 
+    [XBackup_Facebook_Accounts_Old].[Mobile] AS [Mobile], 
+    [XBackup_Facebook_Accounts_Old].[Facebook] AS [Facebook], 
+    [XBackup_Facebook_Accounts_Old].[Twitter] AS [Twitter], 
+    [XBackup_Facebook_Accounts_Old].[Email] AS [Email], 
+    [XBackup_Facebook_Accounts_Old].[Birthday] AS [Birthday], 
+    [XBackup_Facebook_Accounts_Old].[Gender] AS [Gender], 
+    [XBackup_Facebook_Accounts_Old].[Job] AS [Job], 
+    [XBackup_Facebook_Accounts_Old].[WorkName] AS [WorkName], 
+    [XBackup_Facebook_Accounts_Old].[WorkUrl] AS [WorkUrl], 
+    [XBackup_Facebook_Accounts_Old].[Profession] AS [Profession], 
+    [XBackup_Facebook_Accounts_Old].[UniversityName] AS [UniversityName], 
+    [XBackup_Facebook_Accounts_Old].[UniversityUrl] AS [UniversityUrl], 
+    [XBackup_Facebook_Accounts_Old].[Checked] AS [Checked], 
+    [XBackup_Facebook_Accounts_Old].[UpdateOwnerUserName] AS [UpdateOwnerUserName], 
+    [XBackup_Facebook_Accounts_Old].[ProfileId] AS [ProfileId], 
+    [XBackup_Facebook_Accounts_Old].[PoliticalParty] AS [PoliticalParty], 
+    [XBackup_Facebook_Accounts_Old].[OperationDirection] AS [OperationDirection], 
+    [XBackup_Facebook_Accounts_Old].[Sentiment] AS [Sentiment], 
+    [XBackup_Facebook_Accounts_Old].[FName] AS [FName], 
+    [XBackup_Facebook_Accounts_Old].[LName] AS [LName], 
+    [XBackup_Facebook_Accounts_Old].[DTE] AS [DTE], 
+    [XBackup_Facebook_Accounts_Old].[PartyName] AS [PartyName]
+    FROM [dbo].[XBackup.Facebook.Accounts.Old] AS [XBackup_Facebook_Accounts_Old]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="XBACKUP_Facebook_Post_Comments_Backup" EntityType="Self.XBACKUP_Facebook_Post_Comments_Backup" store:Type="Tables" store:Schema="dbo" store:Name="XBACKUP_Facebook.Post.Comments.Backup">
+      <DefiningQuery>SELECT 
+    [XBACKUP_Facebook_Post_Comments_Backup].[ID] AS [ID], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[PostID] AS [PostID], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[ObjectID] AS [ObjectID], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[Message] AS [Message], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[UpdateTime] AS [UpdateTime], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[CreateDate] AS [CreateDate], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[PositiveCount] AS [PositiveCount], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[NegativeCount] AS [NegativeCount], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[Sentiment] AS [Sentiment], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[Sentiment_Confirmed] AS [Sentiment_Confirmed], 
+    [XBACKUP_Facebook_Post_Comments_Backup].[Question] AS [Question]
+    FROM [dbo].[XBACKUP_Facebook.Post.Comments.Backup] AS [XBACKUP_Facebook_Post_Comments_Backup]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="XBACKUP_Facebook_Posts_Backup" EntityType="Self.XBACKUP_Facebook_Posts_Backup" store:Type="Tables" store:Schema="dbo" store:Name="XBACKUP_Facebook.Posts.Backup">
+      <DefiningQuery>SELECT 
+    [XBACKUP_Facebook_Posts_Backup].[ID] AS [ID], 
+    [XBACKUP_Facebook_Posts_Backup].[ParrentObjectID] AS [ParrentObjectID], 
+    [XBACKUP_Facebook_Posts_Backup].[PageID] AS [PageID], 
+    [XBACKUP_Facebook_Posts_Backup].[GroupID] AS [GroupID], 
+    [XBACKUP_Facebook_Posts_Backup].[ObjectID] AS [ObjectID], 
+    [XBACKUP_Facebook_Posts_Backup].[Link] AS [Link], 
+    [XBACKUP_Facebook_Posts_Backup].[Text] AS [Text], 
+    [XBACKUP_Facebook_Posts_Backup].[Story] AS [Story], 
+    [XBACKUP_Facebook_Posts_Backup].[TotalReactionCount] AS [TotalReactionCount], 
+    [XBACKUP_Facebook_Posts_Backup].[WowCount] AS [WowCount], 
+    [XBACKUP_Facebook_Posts_Backup].[AngryCount] AS [AngryCount], 
+    [XBACKUP_Facebook_Posts_Backup].[SadCount] AS [SadCount], 
+    [XBACKUP_Facebook_Posts_Backup].[YayCount] AS [YayCount], 
+    [XBACKUP_Facebook_Posts_Backup].[HahaCount] AS [HahaCount], 
+    [XBACKUP_Facebook_Posts_Backup].[LoveCount] AS [LoveCount], 
+    [XBACKUP_Facebook_Posts_Backup].[LikesCount] AS [LikesCount], 
+    [XBACKUP_Facebook_Posts_Backup].[SharesCount] AS [SharesCount], 
+    [XBACKUP_Facebook_Posts_Backup].[CheckedDate] AS [CheckedDate], 
+    [XBACKUP_Facebook_Posts_Backup].[CreatedDate] AS [CreatedDate], 
+    [XBACKUP_Facebook_Posts_Backup].[Sentiment] AS [Sentiment]
+    FROM [dbo].[XBACKUP_Facebook.Posts.Backup] AS [XBACKUP_Facebook_Posts_Backup]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="XBACKUP_Facebook_Posts_Old" EntityType="Self.XBACKUP_Facebook_Posts_Old" store:Type="Tables" store:Schema="dbo" store:Name="XBACKUP_Facebook.Posts.Old">
+      <DefiningQuery>SELECT 
+    [XBACKUP_Facebook_Posts_Old].[ID] AS [ID], 
+    [XBACKUP_Facebook_Posts_Old].[ParrentObjectID] AS [ParrentObjectID], 
+    [XBACKUP_Facebook_Posts_Old].[PageID] AS [PageID], 
+    [XBACKUP_Facebook_Posts_Old].[GroupID] AS [GroupID], 
+    [XBACKUP_Facebook_Posts_Old].[ObjectID] AS [ObjectID], 
+    [XBACKUP_Facebook_Posts_Old].[Link] AS [Link], 
+    [XBACKUP_Facebook_Posts_Old].[Text] AS [Text], 
+    [XBACKUP_Facebook_Posts_Old].[Story] AS [Story], 
+    [XBACKUP_Facebook_Posts_Old].[TotalReactionCount] AS [TotalReactionCount], 
+    [XBACKUP_Facebook_Posts_Old].[WowCount] AS [WowCount], 
+    [XBACKUP_Facebook_Posts_Old].[AngryCount] AS [AngryCount], 
+    [XBACKUP_Facebook_Posts_Old].[SadCount] AS [SadCount], 
+    [XBACKUP_Facebook_Posts_Old].[YayCount] AS [YayCount], 
+    [XBACKUP_Facebook_Posts_Old].[HahaCount] AS [HahaCount], 
+    [XBACKUP_Facebook_Posts_Old].[LoveCount] AS [LoveCount], 
+    [XBACKUP_Facebook_Posts_Old].[LikesCount] AS [LikesCount], 
+    [XBACKUP_Facebook_Posts_Old].[SharesCount] AS [SharesCount], 
+    [XBACKUP_Facebook_Posts_Old].[CheckedDate] AS [CheckedDate], 
+    [XBACKUP_Facebook_Posts_Old].[CreatedDate] AS [CreatedDate], 
+    [XBACKUP_Facebook_Posts_Old].[Sentiment] AS [Sentiment]
+    FROM [dbo].[XBACKUP_Facebook.Posts.Old] AS [XBACKUP_Facebook_Posts_Old]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="XBACKUP_Google_SearchResult_backup" EntityType="Self.XBACKUP_Google_SearchResult_backup" store:Type="Tables" store:Schema="dbo" store:Name="XBACKUP_Google.SearchResult.backup">
+      <DefiningQuery>SELECT 
+    [XBACKUP_Google_SearchResult_backup].[ID] AS [ID], 
+    [XBACKUP_Google_SearchResult_backup].[SearchKeyID] AS [SearchKeyID], 
+    [XBACKUP_Google_SearchResult_backup].[Title] AS [Title], 
+    [XBACKUP_Google_SearchResult_backup].[Url] AS [Url], 
+    [XBACKUP_Google_SearchResult_backup].[Description] AS [Description], 
+    [XBACKUP_Google_SearchResult_backup].[SearchType] AS [SearchType]
+    FROM [dbo].[XBACKUP_Google.SearchResult.backup] AS [XBACKUP_Google_SearchResult_backup]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="xBackup_System_Aimag" EntityType="Self.xBackup_System_Aimag" store:Type="Tables" store:Schema="dbo" store:Name="xBackup_System.Aimag">
+      <DefiningQuery>SELECT 
+    [xBackup_System_Aimag].[ID] AS [ID], 
+    [xBackup_System_Aimag].[Name] AS [Name], 
+    [xBackup_System_Aimag].[Code] AS [Code], 
+    [xBackup_System_Aimag].[NameEng] AS [NameEng], 
+    [xBackup_System_Aimag].[ZipCode] AS [ZipCode]
+    FROM [dbo].[xBackup_System.Aimag] AS [xBackup_System_Aimag]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="xBackup_System_Bag" EntityType="Self.xBackup_System_Bag" store:Type="Tables" store:Schema="dbo" store:Name="xBackup_System.Bag">
+      <DefiningQuery>SELECT 
+    [xBackup_System_Bag].[ID] AS [ID], 
+    [xBackup_System_Bag].[Bag] AS [Bag], 
+    [xBackup_System_Bag].[SumID] AS [SumID], 
+    [xBackup_System_Bag].[AimagID] AS [AimagID]
+    FROM [dbo].[xBackup_System.Bag] AS [xBackup_System_Bag]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="XBACKUP_System_Voters_Fixed" EntityType="Self.XBACKUP_System_Voters_Fixed" store:Type="Tables" store:Schema="dbo" store:Name="XBACKUP_System.Voters.Fixed">
+      <DefiningQuery>SELECT 
+    [XBACKUP_System_Voters_Fixed].[ID] AS [ID], 
+    [XBACKUP_System_Voters_Fixed].[SortOrder] AS [SortOrder], 
+    [XBACKUP_System_Voters_Fixed].[SureName] AS [SureName], 
+    [XBACKUP_System_Voters_Fixed].[Name] AS [Name], 
+    [XBACKUP_System_Voters_Fixed].[Age] AS [Age], 
+    [XBACKUP_System_Voters_Fixed].[Sex] AS [Sex], 
+    [XBACKUP_System_Voters_Fixed].[RegisterNumber] AS [RegisterNumber], 
+    [XBACKUP_System_Voters_Fixed].[Aimag] AS [Aimag], 
+    [XBACKUP_System_Voters_Fixed].[Sum] AS [Sum], 
+    [XBACKUP_System_Voters_Fixed].[Address] AS [Address], 
+    [XBACKUP_System_Voters_Fixed].[Party] AS [Party], 
+    [XBACKUP_System_Voters_Fixed].[PartyTendence] AS [PartyTendence], 
+    [XBACKUP_System_Voters_Fixed].[FacebookID] AS [FacebookID], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber1] AS [PhoneNumber1], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber2] AS [PhoneNumber2], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber3] AS [PhoneNumber3], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber4] AS [PhoneNumber4], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber5] AS [PhoneNumber5], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber6] AS [PhoneNumber6], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber7] AS [PhoneNumber7], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber8] AS [PhoneNumber8], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber9] AS [PhoneNumber9], 
+    [XBACKUP_System_Voters_Fixed].[PhoneNumber10] AS [PhoneNumber10], 
+    [XBACKUP_System_Voters_Fixed].[UpdatedDate] AS [UpdatedDate], 
+    [XBACKUP_System_Voters_Fixed].[AimagGaral] AS [AimagGaral], 
+    [XBACKUP_System_Voters_Fixed].[SumGaral] AS [SumGaral], 
+    [XBACKUP_System_Voters_Fixed].[Khoroo] AS [Khoroo], 
+    [XBACKUP_System_Voters_Fixed].[Email] AS [Email], 
+    [XBACKUP_System_Voters_Fixed].[BirthdayHalf] AS [BirthdayHalf], 
+    [XBACKUP_System_Voters_Fixed].[BirthdayFull] AS [BirthdayFull], 
+    [XBACKUP_System_Voters_Fixed].[FName] AS [FName], 
+    [XBACKUP_System_Voters_Fixed].[LName] AS [LName]
+    FROM [dbo].[XBACKUP_System.Voters.Fixed] AS [XBACKUP_System_Voters_Fixed]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

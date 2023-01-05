@@ -1,0 +1,470 @@
+﻿@{
+    ViewBag.Title = "Харьцуулалт";
+}
+
+<link href="~/Content/member.css" rel="stylesheet">
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/app-assets/vendors/css/forms/icheck/icheck.css">
+<link rel="stylesheet" type="text/css" href="~/Content/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
+
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/pages/ecommerce-cart.css">
+<link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/plugins/forms/checkboxes-radios.css">
+<!-- END: Page CSS-->
+
+<link rel="stylesheet" type="text/css" href="~/Content/psd3.css" />
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<script type="text/javascript" src="~/Scripts/psd3.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+
+<section id="MainSection" data-id1="@ViewData["personID1"]" data-id2="@ViewData["personID2"]" data-id3="@ViewData["personID3"]">
+    <div class="container">
+        <div class="row">
+            <!--Profile Card 1-->
+            <div class="col-md-4 mt-2">
+                <div class="card profile-card-4">
+                    <div>
+                        <a href="../../Home/SmartNewsCus/@ViewData["personID1"]"><img class="img-fluid " src=@ViewBag.peopleData[0].Picture ?auto=compress&cs =tinysrgb&h =650 style="height:212px !important"></a>
+                    </div>
+                    <div class="card-body pt-2">
+                        <h4 class="text-center"><a class="text-info" href="../../Home/SmartNewsCus/@ViewData["personID1"]">@ViewData["personName1"]</a></h4>
+                        <div class="icon-block text-center">
+                            <a class="fbBtn" href="javascript:void(0);" data-id="@ViewData["personID1"]"> <i class="fa fa-facebook"></i></a>
+                            <a class="TwitterBtn" href="javascript:void(0);" data-id="@ViewData["personID1"]"> <i class="fa fa-twitter"></i></a>
+                            <a class="WebSiteBtn" href="javascript:void(0);" data-id="@ViewData["personID1"]"> <i class="fa fa-google-plus"></i></a>
+                        </div>
+                        <center><a href="../../Home/SmartNewsCus/@ViewData["personID1"]" class="btn btn-info text-white m-2">Ганцаарчилсан</a></center>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--Profile Card 2-->
+            <div class="col-md-4 mt-2">
+                <div class="card profile-card-4">
+                    <div>
+                        <a href="../../Home/SmartNewsCus/@ViewData["personID2"]"><img class="img-fluid" src=@ViewBag.peopleData[1].Picture ?auto=compress&cs =tinysrgb&h =650 style="height:212px !important"></a>
+                    </div>
+                    <div class="card-body pt-2">
+                        <h4 class="text-center"><a class="text-danger" href="../../Home/SmartNewsCus/@ViewData["personID2"]">@ViewData["personName2"]</a></h4>
+                        <div class="icon-block text-center">
+                            <a class="fbBtn" href="javascript:void(0);" data-id="@ViewData["personID2"]"><i class="fa fa-facebook"></i></a>
+                            <a class="TwitterBtn" href="javascript:void(0);" data-id="@ViewData["personID2"]"> <i class="fa fa-twitter"></i></a>
+                            <a class="WebSiteBtn" href="javascript:void(0);" data-id="@ViewData["personID2"]"> <i class="fa fa-google-plus"></i></a>
+                        </div>
+                        <center><a href="../../Home/SmartNewsCus/@ViewData["personID2"]" class="btn btn-danger text-white m-2">Ганцаарчилсан</a></center>
+                    </div>
+                </div>
+            </div>
+
+            <!--Profile Card 3-->
+            <div class="col-md-4 mt-2">
+                <div class="card profile-card-4">
+                    <div>
+                        <a href="../../Home/SmartNewsCus/@ViewData["personID3"]"><img class="img-fluid" src=@ViewBag.peopleData[2].Picture ?auto=compress&cs =tinysrgb&h =650 style="height:212px !important"></a>
+                    </div>
+                    <div class="card-body pt-2">
+                        <h4 class="text-center"><a class="text-warning" href="../../Home/SmartNewsCus/@ViewData["personID3"]">@ViewData["personName3"]</a></h4>
+                        <div class="icon-block text-center">
+                            <a class="fbBtn" href="javascript:void(0);" data-id="@ViewData["personID3"]"><i class="fa fa-facebook"></i></a>
+                            <a class="TwitterBtn" href="javascript:void(0);" data-id="@ViewData["personID3"]"> <i class="fa fa-twitter"></i></a>
+                            <a class="WebSiteBtn" href="javascript:void(0);" data-id="@ViewData["personID3"]"> <i class="fa fa-google-plus"></i></a>
+                        </div>
+                        <center><a href="../../Home/SmartNewsCus/@ViewData["personID3"]" class="btn btn-warning text-white m-2">Ганцаарчилсан</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div align="right">
+            <button type="button" class="btn btn-success" onclick="person1('0'); person2('0'); person3('0'); piePerson1('0');">Бүгд</button>
+            <button type="button" class="btn btn-success" onclick="person1('1');person2('1');person3('1');piePerson1('1');">Сүүлийн 1 өдөр</button>
+            <button type="button" class="btn btn-success" onclick="person1('5');person2('5');person3('5');piePerson1('5');"> Сүүлийн 5 өдөр</button>
+            <button type="button" class="btn btn-success" onclick="person1('7');person2('7');person3('7');piePerson1('7');">Сүүлийн 7 өдөр</button>
+            <button type="button" class="btn btn-success" onclick="person1('14');person2('14');person3('14');piePerson1('14');">Сүүлийн 14 өдөр</button>
+            <button type="button" class="btn btn-success" onclick="person1('m');person2('m');person3('m');piePerson1('m');">Сүүлийн 1 сар</button>
+            <button type="button" class="btn btn-success" onclick="person1('y');person2('y');person3('y');piePerson1('y');">Сүүлийн 1 жил</button>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4 mt-4" id="person1"></div>
+            <div class="col-md-4 mt-4" id="person2"></div>
+            <div class="col-md-4 mt-4" id="person3"></div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12" id="picChart"></div>
+        </div>
+        <hr />
+        <div id="OtherChartCheck" align="center" style="font-size:25px;cursor:pointer;" val="1" onclick="OtherChartCheck(this);"> <button class="btn btn-success" id="OtherChartBtn">Дэлгэрэнгүй</button> </div>
+
+        <div id="OtherCharts" style="display:none;">
+            <div class="row">
+                <div align="center" style="width:100%;"><p><h3 style="margin-top:20px;">Facebook дэх хандалтын үзүүлэлт(30 хоногоор)</h3></p></div>
+                <canvas id="fb-chart" height="100"></canvas>
+            </div>
+            <hr />
+            <div class="row">
+                <div align="center" style="width:100%;"><p><h3 style="margin-top:20px;">Twitter дэх хандалтын үзүүлэлт(30 хоногоор)</h3></p></div>
+                <canvas id="tw-chart" height="100"></canvas>
+            </div>
+            <hr />
+            <div class="row">
+                <div align="center" style="width:100%;"><p><h3 style="margin-top:20px;">Веб сайт дэх хандалтын үзүүлэлт(30 хоногоор)</h3></p></div>
+                <canvas id="web-chart" height="100"></canvas>
+            </div>
+            <hr />
+        </div>
+        <div align="right">
+            <button type="button" class="btn btn-success active" onclick="SmartNewsCustomers('All');">Бүгд</button>
+            <button type="button" class="btn btn-success active" onclick="SmartNewsCustomers('Positive');">Эерэг</button>
+            <button type="button" class="btn btn-success" onclick="SmartNewsCustomers('Negative');">Сөрөг</button>
+            <button type="button" class="btn btn-success" onclick="SmartNewsCustomers('Neutral');">Саармаг</button>
+        </div><br>
+        <div align="right">
+            <button type="button" class="btn btn-success active" onclick="SmartNewsCustomersFilter('Date');">Он сараар</button>
+            <button type="button" class="btn btn-success active" onclick="SmartNewsCustomersFilter('Count');">Хандалтаар</button>
+
+        </div>
+        <hr />
+        <div class="row">
+            <div id="SmartNewsCustomers"></div>
+        </div>
+        <hr />
+        <div class="" id="FBPost"></div>
+    </div>
+</section>
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<!-- BEGIN: Page Vendor JS-->
+<script src="~/Content/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
+<script src="~/Content/app-assets/vendors/js/forms/icheck/icheck.min.js"></script>
+<!-- END: Page Vendor JS-->
+<!-- BEGIN: Page JS-->
+<script src="~/Content/app-assets/js/scripts/pages/ecommerce-cart.js"></script>
+<!-- END: Page JS-->
+
+
+<script>
+
+    function OtherChartCheck(e) {
+
+        if ($("#OtherChartCheck").attr("val") == "0") {
+
+            $("#OtherCharts").css("display", "none");
+            $("#OtherChartCheck").attr("val", "1");
+            $("#OtherChartBtn").html("Дэлгэрэнгүй");
+        } else {
+            $("#OtherCharts").css("display", "block");
+            $("#OtherChartCheck").attr("val", "0");
+            $("#OtherChartBtn").html("Хаах");
+        }
+    }
+    //column chart start
+    function person1(a)  //person 1
+    {
+        var per = '@ViewData["personID1"]';
+        var date = 0;
+        if (a == "") {
+            var date = 0;
+        } else {
+            var date = a;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/Person1Info',
+            data: { 'PeopleID': per, 'Date': date},
+            success: function (data) {
+                $("#person1").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    }
+
+    function person2(a) //person 2
+    {
+        var per = '@ViewData["personID2"]';
+        var date = 0;
+        if (a == "") {
+            var date = 0;
+        } else {
+            var date = a;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/Person2Info',
+            data: { 'PeopleID': per, 'Date': date},
+            success: function (data) {
+                $("#person2").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    }
+
+    function person3(a) //person 3
+    {
+        var per = '@ViewData["personID3"]';
+        var date = 0;
+        if (a == "") {
+            var date = 0;
+        } else {
+            var date = a;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/Person3Info',
+            data: { 'PeopleID': per, 'Date': date},
+            success: function (data) {
+                $("#person3").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    }
+    
+     var chart = new Chart(document.getElementById("tw-chart"), {
+        type: 'line',
+
+        data: {
+            labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+            datasets: [{
+                data: @ViewBag.Tw1ChartCount,
+                label: "@ViewData["personName1"]",
+                borderColor: "#3b5998",
+                fill: false
+            }, {
+                data: @ViewBag.Tw2ChartCount,
+                    label:  "@ViewData["personName2"]",
+                borderColor: "#1dcaff",
+                fill: false
+            }, {
+                data: @ViewBag.Tw3ChartCount,
+                    label:  "@ViewData["personName3"]",
+                borderColor: "#f4a641",
+                fill: false
+            }
+            ]
+        }
+    });
+
+
+
+         var chart1 = new Chart(document.getElementById("fb-chart"), {
+            type: 'line',
+
+            data: {
+                labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                datasets: [{
+                    data: @ViewBag.Fb1ChartCount,
+                    label: "@ViewData["personName1"]",
+                    borderColor: "#3b5998",
+                    fill: false
+                }, {
+                    data: @ViewBag.Fb2ChartCount,
+                        label:  "@ViewData["personName2"]",
+                    borderColor: "#1dcaff",
+                    fill: false
+                }, {
+                    data: @ViewBag.Fb3ChartCount,
+                        label:  "@ViewData["personName3"]",
+                    borderColor: "#f4a641",
+                    fill: false
+                }
+                ]
+            }
+        });
+
+
+
+        var chart2 = new Chart(document.getElementById("web-chart"), {
+            type: 'line',
+
+            data: {
+                labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                datasets: [{
+                    data: @ViewBag.Web1ChartCount,
+                    label: "@ViewData["personName1"]",
+                    borderColor: "#3b5998",
+                    fill: false
+                }, {
+                    data: @ViewBag.Web2ChartCount,
+                        label:  "@ViewData["personName2"]",
+                    borderColor: "#1dcaff",
+                    fill: false
+                }, {
+                    data: @ViewBag.Web3ChartCount,
+                        label:  "@ViewData["personName3"]",
+                    borderColor: "#f4a641",
+                    fill: false
+                }
+                ]
+            }
+        });
+
+
+
+     person1();
+     person2();
+     person3();
+
+    //column chart end
+
+    //pie chart
+
+     function piePerson1(a) {
+         var per1 = '@ViewData["personID1"]';
+         var per2 = '@ViewData["personID2"]';
+         var per3 = '@ViewData["personID3"]';
+         var date = 0;
+         if (a == "") {
+             var date = 0;
+         } else {
+             var date = a;
+         }
+         $.ajax({
+             type: "POST",
+             url: '/Analysis/pieChartPerson',
+             data: { 'per1': per1, 'per2': per2, 'per3': per3, 'Date': date },
+             success: function (data) {
+                 //console.log(data);
+
+                 $("#picChart").html(data);
+                 console.log("ready to draw:");
+                 $("path").each(function (index) {
+                     switch (index) {
+                         case 0: $(this).attr("fill", "@ViewBag.PerColor1"); break;
+                         case 1: $(this).attr("fill", "@ViewBag.PerColor2"); break;
+                         case 2: $(this).attr("fill", "@ViewBag.PerColor3"); break;
+
+                         case 3: $(this).attr("fill", "#3b5998"); break;
+                         case 4: $(this).attr("fill", "#1dcaff"); break;
+                         case 5: $(this).attr("fill",  "#f4a641"); break;
+
+                         case 6: $(this).attr("fill", "#f4a641"); break;
+                         case 7: $(this).attr("fill", "#3b5998"); break;
+                         case 8: $(this).attr("fill",  "#1dcaff"); break;
+
+                         case 9:  $(this).attr("fill", "#3b5998"); break;
+                         case 10: $(this).attr("fill", "#3b5998"); break;
+                         case 11: $(this).attr("fill",  "#1dcaff"); break;
+
+                     }
+                });
+             },
+             //error: function () {
+             //    alert('Error occured');
+             //}
+         });
+     }
+
+     piePerson1()
+
+    //pie chart
+    function SmartNewsCustomers(a) {
+
+        Sentiment = a;
+
+        var personID1 = $("#MainSection").attr("data-id1");
+        var personID2 = $("#MainSection").attr("data-id2");
+        var personID3 = $("#MainSection").attr("data-id3");
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/SmartNewsCustomers',
+            data: { 'personID1': personID1, 'personID2': personID2, 'personID3': personID3, 'Sentiment': a },
+            success: function (data) {
+                $("#SmartNewsCustomers").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    };
+    function SmartNewsCustomersFilter(a) {
+
+        var personID1 = $("#MainSection").attr("data-id1");
+        var personID2 = $("#MainSection").attr("data-id2");
+        var personID3 = $("#MainSection").attr("data-id3");
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/SmartNewsCustomersFilter',
+            data: { 'personID1': personID1, 'personID2': personID2, 'personID3': personID3, 'Sentiment': Sentiment, 'Filter':a},
+            success: function (data) {
+                $("#SmartNewsCustomers").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    };
+    SmartNewsCustomers("All");
+
+    $(".fbBtn").click(function () {
+        var PeopleID = $(this).attr("data-id");
+
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/FbInfo',
+            data: { 'PeopleID': PeopleID },
+            success: function (data) {
+                // alert(data);
+                $("#FBPost").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    });
+
+
+    $(".WebSiteBtn").click(function () {
+
+        var PeopleID = $(this).attr("data-id");
+        //alert(PeopleID);
+
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/WebSiteInfo',
+            data: { 'PeopleID': PeopleID },
+            success: function (data) {
+                // alert(data);
+                $("#FBPost").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    });
+
+    $(".TwitterBtn").click(function () {
+
+        var PeopleID = $(this).attr("data-id");
+        //alert(PeopleID);
+
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/TwitterInfo',
+            data: { 'PeopleID': PeopleID },
+            success: function (data) {
+                // alert(data);
+                $("#FBPost").html(data);
+            },
+            //error: function () {
+            //    alert('Error occured');
+            //}
+        });
+    });
+</script>

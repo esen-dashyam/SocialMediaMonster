@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SocialMonster.Models.FbComment>
+
+<div class="table-responsive mb-2">
+    <table id="ListPost" class="table table-striped">
+        <thead class="bg-warning text-white">
+            <tr>
+                <th class="border-top-0">Хэрэглэгчийн нэр</th>
+                <th class="border-top-0">Текст</th>
+                <th class="border-top-0">Огноо</th>
+                <th class="border-top-0">Агуулга</th>
+                <th class="border-top-0">Устгах</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var comment in Model)
+            {
+            <tr>
+                <td style="color:#005DD4">@comment.FromName</td>
+                <td>@comment.Message</td>
+                <td>@comment.CreateTime</td>
+                <td>@comment.Sentiment</td>
+                <td><button class="btn btn-sm btn-danger text-white"><i class="fa fa-trash"></i></button></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

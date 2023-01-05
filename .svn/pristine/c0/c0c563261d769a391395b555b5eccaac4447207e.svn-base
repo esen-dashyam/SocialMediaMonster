@@ -1,0 +1,1702 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Мэдээллийн эх сурвалж | Судалгаа | Статистик</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/app-assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/images/favicon-board.ico">
+
+    <!-- jvectormap -->
+    <link href="~/Content/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+
+    <!-- App css -->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="">
+    <div class="left-sidenav">
+        <!-- LOGO -->
+        <div class="brand">
+            <a href="~/Home/Index" class="logo">
+                <span>
+                    <img alt="modern admin logo" src="~/Content/images/logo-board-medium.png" height="50px">
+                </span>
+            </a>
+        </div>
+        <!--end logo-->
+        <div class="menu-content h-100" data-simplebar>
+            <ul class="metismenu left-sidenav-menu">
+                @if (this.User.IsInRole("Administrator") || this.User.IsInRole("Shunkhlai") || this.User.IsInRole("InvestCore") || this.User.IsInRole("Bogdbank"))
+                {
+                    <li>
+                        <a href="~/Home/Index"> <i data-feather="settings" class="align-self-center menu-icon"></i><span>Мэдээллийн самбар</span><span class="menu-arrow"></span></a>
+                    </li>
+                }
+                <li class="menu-label mt-0">АНАЛИЗ (ЕРӨНХИЙ)</li>
+                @if (!this.User.IsInRole("Khanbank"))
+                {
+                    <li>
+                        <a href="javascript: void(0);"><i data-feather="power" class="align-self-center menu-icon"></i><span>Улс төр</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            @if (this.User.IsInRole("Administrator") || this.User.IsInRole("Demo"))
+                            {
+                                <li>
+                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>Төрийн 3 Өндөрлөг <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li class="nav-item"><a class="nav-link" href="~/Home/SmartNewsCus/c264b9f9-15f0-4294-96d9-183fe81f68b4">У.Хүрэлсүх(Монгол Улсын Ерөнхийлөгч)</a></li>
+                                        <li><a href="~/Home/SmartNewsCus/890e3752-2bc7-4e4a-884d-5b9ac4c8643b">Л.Оюун-Эрдэнэ (Монгол Улсын Ерөнхий сайд)</a></li>
+                                        <li><a href="~/Home/SmartNewsCus/a42264d0-c0a4-4e58-a0c1-ca91990d0d23">Г.Зандаршатар (Улсын Их Хурлын Дарга)</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (this.User.IsInRole("Administrator"))
+                            {
+                                <li>
+                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>МУ-ын Ерөнхийлөгчүүд<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/9ed23ff7-7f2e-4198-bde5-706f42305bd8">Н.Энхбаяр(2005-2009он)</a>
+                                        </li>
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/18671096-f7dd-4876-9449-8e446037ad85">Ц.Элбэгдорж(2009-2017он)</a>
+                                        </li>
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/3b8fe794-37b8-45be-b09d-ef4d8d2c01f5">Х.Баттулга (2017-2021)</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>Ардчилсан нам<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/6042db24-61cf-4d65-9198-1a97677ed680">Ц.Туваан(Дарга)</a>
+                                        </li>
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/be98c708-2580-4fcb-96e3-0de591b2615f">П.Нүрзэд(ХЭГ)</a>
+                                        </li>
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/4ad70702-a23b-4fcb-9a00-bd33d3e11f84">Д.Пүрэвдаваа(НАНД)</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">УИХ гишүүд<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-second-level" aria-expanded="false">
+                                                <li>
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/0478fb67-bd71-4b54-90ea-5a7f3a10c508">А.Адъяасүрэн(Баянхонгор аймаг)</a>
+                                                </li>
+                                                <li>
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/0478fb67-bd71-4b54-90ea-5a7f3a10c508">Ш.Адъшаа(Ховд аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/e7ed14c6-0ce1-4aa5-a4dd-9e87e8f4e9dd">Д.Бат-Эрдэнэ(Өмнөговь аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/b94e9bda-3e58-4427-a63a-d242203de74b">Ж.Батсуурь(Сүхбаатар аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/85e133ae-30ed-4048-84b5-78bc0084c2e9">Б.Бейсен(Баян-Өлгий аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/b0b27278-a4a8-4f07-97a5-5c58dccc7aaa">Д.Ганбат(Баянхонгор аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/28697d90-9e44-4731-96bb-e4aa6b3475e2">Н.Ганибал(Сүхбаатар аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/95f0ec53-9856-4709-afa9-84e392fb1cd8">Б.Пүрэвдорж(Ховд аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/6042db24-61cf-4d65-9198-1a97677ed680">Ц.Туваан(Төв аймаг)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/8634245b-f3a3-423f-97d7-d3c9405f655f">С.Одонтуяа(Улаанбаатар, БГД)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/1dd4762d-ec36-422a-846d-9a6621ffcbbd">О.Цогтгэрэл(Увс аймаг)</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">ГИНСЕК<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-stacked" aria-expanded="false">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/f46f3b65-cc78-4188-b2c7-0ecac03dcfd1">Л.Гантөмөр</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">Ахмадын Холбоо<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-stacked" aria-expanded="false">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/a8a96196-be7b-4523-90ac-cf6ee3f15f7e">Ш.Батбаяр(Тэргүүн )</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/9a45eb57-b573-4f54-9663-be240faecba6">Ц.Баттулга(Дэд тэргүүн)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/744c911d-6a1e-40b7-b179-5393d6c028e9">Ш.Доржпагма(Дэд тэргүүн)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/105a4964-52c7-4aa6-af94-7ad28b13f7a0">Я.Пүрэвдорж(Дэд тэргүүн)</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">Эмэгтэйчүүдийн Холбоо<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-stacked" aria-expanded="false">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/8634245b-f3a3-423f-97d7-d3c9405f655f">С.Одонтуяа(Дарга)</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/0bfbe4df-28ea-4ecc-9659-94e87e82f52c">Б.Пунсалмаа(НАЭХ)</a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">Залуучуудын Холбоо<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-stacked" aria-expanded="false">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/8816E934-F623-4888-BC1D-9549764DE90D">С.Эрдэнэболд(Дарга)</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">Оюутны Холбоо<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-stacked" aria-expanded="false">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/1ec4557a-2588-4428-bf1a-bdd58f7f63a2">Н.Лхагвадорж(Дарга)</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">АН Дарга Сонгууль<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-stacked" aria-expanded="false">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/8816e934-f623-4888-bc1d-9549764de90d">С.Эрдэнэболд</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/1dd4762d-ec36-422a-846d-9a6621ffcbbd">О.Цогтгэрэл</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/a1a8c1f1-1af8-4d88-a651-8d35a44f0d7a">О.Амартүвшин</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/2879c822-7b2e-4807-891c-01d56fa18ad9">Д.Пүрэвдаваа</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">АН Дарга Цахим Сонгууль<span class="menu-arrow right-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                            <ul class="nav-stacked" aria-expanded="false">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/6B4B80FC-C0A1-4CF0-A740-37EC3A551A86">Ц.Оюунгэрэл</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/4e4fa020-e84f-4fac-8943-4fa4680d5beb">Ч.Өнөрбаяр</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/dd5ae387-3ab1-41b7-b574-44b7c9eba44b">Л.Гүндалай</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/01219a82-1151-4ad6-a00b-79cd3ec1dbdb">Ц.Уртнасан</a>
+                                                </li>
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/507aeee7-13b8-4c29-a3a3-05d234713171">М.Тулгат</a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=" nav-item">
+                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>МАН<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/c264b9f9-15f0-4294-96d9-183fe81f68b4">У.Хүрэлсүх(Дарга)</a>
+                                        </li>
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/fb6f9fac-cd8d-44b8-ab29-89c79cbba2b9">Д.Амарбаясгалан(ЕНБ)</a>
+                                        </li>
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/4975cfe8-2f81-492d-950e-b41a83ff3cb9">Д.Сумъяабазар(НМАНД)</a>
+                                        </li>
+                                        <li>
+                                            <a><span class="menu-title" data-i18n="nav.templates.vert.main">Ахмадын холбоо</span></a>
+                                            <ul class="menu-content">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/cc7c50f0-6202-42ca-8f4f-9d54b806d5a1">Ц.Сүхбаатар(Дарга)</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><span class="menu-title" data-i18n="nav.templates.vert.main">НАМЗХ</span></a>
+                                            <ul class="menu-content">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/91F4CC3E-7C17-42A6-B938-C1D456201532">Н.Учрал(Дарга)</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><span class="menu-title" data-i18n="nav.templates.vert.main">Оюутны холбоо</span></a>
+                                            <ul class="menu-content">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/158775f0-d5aa-4f14-88a6-f2b4191c0d05">Г.Батдорж(Дарга)</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><span class="menu-title" data-i18n="nav.templates.vert.main">НАМЭХ</span></a>
+                                            <ul class="menu-content">
+                                                <li class=" nav-item">
+                                                    <a class="menu-item" href="~/Home/SmartNewsCus/afe71354-c591-4cda-b6af-f6b3fe05b75a">
+                                                        Д.Сарангэрэл(Дарга)
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=" nav-item">
+                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>МАХН<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/9ed23ff7-7f2e-4198-bde5-706f42305bd8">Н.Энхбаяр(Дарга)</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=" nav-item">
+                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>ШИНЭ Нам<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li>
+                                            <a class="menu-item" href="~/Home/SmartNewsCus/ed7b9d6a-ee17-4a2a-92b5-5491cf9b41ef">Ж.Батзандан(Дарга)</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (this.User.IsInRole("Administrator") || this.User.IsInRole("Demo"))
+                            {
+                                <li class=" nav-item">
+                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>Харьцуулалт<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li>
+                                            <a class="menu-item" href="~/Analysis/Index/View3Higher">Төрийн 3 өндөрлөг</a>
+                                        </li>
+                                        @if (this.User.IsInRole("Administrator"))
+                                        {
+                                            <li>
+                                                <a class="menu-item" href="~/Analysis/Index/ViewPartyLeader">Намын даргаар</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="menu-item" href="~/Analysis/Index/ViewParties">Намуудаар</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="menu-item" href="~/Analysis/Index/ViewPresidentElection">Ерөнхийлөгчийн сонгууль</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-black-tie"></i><span>Засгийн газар</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/890e3752-2bc7-4e4a-884d-5b9ac4c8643b">Л.Оюун-Эрдэнэ(Ерөнхий Сайд)</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/a1cf8e70-b00a-4934-806b-7ef0cce947cf">Л.Халтар(ЗТХ-ийн Сайд)</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/F7F06649-745A-4958-A442-DAC0641DC36C">Х.Нямбаатар(ХЗДХ-ийн Сайд)</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                }
+
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-institution"></i><span>АТГ</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/7a6adb61-4c31-4470-8ade-37c291b10ebf">АТГ</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/e7aca6b9-5973-49dd-9c9d-1e93222b759a">Б.Анхбаатар</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/0658271e-680b-4269-8a38-eba74e359966">Б.Батбаяр</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-institution"></i><span>Төрийн байгууллага</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/d8a26865-00bc-4332-bd3e-cdf6bf54e69a">Гаалийн ерөнхий газар</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/45eb7bd0-0c43-440b-864b-18946995c64a">Б.Асралт</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
+                <li class=" nav-item">
+                    <a href="javascript: void(0);"> <i class="la la-institution"></i><span>Байгууллага</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+
+                        @if (this.User.IsInRole("Administrator"))
+                        {
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);"> <i class="align-self-center menu-icon"></i><span>Юу Эн Ай Ти ХХК</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9eacaad2-209e-4899-804b-b26c29d73925">ЮУ ЭН АЙ ТИ ХХК</a>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/f437eea1-d21a-4ed1-b538-98233277205b">ТАСК СИСТЕМ ХХК</a>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/d531d9ca-aeec-4ee2-aabe-8851d85e3e64">Э.ЦОГ-ЭРДЭНЭ</a>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/5394bd93-d940-46a9-8a94-942cdccea669">ТЕХНОЛОГИ</a>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6e5a7a2d-2984-466b-8d0a-6688368c5de2">ПРОГРАМ ХАНГАМЖ</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+                        @if (this.User.IsInRole("Administrator"))
+                        {
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);" onclick="SubMenu('45f83158-3134-4e38-850f-ea83bc10b0ff','ictgroup')"> <i class="align-self-center menu-icon"></i><span>ICT Грүп</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" id="ictgroup" aria-expanded="false">
+                                </ul>
+                            </li>
+                        }
+
+                        @if (this.User.IsInRole("Administrator") || this.User.IsInRole("Khanbank"))
+                        {
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);"> <i class="align-self-center menu-icon"></i><span>Банк</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0a5a3613-a3ee-48de-bccf-2c6497de11e5">МОНГОЛ БАНК</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>Хаан банк</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                        <ul class="nav-second-level" aria-expanded="false">
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/8902d568-4f77-4874-97b8-f7dd7bc6d655">Ерөнхий мэдээ</a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/14fd8bb5-582a-4be7-94f3-66d8cb681b7a">Карт</a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/094ddb2d-81fd-4728-9b72-e5f72e6e72be">Аппликэйшн</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/d6abc6f8-71c1-49c5-b39a-63c50d3cdb29">Зээл</a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/c5d83204-a821-42c9-ab1b-76ee465c39b0">Хадгаламж</a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/615f2af0-c60a-4441-b844-eff113d78a35">Хувьцаа эзэмшигч</a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/770f7102-bdec-4d76-ab5e-53d6f32f016f">IPO</a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="~/Home/SmartNewsCus/5a8e8685-d044-4e8d-8a1e-fe1771534388">Брэнд шинэчлэл</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8d207298-9013-41da-b2bc-2a5e62c54509">ХХБ</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0854d98d-6f51-4f8d-a697-61037fd9dc53">ГОЛОМТ БАНК</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (this.User.IsInRole("Administrator") || this.User.IsInRole("InvestCore"))
+                        {
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);" onclick="SubMenu('d0c83c75-55eb-486a-9a9b-95619ec9b22c','nonbankorganization')"><i class="align-self-center menu-icon"></i><span>ББСБ</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" id="nonbankorganization" aria-expanded="false">
+                                </ul>
+                            </li>
+                        }
+
+                        @if (this.User.IsInRole("Administrator"))
+                        {
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);"> <i class="align-self-center menu-icon"></i><span>Сүпэрмаркет</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a8a874d0-f658-4ee6-9fda-55c991a2a69e">Номин холдинг</a>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/50ea9144-eeb2-44e3-87f9-d403811f882c">И Март</a>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/32af2803-466e-4f37-aaf1-7f74c6229764">Оргил</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);"> <i class="align-self-center menu-icon"></i><span>М-Ойл грүпп</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a href="href=" javascript: void(0);" onclick="SubMenu('12b9c8cc-d085-4c69-992f-79174124b5d2','moil_management')"> <i class="align-self-center menu-icon"></i><span>ГРҮПП КОМПАНИУД</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                        <ul class="nav-second-level" aria-expanded="false" id="moil_management">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+                        @if (this.User.IsInRole("Administrator"))
+                        {
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);"> <i class="align-self-center menu-icon"></i><span>Улаанбаатар Буян ХХК</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/17BC8438-30B3-41D9-9FF6-397290986201">Улаанбаатар Буян ХХК</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+                        @if (this.User.IsInRole("Administrator") || this.User.IsInRole("Shunkhlai"))
+                        {
+                            <li class=" nav-item">
+                                <a href="javascript: void(0);"> <i class="align-self-center menu-icon"></i><span>Шунхлай Грүпп</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a href="href=" javascript: void(0);" onclick="SubMenu('8ecfc6cb-2d44-456b-8625-1a0152f7b2f2','apu_management')"> <i class="align-self-center menu-icon"></i><span>Удирдлагууд</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                        <ul class="nav-second-level" aria-expanded="false" id="apu_management">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a href="href=" javascript: void(0);" onclick="SubMenu('8ecfc6cb-2d44-456b-8625-1a0152f7b2f3','apu_company')"> <i class="align-self-center menu-icon"></i><span>Компаниуд</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                        <ul class="nav-second-level" aria-expanded="false" id="apu_company">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a href="href=" javascript: void(0);" onclick="SubMenu('8ecfc6cb-2d44-456b-8625-1a0152f7b2f4','socialinfo')"> <i class="align-self-center menu-icon"></i><span>Нийгмийн урсгал</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                        <ul class="nav-second-level" aria-expanded="false" id="socialinfo">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        <li class=" nav-item">
+                            <a href="javascript: void(0);"> <i class="align-self-center menu-icon"></i><span>Харьцуулалт</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                @if (this.User.IsInRole("Administrator") || this.User.IsInRole("Shunkhlai"))
+                                {
+                                    <li>
+                                        <a class="menu-item" href="~/Analysis/Index/ViewBanks">Банк</a>
+                                    </li>
+                                    <li>
+                                        <a class="menu-item" href="~/Analysis/Index/ViewSuperMarket">Сүпермаркет</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="href=" javascript: void(0);" onclick="SubMenu('e90f61e2-b511-43f6-8778-8d3cc017eea8','districts')"><i class="la la-map"></i><span>Дүүрэг</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false" id="districts">
+                        </ul>
+                    </li>
+                }
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="href=" javascript: void(0);" onclick="SubMenu('e61c26a6-cf87-42eb-9a97-dd4533ebff57','province')"><i class="la la-map"></i><span>Орон нутаг</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false" id="province">
+                        </ul>
+                    </li>
+                }
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-newspaper-o"></i><span>Үйл явдал</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/f045b9c0-0c4d-4fe0-85dd-ed50b77f8dbd">Коронавирус</a>
+                            </li>
+
+                            <li>
+                                <a class="menu-item" href="~/Analysis/Index/ViewHotTopic">Тренд сэдэв</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                }
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="href=" javascript: void(0);" onclick="SubMenu('8d809e4e-28da-4b29-8ed1-1d536dac8f20','parliament')"><i class="la la-users"></i><span>УИХ</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false" id="parliament">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/05c36f26-e46f-4a13-950b-8e016b04c52a">Амарзаяа.Н</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-folder"></i><span>Сонгууль УИХ</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="javascript: void(0);"><i class="ti-control-record"></i><span>1-р тойрог(Архангай)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/912f91a1-2dd7-43c3-bee6-2c60e6a743b6">- Д.Золжаргал(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e0c89264-f1b8-4798-acbe-6124f9ae120d">- П.Мөнхтулга(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/2fd7308f-1e2f-4c71-ba6d-9e9e966e5bd5">- Н.Батбаяр(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/c646d8a2-dd32-4579-af77-f5e9cdddb360">- Г.Тэмүүлэн(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/da1b4aae-a8ac-4247-8dba-775c2c8e203e">- Ж.Мөнхбат(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b1a89092-7e61-48fc-b619-e349b8871db9">- Е.Баатарбилэг(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/279e9470-a99b-424c-adc9-82b7187c1403">- Э.Болорчулуун(Бие даагч)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9195c2aa-15ee-440b-a535-6fd077bb44ff">- Р.Бадмаанямбуу(Бие даагч)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>2-р тойрог(Баян-Өлгий)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/645e5ef7-e3bb-42e7-ab4c-3da03824944a">- Д.Мурат(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/85e133ae-30ed-4048-84b5-78bc0084c2e9">- Б.Бейсен(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e3436c5c-61c2-44c5-8d6c-5b6c0fca0b90">- Р.Гажайв(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0d1adcd0-15fc-498e-993f-bd157387ec70">- Х.Баделхан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/831009d0-88fc-417e-91ef-7fde7de1967c">- Т.Аубакир(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6dda34e0-84c8-484c-89c7-4f041454e3f6">- А.Гылымхан(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>3-р тойрог(Баянхонгор)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0478fb67-bd71-4b54-90ea-5a7f3a10c508">- А.Адъяасүрэн(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/be98c708-2580-4fcb-96e3-0de591b2615f">- П.Нүрзэд(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b0b27278-a4a8-4f07-97a5-5c58dccc7aaa">- Д.Ганбат(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a42264d0-c0a4-4e58-a0c1-ca91990d0d23">- Г.Занданшатар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/fd8fed1a-f069-4f33-b1f2-78c07d332cb2">- Л.Элдэв-Очир(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/dbe59491-1e6c-4c26-a457-a88b61e5d44a">- Б.Батцэцэг(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>4-р тойрог(Булган)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/59630ea1-92e3-490e-9f78-dc449aaccdf8">- Д.Өсөхбаяр(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/94292575-8f2f-489f-a8f2-7143154d8c49">- С.Гал-Эрдэнэ(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/144088a2-5c5e-4aa8-b46f-59393e47eb29">- Ж.Бат-Эрдэнэ(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/bd2159e9-8822-4188-96e4-32a03c228c22">- Ц.Анандбазар(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>5-р тойрог(Говь-Алтай)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/38e0038c-4f1a-4f9e-a771-4b3f7805a131">- О.Батханд(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/3eb8e8cc-bb5a-4771-b5a2-263af848b392">- О.Амгаланбаатар(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4f9c6651-4c04-44c0-adce-c9f7710bfe28">- Ш.Раднаасэд(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/bd2159e9-8822-4188-96e4-32a03c228c22">- Б.Энх-Амгалан(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>6-р тойрог(Дундговь, Говь-Сүмбэр)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/7625d7a0-7a73-4017-bf5a-5e83dc9e2209">- Л.Одсэр(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/cb6e73d1-5a6f-4597-acf5-3ad376a65a60">- Б.Наранхүү(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/5f65927e-1f23-41cb-8f13-82723d039b60">- Г.Мөнхцэцэг(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/2660371c-72ff-492f-9d89-44635db24564">- Сү.Батболд(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/44a3408b-d787-437b-8e9a-a03e2bdcf748">- О.Ганбат(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/94bc6799-2062-4b6c-814d-5a98c43e8141">- О.Эрдэнэтөгс(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>7-р тойрог(Дорнод)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/198460a6-953c-4a1b-a5da-9116f8c398f2">- Ж.Энхболд(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/f0f55220-dc88-48c9-8aa9-05fa22919805">- П.Батчимэг(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/f7f4fa89-a095-411d-9cb2-d99fd5975e1f">- Х.Болорчулуун(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/024ad018-7307-47a9-aa98-d3c871ed7405">- Ц.Сэргэлэн(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9ee8c5cd-ba30-45ee-a2cd-12511d375baf">- Х.Одмандах(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9a8add35-296c-44fc-9de0-0b0cba02637b">- С.Отгонбаяр(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>8-р тойрог(Дорноговь)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/16cb221e-25f1-4820-8f19-bb06f0802ad3">- Ц.Жадамбаа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8d709e8c-d2f8-4faf-8fb0-da8857b4d9c1">- Д.Алтангэрэл(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6cb3b1cf-1fe2-4a46-9dd3-f97664d4d316">- Б.Дэлгэрсайхан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/15840998-5eba-4c88-a902-6ecfe4ed220a">- Т.Энхтүвшин(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/47aad20f-4d94-47fc-9c77-734123442d9c">- Ц.Гантулга(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0219ce62-8101-4994-ad18-a3c0e4369801">- Д.Эрдэнэбат(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>9-р тойрог(Завхан)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/5e2b2ddc-4376-4380-b9f6-7d2b72b596a5">- З.Нарантуяа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/89fa2c2b-8441-4b1d-baa7-db49d8e26822">- Д.Батсайхан(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/5f78211b-82f8-4e35-bf0a-fcc4e5ea786e">- Б.Баярсайхан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/7ff2a955-ac01-457e-b175-ecf228d60870">- Ц.Цэрэнпунцаг(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/dbbbcfc3-f5c6-4402-a17c-f320b99cd1d1">- С.Сайхансамбуу(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/72d66657-513f-4fe6-8935-18e8a393a5a3">- А.Дорждагва(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>10-р тойрог(Өвөрхангай)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/cd7af9a8-fb26-4113-8c76-ee3d98bfcf58">- О.Алтангэрэл(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/7b81d997-1851-4f28-9858-a030b83b50cb">- Б.Ганхөлөг(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/895ed66f-abdc-41df-8c8b-820c55ec4c48">- Ч.Даваабаяр(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a65c2c58-14aa-4db2-9338-f5d02ebd93e9">- Д.Тогтохсүрэн(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b679d8ff-a0e5-4c9c-a8c6-8db31f96791d">- С.Чинзориг(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/c432ec1b-cdd9-418b-8f74-d9ec0209ca5d">- Г.Ганболд(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/fa2fdc83-f25a-4623-9a3e-414c57fed900">- А.Отгонбаатар(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6eff06c5-abd5-434b-ac13-029996f8015b">- Ц.Батболд(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>11-р тойрог(Өмнөговь)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/00b7f255-9421-42f5-8802-a1e6e0442323">- Б.Бадраа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e7ed14c6-0ce1-4aa5-a4dd-9e87e8f4e9dd">- Д.Бат-Эрдэнэ(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ef4677d9-b0b3-4466-96c9-67a45376d7fe">- Н.Наранбаатар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/3ee0db4d-8471-410c-b290-c606593bd8cd">- Х.Мандахбаяр(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/3579bead-35f7-45af-86d9-63b8fcba010e">- Н.Наранбаатар(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/994f0d2e-f105-4a5e-970a-194de50b7391">- Ц.Бээжин(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>12-р тойрог(Сүхбаатар аймаг)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b94e9bda-3e58-4427-a63a-d242203de74b">- Ж.Батсуурь(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/28697d90-9e44-4731-96bb-e4aa6b3475e2">- Н.Ганибал(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/c70b852f-9539-447b-9038-f01dfe4639cc">- Т.Ганди(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/212381c2-fd17-4c36-95f9-c19aa02cb6f1">- З.Энхтөр(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/edfa465d-325e-4875-a31a-2cc8d483006c">- А.Төмөр-Очир(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/5195f50a-3ed5-4310-a69f-9adc75799827">- Н.Лхагвасүрэн(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>13-р тойрог(Сэлэнгэ)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/53d7be8f-ff2c-4e44-9d23-d88086a9c26f">- Д.Эрдэнэбат(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6d05277b-9fcf-4646-9015-8618d85e85ff">- Д.Үүрийнтуяа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/feb87168-8a98-4715-8d29-37700f64cfd2">- С.Баярцогт(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4b673690-0277-4ddc-bb7a-245d48616ceb">- Ж.Эрдэнэбат(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/88bedadf-253f-4fb8-a7f7-87b6f7057214">- Ч.Ундрам(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/befe074f-1fa7-4256-ba0e-5ab0ac17d623">- Д.Өнөрболор(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9b7a9a87-fdd5-4910-bfe0-c59ace99bf52">- Г.Баттулга(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/eee426a8-546c-48d4-9eec-053aad4edd61">- Л.Цог(Шинэ Эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a576d0ba-2eda-404d-b8d7-8e1be8438008">- Б.Нэргүйбаатар(Шинэ Эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>14-р тойрог(Төв)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/acb5e549-d009-492c-92e9-7e77e23f0ee2">- Х.Тэмүүжин(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6b410462-ab19-41cb-a4e8-fec66e933db6">- Д.Эрдэнсувд(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/05f8f406-b62f-42cd-af92-85c8859fa33d">- Ц.Туваан(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8843dc0e-c430-4326-b26c-f1049933ffd2">- Н.Энхболд(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/071ea36f-2115-471e-8a26-6c5608255424">- Д.Гантөгс(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/de7618b1-fe0d-4970-8bc2-767edb2a092b">- Ж.Батжаргал(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/dd3f5fde-514c-4ac6-9101-5cb58671df91">- А.Батсүх(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/bfc09ba1-6770-4b35-9d09-6ae333228b5d">- Л.Алтантуяа(Шинэ Эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e8949a16-7c98-436a-9eea-7d82ece36946">- Б.Цондовдорж(Шинэ Эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>15-р тойрог(Увс)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8204cf14-d05d-4b5b-af65-519c2c4f9080">- С.Жавхлан(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/1dd4762d-ec36-422a-846d-9a6621ffcbbd">- О.Цогтгэрэл(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/5ae380c7-a403-49bb-86c9-76352f768ff6">- Д.Цэндсүрэн(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4e483302-7b73-47d0-b16a-b24046594fe9">- Ч.Хүрэлбаатар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0d3b055a-66ad-4ec5-9a79-98d4ec883a64">- Н.Цэрэнбат(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ec30d368-2c30-479a-8b10-acaa714ff541">- Б.Чойжилсүрэн(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/59d0876c-4f5c-4451-b20d-66c88d6a6246">- Ш.Буянжаргал(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a8dc7ae9-f1cb-40e4-83a7-cdde9a301a3b">- А.Чинбат(Шинэ Эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/69039f21-52ac-45a5-885b-1f7807fc295e">- Г.Нямсүрэн(Шинэ Эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>16-р тойрог(Ховд)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/95f0ec53-9856-4709-afa9-84e392fb1cd8">- Б.Пүрэвдорж(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ed71c631-a7fc-4865-aff0-bfa92c285321">- Н.Пунцаг(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/47e87dbf-9d38-4f8f-ac69-af7c4da7edc7">- Ш.Адьшаа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8843dc0e-c430-4326-b26c-f1049933ffd2">- С.Бямбацогт(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/18961cc3-ced6-42ab-bca1-afc47ee34e05">- Ц.Цогзолмаа(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/dd09073f-9619-46a3-addb-c22467cc4aec">- О.Батнасан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/f5c10a32-3415-484d-8f26-f0ad0a466f05">- Г.Билгүүн(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/46a8d0cf-eb04-4129-8095-f6dea874be7e">- Ч.Гантулга(Шинэ Эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ae91738b-e797-4fe3-9d86-fd5065434c30">- А.Баасандэмбэрэл(Шинэ Эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>17-р тойрог(Хөвсгөл)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4913b937-eac5-4998-9da7-641ed2801bae">- Д.Ганболд(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/16cb7967-f3a6-47e2-8882-d5c96c4261dc">- Б.Баярмаа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/f398956d-f5c0-445b-82af-b787127ffa02">- Ч.Батцогт(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/83f42aad-d600-400b-aed0-d83d570e99cf">- Л.Энх-Амгалан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/be12aa5a-88c1-49f6-87e0-1b2665ebc3bd">- Л.Мөнхбаатар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/58f364e6-7b68-44cf-9178-bdd4e7d3254b">- Ц.Даваасүрэн(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>18-р тойрог(Хэнтий)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6fe87624-2a4c-4d74-a0ad-3c31e59d58b8">- Э.Бат-Үүл(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a091695f-8a51-4d6e-bad6-9fd615a1efb7">- Ж.Оюунбаатар(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/95582b62-757d-4ab2-9451-9b51a291501b">- Т.Пүрэвхатан(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/c264b9f9-15f0-4294-96d9-183fe81f68b4">- У.Хүрэлсүх(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/890e3752-2bc7-4e4a-884d-5b9ac4c8643b">- Л.Оюун-Эрдэнэ(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/445146b5-9c48-4fcb-b0ff-6c8d7f2127c5">- Б.Бат-Эрдэнэ(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b2afe4d3-b4f5-46d8-a13a-89e6206c3d08">- Д.Баатаржав(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8f26cc1d-90e9-45d6-841a-03428d1d1ad0">- П.Нарантуяа(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ea87bd7b-a926-4898-9d1e-988117e107dd">- Д.Одгэрэл(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>19-р тойрог(Дархан-Уул)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/36ce6144-f82c-4b3e-9b87-a05716ff395d">- Н.Мөнхдаш(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4d966f58-1efa-4457-8e8d-3d87ec4ee84a">- Д.Энхтуяа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/7c995538-a803-42b8-8509-dd38ec0f227e">- Б.Бямбасайхан(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0091f356-35c8-46a7-a098-42933079c1fc">- Д.Жавхлан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/12a4df1d-0159-49ba-b3b9-70f1fbed82a5">- Б.Баттөмөр(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b01d8d2f-12b9-4e35-bfd8-3b784c4b36be">- Г.Дамдинням(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/389e1777-e93f-45fa-9661-600de1fcd6e8">- П.Эрдэнэбат(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/bd3a14a3-20bd-480e-8aed-e433fa9fd62c">- Ж.Төгсжаргал(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0d05c011-180b-4270-ab43-18d7863ceca9">- Б.Нямбаяр(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>20-р тойрог(Орхон)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4a8668fd-bd61-4f99-b19e-d4deff08bc40">- О.Баасанхүү(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e209cf0d-d28c-41f7-a034-1a92d92c102f">- Д.Оросоо(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/cfa95fab-c87f-49d6-96e9-adc19eb06e0a">- Ц.Батхуяг(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/7093d2be-d81b-40fe-be62-0f9332ff106a">- Ц.Нямдорж(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9e42975d-ea3e-4287-a61c-84c87730619b">- Д.Батлут(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/992269eb-f296-423e-a196-e7efa0267474">- Б.Оюунгэрэл(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ff531213-23f1-4111-b5b1-f3614dde6ec0">- С.Ганбаатар(Эх Орончдын НЭ)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/d76c857a-791c-4765-ada4-8a907d81a120">- Д.Батмөнх(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9ac7c2d0-32bb-479c-bfb3-c166e653f4e9">- Д.Мөнхтуяа(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/85ee0b51-eef0-4807-81a5-90adc4125a9f">- Д.Түмэнжаргал(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>21-р тойрог(БНД, НД, БХД)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0d73ace0-b800-4a5b-9966-001c4a1e5aa0">- М.Энх-Амар(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/7ed9b966-92bf-4c99-9975-f35beb209472">- Ц.Алтанцэцэг(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ef6b7646-ff1f-4454-ae62-cc4951e8bb36">- С.Амарсайхан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/1d4445df-d1fc-4b8c-abbe-f9fd9e7c42a6">- Ц.Сандаг-Очир(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/67852c3b-1892-4a03-a526-ea3f993a2614">- Г.Бэгзсүрэн(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/de2a7e15-b801-4249-8d57-9bfe7a8dc45b">- Д.Оюунчимэг(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/85ee0b51-eef0-4807-81a5-90adc4125a9f">- Д.Түмэнжаргал(Шинэ эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>22-р тойрог(Баянзүрх)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a79ee8a5-413a-4fda-b6e9-f41976484ec2">- З.Энхболд(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/dad32099-ceb6-469a-9df5-fe68653f8bdd">- Т.Батцогт(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/afe71354-c591-4cda-b6af-f6b3fe05b75a">- Д.Сарангэрэл(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/f9c1404d-dfe4-43b2-9665-b40ec564a63a">- Б.Энхбаяр(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/bfb5ad25-8e7a-47f7-944c-49f812b3909f">- М.Ичинноров(Бие даагч)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>23-р тойрог(Баянзүрх)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/388da188-0404-43b9-a91e-e5b72ae114e5">- Ц.Одонтунгалаг(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/2879c822-7b2e-4807-891c-01d56fa18ad9">- Д.Пүрэвдаваа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e6051ecd-a418-4505-b41f-1e586920b040">- Ж.Баясгалан(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/386c2c25-6eb1-4f76-994b-4a8521e64ede">- Ж.Чинбүрэн(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/d7be0296-cc5c-434e-b424-4a2d51f49793">- Х.Булгантуяа(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ea9b4fd6-a791-4d8c-8d53-ff5406ca164c">- Э.Бат-Амгалан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/94292575-8f2f-489f-a8f2-7143154d8c49">- С.Батчулуун(Бие даагч)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>24-р тойрог(Сүхбаатар)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/2396da12-2a20-4ce1-a49c-94edeb532164">- Р.Амаржаргал(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/39d281b4-02df-458a-bff1-6d551ab448c0">- Э.Долгион(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8816e934-f623-4888-bc1d-9549764de90d">- С.Эрдэнэболд(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/c6842085-66ec-4001-bcf3-c778c25aa160">- Д.Цогтбаатар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b6f21df4-7a72-488e-a401-b6c2db3d0ba4">- Ц.Мөнх-Оргил(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/7d6677f3-5d6a-47e9-8f2a-98194835b525">- Ц.Мөнхцэцэг(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/ab05059a-8204-4374-b2f9-e403f268a8f8">- Г.Ганхүү(Зөв Хүн-Электорат)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0aadb308-fcf3-4f87-879f-6fb94f4661ac">- Д.Мөнх-Эрдэнэ(Зөв Хүн-Электорат)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>25-р тойрог(Чингэлтэй)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8973f4b3-3bb5-44bb-8374-105e0d6c9466">- Ц.Баатархүү(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e3c5aca1-0034-454a-84cc-67a90ce7702b">- Г.Уянга(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/d46a8285-d505-43a9-85c6-4358f7ade098">- Р.Булгамаа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/e06df8b3-7103-4e5b-ab4d-00d915bd3180">- М.Оюунчимэг(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/cf53e155-c94c-484a-8843-d3b04f1e50eb">- Т.Аюурсайхан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a1100ff3-df59-43ce-a52c-22c73a3e6520">- Ж.Сүхбаатар(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>26-р тойрог(Баянгол)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/64e7c51a-507b-4f45-82cd-51a2a07c143b">- С.Эрдэнэ(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8634245b-f3a3-423f-97d7-d3c9405f655f">- С.Одонтуяа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/d46a8285-d505-43a9-85c6-4358f7ade098">- Д.Батцогт(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/de044e25-5aa9-4cb5-bd47-79bb9d6fd743">- Д.Лүндээжанцан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/15a828cb-8c2e-45c0-8177-76c9c6516faa">- Ж.Ганбаатар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/6570bb3e-1daf-44e9-8352-e517e234fc13">- Х.Ганхуяг(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/b6f47bc6-d2c2-4411-be68-b897dee92e0b">- Д.Жаргалсайхан(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/fbdebfe8-6157-41c0-bc22-a6ea56a9e887">- Б.Зоригоо(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/c3537198-9880-40fe-9266-4a75a2e66cfe">- Ц.Солонго(Шинэ эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/9ed23ff7-7f2e-4198-bde5-706f42305bd8">- Н.Энхбаяр(Та бидний эвсэл)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>27-р тойрог(СХД)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/0bfbe4df-28ea-4ecc-9659-94e87e82f52c">- Б.Пунсалмаа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/2E891FD2-8E3E-4657-88A5-2913C40221C6">- К.Батбаяр(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/f7f06649-745a-4958-a442-dac0641dc36c">- Х.Нямбаатар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/E070C4D0-7AE0-464E-869A-371774F47D97">- Б.Жаргалмаа(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>28-р тойрог(СХД)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a4f3e9bf-bf23-4d4b-a31c-5c8c21820e1e">- О.Магнай(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a852443d-eeaa-415f-a4b3-5f8a7493e828">- П.Цэцэгмаа(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/646490AB-1CE4-4B15-AAC4-DA35A13F6469">- Г.Очирбат(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4975cfe8-2f81-492d-950e-b41a83ff3cb9">- Д.Сумьяабазар(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/91f4cc3e-7c17-42a6-b938-c1d456201532">- Н.Учрал(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/d3610a0e-48ee-42df-8ed7-d7dc505a32f9">- П.Анужин(МАН)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"> <i class="ti-control-record"></i><span>29-р тойрог(ХУД)</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/8095702E-1629-4965-8DD9-C1FC33D84D25">- Б.Түвшин(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/1ae81e9b-22b3-455f-8ede-486c972bc857">- Т.Энхсайхан(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4e4fa020-e84f-4fac-8943-4fa4680d5beb">- Ч.Өнөрбаяр(АН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/67b4b256-db02-457b-b640-a3b7d1c0dd55">- Г.Амартүвшин(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/afe71354-c591-4cda-b6af-f6b3fe05b75a">- Д.Сарангэрэл(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a5a26b45-70a7-4dba-be21-7d38e0e4f638">- Ж.Алдаржавхлан(МАН)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/936f6719-695f-4725-8431-20d705dfca42">- Л.Болд(Шинэ Эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4e4d66c9-4b50-4d20-bd48-10a26feac100">- Э.Түвшин(Шинэ Эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/a1611e7b-179c-49d9-a13d-cc95a917f726">- Л.Ариунаа(Шинэ Эвсэл)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/06419106-a672-4390-bea1-410c15609c21">- Н.Номтойбаяр(Бие даагч)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/4606f26c-22cb-4ff4-a598-e5952993ac9e">- Ж.Эрхэмбаатар(Бие даагч)</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="menu-item" href="~/Home/SmartNewsCus/32a433d5-3724-40b1-bf4d-6e052bacb55c">- Ц.Цолмон(Бие даагч)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="href=" javascript: void(0);" onclick="SubMenu('28fb780c-0ddf-4b77-b772-36b3c5a909af','coin')"><i class="la la-bitcoin"></i><span>Койн</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false" id="coin">
+                        </ul>
+                    </li>
+                }
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"><i class="la la-credit-card"></i><span>Зээл</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/25c56f0b-11a0-45e6-81ca-4a767c94fb9a">Зээл олгоно</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/c9e7d9b2-bd3c-47cd-a126-a765702bdbab">Зээл авна</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-building-o"></i><span>Үл хөдлөх</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/3d58b5b4-a1b3-447b-8bbe-241107eb2a76">Борлуулалт</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/d4d11420-2ab0-447b-a439-1f5793a6369d">Түрээс</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-car"></i><span>Автомашин</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/48f26aef-6e5f-4458-b5e6-a9fe9d9bb2bc">Борлуулалт</a>
+                            </li>
+
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/63811122-64ee-4190-ac4a-ddcc9d7aac9f">Худалдан авах</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-inbox"></i><span>Төсөл</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/64656cf5-287e-496c-81eb-5c7c0069233b">Жорлонгоо өөрчилье</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/3724bddd-c810-4d76-aca6-b407ac2668bb">Нөхөрлөл</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/f3880540-4406-4cd9-9e67-cb6152c07955">ГХДТ</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/SmartNewsCus/0d1d591d-c255-4852-948a-69a7adfa3220">Сайжруулсан түлш</a>
+                            </li>
+
+                            <li>
+                                <a class="menu-item" href="~/Analysis/Index/ViewProject">Харьцуулалт</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                }
+                <li class=" nav-item">
+                    <a href="javascript: void(0);"> <i class="la la-pie-chart"></i><span>Статистик</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        @if (this.User.IsInRole("Administrator"))
+                        {
+                            <li>
+                                <a class="menu-item" href="~/Users/ListPeople">Иргэдийн жагсаалт</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Users/Index">Хэрэглэгчийн статик</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/KeyWord/Index">Түлхүүр үг</a>
+                            </li>
+                        }
+                        @if (!this.User.IsInRole("Demo"))
+                        {
+                            <li>
+                                <a class="menu-item" href="~/Home/Rating">Харьцуулсан үнэлгээ</a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class="navigation-header">
+                        <span data-i18n="nav.category.ecommerce">Бусад</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Ecommerce"></i>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="~/Home/AnalyzeChoose"><i class="la la-newspaper-o"></i><span class="menu-title" data-i18n="">Анализ</span></a>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="~/Home/SmartNews"><i class="la la-newspaper-o"></i><span class="menu-title" data-i18n="">Ухаалаг мэдээ</span></a>
+                    </li>
+
+                    <li class=" nav-item">
+                        <a href="~/FacebookReport/Index"><i class="la la-bar-chart-o"></i><span class="menu-title" data-i18n="">Судалгаа</span></a>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="~/Report/Index"><i class="la la-pie-chart"></i><span class="menu-title" data-i18n="">Тайлан</span></a>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-database"></i><span>Өгөгдөл</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/Posts">Пост</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/Comments">Коммент</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    @*<li class="navigation-header">
+                <span data-i18n="nav.category.ui">Тохиргоо</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="User Interface"></i>
+            </li>*@
+                    <li class=" nav-item">
+                        <a href="javascript: void(0);"> <i class="la la-cog"></i><span>Тохиргоо</span><span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a class="menu-item" href="~/Home/Group"><i class="la la-users"></i> Грүп</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/Group"><i class="la la-user"></i> Хүн</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/Group"><i class="la la-key"></i> Түлхүүр</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/Group"><i class="la la-comments"></i> Сэтгэгдэл</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" href="~/Home/Notification"><i class="la la-comments"></i> Мэдэгдэл</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+
+            @*<div class="update-msg text-center">
+                    <a href="javascript: void(0);" class="float-end close-btn text-muted" data-dismiss="update-msg" aria-label="Close" aria-hidden="true">
+                        <i class="mdi mdi-close"></i>
+                    </a>
+                    <h5 class="mt-3">Mannat Themes</h5>
+                    <p class="mb-3">We Design and Develop Clean and High Quality Web Applications</p>
+                    <a href="javascript: void(0);" class="btn btn-outline-warning btn-sm">Upgrade your plan</a>
+                </div>*@
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <!-- Top Bar Start -->
+        <div class="topbar">
+            <!-- Navbar -->
+            <nav class="navbar-custom">
+                <ul class="list-unstyled topbar-nav float-end mb-0">
+                    <!--<li class="dropdown hide-phone">
+                        <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-bs-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+                            <i data-feather="search" class="topbar-icon"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end dropdown-lg p-0">-->
+                            <!-- Top Search Bar -->
+                            <!--<div class="app-search-topbar">
+                                <form action="#" method="get">
+                                    <input type="search" name="search" class="from-control top-search mb-0" placeholder="Type text...">
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>-->
+
+                    <!--<li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-bs-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+                            <i data-feather="bell" class="align-self-center topbar-icon"></i>
+                            <span class="badge bg-danger rounded-pill noti-icon-badge">2</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+
+                            <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                                Notifications <span class="badge bg-primary rounded-pill">2</span>
+                            </h6>
+                            <div class="notification-menu" data-simplebar>-->
+                                <!-- item-->
+                                <!--<a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i data-feather="shopping-cart" class="align-self-center icon-xs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                        </div>--><!--end media-body-->
+                                    <!--</div>--><!--end media-->
+                                <!--</a>--><!--end-item-->
+                                <!-- item-->
+                                <!--<a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">10 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-4.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Meeting with designers</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div>--><!--end media-body-->
+                                    <!--</div>--><!--end media-->
+                                <!--</a>--><!--end-item-->
+                                <!-- item-->
+                                <!--<a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">40 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i data-feather="users" class="align-self-center icon-xs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">UX 3 Task complete.</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div>--><!--end media-body-->
+                                    <!--</div>--><!--end media-->
+                                <!--</a>--><!--end-item-->
+                                <!-- item-->
+                                <!--<a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">1 hr ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-5.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div>--><!--end media-body-->
+                                    <!--</div>--><!--end media-->
+                                <!--</a>--><!--end-item-->
+                                <!-- item-->
+                                <!--<a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 hrs ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i data-feather="check-circle" class="align-self-center icon-xs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Payment Successfull</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div>--><!--end media-body-->
+                                    <!--</div>--><!--end media-->
+                                <!--</a>--><!--end-item-->
+                            <!--</div>-->
+                            <!-- All-->
+                            <!--<a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                                View all <i class="fi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </li>-->
+                    @Html.Partial("_LoginPartial")
+                </ul><!--end topbar-nav-->
+
+                <ul class="list-unstyled topbar-nav mb-0">
+                    <li>
+                        <button class="nav-link button-menu-mobile">
+                            <i data-feather="menu" class="align-self-center topbar-icon"></i>
+                        </button>
+                    </li>
+@*                    <li class="creat-btn">
+                        <div class="nav-link">
+                            <a class=" btn btn-sm btn-soft-primary" href="#" role="button"><i class="fas fa-plus me-2"></i>Бүртгэл нэмэх</a>
+                        </div>
+                    </li>*@
+                </ul>
+
+            </nav>
+            <!-- end navbar-->
+        </div>
+        <!-- Top Bar End -->
+        <!-- Page Content-->
+        <div class="page-content">
+            <div class="container-fluid">
+                @RenderBody()
+
+            </div><!-- container -->
+
+            <footer class="footer text-center text-sm-start">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> UNIT LLC <span class="text-muted d-none d-sm-inline-block float-end">
+                    Board.mn <i class="mdi mdi-heart text-danger"></i> Verion 3.0.1
+                </span>
+            </footer><!--end footer-->
+        </div>
+        <!-- end page content -->
+    </div>
+
+
+    <script src="~/Content/assets/js/NewJs/jquery.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/moment.js"></script>
+    <script src="~/Content/assets/js/NewJs/metismenu.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/waves.js"></script>
+
+    <script src="~/Content/assets/js/NewJs/feather.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/simplebar.min.js"></script>
+
+    <script src="~/Content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Content/assets/plugins/apex-charts/apexcharts.min.js"></script>
+    <script src="~/Content/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/Content/assets/plugins/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+    <script src="~/Content/assets/pages/jquery.analytics_dashboard.init.js"></script>
+    <script src="~/Content/assets/js/NewJs/app.js"></script>
+    @*<script src="assets/pages/jquery.analytics_dashboard.init.js"></script>*@
+
+
+    @*<script>
+            function SubMenu(ID, divID) {
+                var listUIH = $("#" + divID);
+                listUIH.html("");
+                $.ajax({
+                    type: "GET",
+                    url: '/Home/ListSubMenu',
+                    data: { "ID": ID },
+                    success: function (result) {
+                        if (result.length > 0) {
+                            $.each(result, function (index, value) {
+                                var Data = '<li><a class="menu-item" href="/Home/SmartNewsCus/' + value.ID + '">' + value.Name + '.' + value.SureName + '</a></li>';
+                                listUIH.append(Data);
+                            });
+                        }
+                    }
+                });
+            }
+        </script>*@
+</body>
+</html>

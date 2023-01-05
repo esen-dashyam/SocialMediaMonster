@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SocialMonster.Models.WebSitePost>
+@foreach (var post in Model)
+{
+    <div class="card news-feed-card-bg">
+        <div class="card-content">
+            <div class="card-body">
+                <a href="@post.Url" target="_blank">
+                    <img src="@post.CoverUrl" style="width:100%">
+                </a>
+                <div>
+                    <a href="@post.Url" class="text-dark" target="_blank" style="float:left;"><b>@post.Title</b></a>
+                </div>
+                <div align="right" style="font-style:italic;"><a href="@post.Url" target="_blank">@post.Url</a></div>
+                <div align="right" style="font-style:italic; color:#ccc;">@post.DateTime</div>
+                <div style="text-align:justify;">
+                    <a href="@post.Url" class="text-dark" target="_blank">@post.Body</a>
+                </div>
+                <p class="text-white text-italic" style="position:absolute;border-radius:4px; top:15px; right:10px;padding:0px 10px 0px 10px; background-color:#f4a641;font-size:12px;">
+                    ВЭБСАЙТ
+                </p>
+            </div>
+        </div>
+    </div>
+}

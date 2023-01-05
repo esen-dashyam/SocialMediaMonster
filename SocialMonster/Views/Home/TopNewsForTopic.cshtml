@@ -1,0 +1,535 @@
+﻿@{
+    Layout = null;
+}
+
+    <head>
+        <link rel="shortcut icon" href="img/fav.png">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+        <!--
+    CSS
+    ============================================= -->
+        <title>BOARD.MN</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="~/Content/app-assets/images/logo/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="~/Content/app-assets/images/logo/favicon-32x32.png">
+        <link rel="stylesheet" href="~/Content/homepage/css/linearicons.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/bootstrap.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/magnific-popup.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/nice-select.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/animate.min.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/owl.carousel.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/jquery-ui.css">
+        <link rel="stylesheet" href="~/Content/homepage/css/main.css">
+    </head>
+<body>
+    <header>
+
+        <div class="header-top">
+            @*<div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 header-top-left no-padding">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 header-top-right no-padding">
+                        <ul>
+                            <li><a><span class="lnr lnr-phone-handset"></span><span id="phoneNumber">7766-0009</span></a></li>
+                            <li><a target="_blank" href="online-solution.mn"><span class="lnr lnr-envelope"></span><span id="email">online-solution.mn</span></a></li>
+                            <li><a class="btn" id="btnLogin" href="~/Account/Login" style="background-color:#1DA1F2; color:white; border-color:white">Нэвтрэх</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+        <div class="logo-wrap">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-4 col-md-4 col-sm-12 logo-left no-padding">
+                        <a href="http://www.board.mn" class="text-danger" >
+                            <img src="~/Content/homepage/img/headerlogo.png" style="width:250px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container main-menu" id="main-menu">
+            <div class="row align-items-center justify-content-between">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="/Home/TopNews">Нүүр хуудас</a></li>
+                        <li class="menu-active"><a href="#" id="btnAll">Бүгд</a></li>
+                        <li><a href="#" id="btnFb">Фэйсбүүк</a></li>
+                        <li><a href="#" id="btnTwitter">Твиттер</a></li>
+                        <li><a href="#" id="btnWeb">Вебсайт</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-main-container">
+        <!-- End top-post Area -->
+        <!-- Start latest-post Area -->
+        <section class="latest-post-area  pb-120">
+            <div id="bottomContainer" class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-12 post-list">
+                        <!-- Start latest-post Area -->
+                        <div class="latest-post-wrap" id="container">
+                        </div>
+                    </div>
+                </div>
+                <div id="paged">
+
+                </div>
+            </div>
+        </section>
+        <!-- End latest-post Area -->
+    </div>
+
+    <!-- start footer Area -->
+    @*<footer class="footer-area section-gap">
+        <div id="footerContainer" class="container">
+            <div class="footer-bottom row align-items-center">
+                <p class="footer-text m-0 col-lg-8 col-md-12">
+                    <img src="~/Content/homepage/img/footerlogo.png" style="max-width:30%; height:auto">
+                </p>
+                <div class="col-lg-4 col-md-12 footer-social">
+                    <a href="https://www.facebbok.com/unitmongolia"><i class="fa fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom row align-items-center" style="color:white">
+                <p class="footer-text m-0 col-lg-8 col-md-12">
+                    Юу Эн Ай Ти ХХК
+                </p><br>
+                <p class="footer-text m-0 col-lg-8 col-md-12">
+                    Улаанбаатар хот, Сүхбаатар дүүрэг,
+                </p><br>
+                <p class="footer-text m-0 col-lg-8 col-md-12">
+                    Тээвэрчдийн гудамж, Хасвуу Плаза,
+                </p><br>
+                <p class="footer-text m-0 col-lg-8 col-md-12">
+                    4 давхар.
+                </p>
+            </div>
+        </div>
+    </footer>*@
+    <!-- End footer Area -->
+    <script src="~/Content/homepage/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="~/Content/homepage/js/vendor/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script src="~/Content/homepage/js/easing.min.js"></script>
+    <script src="~/Content/homepage/js/hoverIntent.js"></script>
+    <script src="~/Content/homepage/js/superfish.min.js"></script>
+    <script src="~/Content/homepage/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/Content/homepage/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/homepage/js/mn-accordion.js"></script>
+    <script src="~/Content/homepage/js/jquery-ui.js"></script>
+    <script src="~/Content/homepage/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/homepage/js/owl.carousel.min.js"></script>
+    <script src="~/Content/homepage/js/mail-script.js"></script>
+    <script src="~/Content/homepage/js/main.js"></script>
+    <script>
+        var Type = "All";
+        var CurrentPage = 1;
+        $(document).ready(function () {
+            GetPageData(1, 20);
+            if ($(window).width() <= 980) {
+           $('#topContainer').removeClass('container');
+           $('.main-menu').removeClass('container');
+           $('#topContainer').addClass('container-fluid');
+           $('.main-menu').addClass('container-fluid');
+           $('#bottomContainer').removeClass('container');
+                $('#bottomContainer').addClass('container-fluid');
+           $('#footerContainer').removeClass('container');
+                $('#footerContainer').addClass('container-fluid');
+                $('#topOneTitle').css('font-size', '40px');
+                $('#topTwoTitle').css('font-size', '40px');
+                $('#topThreeTitle').css('font-size', '40px');
+                $('.topLatestTitle').css('font-size', '30px');
+                $('#email').css('font-size', '20px');
+                $('#phoneNumber').css('font-size', '20px');
+                $('#btnAll').css('font-size', '20px');
+                $('#btnFb').css('font-size', '20px');
+                $('#btnTwitter').css('font-size', '20px');
+                $('#btnWeb').css('font-size', '20px');
+
+                $('#topOneSource').css('font-size', '30px');
+                $('#topTwoSource').css('font-size', '30px');
+                $('#topThreeSource').css('font-size', '30px');
+                $('.topLatestSource').css('font-size', '30px');
+
+                $('#topOneDate').css('font-size', '30px');
+                $('#topTwoDate').css('font-size', '30px');
+                $('#topThreeDate').css('font-size', '30px');
+                $('.topLatestDate').css('font-size', '30px');
+
+                $('.excert').css('font-size', '23px');
+
+                $('.topLatestTopic').css('font-size', '40px');
+                $('.txt-rotate').css('font-size', '30px');
+                $('.page-number').css('font-size', '30px');
+
+                $('.topTopicContainer').css('height', '80px');
+                $('.topTopicContainer').css('padding-top', '30px');
+                $('#bannerTop').css('width', '100%');
+                $('#bannerBottom').css('width', '100%');
+                $('.twitterImg').css('height', '340px');
+
+                $('#bannerTop').css('height', 'auto');
+                $('#bannerBottom').css('height', 'auto');
+            }
+            else if ($(window).width() > 980) {
+           $('#topContainer').removeClass('container-fluid');
+           $('.main-menu').removeClass('container-fluid');
+           $('#topContainer').addClass('container');
+                $('.main-menu').addClass('container');
+           $('#bottomContainer').removeClass('container-fluid');
+           $('#bottomContainer').addClass('container');
+           $('#footerContainer').removeClass('container-fluid');
+                $('#footerContainer').addClass('container');
+                $('#topOneTitle').css('font-size', '20px');
+                $('#topTwoTitle').css('font-size', '20px');
+                $('#topThreeTitle').css('font-size', '20px');
+                $('.topLatestTitle').css('font-size', '20px');
+                $('.txt-rotate').css('font-size', '20px');
+                $('#email').css('font-size', '12px');
+                $('#phoneNumber').css('font-size', '12px');
+                $('#btnAll').css('font-size', '12px');
+                $('#btnFb').css('font-size', '12px');
+                $('#btnTwitter').css('font-size', '12px');
+                $('#btnWeb').css('font-size', '12px');
+                $('.twitterImg').css('height', 'auto');
+
+                $('#topOneSource').css('font-size', '12px');
+                $('#topTwoSource').css('font-size', '12px');
+                $('#topThreeSource').css('font-size', '12px');
+                $('.topLatestSource').css('font-size', '12px');
+
+                $('#topOneDate').css('font-size', '12px');
+                $('#topTwoDate').css('font-size', '12px');
+                $('#topThreeDate').css('font-size', '12px');
+                $('.topLatestDate').css('font-size', '12px');
+                $('.topLatestTopic').css('font-size', '12px');
+                $('.page-number').css('font-size', '12px');
+
+                $('.excert').css('font-size', '12px');
+
+                $('.topTopicContainer').css('height', '20px');
+                $('.topTopicContainer').css('padding-top', '0px');
+                $('#bannerTop').css('max-width', '100%');
+                $('#bannerBottom').css('max-width', '100%');
+
+                $('#bannerTop').css('width', '');
+                $('#bannerBottom').css('width', '');
+
+                $('#bannerTop').css('height', '');
+                $('#bannerBottom').css('height', '');
+       } 
+        });
+        $(window).resize(function () {
+            if ($(window).width() <= 980) {
+           $('#topContainer').removeClass('container');
+           $('.main-menu').removeClass('container');
+           $('#topContainer').addClass('container-fluid');
+           $('.main-menu').addClass('container-fluid');
+           $('#bottomContainer').removeClass('container');
+                $('#bottomContainer').addClass('container-fluid');
+           $('#footerContainer').removeClass('container');
+                $('#footerContainer').addClass('container-fluid');
+
+                $('.post-left').removeClass('col-lg-2');
+                $('.post-left').addClass('col-lg-4');
+                
+                $('#topOneTitle').css('font-size', '40px');
+                $('#topTwoTitle').css('font-size', '40px');
+                $('#topThreeTitle').css('font-size', '40px');
+                $('.topLatestTitle').css('font-size', '30px');
+                $('#email').css('font-size', '20px');
+                $('#phoneNumber').css('font-size', '20px');
+                $('.twitterImg').css('height', '340px');
+
+                $('#topOneSource').css('font-size', '30px');
+                $('#topTwoSource').css('font-size', '30px');
+                $('#topThreeSource').css('font-size', '30px');
+                $('.topLatestSource').css('font-size', '30px');
+
+                $('#btnAll').css('font-size', '20px');
+                $('#btnFb').css('font-size', '20px');
+                $('#btnTwitter').css('font-size', '20px');
+                $('#btnWeb').css('font-size', '20px');
+
+                $('#topOneDate').css('font-size', '30px');
+                $('#topTwoDate').css('font-size', '30px');
+                $('#topThreeDate').css('font-size', '30px');
+                $('.topLatestDate').css('font-size', '30px');
+                $('.page-number').css('font-size', '30px');
+
+                $('.excert').css('font-size', '23px');
+
+                $('.topLatestTopic').css('font-size', '40px');
+                $('.txt-rotate').css('font-size', '30px');
+
+                $('.topTopicContainer').css('height', '80px');
+                $('.topTopicContainer').css('padding-top', '30px');
+                $('#bannerTop').css('width', '100%');
+                $('#bannerBottom').css('width', '100%');
+
+                $('#bannerTop').css('height', 'auto');
+                $('#bannerBottom').css('height', 'auto');
+            }
+            else if ($(window).width() > 980) {
+               $('#topContainer').removeClass('container-fluid');
+               $('.main-menu').removeClass('container-fluid');
+               $('#topContainer').addClass('container');
+               $('.main-menu').addClass('container');
+               $('#bottomContainer').removeClass('container-fluid');
+               $('#bottomContainer').addClass('container');
+               $('#footerContainer').removeClass('container-fluid');
+                $('#footerContainer').addClass('container');
+                $('.twitterImg').css('height', 'auto');
+                $('.post-left').removeClass('col-lg-4');
+                $('.post-left').addClass('col-lg-2');
+                $('#topOneTitle').css('font-size', '20px');
+                $('#topTwoTitle').css('font-size', '20px');
+                $('#topThreeTitle').css('font-size', '20px');
+                $('.topLatestTitle').css('font-size', '20px');
+                $('.txt-rotate').css('font-size', '20px');
+                $('#email').css('font-size', '12px');
+                $('#phoneNumber').css('font-size', '12px');
+
+                $('#btnAll').css('font-size', '12px');
+                $('#btnFb').css('font-size', '12px');
+                $('#btnTwitter').css('font-size', '12px');
+                $('#btnWeb').css('font-size', '12px');
+
+                $('#topOneSource').css('font-size', '12px');
+                $('#topTwoSource').css('font-size', '12px');
+                $('#topThreeSource').css('font-size', '12px');
+                $('.topLatestSource').css('font-size', '12px');
+
+                $('#topOneDate').css('font-size', '12px');
+                $('#topTwoDate').css('font-size', '12px');
+                $('#topThreeDate').css('font-size', '12px');
+                $('.topLatestDate').css('font-size', '12px');
+                $('.topLatestTopic').css('font-size', '12px');
+                $('.page-number').css('font-size', '12px');
+
+                $('.excert').css('font-size', '12px');
+
+                $('.topTopicContainer').css('height', '20px');
+                $('.topTopicContainer').css('padding-top', '0px');
+                $('#bannerTop').css('max-width', '100%');
+                $('#bannerBottom').css('max-width', '100%');
+
+                $('#bannerTop').css('width', '');
+                $('#bannerBottom').css('width', '');
+
+                $('#bannerTop').css('height', '');
+                $('#bannerBottom').css('height', '');
+       } 
+        });
+       
+        function PaggingTemplate(totalPage, currentPage) {
+        var template = "";
+        var TotalPages = totalPage;
+        CurrentPage = currentPage;
+        var PageNumberArray = Array();
+
+        var countIncr = 1;
+        for (var i = 1; i <= totalPage; i++) {
+            PageNumberArray[countIncr] = i;
+            countIncr++;
+        };
+        if (totalPage != currentPage) {
+            var ForwardOne = currentPage + 1;
+        }
+        var BackwardOne = 1;
+        if (currentPage > 1) {
+            BackwardOne = currentPage - 1;
+        }
+
+        template = "<p>" + CurrentPage + " of " + TotalPages + " pages</p>"
+            template = template + '<ul class="pager">';
+            if (currentPage > 1) {
+                template+='<li><a href="#" onclick="GetPageData(' + BackwardOne + ')"><i class="glyphicon glyphicon-backward"></i><i class="fa fa-fast-backward"></i>&nbsp; </a>';
+            }
+        var numberingLoop = "";
+        for (var i = 1; i < PageNumberArray.length; i++) {
+            numberingLoop = numberingLoop + '<a class="page-number active" onclick="GetPageData(' + PageNumberArray[i] + ',20)" href="#">' + PageNumberArray[i] + ' &nbsp;&nbsp;</a>'
+        }
+            template = template + numberingLoop;
+            if (currentPage < totalPage) {
+                template+='<a href="#" onclick="GetPageData(' + ForwardOne + ',20)" > &nbsp;<i class="fa fa-fast-forward"></i></a></li>';
+            }
+        $("#paged").append(template);
+        $('#selectedId').change(function () {
+            GetPageData(1, $(this).val());
+        });
+    }
+        function GetPageData(pageNum, pageSize) {
+        $("#container").empty();
+        $("#paged").empty();
+            $.getJSON("/Home/GetPaggedData", { id: "@ViewBag.ID", filter: Type, pageNumber: pageNum, pageSize: pageSize }, function (response) {
+            var rowData = "<h4 class='cat-title'>Сүүлийн үеийн мэдээллүүд</h4>";
+            for (var i = 0; i < response.news.length; i++) {
+                if (response.news[i].Type == "Facebook") {
+                    rowData += "<div class='single-latest-post row align-items-center'>"
+                        + "<div class='col-lg-4 post-left'>"
+                        + "<div class='feature-img relative'>"
+                        + "<div class='overlay overlay-bg'></div>";
+                    if (response.news[i].Image != null && response.news[i].Image != "") {
+                        rowData += "<img class='img-fluid' src='" + response.news[i].Image + "'>";
+                    }
+                    else
+                    {
+                        rowData += "<img class='img - fluid' src='/Content/homepage/img/fb.png'>";
+                    }
+                    rowData += "</div>"
+                        + "<ul class='tagsLink'>"
+                        + "<li><i class='fa fa-facebook-official fa-lg'></i></li>"
+                        + "</ul></div>"
+                        + "<div class='col-lg-5 post-right'>"
+                        + "<a href='" + response.news[i].Link + "'>";
+                    if (response.news[i].Title != null) {
+                        rowData += "<h4 class='topLatestTitle'> " + response.news[i].Title + "</h4>";
+                    }
+                    rowData += "</a>"
+                        + "<ul class='meta'>"
+                        + "<li><a href='#' class='topLatestSource'><span class='lnr lnr-user' ></span>" + response.news[i].Source + "</a></li>"
+                        + "<li><a href='#' class='topLatestDate'><span class='lnr lnr-calendar-full'></span>" + response.news[i].Date + "</a></li>"
+                        + "<li><a href='#' class='topLatestDate'><span class='lnr lnr-bubble'></span>" + response.news[i].ViralCount + "</a></li>"
+                        + "</ul><p class='excert'>";
+                    if (response.news[i].Text != null) {
+                        if (response.news[i].Text.length > 200) {
+                            rowData += response.news[i].Text.substring(0, 200);
+                        }
+                        else {
+                            rowData += response.news[i].Text;
+                        }
+                    }
+                    rowData += "</p></div></div>";
+                }
+                else if (response.news[i].Type == "Twitter") {
+                    rowData += "<div class='single-latest-post row align-items-center'>"
+                        + "<div class='col-lg-4 post-left vh-60'>"
+                        + "<div class='feature-img relative'>"
+                        + "<div class='overlay overlay-bg'></div>";
+                    if (response.news[i].Image != null && response.news[i].Image != "") {
+                        rowData += "<img class='img-fluid' src='" + response.news[i].Image + "'>";
+                    }
+                    else
+                    {
+                        rowData += "<img   class='img-fluid twitterImg' style='height:auto' src='/Content/homepage/img/twitterHor.png'>";
+                    }
+                    rowData += "</div>"
+                        + "<ul class='tagsLink'>";
+                    if (response.news[i].Profile != null) {
+                        rowData += "<img class='rounded-circle z-depth-2' style='width:20px; height:20px' src='" + response.news[i].Profile + "'>";
+                    }
+                    if (response.news[i].Source != null) {
+                        rowData += "<a style='color:white' class='topLatestTopic' target='_blank' href='http://twitter.com/" + response.news[i].SourceLink + "'> " + response.news[i].Source + "</a>";
+                    }
+
+                        rowData+= "</ul></div>"
+                            + "<div class='col-lg-5 post-right'>"
+                            + "<a target='_blank' href='http://twitter.com/" + response.news[i].SourceLink + "/status/" + response.news[i].Link + "'>";
+                    if (response.news[i].Title != null) {
+                        if (response.news[i].Title.length > 80) {
+                            rowData += "<h4 class='topLatestTitle'> " + response.news[i].Title.substring(0, 80) + "..." + "</h4>";
+                        }
+                        else {
+                            rowData += "<h4 class='topLatestTitle'> " + response.news[i].Title + "</h4>";
+                        }
+                    }
+                    rowData += "</a>"
+                        + "<ul class='meta'>";
+                    if (response.news[i].Source != null && response.news[i].Source != "") {
+                        rowData += "<li><a href='#'><span class='lnr lnr-user topLatestSource'></span>" + response.news[i].Source + "</a></li>";
+                    }
+                    rowData += "<li><a href='#'><span class='lnr lnr-calendar-full topLatestDate'></span>" + response.news[i].Date + "</a></li>"
+                        + "</ul><p class='excert'>";
+                    if (response.news[i].Text != null) {
+                        if (response.news[i].Text.length > 200) {
+                            rowData += response.news[i].Text.substring(0, 200);
+                        }
+                        else {
+                            rowData += response.news[i].Text;
+                        }
+                    }
+                    rowData += "</p></div></div>";
+                }
+                else{
+                    rowData += "<div class='single-latest-post row align-items-center'>"
+                        + "<div class='col-lg-4 post-left'>"
+                        + "<div class='feature-img relative'>"
+                        + "<div class='overlay overlay-bg'></div>";
+                    if (response.news[i].Image != null && response.news[i].Image != "") {
+                        rowData += "<img class='img-fluid' src='" + response.news[i].Image + "'>";
+                    }
+                    else {
+                        rowData += "<img class='img-fluid' src='/Content/homepage/img/Globe.png'>";
+                    }
+                    rowData += "</div>"
+                        + "<ul class='tagsLink'>"
+                        + "<li class='topTopicContainer'><a target='_blank' class='topLatestTopic' href='http://" + response.news[i].Source +"'><i class='fa fa-globe fa-lg'></i> "+ response.news[i].Source +"</a></li>"
+                        + "</ul></div>"
+                        + "<div class='col-lg-5 post-right'>"
+                        + "<a target='_blank' href='" + response.news[i].SourceLink + "'>";
+                    if (response.news[i].Title != null) {
+                        rowData += "<h4 class='topLatestTitle'> " + response.news[i].Title + "</h4>";
+                    }
+                    rowData += "</a>"
+                        + "<ul class='meta'>"
+                        + "<li><a href='#'><span class='lnr lnr-user topLatestSource'></span>" + response.news[i].Source + "</a></li>"
+                        + "<li><a href='#'><span class='lnr lnr-calendar-full topLatestDate'></span>" + response.news[i].Date + "</a></li>"
+                        + "</ul><p class='excert'>";
+                    if (response.news[i].Text != null) {
+                        if (response.news[i].Text.length > 200) {
+                            rowData += response.news[i].Text.substring(0, 200);
+                        }
+                        else {
+                            rowData += response.news[i].Text;
+                        }
+                    }
+                    rowData += "</p></div></div>";
+                }
+            }
+            $("#container").append(rowData);
+            PaggingTemplate(response.TotalPages, response.CurrentPage);
+        });
+        }
+        $('#btnAll').click(function () {
+            $('#btnAll').parent('li').addClass('menu-active');
+            $('#btnWeb').parent('li').removeClass('menu-active');
+            $('#btnFb').parent('li').removeClass('menu-active');
+            $('#btnTwitter').parent('li').removeClass('menu-active');
+            Type = "All";
+            GetPageData(CurrentPage, 20);
+        });
+        $('#btnTwitter').click(function () {
+            $('#btnAll').parent('li').removeClass('menu-active');
+            $('#btnWeb').parent('li').removeClass('menu-active');
+            $('#btnFb').parent('li').removeClass('menu-active');
+            $('#btnTwitter').parent('li').addClass('menu-active');
+            Type = "Twitter";
+            GetPageData(CurrentPage, 20);
+        });
+        $('#btnFb').click(function () {
+            $('#btnAll').parent('li').removeClass('menu-active');
+            $('#btnWeb').parent('li').removeClass('menu-active');
+            $('#btnFb').parent('li').addClass('menu-active');
+            $('#btnTwitter').parent('li').removeClass('menu-active');
+            Type = "Facebook";
+            GetPageData(CurrentPage, 20);
+        });
+        $('#btnWeb').click(function () {
+            $('#btnAll').parent('li').removeClass('menu-active');
+            $('#btnWeb').parent('li').addClass('menu-active');
+            $('#btnFb').parent('li').removeClass('menu-active');
+            $('#btnTwitter').parent('li').removeClass('menu-active');
+            Type = "Website";
+            GetPageData(CurrentPage, 20);
+        });
+       
+    </script>
+</body>

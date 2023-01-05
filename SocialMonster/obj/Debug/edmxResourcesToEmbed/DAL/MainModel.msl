@@ -1,0 +1,1847 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MonitoringModelStoreContainer" CdmEntityContainer="MonitoringEntities">
+    <EntitySetMapping Name="AspNet_ViewersInfo">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNet_ViewersInfo">
+        <MappingFragment StoreEntitySet="AspNet_ViewersInfo">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="ISP" ColumnName="ISP" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ViewTime" ColumnName="ViewTime" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserActivityLogs">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUserActivityLog">
+        <MappingFragment StoreEntitySet="AspNetUserActivityLog">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Activity" ColumnName="Activity" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="IsManual" ColumnName="IsManual" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserToSystemPersons">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUserToSystemPerson">
+        <MappingFragment StoreEntitySet="AspNetUserToSystemPerson">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserToSystemUsers">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUserToSystemUser">
+        <MappingFragment StoreEntitySet="AspNetUserToSystemUser">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="SystemPersonID" ColumnName="SystemPersonID" />
+          <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserToSystemViews">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUserToSystemView">
+        <MappingFragment StoreEntitySet="AspNetUserToSystemView">
+          <ScalarProperty Name="ViewID" ColumnName="ViewID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Accounts_Confirmed">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Accounts_Confirmed">
+        <MappingFragment StoreEntitySet="Facebook_Accounts_Confirmed">
+          <ScalarProperty Name="IsReal" ColumnName="IsReal" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Accounts_Crawler">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Accounts_Crawler">
+        <MappingFragment StoreEntitySet="Facebook_Accounts_Crawler">
+          <ScalarProperty Name="Lname_UserName" ColumnName="Lname_UserName" />
+          <ScalarProperty Name="Fname_UserName" ColumnName="Fname_UserName" />
+          <ScalarProperty Name="SumName" ColumnName="SumName" />
+          <ScalarProperty Name="AimagName" ColumnName="AimagName" />
+          <ScalarProperty Name="AdditionalData" ColumnName="AdditionalData" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ProfileURL" ColumnName="ProfileURL" />
+          <ScalarProperty Name="GroupURL" ColumnName="GroupURL" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_CommentRemover">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_CommentRemover">
+        <MappingFragment StoreEntitySet="Facebook_CommentRemover">
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Groups">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Groups">
+        <MappingFragment StoreEntitySet="Facebook_Groups">
+          <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+          <ScalarProperty Name="SumID" ColumnName="SumID" />
+          <ScalarProperty Name="AimagID" ColumnName="AimagID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <ScalarProperty Name="IsAds" ColumnName="IsAds" />
+          <ScalarProperty Name="IsRemove" ColumnName="IsRemove" />
+          <ScalarProperty Name="IsElectional" ColumnName="IsElectional" />
+          <ScalarProperty Name="IsRealTimeMonitor" ColumnName="IsRealTimeMonitor" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+          <ScalarProperty Name="ProfileName" ColumnName="ProfileName" />
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+          <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Messenger_Conversations">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Messenger_Conversations">
+        <MappingFragment StoreEntitySet="Facebook_Messenger_Conversations">
+          <ScalarProperty Name="Participant3_Email" ColumnName="Participant3_Email" />
+          <ScalarProperty Name="Participant3_Name" ColumnName="Participant3_Name" />
+          <ScalarProperty Name="Participant3_ID" ColumnName="Participant3_ID" />
+          <ScalarProperty Name="Participant2_Email" ColumnName="Participant2_Email" />
+          <ScalarProperty Name="Participant2_Name" ColumnName="Participant2_Name" />
+          <ScalarProperty Name="Participant2_ID" ColumnName="Participant2_ID" />
+          <ScalarProperty Name="Participant1_Email" ColumnName="Participant1_Email" />
+          <ScalarProperty Name="Participant1_Name" ColumnName="Participant1_Name" />
+          <ScalarProperty Name="Participant1_ID" ColumnName="Participant1_ID" />
+          <ScalarProperty Name="Updated_time" ColumnName="Updated_time" />
+          <ScalarProperty Name="Unread_count" ColumnName="Unread_count" />
+          <ScalarProperty Name="Snippet" ColumnName="Snippet" />
+          <ScalarProperty Name="Sender3_Email" ColumnName="Sender3_Email" />
+          <ScalarProperty Name="Sender3_Name" ColumnName="Sender3_Name" />
+          <ScalarProperty Name="Sender3_ID" ColumnName="Sender3_ID" />
+          <ScalarProperty Name="Sender2_Email" ColumnName="Sender2_Email" />
+          <ScalarProperty Name="Sender2_Name" ColumnName="Sender2_Name" />
+          <ScalarProperty Name="Sender2_ID" ColumnName="Sender2_ID" />
+          <ScalarProperty Name="Sender1_Email" ColumnName="Sender1_Email" />
+          <ScalarProperty Name="Sender1_Name" ColumnName="Sender1_Name" />
+          <ScalarProperty Name="Sender1_ID" ColumnName="Sender1_ID" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="MessageCount" ColumnName="MessageCount" />
+          <ScalarProperty Name="Is_subscribed" ColumnName="Is_subscribed" />
+          <ScalarProperty Name="Can_reply" ColumnName="Can_reply" />
+          <ScalarProperty Name="ConversationID" ColumnName="ConversationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Messenger_Messages">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Messenger_Messages">
+        <MappingFragment StoreEntitySet="Facebook_Messenger_Messages">
+          <ScalarProperty Name="Created_time" ColumnName="Created_time" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ShareLink" ColumnName="ShareLink" />
+          <ScalarProperty Name="ShareID" ColumnName="ShareID" />
+          <ScalarProperty Name="Tag4" ColumnName="Tag4" />
+          <ScalarProperty Name="Tag3" ColumnName="Tag3" />
+          <ScalarProperty Name="Tag2" ColumnName="Tag2" />
+          <ScalarProperty Name="Tag1" ColumnName="Tag1" />
+          <ScalarProperty Name="ToEmail" ColumnName="ToEmail" />
+          <ScalarProperty Name="ToName" ColumnName="ToName" />
+          <ScalarProperty Name="ToID" ColumnName="ToID" />
+          <ScalarProperty Name="FromEmail" ColumnName="FromEmail" />
+          <ScalarProperty Name="FromName" ColumnName="FromName" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="ConversationID" ColumnName="ConversationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Pages">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Pages">
+        <MappingFragment StoreEntitySet="Facebook_Pages">
+          <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+          <ScalarProperty Name="SumID" ColumnName="SumID" />
+          <ScalarProperty Name="AimagID" ColumnName="AimagID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <ScalarProperty Name="IsAds" ColumnName="IsAds" />
+          <ScalarProperty Name="IsRemove" ColumnName="IsRemove" />
+          <ScalarProperty Name="IsElectional" ColumnName="IsElectional" />
+          <ScalarProperty Name="IsRealTimeMonitor" ColumnName="IsRealTimeMonitor" />
+          <ScalarProperty Name="IsPrivateAccout" ColumnName="IsPrivateAccout" />
+          <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Attachment">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Attachment">
+        <MappingFragment StoreEntitySet="Facebook_Post_Attachment">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TargetURL" ColumnName="TargetURL" />
+          <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+          <ScalarProperty Name="MediaURL" ColumnName="MediaURL" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Comment_Reply">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Comment_Reply">
+        <MappingFragment StoreEntitySet="Facebook_Post_Comment_Reply">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="WriteID" ColumnName="WriteID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Comment_Sentiment">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Comment_Sentiment">
+        <MappingFragment StoreEntitySet="Facebook_Post_Comment_Sentiment">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Comment_Write_Keys">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Comment_Write_Keys">
+        <MappingFragment StoreEntitySet="Facebook_Post_Comment_Write_Keys">
+          <ScalarProperty Name="Scope" ColumnName="Scope" />
+          <ScalarProperty Name="WriteID" ColumnName="WriteID" />
+          <ScalarProperty Name="Condition" ColumnName="Condition" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Comment_Writes">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Comment_Writes">
+        <MappingFragment StoreEntitySet="Facebook_Post_Comment_Writes">
+          <ScalarProperty Name="Scope" ColumnName="Scope" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="PageOrGroupID" ColumnName="PageOrGroupID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Comments">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Comments">
+        <MappingFragment StoreEntitySet="Facebook_Post_Comments">
+          <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Sentiment_Confirmed" ColumnName="Sentiment_Confirmed" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="NegativeCount" ColumnName="NegativeCount" />
+          <ScalarProperty Name="PositiveCount" ColumnName="PositiveCount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="FromName" ColumnName="FromName" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Hottopic">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Hottopic">
+        <MappingFragment StoreEntitySet="Facebook_Post_Hottopic">
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="HottopicID" ColumnName="HottopicID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Person">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Person">
+        <MappingFragment StoreEntitySet="Facebook_Post_Person">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Reactions">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Reactions">
+        <MappingFragment StoreEntitySet="Facebook_Post_Reactions">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="FromName" ColumnName="FromName" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_Reply">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Reply">
+        <MappingFragment StoreEntitySet="Facebook_Post_Reply">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="WriteID" ColumnName="WriteID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Post_SubAttachment">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_SubAttachment">
+        <MappingFragment StoreEntitySet="Facebook_Post_SubAttachment">
+          <ScalarProperty Name="MediaURL" ColumnName="MediaURL" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TargetURL" ColumnName="TargetURL" />
+          <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+          <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Posts">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Posts">
+        <MappingFragment StoreEntitySet="Facebook_Posts">
+          <ScalarProperty Name="SearchKey" ColumnName="SearchKey" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="FullPicture" ColumnName="FullPicture" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="PermalinkUrl" ColumnName="PermalinkUrl" />
+          <ScalarProperty Name="SharedCount" ColumnName="SharedCount" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Story" ColumnName="Story" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="FromName" ColumnName="FromName" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News_Newspaper_New">
+      <EntityTypeMapping TypeName="MonitoringModel.News_Newspaper_New">
+        <MappingFragment StoreEntitySet="News_Newspaper_New">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="PaperFullPicture" ColumnName="PaperFullPicture" />
+          <ScalarProperty Name="FullText" ColumnName="FullText" />
+          <ScalarProperty Name="NewsPaperUrl" ColumnName="NewsPaperUrl" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News_Newspaper_Person">
+      <EntityTypeMapping TypeName="MonitoringModel.News_Newspaper_Person">
+        <MappingFragment StoreEntitySet="News_Newspaper_Person">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Person_User">
+      <EntityTypeMapping TypeName="MonitoringModel.Person_User">
+        <MappingFragment StoreEntitySet="Person_User">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="personID" ColumnName="personID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Aimag">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Aimag">
+        <MappingFragment StoreEntitySet="System_Aimag">
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullID" ColumnName="FullID" />
+          <ScalarProperty Name="ID_float" ColumnName="ID_float" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Aimag_Code">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Aimag_Code">
+        <MappingFragment StoreEntitySet="System_Aimag_Code">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_BagKhoroo">
+      <EntityTypeMapping TypeName="MonitoringModel.System_BagKhoroo">
+        <MappingFragment StoreEntitySet="System_BagKhoroo">
+          <ScalarProperty Name="SumDuuregID" ColumnName="SumDuuregID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullID2" ColumnName="FullID2" />
+          <ScalarProperty Name="FullID" ColumnName="FullID" />
+          <ScalarProperty Name="IDNUM" ColumnName="IDNUM" />
+          <ScalarProperty Name="ID_FLOAT" ColumnName="ID_FLOAT" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Cars">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Cars">
+        <MappingFragment StoreEntitySet="System_Cars">
+          <ScalarProperty Name="PhoneNumber8" ColumnName="PhoneNumber8" />
+          <ScalarProperty Name="PhoneNumber7" ColumnName="PhoneNumber7" />
+          <ScalarProperty Name="PhoneNumber6" ColumnName="PhoneNumber6" />
+          <ScalarProperty Name="PhoneNumber5" ColumnName="PhoneNumber5" />
+          <ScalarProperty Name="PhoneNumber4" ColumnName="PhoneNumber4" />
+          <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />
+          <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+          <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Manifacture" ColumnName="Manifacture" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="FlatNumber" ColumnName="FlatNumber" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Categories">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Categories">
+        <MappingFragment StoreEntitySet="System_Categories">
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Facebook_Reports">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Facebook_Reports">
+        <MappingFragment StoreEntitySet="System_Facebook_Reports">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Facebook_Reports_Posts">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Facebook_Reports_Posts">
+        <MappingFragment StoreEntitySet="System_Facebook_Reports_Posts">
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Groups">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Groups">
+        <MappingFragment StoreEntitySet="System_Groups">
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_GroupToPerson">
+      <EntityTypeMapping TypeName="MonitoringModel.System_GroupToPerson">
+        <MappingFragment StoreEntitySet="System_GroupToPerson">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Hottopics">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Hottopics">
+        <MappingFragment StoreEntitySet="System_Hottopics">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_JobCategories">
+      <EntityTypeMapping TypeName="MonitoringModel.System_JobCategories">
+        <MappingFragment StoreEntitySet="System_JobCategories">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_Float" ColumnName="ID_Float" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Jobs">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Jobs">
+        <MappingFragment StoreEntitySet="System_Jobs">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_FLOAT" ColumnName="ID_FLOAT" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Key_Exclude">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Key_Exclude">
+        <MappingFragment StoreEntitySet="System_Key_Exclude">
+          <ScalarProperty Name="Word" ColumnName="Word" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Keys">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Keys">
+        <MappingFragment StoreEntitySet="System_Keys">
+          <ScalarProperty Name="HoptopicID" ColumnName="HoptopicID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="KeyTypeID" ColumnName="KeyTypeID" />
+          <ScalarProperty Name="Lattin4" ColumnName="Lattin4" />
+          <ScalarProperty Name="Lattin3" ColumnName="Lattin3" />
+          <ScalarProperty Name="Lattin2" ColumnName="Lattin2" />
+          <ScalarProperty Name="Lattin1" ColumnName="Lattin1" />
+          <ScalarProperty Name="Key4" ColumnName="Key4" />
+          <ScalarProperty Name="Key3" ColumnName="Key3" />
+          <ScalarProperty Name="Key2" ColumnName="Key2" />
+          <ScalarProperty Name="Key1" ColumnName="Key1" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_KeyTypes">
+      <EntityTypeMapping TypeName="MonitoringModel.System_KeyTypes">
+        <MappingFragment StoreEntitySet="System_KeyTypes">
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Person">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Person">
+        <MappingFragment StoreEntitySet="System_Person">
+          <ScalarProperty Name="Tittlename" ColumnName="Tittlename" />
+          <ScalarProperty Name="childMenu" ColumnName="childMenu" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="TwitterAccount" ColumnName="TwitterAccount" />
+          <ScalarProperty Name="FacebookAccount" ColumnName="FacebookAccount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="WebSiteID3" ColumnName="WebSiteID3" />
+          <ScalarProperty Name="WebSiteID2" ColumnName="WebSiteID2" />
+          <ScalarProperty Name="WebSiteID1" ColumnName="WebSiteID1" />
+          <ScalarProperty Name="TwitterUserID3" ColumnName="TwitterUserID3" />
+          <ScalarProperty Name="TwitterUserID2" ColumnName="TwitterUserID2" />
+          <ScalarProperty Name="TwitterUserID1" ColumnName="TwitterUserID1" />
+          <ScalarProperty Name="FacebookGroupID3" ColumnName="FacebookGroupID3" />
+          <ScalarProperty Name="FacebookGroupID2" ColumnName="FacebookGroupID2" />
+          <ScalarProperty Name="FacebookGroupID1" ColumnName="FacebookGroupID1" />
+          <ScalarProperty Name="FacebookPageID3" ColumnName="FacebookPageID3" />
+          <ScalarProperty Name="FacebookPageID2" ColumnName="FacebookPageID2" />
+          <ScalarProperty Name="FacebookPageID1" ColumnName="FacebookPageID1" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Surename" ColumnName="Surename" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Regions">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Regions">
+        <MappingFragment StoreEntitySet="System_Regions">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_Float" ColumnName="ID_Float" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Resource_Electricity_Types">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Resource_Electricity_Types">
+        <MappingFragment StoreEntitySet="System_Resource_Electricity_Types">
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="SubType" ColumnName="SubType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Sum_Code">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Sum_Code">
+        <MappingFragment StoreEntitySet="System_Sum_Code">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_SumDuureg">
+      <EntityTypeMapping TypeName="MonitoringModel.System_SumDuureg">
+        <MappingFragment StoreEntitySet="System_SumDuureg">
+          <ScalarProperty Name="AimagID" ColumnName="AimagID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullID2" ColumnName="FullID2" />
+          <ScalarProperty Name="FullID" ColumnName="FullID" />
+          <ScalarProperty Name="IDNUM" ColumnName="IDNUM" />
+          <ScalarProperty Name="ID_FLOAT" ColumnName="ID_FLOAT" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_View">
+      <EntityTypeMapping TypeName="MonitoringModel.System_View">
+        <MappingFragment StoreEntitySet="System_View">
+          <ScalarProperty Name="GroupID3" ColumnName="GroupID3" />
+          <ScalarProperty Name="GroupID2" ColumnName="GroupID2" />
+          <ScalarProperty Name="GroupID1" ColumnName="GroupID1" />
+          <ScalarProperty Name="PersonID3" ColumnName="PersonID3" />
+          <ScalarProperty Name="PersonID2" ColumnName="PersonID2" />
+          <ScalarProperty Name="PersonID1" ColumnName="PersonID1" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Voters">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Voters">
+        <MappingFragment StoreEntitySet="System_Voters">
+          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="BirthdayFull" ColumnName="BirthdayFull" />
+          <ScalarProperty Name="BirthdayHalf" ColumnName="BirthdayHalf" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Khoroo" ColumnName="Khoroo" />
+          <ScalarProperty Name="SumGaral" ColumnName="SumGaral" />
+          <ScalarProperty Name="AimagGaral" ColumnName="AimagGaral" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="PhoneNumber10" ColumnName="PhoneNumber10" />
+          <ScalarProperty Name="PhoneNumber9" ColumnName="PhoneNumber9" />
+          <ScalarProperty Name="PhoneNumber8" ColumnName="PhoneNumber8" />
+          <ScalarProperty Name="PhoneNumber7" ColumnName="PhoneNumber7" />
+          <ScalarProperty Name="PhoneNumber6" ColumnName="PhoneNumber6" />
+          <ScalarProperty Name="PhoneNumber5" ColumnName="PhoneNumber5" />
+          <ScalarProperty Name="PhoneNumber4" ColumnName="PhoneNumber4" />
+          <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />
+          <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+          <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+          <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+          <ScalarProperty Name="PartyTendence" ColumnName="PartyTendence" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Sum" ColumnName="Sum" />
+          <ScalarProperty Name="Aimag" ColumnName="Aimag" />
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Voters_Party">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Voters_Party">
+        <MappingFragment StoreEntitySet="System_Voters_Party">
+          <ScalarProperty Name="AgeGroup" ColumnName="AgeGroup" />
+          <ScalarProperty Name="BirthSum" ColumnName="BirthSum" />
+          <ScalarProperty Name="BirthAimag" ColumnName="BirthAimag" />
+          <ScalarProperty Name="FacebookID2" ColumnName="FacebookID2" />
+          <ScalarProperty Name="FacebookID1" ColumnName="FacebookID1" />
+          <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+          <ScalarProperty Name="JobCategoryName" ColumnName="JobCategoryName" />
+          <ScalarProperty Name="JobCategoryID_Float" ColumnName="JobCategoryID_Float" />
+          <ScalarProperty Name="JobCategoryID" ColumnName="JobCategoryID" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="JobID_Float" ColumnName="JobID_Float" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="FacebookName" ColumnName="FacebookName" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="BagKhorooName" ColumnName="BagKhorooName" />
+          <ScalarProperty Name="BagKhorooID" ColumnName="BagKhorooID" />
+          <ScalarProperty Name="BagKhorooID_Float" ColumnName="BagKhorooID_Float" />
+          <ScalarProperty Name="SumDuuregName" ColumnName="SumDuuregName" />
+          <ScalarProperty Name="SumDuuregID" ColumnName="SumDuuregID" />
+          <ScalarProperty Name="SumDuuregID_Float" ColumnName="SumDuuregID_Float" />
+          <ScalarProperty Name="AimagName" ColumnName="AimagName" />
+          <ScalarProperty Name="AimagID" ColumnName="AimagID" />
+          <ScalarProperty Name="AimagID_Float" ColumnName="AimagID_Float" />
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="RegionID_Float" ColumnName="RegionID_Float" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Voters_PhoneNumber_old">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Voters_PhoneNumber_old">
+        <MappingFragment StoreEntitySet="System_Voters_PhoneNumber_old">
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Testing_CommentID">
+      <EntityTypeMapping TypeName="MonitoringModel.Testing_CommentID">
+        <MappingFragment StoreEntitySet="Testing_CommentID">
+          <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Testing_Profile">
+      <EntityTypeMapping TypeName="MonitoringModel.Testing_Profile">
+        <MappingFragment StoreEntitySet="Testing_Profile">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Testing_Report_Comments">
+      <EntityTypeMapping TypeName="MonitoringModel.Testing_Report_Comments">
+        <MappingFragment StoreEntitySet="Testing_Report_Comments">
+          <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopNews">
+      <EntityTypeMapping TypeName="MonitoringModel.TopNew">
+        <MappingFragment StoreEntitySet="TopNews">
+          <ScalarProperty Name="Profile" ColumnName="Profile" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SourceLink" ColumnName="SourceLink" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ViralCount" ColumnName="ViralCount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopNewsForTopics">
+      <EntityTypeMapping TypeName="MonitoringModel.TopNewsForTopic">
+        <MappingFragment StoreEntitySet="TopNewsForTopic">
+          <ScalarProperty Name="Profile" ColumnName="Profile" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SourceLink" ColumnName="SourceLink" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ViralCount" ColumnName="ViralCount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopTweets">
+      <EntityTypeMapping TypeName="MonitoringModel.TopTweet">
+        <MappingFragment StoreEntitySet="TopTweets">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Twitter_DeleteUser">
+      <EntityTypeMapping TypeName="MonitoringModel.Twitter_DeleteUser">
+        <MappingFragment StoreEntitySet="Twitter_DeleteUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Twitter_Tweet_Hottopic">
+      <EntityTypeMapping TypeName="MonitoringModel.Twitter_Tweet_Hottopic">
+        <MappingFragment StoreEntitySet="Twitter_Tweet_Hottopic">
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="HottopicID" ColumnName="HottopicID" />
+          <ScalarProperty Name="TweetID" ColumnName="TweetID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Twitter_Tweet_Person">
+      <EntityTypeMapping TypeName="MonitoringModel.Twitter_Tweet_Person">
+        <MappingFragment StoreEntitySet="Twitter_Tweet_Person">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="TweetID" ColumnName="TweetID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Twitter_Tweets">
+      <EntityTypeMapping TypeName="MonitoringModel.Twitter_Tweets">
+        <MappingFragment StoreEntitySet="Twitter_Tweets">
+          <ScalarProperty Name="TwFullPicture" ColumnName="TwFullPicture" />
+          <ScalarProperty Name="IsManual" ColumnName="IsManual" />
+          <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+          <ScalarProperty Name="UserMentionEntityScreenName3" ColumnName="UserMentionEntityScreenName3" />
+          <ScalarProperty Name="UserMentionEntity3" ColumnName="UserMentionEntity3" />
+          <ScalarProperty Name="UserMentionEntityScreenName2" ColumnName="UserMentionEntityScreenName2" />
+          <ScalarProperty Name="UserMentionEntity2" ColumnName="UserMentionEntity2" />
+          <ScalarProperty Name="UserMentionEntityScreenName1" ColumnName="UserMentionEntityScreenName1" />
+          <ScalarProperty Name="UserMentionEntity1" ColumnName="UserMentionEntity1" />
+          <ScalarProperty Name="MediaEntitiyVideoInfo3" ColumnName="MediaEntitiyVideoInfo3" />
+          <ScalarProperty Name="MediaEntitiyMediaUrl3" ColumnName="MediaEntitiyMediaUrl3" />
+          <ScalarProperty Name="MediaEntitiyDisplayUrl3" ColumnName="MediaEntitiyDisplayUrl3" />
+          <ScalarProperty Name="MediaEntity3" ColumnName="MediaEntity3" />
+          <ScalarProperty Name="MediaEntitiyVideoInfo2" ColumnName="MediaEntitiyVideoInfo2" />
+          <ScalarProperty Name="MediaEntitiyMediaUrl2" ColumnName="MediaEntitiyMediaUrl2" />
+          <ScalarProperty Name="MediaEntitiyDisplayUrl2" ColumnName="MediaEntitiyDisplayUrl2" />
+          <ScalarProperty Name="MediaEntity2" ColumnName="MediaEntity2" />
+          <ScalarProperty Name="MediaEntitiyVideoInfo1" ColumnName="MediaEntitiyVideoInfo1" />
+          <ScalarProperty Name="MediaEntitiyMediaUrl1" ColumnName="MediaEntitiyMediaUrl1" />
+          <ScalarProperty Name="MediaEntitiyDisplayUrl1" ColumnName="MediaEntitiyDisplayUrl1" />
+          <ScalarProperty Name="MediaEntitiy1" ColumnName="MediaEntitiy1" />
+          <ScalarProperty Name="UrlEntityExpandedUrl3" ColumnName="UrlEntityExpandedUrl3" />
+          <ScalarProperty Name="UrlEntityDisplayUrl3" ColumnName="UrlEntityDisplayUrl3" />
+          <ScalarProperty Name="UrlEntity3" ColumnName="UrlEntity3" />
+          <ScalarProperty Name="UrlEntityExpandedUrl2" ColumnName="UrlEntityExpandedUrl2" />
+          <ScalarProperty Name="UrlEntityDisplayUrl2" ColumnName="UrlEntityDisplayUrl2" />
+          <ScalarProperty Name="UrlEntity2" ColumnName="UrlEntity2" />
+          <ScalarProperty Name="UrlEntityExpandedUrl1" ColumnName="UrlEntityExpandedUrl1" />
+          <ScalarProperty Name="UrlEntityDisplayUrl1" ColumnName="UrlEntityDisplayUrl1" />
+          <ScalarProperty Name="UrlEntity1" ColumnName="UrlEntity1" />
+          <ScalarProperty Name="SymbolEntity3" ColumnName="SymbolEntity3" />
+          <ScalarProperty Name="SymbolEntity2" ColumnName="SymbolEntity2" />
+          <ScalarProperty Name="SymbolEntity1" ColumnName="SymbolEntity1" />
+          <ScalarProperty Name="HashEntity3" ColumnName="HashEntity3" />
+          <ScalarProperty Name="HashEntity2" ColumnName="HashEntity2" />
+          <ScalarProperty Name="HashEntity1" ColumnName="HashEntity1" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Truncated" ColumnName="Truncated" />
+          <ScalarProperty Name="TrimUser" ColumnName="TrimUser" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="FullText" ColumnName="FullText" />
+          <ScalarProperty Name="Retweeted" ColumnName="Retweeted" />
+          <ScalarProperty Name="RetweetCount" ColumnName="RetweetCount" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="TweetID" ColumnName="TweetID" />
+          <ScalarProperty Name="TwitterUserID" ColumnName="TwitterUserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Twitter_User_Details">
+      <EntityTypeMapping TypeName="MonitoringModel.Twitter_User_Details">
+        <MappingFragment StoreEntitySet="Twitter_User_Details">
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="UtcOffset" ColumnName="UtcOffset" />
+          <ScalarProperty Name="UserIdList" ColumnName="UserIdList" />
+          <ScalarProperty Name="UserIDResponse" ColumnName="UserIDResponse" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="StatusesCount" ColumnName="StatusesCount" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="SkipStatus" ColumnName="SkipStatus" />
+          <ScalarProperty Name="ShowAllInlineMedia" ColumnName="ShowAllInlineMedia" />
+          <ScalarProperty Name="ScreenNameResponse" ColumnName="ScreenNameResponse" />
+          <ScalarProperty Name="ScreenNameList" ColumnName="ScreenNameList" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="Query" ColumnName="Query" />
+          <ScalarProperty Name="Protected" ColumnName="Protected" />
+          <ScalarProperty Name="ProfileUseBackgroundImage" ColumnName="ProfileUseBackgroundImage" />
+          <ScalarProperty Name="ProfileTextColor" ColumnName="ProfileTextColor" />
+          <ScalarProperty Name="ProfileSidebarFillColor" ColumnName="ProfileSidebarFillColor" />
+          <ScalarProperty Name="ProfileSidebarBorderColor" ColumnName="ProfileSidebarBorderColor" />
+          <ScalarProperty Name="ProfileLinkColor" ColumnName="ProfileLinkColor" />
+          <ScalarProperty Name="ProfileImageUrlHttps" ColumnName="ProfileImageUrlHttps" />
+          <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="ProfileBannerUrl" ColumnName="ProfileBannerUrl" />
+          <ScalarProperty Name="ProfileBackgroundTile" ColumnName="ProfileBackgroundTile" />
+          <ScalarProperty Name="ProfileBackgroundImageUrlHttps" ColumnName="ProfileBackgroundImageUrlHttps" />
+          <ScalarProperty Name="ProfileBackgroundImageUrl" ColumnName="ProfileBackgroundImageUrl" />
+          <ScalarProperty Name="ProfileBackgroundColor" ColumnName="ProfileBackgroundColor" />
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Notifications" ColumnName="Notifications" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ListedCount" ColumnName="ListedCount" />
+          <ScalarProperty Name="LangResponse" ColumnName="LangResponse" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="IsTranslator" ColumnName="IsTranslator" />
+          <ScalarProperty Name="IncludeEntities" ColumnName="IncludeEntities" />
+          <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+          <ScalarProperty Name="GeoEnabled" ColumnName="GeoEnabled" />
+          <ScalarProperty Name="FriendsCount" ColumnName="FriendsCount" />
+          <ScalarProperty Name="Following" ColumnName="Following" />
+          <ScalarProperty Name="FollowersCount" ColumnName="FollowersCount" />
+          <ScalarProperty Name="FollowRequestSent" ColumnName="FollowRequestSent" />
+          <ScalarProperty Name="FavoritesCount" ColumnName="FavoritesCount" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DefaultProfileImage" ColumnName="DefaultProfileImage" />
+          <ScalarProperty Name="DefaultProfile" ColumnName="DefaultProfile" />
+          <ScalarProperty Name="Cursor" ColumnName="Cursor" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="ContributorsEnabled" ColumnName="ContributorsEnabled" />
+          <ScalarProperty Name="TwitterUserID" ColumnName="TwitterUserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Twitter_Users">
+      <EntityTypeMapping TypeName="MonitoringModel.Twitter_Users">
+        <MappingFragment StoreEntitySet="Twitter_Users">
+          <ScalarProperty Name="CommentCheckedDate" ColumnName="CommentCheckedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+          <ScalarProperty Name="isChecked" ColumnName="isChecked" />
+          <ScalarProperty Name="JoinedDate" ColumnName="JoinedDate" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="TweetNumber" ColumnName="TweetNumber" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="Following" ColumnName="Following" />
+          <ScalarProperty Name="Followers" ColumnName="Followers" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMenus">
+      <EntityTypeMapping TypeName="MonitoringModel.UserMenu">
+        <MappingFragment StoreEntitySet="UserMenu">
+          <ScalarProperty Name="childMenu" ColumnName="childMenu" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="parentID" ColumnName="parentID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSite_Post_Comments">
+      <EntityTypeMapping TypeName="MonitoringModel.WebSite_Post_Comments">
+        <MappingFragment StoreEntitySet="WebSite_Post_Comments">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="WebSiteID" ColumnName="WebSiteID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Website_Post_Hottopic">
+      <EntityTypeMapping TypeName="MonitoringModel.Website_Post_Hottopic">
+        <MappingFragment StoreEntitySet="Website_Post_Hottopic">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="HottopicID" ColumnName="HottopicID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Website_Post_Person">
+      <EntityTypeMapping TypeName="MonitoringModel.Website_Post_Person">
+        <MappingFragment StoreEntitySet="Website_Post_Person">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSite_PostList">
+      <EntityTypeMapping TypeName="MonitoringModel.WebSite_PostList">
+        <MappingFragment StoreEntitySet="WebSite_PostList">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="RawData" ColumnName="RawData" />
+          <ScalarProperty Name="WebSiteID" ColumnName="WebSiteID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSite_Posts">
+      <EntityTypeMapping TypeName="MonitoringModel.WebSite_Posts">
+        <MappingFragment StoreEntitySet="WebSite_Posts">
+          <ScalarProperty Name="WbFullPicture" ColumnName="WbFullPicture" />
+          <ScalarProperty Name="RawData" ColumnName="RawData" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="CoverUrl" ColumnName="CoverUrl" />
+          <ScalarProperty Name="PostListID" ColumnName="PostListID" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Reporter" ColumnName="Reporter" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSites">
+      <EntityTypeMapping TypeName="MonitoringModel.WebSite">
+        <MappingFragment StoreEntitySet="WebSites">
+          <ScalarProperty Name="isContainComments" ColumnName="isContainComments" />
+          <ScalarProperty Name="isHiddenHTML" ColumnName="isHiddenHTML" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="CommentSubmit" ColumnName="CommentSubmit" />
+          <ScalarProperty Name="CommentInput" ColumnName="CommentInput" />
+          <ScalarProperty Name="CommentTagID" ColumnName="CommentTagID" />
+          <ScalarProperty Name="ReporterTagID" ColumnName="ReporterTagID" />
+          <ScalarProperty Name="DateTimeTagID" ColumnName="DateTimeTagID" />
+          <ScalarProperty Name="BodyTagID" ColumnName="BodyTagID" />
+          <ScalarProperty Name="CoverTagID" ColumnName="CoverTagID" />
+          <ScalarProperty Name="TitleTagID" ColumnName="TitleTagID" />
+          <ScalarProperty Name="HtmlTagID" ColumnName="HtmlTagID" />
+          <ScalarProperty Name="PostListTagID" ColumnName="PostListTagID" />
+          <ScalarProperty Name="SiteColorCode" ColumnName="SiteColorCode" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="ImageRoot" ColumnName="ImageRoot" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBACKUP_Facebook_Comments_Old">
+      <EntityTypeMapping TypeName="MonitoringModel.XBACKUP_Facebook_Comments_Old">
+        <MappingFragment StoreEntitySet="XBACKUP_Facebook_Comments_Old">
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Sentiment_Confirmed" ColumnName="Sentiment_Confirmed" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="NegativeCount" ColumnName="NegativeCount" />
+          <ScalarProperty Name="PositiveCount" ColumnName="PositiveCount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBACKUP_System_Voters_Party">
+      <EntityTypeMapping TypeName="MonitoringModel.XBACKUP_System_Voters_Party">
+        <MappingFragment StoreEntitySet="XBACKUP_System_Voters_Party">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Facebook_Display" ColumnName="Facebook_Display" />
+          <ScalarProperty Name="PartyStatus" ColumnName="PartyStatus" />
+          <ScalarProperty Name="MaterialStatus" ColumnName="MaterialStatus" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="MonitoringModel.AspNetUserRole">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Electricities">
+      <EntityTypeMapping TypeName="MonitoringModel.Electricity">
+        <MappingFragment StoreEntitySet="Electricity">
+          <ScalarProperty Name="PhoneNumber5" ColumnName="PhoneNumber5" />
+          <ScalarProperty Name="PhoneNumber4" ColumnName="PhoneNumber4" />
+          <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />
+          <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+          <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Account_More">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Account_More">
+        <MappingFragment StoreEntitySet="Facebook_Account_More">
+          <ScalarProperty Name="cover_link" ColumnName="cover_link" />
+          <ScalarProperty Name="name_format" ColumnName="name_format" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="location_name" ColumnName="location.name" />
+          <ScalarProperty Name="location_id" ColumnName="location.id" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="installed" ColumnName="installed" />
+          <ScalarProperty Name="install_type" ColumnName="install_type" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hometown_name" ColumnName="hometown.name" />
+          <ScalarProperty Name="hometown_id" ColumnName="hometown.id" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="age_range_max" ColumnName="age_range.max" />
+          <ScalarProperty Name="age_range_min" ColumnName="age_range.min" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="about" ColumnName="about" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Accounts">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Accounts">
+        <MappingFragment StoreEntitySet="Facebook_Accounts">
+          <ScalarProperty Name="LName_Facebook_M" ColumnName="LName_Facebook_M" />
+          <ScalarProperty Name="FName_Facebook_M" ColumnName="FName_Facebook_M" />
+          <ScalarProperty Name="LName_UserName_M" ColumnName="LName_UserName_M" />
+          <ScalarProperty Name="FName_UserName_M" ColumnName="FName_UserName_M" />
+          <ScalarProperty Name="LName_Name_M" ColumnName="LName_Name_M" />
+          <ScalarProperty Name="FName_Name_M" ColumnName="FName_Name_M" />
+          <ScalarProperty Name="LName_Facebook" ColumnName="LName_Facebook" />
+          <ScalarProperty Name="FName_Facebook" ColumnName="FName_Facebook" />
+          <ScalarProperty Name="LName_UserName" ColumnName="LName_UserName" />
+          <ScalarProperty Name="FName_UserName" ColumnName="FName_UserName" />
+          <ScalarProperty Name="LName_Name" ColumnName="LName_Name" />
+          <ScalarProperty Name="FName_Name" ColumnName="FName_Name" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="DTE" ColumnName="DTE" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="OperationDirection" ColumnName="OperationDirection" />
+          <ScalarProperty Name="PoliticalParty" ColumnName="PoliticalParty" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="UpdateOwnerUserName" ColumnName="UpdateOwnerUserName" />
+          <ScalarProperty Name="Checked" ColumnName="Checked" />
+          <ScalarProperty Name="UniversityUrl" ColumnName="UniversityUrl" />
+          <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="WorkUrl" ColumnName="WorkUrl" />
+          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="HometownId" ColumnName="HometownId" />
+          <ScalarProperty Name="HometownName" ColumnName="HometownName" />
+          <ScalarProperty Name="CurrentCityId" ColumnName="CurrentCityId" />
+          <ScalarProperty Name="CurrentCityName" ColumnName="CurrentCityName" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Accounts_Fake">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Accounts_Fake">
+        <MappingFragment StoreEntitySet="Facebook_Accounts_Fake">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Comment_PhoneNumber">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Comment_PhoneNumber">
+        <MappingFragment StoreEntitySet="Facebook_Comment_PhoneNumber">
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="FromName" ColumnName="FromName" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Phones">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Phones">
+        <MappingFragment StoreEntitySet="Facebook_Phones">
+          <ScalarProperty Name="UpdateRepeatIdx" ColumnName="UpdateRepeatIdx" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="Update" ColumnName="Update" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="RegisterNo" ColumnName="RegisterNo" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Settings">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Settings">
+        <MappingFragment StoreEntitySet="Facebook_Settings">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facebook_Videos">
+      <EntityTypeMapping TypeName="MonitoringModel.Facebook_Videos">
+        <MappingFragment StoreEntitySet="Facebook_Videos">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="SharesCount" ColumnName="SharesCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="LoveCount" ColumnName="LoveCount" />
+          <ScalarProperty Name="HahaCount" ColumnName="HahaCount" />
+          <ScalarProperty Name="YayCount" ColumnName="YayCount" />
+          <ScalarProperty Name="SadCount" ColumnName="SadCount" />
+          <ScalarProperty Name="AngryCount" ColumnName="AngryCount" />
+          <ScalarProperty Name="WowCount" ColumnName="WowCount" />
+          <ScalarProperty Name="TotalReactionCount" ColumnName="TotalReactionCount" />
+          <ScalarProperty Name="Updated_Time" ColumnName="Updated_Time" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ParrentName" ColumnName="ParrentName" />
+          <ScalarProperty Name="ParrentID" ColumnName="ParrentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_Categories">
+      <EntityTypeMapping TypeName="MonitoringModel.Google_Categories">
+        <MappingFragment StoreEntitySet="Google_Categories">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_Category_Key">
+      <EntityTypeMapping TypeName="MonitoringModel.Google_Category_Key">
+        <MappingFragment StoreEntitySet="Google_Category_Key">
+          <ScalarProperty Name="KeyType" ColumnName="KeyType" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_PhoneNumber">
+      <EntityTypeMapping TypeName="MonitoringModel.Google_PhoneNumber">
+        <MappingFragment StoreEntitySet="Google_PhoneNumber">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_Register">
+      <EntityTypeMapping TypeName="MonitoringModel.Google_Register">
+        <MappingFragment StoreEntitySet="Google_Register">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_Result_Category">
+      <EntityTypeMapping TypeName="MonitoringModel.Google_Result_Category">
+        <MappingFragment StoreEntitySet="Google_Result_Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_SearchResult">
+      <EntityTypeMapping TypeName="MonitoringModel.Google_SearchResult">
+        <MappingFragment StoreEntitySet="Google_SearchResult">
+          <ScalarProperty Name="SearchType" ColumnName="SearchType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SearchKeyID" ColumnName="SearchKeyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statistics">
+      <EntityTypeMapping TypeName="MonitoringModel.Statistic">
+        <MappingFragment StoreEntitySet="Statistics">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="defaultValue" ColumnName="defaultValue" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MonitoringModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Candidates">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Candidates">
+        <MappingFragment StoreEntitySet="System_Candidates">
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="IsOwn" ColumnName="IsOwn" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Facebook_Reports_Comments">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Facebook_Reports_Comments">
+        <MappingFragment StoreEntitySet="System_Facebook_Reports_Comments">
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Questions">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Questions">
+        <MappingFragment StoreEntitySet="System_Questions">
+          <ScalarProperty Name="Lattin3" ColumnName="Lattin3" />
+          <ScalarProperty Name="Lattin2" ColumnName="Lattin2" />
+          <ScalarProperty Name="Lattin1" ColumnName="Lattin1" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Report">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Report">
+        <MappingFragment StoreEntitySet="System_Report">
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Resource_WAT">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Resource_WAT">
+        <MappingFragment StoreEntitySet="System_Resource_WAT">
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="NameOld" ColumnName="NameOld" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="Register" ColumnName="Register" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Sentiment">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Sentiment">
+        <MappingFragment StoreEntitySet="System_Sentiment">
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Lattin3" ColumnName="Lattin3" />
+          <ScalarProperty Name="Lattin2" ColumnName="Lattin2" />
+          <ScalarProperty Name="Lattin1" ColumnName="Lattin1" />
+          <ScalarProperty Name="Word" ColumnName="Word" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Student_Email">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Student_Email">
+        <MappingFragment StoreEntitySet="System_Student_Email">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Register" ColumnName="Register" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Sum">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Sum">
+        <MappingFragment StoreEntitySet="System_Sum">
+          <ScalarProperty Name="AimagID" ColumnName="AimagID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_User">
+      <EntityTypeMapping TypeName="MonitoringModel.System_User">
+        <MappingFragment StoreEntitySet="System_User">
+          <ScalarProperty Name="CandiateID" ColumnName="CandiateID" />
+          <ScalarProperty Name="KhorooID" ColumnName="KhorooID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Voters_Multiple">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Voters_Multiple">
+        <MappingFragment StoreEntitySet="System_Voters_Multiple">
+          <ScalarProperty Name="AgeGroup" ColumnName="AgeGroup" />
+          <ScalarProperty Name="ElectionPlaceName" ColumnName="ElectionPlaceName" />
+          <ScalarProperty Name="Door" ColumnName="Door" />
+          <ScalarProperty Name="Apartment" ColumnName="Apartment" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="BagKhoroo" ColumnName="BagKhoroo" />
+          <ScalarProperty Name="SumDuureg" ColumnName="SumDuureg" />
+          <ScalarProperty Name="AimagCity" ColumnName="AimagCity" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="ForeName" ColumnName="ForeName" />
+          <ScalarProperty Name="Registernumber" ColumnName="Registernumber" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_Voters_PhoneNumber">
+      <EntityTypeMapping TypeName="MonitoringModel.System_Voters_PhoneNumber">
+        <MappingFragment StoreEntitySet="System_Voters_PhoneNumber">
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopSpecifiedNewsForTopics">
+      <EntityTypeMapping TypeName="MonitoringModel.TopSpecifiedNewsForTopic">
+        <MappingFragment StoreEntitySet="TopSpecifiedNewsForTopic">
+          <ScalarProperty Name="Profile" ColumnName="Profile" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SourceLink" ColumnName="SourceLink" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ViralCount" ColumnName="ViralCount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopTopics">
+      <EntityTypeMapping TypeName="MonitoringModel.TopTopic">
+        <MappingFragment StoreEntitySet="TopTopics">
+          <ScalarProperty Name="ViralCount" ColumnName="ViralCount" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSite_Banks_Posts">
+      <EntityTypeMapping TypeName="MonitoringModel.WebSite_Banks_Posts">
+        <MappingFragment StoreEntitySet="WebSite_Banks_Posts">
+          <ScalarProperty Name="PostDisLike" ColumnName="PostDisLike" />
+          <ScalarProperty Name="PostLike" ColumnName="PostLike" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="Sentement" ColumnName="Sentement" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Reporter" ColumnName="Reporter" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSite_Banks_Posts_Comments">
+      <EntityTypeMapping TypeName="MonitoringModel.WebSite_Banks_Posts_Comments">
+        <MappingFragment StoreEntitySet="WebSite_Banks_Posts_Comments">
+          <ScalarProperty Name="Sentment" ColumnName="Sentment" />
+          <ScalarProperty Name="DisLikeCount" ColumnName="DisLikeCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBackup_Facebook_Accounts">
+      <EntityTypeMapping TypeName="MonitoringModel.XBackup_Facebook_Accounts">
+        <MappingFragment StoreEntitySet="XBackup_Facebook_Accounts">
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="DTE" ColumnName="DTE" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="OperationDirection" ColumnName="OperationDirection" />
+          <ScalarProperty Name="PoliticalParty" ColumnName="PoliticalParty" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="UpdateOwnerUserName" ColumnName="UpdateOwnerUserName" />
+          <ScalarProperty Name="Checked" ColumnName="Checked" />
+          <ScalarProperty Name="UniversityUrl" ColumnName="UniversityUrl" />
+          <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="WorkUrl" ColumnName="WorkUrl" />
+          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="HometownId" ColumnName="HometownId" />
+          <ScalarProperty Name="HometownName" ColumnName="HometownName" />
+          <ScalarProperty Name="CurrentCityId" ColumnName="CurrentCityId" />
+          <ScalarProperty Name="CurrentCityName" ColumnName="CurrentCityName" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBackup_Facebook_Accounts_Old">
+      <EntityTypeMapping TypeName="MonitoringModel.XBackup_Facebook_Accounts_Old">
+        <MappingFragment StoreEntitySet="XBackup_Facebook_Accounts_Old">
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="DTE" ColumnName="DTE" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="OperationDirection" ColumnName="OperationDirection" />
+          <ScalarProperty Name="PoliticalParty" ColumnName="PoliticalParty" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="UpdateOwnerUserName" ColumnName="UpdateOwnerUserName" />
+          <ScalarProperty Name="Checked" ColumnName="Checked" />
+          <ScalarProperty Name="UniversityUrl" ColumnName="UniversityUrl" />
+          <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="WorkUrl" ColumnName="WorkUrl" />
+          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="HometownId" ColumnName="HometownId" />
+          <ScalarProperty Name="HometownName" ColumnName="HometownName" />
+          <ScalarProperty Name="CurrentCityId" ColumnName="CurrentCityId" />
+          <ScalarProperty Name="CurrentCityName" ColumnName="CurrentCityName" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBACKUP_Facebook_Post_Comments_Backup">
+      <EntityTypeMapping TypeName="MonitoringModel.XBACKUP_Facebook_Post_Comments_Backup">
+        <MappingFragment StoreEntitySet="XBACKUP_Facebook_Post_Comments_Backup">
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Sentiment_Confirmed" ColumnName="Sentiment_Confirmed" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="NegativeCount" ColumnName="NegativeCount" />
+          <ScalarProperty Name="PositiveCount" ColumnName="PositiveCount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBACKUP_Facebook_Posts_Backup">
+      <EntityTypeMapping TypeName="MonitoringModel.XBACKUP_Facebook_Posts_Backup">
+        <MappingFragment StoreEntitySet="XBACKUP_Facebook_Posts_Backup">
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+          <ScalarProperty Name="SharesCount" ColumnName="SharesCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="LoveCount" ColumnName="LoveCount" />
+          <ScalarProperty Name="HahaCount" ColumnName="HahaCount" />
+          <ScalarProperty Name="YayCount" ColumnName="YayCount" />
+          <ScalarProperty Name="SadCount" ColumnName="SadCount" />
+          <ScalarProperty Name="AngryCount" ColumnName="AngryCount" />
+          <ScalarProperty Name="WowCount" ColumnName="WowCount" />
+          <ScalarProperty Name="TotalReactionCount" ColumnName="TotalReactionCount" />
+          <ScalarProperty Name="Story" ColumnName="Story" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+          <ScalarProperty Name="ParrentObjectID" ColumnName="ParrentObjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBACKUP_Facebook_Posts_Old">
+      <EntityTypeMapping TypeName="MonitoringModel.XBACKUP_Facebook_Posts_Old">
+        <MappingFragment StoreEntitySet="XBACKUP_Facebook_Posts_Old">
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+          <ScalarProperty Name="SharesCount" ColumnName="SharesCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="LoveCount" ColumnName="LoveCount" />
+          <ScalarProperty Name="HahaCount" ColumnName="HahaCount" />
+          <ScalarProperty Name="YayCount" ColumnName="YayCount" />
+          <ScalarProperty Name="SadCount" ColumnName="SadCount" />
+          <ScalarProperty Name="AngryCount" ColumnName="AngryCount" />
+          <ScalarProperty Name="WowCount" ColumnName="WowCount" />
+          <ScalarProperty Name="TotalReactionCount" ColumnName="TotalReactionCount" />
+          <ScalarProperty Name="Story" ColumnName="Story" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+          <ScalarProperty Name="ParrentObjectID" ColumnName="ParrentObjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBACKUP_Google_SearchResult_backup">
+      <EntityTypeMapping TypeName="MonitoringModel.XBACKUP_Google_SearchResult_backup">
+        <MappingFragment StoreEntitySet="XBACKUP_Google_SearchResult_backup">
+          <ScalarProperty Name="SearchType" ColumnName="SearchType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SearchKeyID" ColumnName="SearchKeyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="xBackup_System_Aimag">
+      <EntityTypeMapping TypeName="MonitoringModel.xBackup_System_Aimag">
+        <MappingFragment StoreEntitySet="xBackup_System_Aimag">
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="NameEng" ColumnName="NameEng" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="xBackup_System_Bag">
+      <EntityTypeMapping TypeName="MonitoringModel.xBackup_System_Bag">
+        <MappingFragment StoreEntitySet="xBackup_System_Bag">
+          <ScalarProperty Name="AimagID" ColumnName="AimagID" />
+          <ScalarProperty Name="SumID" ColumnName="SumID" />
+          <ScalarProperty Name="Bag" ColumnName="Bag" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XBACKUP_System_Voters_Fixed">
+      <EntityTypeMapping TypeName="MonitoringModel.XBACKUP_System_Voters_Fixed">
+        <MappingFragment StoreEntitySet="XBACKUP_System_Voters_Fixed">
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="BirthdayFull" ColumnName="BirthdayFull" />
+          <ScalarProperty Name="BirthdayHalf" ColumnName="BirthdayHalf" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Khoroo" ColumnName="Khoroo" />
+          <ScalarProperty Name="SumGaral" ColumnName="SumGaral" />
+          <ScalarProperty Name="AimagGaral" ColumnName="AimagGaral" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="PhoneNumber10" ColumnName="PhoneNumber10" />
+          <ScalarProperty Name="PhoneNumber9" ColumnName="PhoneNumber9" />
+          <ScalarProperty Name="PhoneNumber8" ColumnName="PhoneNumber8" />
+          <ScalarProperty Name="PhoneNumber7" ColumnName="PhoneNumber7" />
+          <ScalarProperty Name="PhoneNumber6" ColumnName="PhoneNumber6" />
+          <ScalarProperty Name="PhoneNumber5" ColumnName="PhoneNumber5" />
+          <ScalarProperty Name="PhoneNumber4" ColumnName="PhoneNumber4" />
+          <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />
+          <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+          <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+          <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+          <ScalarProperty Name="PartyTendence" ColumnName="PartyTendence" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Sum" ColumnName="Sum" />
+          <ScalarProperty Name="Aimag" ColumnName="Aimag" />
+          <ScalarProperty Name="RegisterNumber" ColumnName="RegisterNumber" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SureName" ColumnName="SureName" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

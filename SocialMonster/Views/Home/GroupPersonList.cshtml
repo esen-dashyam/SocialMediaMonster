@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "GroupPersonList";
+}
+  @{ int @counter = 0; }
+@if (@ViewBag.persons != null)
+{
+
+@*    foreach (var ss in @ViewBag.persons)
+    {
+        @ss.ID;
+    }
+    <p>@ViewBag.perGroupIDs</p>
+*@
+
+    foreach (var m in @ViewBag.persons)
+    {
+        counter = counter + 1;
+        <tr>
+            <td>@m.ID</td>
+            @*<td>@counter</td>*@
+            <td><span>@m.Surename</span> @m.Name</td>
+ 
+            <td>
+                <input type="button" class="btn btn-sm btn-success btn-block" onclick="PersonKeyList(this);" data-id="@m.ID" value="Түлхүүр үг" />
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Засварлах" onclick="UpdateModal(this);" data-id="@m.GroupID" id="@m.GroupID" data-id1="@m.Name" data-id2="@m.Surename" data-id3="@m.ID" />
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Устгах" onclick="DeleteModal(this);" id="del" data-id="@m.ID" data-id1="@m.GroupID" />
+            </td>
+        </tr>
+    }
+
+}
+<script>
+    function PersonKeyList(e) {
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/PersonKeyList",
+            contentType: "application/json; charset=utf-8",
+            data: '{"ID":"' + $(e).attr("data-id") + '"}',
+            dataType: "html",
+            success: function (result, status, xhr) {
+                $("#SystemMainDiv").html(result);
+            },
+            error: function (xhr, status, error) {
+                $("#messageDiv").html(status);
+            }
+        });
+    }
+</script>

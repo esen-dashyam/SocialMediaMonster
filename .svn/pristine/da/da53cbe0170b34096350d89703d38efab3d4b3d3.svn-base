@@ -1,0 +1,93 @@
+﻿@model SocialMonster.Models.SystemUserModels
+@{
+    ViewBag.Title = "Анализ";
+}
+<link href="~/Content/assets/css/NewCss/app.min.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400&amp;subset=cyrillic" rel="stylesheet">
+<link href="~/Content/app-assets/css/pages/search.css" rel="stylesheet" type="text/css">
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<input type="hidden" id="FbLatestID" value="1" />
+<input type="hidden" id="TwLatestID" value="1" />
+<input type="hidden" id="WebLatestID" value="1" />
+@*<input type="hidden" id="UserID" value="@Model.ID"> *@
+<input type="hidden" id="UserID" value="8902d568-4f77-4874-97b8-f7dd7bc6d655">
+<script src="https://kit.fontawesome.com/893ff05b10.js" crossorigin="anonymous"></script>
+<!--bulgaa 2022-05-11 apex chart add graph-->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<style>
+    #insta {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        -webkit-background-clip: text;
+        /* Also define standard property for compatibility */
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 28px; /* change this to change the size*/
+    }
+
+    #insta2 {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        -webkit-background-clip: text;
+        /* Also define standard property for compatibility */
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    #myInput {
+        box-sizing: border-box;
+        background-position: 14px 12px;
+        background-repeat: no-repeat;
+        font-size: 15px;
+        padding: 5px 5px 5px 25px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+        #myInput:focus {
+            outline: 3px solid #ddd;
+        }
+
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card" style="background:#f9f9f9; border:0">
+            <div class="card-body">
+                <div class="row">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                сонгох
+                            </button>
+                            <ul class="dropdown-menu" id="header_wrap" style="overflow: auto; height: 298px;">
+                                <input type="text" placeholder="Хайлт.." id="myInput" onkeyup="filterFunction()" style="width:100%">
+                                @foreach (var word in ViewBag.userList)
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("Analyze", "Home", new { id2 = word.AspNetUserID, })">@word.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                </div><!--end row-->
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!-- End row -->
+<script src="~/Content/assets/plugins/apex-charts/apexcharts.min.js"></script>
+<script src="~/Content/assets/plugins/apex-charts/irregular-data-series.js"></script>
+<script src="~/Content/assets/plugins/apex-charts/ohlc.js"></script>
+<script src="~/Content/assets/pages/page_analysis.js"></script>
+<script>
+    function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("header_wrap");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+</script>
+

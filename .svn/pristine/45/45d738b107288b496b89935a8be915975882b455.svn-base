@@ -1,0 +1,63 @@
+﻿<style>
+    .list-group3 span {
+        display: none;
+    }
+</style>
+<script>
+
+    $(".list-group3 span")
+    .slice(0, 10)
+    .show();
+    $(".list-group3 span:hidden").css("opacity", 0);
+    $("#viewAll3").on("click", function(e) {
+        $(".list-group3 span:hidden")
+    .slice(0, 10)
+    .slideDown("slow")
+    .animate(
+    {
+    opacity: 1
+    },
+    {
+    queue: false,
+    duration: "slow"
+    }
+    );
+        if ($(".list-group3 span:hidden").length == 0) {
+    $("#viewAll3").fadeOut("slow");
+    }
+    e.preventDefault();
+    });
+
+</script>
+
+<h3>Website</h3>
+<div class="list-group3" id="WebSiteList" data-id="@ViewBag.WebLastID">
+        @foreach (var post in ViewBag.WebSiteData)
+        {
+            <span>
+                <div class="border card news-feed-card-bg text-black " style="font-family:Roboto;padding:10px; color:black; border-left:none !important;border-top:none !important; border-right:none !important;">
+                    <a href="@post.Url" target="_blank">
+                        <img src="@post.CoverUrl" style="width:100%">
+                    </a>
+                    <div>
+                        <a href="@post.Url" target="_blank" style=" float:left;color:black"><b>@post.Title</b></a>
+                    </div>
+                    <div align="right" style="font-style:italic;"><a href="@post.Url" target="_blank">@post.Url</a></div>
+                    <div align="right" style="font-style:italic; color:#ccc;">@post.DateTime</div>
+                    <div style="text-align:justify;">
+                        <a href="@post.Url" target="_blank" style="color:black">@post.Body</a>
+                    </div>
+                    <h6 class="ff-label-wrapper" style="position:absolute; top:-10px; font-family:sans-serif; font-weight:600; right:10px; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                        <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                            <i class="ff-icon-inner" style="margin-bottom:0; background-color:#f4a641; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                <span class="ff-label-text" style="margin-bottom:0">website</span>
+                            </i>
+                        </i>
+                    </h6>
+                </div>
+            </span>
+        }
+<a id="viewAll3" class="view-more-btn" href="#">Цааш үзэх</a>
+</div>
+
+

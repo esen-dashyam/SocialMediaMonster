@@ -1,0 +1,50 @@
+﻿@foreach (var m in Model)
+{
+
+    <span onclick="childGroup(this);" id="@m.ID" val="1" data-id="@m.ID" style="float:left; font-size:22px; padding-right:10px; margin-top:-7px; cursor:pointer;">+</span> 
+    
+    <label>
+        <input type="checkbox" name="parentCheck" class="parentCheck getGroupPerson" data-id="@m.ID" value="@m.ID" val="1" id="@m.ID" IsParent="1" />
+        @m.Name
+    </label>
+                                        <div id="@m.ID-childs">   
+
+                                        
+                                        
+                                        </div>
+}
+
+
+<script>
+    function childGroup(e) {
+       
+        if ($(e).attr("val") == "1") {
+
+
+            $('#' + $(e).attr("data-id") + '-childs').css("display", "block");
+            $('#' + $(e).attr("data-id")+'').html("-");
+            $.ajax({
+                type: "POST",
+                url: '/Home/ChildList',
+                data: { 'ID': $(e).attr("data-id") },
+
+                success: function (data) {
+                    console.log(data);
+                        $('#' + $(e).attr("data-id") + '-childs').html(data);
+                    
+
+                },
+                error: function () {
+                    alert('Error occured');
+                }
+            });
+            $(e).attr("val","0");
+        } else {
+            $('#'+$(e).attr("data-id")+'').html("+");
+            $('#' + $(e).attr("data-id") + '-childs').css("display", "none");
+            $(e).attr("val", "1");
+        }
+
+    }
+   
+</script>

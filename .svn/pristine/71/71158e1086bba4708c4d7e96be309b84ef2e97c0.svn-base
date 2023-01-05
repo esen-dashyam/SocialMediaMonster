@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SocialMonster.Models.VotersModel>
+<div class="table-responsive mb-2">
+    <table id="ListPeople" class="table table-striped alt-pagination table-wrapper">
+        <thead class="bg-info text-white">
+            <tr>
+                <th class="border-top-0"></th>
+                <th class="border-top-0">Овог</th>
+                <th class="border-top-0">Нэр</th>
+                <th class="border-top-0">Нас</th>
+                <th class="border-top-0">Хүйс</th>
+                <th class="border-top-0">Регистр</th>
+                <th class="border-top-0">Аймаг</th>
+                <th class="border-top-0">Сум</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+            <tr>
+                <td class="text-truncate"><a href="@Url.Action("PersonDetails", "Users")?ID=@person.ID" target="_blank" class="text-danger"><i class="fa fa-eye"></i> Үзэх</a></td>
+                <td class="text-truncate">@person.Surename</td>
+                <td class="text-truncate">@person.Name</td>
+                <td class="text-truncate">@person.Age</td>
+                <td class="text-truncate">@person.Sex</td>
+                <td class="text-truncate">@person.Register</td>
+                <td class="text-truncate">@person.Aimag</td>
+                <td class="text-truncate">@person.Sum</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="pagination">
+    @if (ViewBag.pageCount > 10)
+    {
+        for (int i = 1; i <= 10; i++)
+        {
+            <a class="btn btn-sm text-white btn-warning mb-2" id="@i" onClick="Page(this.id)">@i</a>
+        }
+        <span> . . . <a class="btn btn-sm text-white btn-warning mb-2" id="@ViewBag.pageCount" onClick="Page(this.id)">@ViewBag.pageCount</a></span>
+    }
+    else
+    {
+        for (int i = 1; i <= ViewBag.pageCount; i++)
+        {
+            <a class="btn btn-sm text-white btn-warning mb-2" id="@i" onClick="Page(this.id)">@i</a>
+        }
+    }
+</div>

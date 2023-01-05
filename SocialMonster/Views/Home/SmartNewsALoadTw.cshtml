@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SocialMonster.Models.Twitter>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+@foreach (var post in Model)
+{
+<div class="card news-feed-card-bg text-black " style=" font-family:Roboto;padding:10px; color:black;border-left:none !important;border-top:none !important; border-right:none !important;">
+    <p class="text-white text-italic bg-info" style="z-index:1 !important; position:absolute;border-radius:4px; top:15px; right:10px;padding:0px 10px 0px 10px;font-size:12px;">
+        ТВИТТЕР
+    </p>
+    <blockquote class="twitter-tweet" data-lang="en">
+        @if (@post.ScreenName is null)
+        {
+            <a href="http://twitter.com/@post.ScreenNameResponse/status/@post.StatusID"></a>
+        }
+        else
+        {
+            <a href="http://twitter.com/@post.ScreenName/status/@post.StatusID"></a>
+        }
+    </blockquote>
+</div>
+}

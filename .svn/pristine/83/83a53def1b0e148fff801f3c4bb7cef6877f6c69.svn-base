@@ -1,0 +1,384 @@
+﻿@model IEnumerable<SocialMonster.Models.WebSitePost>
+
+@*@foreach (var post in Model)
+    {
+        <div style="border-radius: 10px;" class="card news-feed-card-bg text-black smart-news-box">
+            <div class="card-content">
+                <div class="card-body mb-2">
+                    <a href="@post.Url" target="_blank">
+                        <img src="@post.CoverUrl" style="width:100%">
+                    </a>
+                    <div>
+                        <a href="@post.Url" class="text-dark" target="_blank" style=" float:left;"><b>@post.Title</b></a>
+                    </div>
+                    <div align="right" style="font-style:italic;"><a href="@post.Url" target="_blank">@post.Url</a></div>
+                    <div align="right" style="font-style:italic; color:#ccc;">@post.DateTime</div>
+                    <div style="text-align:justify;">
+                        <a href="@post.Url" class="text-dark" target="_blank">@post.Body</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style=" border-top: 1px solid #e3ebf6;">
+                <div style="display:flex;align-items:center; justify-content:end" class="row">
+                    <div class=" col-sm-auto">
+                        <input type="checkbox" class="checkbox" data-type="WebSite" data-postid="@post.ID" />
+                    </div>
+                    <div style="border-right: 1px solid #e3ebf6" class="col-sm-auto">
+                        @if (post.Sentiment == null)
+                        {
+                            <div align="right" style="width:19px !important; height:19px ; background:#ffc107; padding:3px; border-radius:5px; color:#fff;"></div>
+                        }
+                        else if (post.Sentiment == "Positive")
+                        {
+                            <div align="right" style="width:19px !important; height:19px ; background:#28a745; padding:3px; border-radius:5px; color:#fff;"></div>
+
+                        }
+                        else if (post.Sentiment == "Negative")
+                        {
+                            <div align="right" style="width:19px !important; height:19px ; background:#dc3545; padding:3px; border-radius:5px; color:#fff;"></div>
+                        }
+                        else if (post.Sentiment == "Neutral")
+                        {
+                            <div align="right" style="width:19px !important; height:19px ; background:#6c757d; padding:3px; border-radius:5px; color:#fff;"></div>
+                        }
+                    </div>
+                    <div class=" col-sm-auto">
+                        <button onclick="Modal('WebSite','@post.ID')" class="btn btn-block" data-toggle="modal" data-target="#ModalControl"
+                                style="padding: 2px 0 0 0; border-radius: 5px; color: #7081b9; font-size: 19px">
+                            <i class="fa fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    }*@
+<style>
+    .row {
+        column-count: 2 !important;
+    }
+</style>
+
+<div class="row" data-id="@ViewBag.WebLastID">
+    @foreach (var post in Model)
+    {
+        <div class="col-xs-4 col-lg-6" v-for="post in posts" v-bind:key="post.id">
+            <div class="card">
+                <div class="card-body pb-0">
+                    <div class="blog-card">
+                        <div class="d-flex justify-content-between">
+                            <div class="data-post-image text-center">
+                                <img src="@post.CoverUrl" alt="" style="object-fit:cover" width="45" height="45" class="rounded-circle image-shadow1 me-2"> 
+                            </div>
+                            <div class="col">
+                                <div class="row ">
+                                    <div class="col mt-1">
+                                        <h5 class="m-0 text-dark text-break text-wrap">@post.Title</h5>
+                                    </div>
+                                    <div class="col-md-auto text-end">
+                                        <a style="color: #7081B9; font-size: 22px; padding: 0px 10px" href="#" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                                    </div>
+                                    <div class="" style="width:100%; height:100%; overflow:hidden;">
+                                     
+                                                <a href="@post.Link" class="" target="_blank">
+                                                    <img src="@post.WbFullPicture" style="width:100%; height:100%">
+                                                </a>
+                                     
+                                    </div>
+                                    @* <div class="col-4 text-end">
+            <a class="text-muted" href="@post.Url" target="_blank">
+                <i class="fas fa-link"></i>
+                @post.Url
+            </a>
+        </div>*@
+                                </div>
+                                <div class="row my-2" v-if="post.sentiment == 'positive'">
+                                    @*    <div class="col-lg-4 col-6">
+                        <a href="post.url" target="_blank" style="color:#0fb36c">
+                             <i class="fas fa-link"></i>@post.Url
+                        </a>
+                    </div>*@
+                                    <div class="col  text-muted">
+                                        <small><i class="mdi mdi-clock-outline"></i> @post.DateTime</small>
+                                    </div>
+                                    <div class="col text-end">
+                                        <a class="text-muted" href="@post.Url" target="_blank">
+                                            <i class="fas fa-link"></i>
+                                            @post.StringUrl
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="text-justify">@post.Body</p>
+                                <!--positive-->
+                                <div class="container" style=" border-top: 1px solid #e3ebf6;">
+                                    <div style="display:flex; align-items:center; justify-content:end; padding-top:3px" class="row">
+                                        <div class="col-sm-auto">
+                                            <input type="checkbox" class="checkbox form-check-input" data-type="WebSite" data-postid="@post.ID" style="width:19px !important;height:19px" />
+                                        </div>
+                                        <div style="border-right: 1px solid #e3ebf6" class="col-sm-auto">
+                                            @if (post.Sentiment == "Positive")
+                                            {
+                                                <div class="row my-2" v-if="post.sentiment == 'positive'">
+                                                    <div class="col-lg-4 col-6">
+                                                        <div style="width: 35px; height: 19px; background: #28a745; padding: 3px; border-radius: 5px; color: #fff; " data-bs-toggle="modal" data-bs-target="#modal_sentiment" v-on:click="get_post_id(post.social_post_id)"></div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else if (post.Sentiment == "Negative")
+                                            {
+                                                <div class="row my-2" v-else-if="post.sentiment == 'negative'">
+                                                    <div class="col-lg-4 col-6">
+                                                        <div style="width: 35px; height: 19px; background: #dc3545; padding: 3px; border-radius: 5px; color: #fff; " data-bs-toggle="modal" data-bs-target="#modal_sentiment" v-on:click="get_post_id(post.social_post_id)"></div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else if (post.Sentiment == "Neutral")
+                                            {
+                                                <div class="row my-2" v-else-if="post.sentiment == 'neutral'">
+                                                    <div class="col-lg-4 col-6 text-muted">
+                                                        <div style="width: 35px; height: 19px; background: #6c757d; padding: 3px; border-radius: 5px; color: #fff;" data-bs-toggle="modal" data-bs-target="#modal_sentiment" v-on:click="get_post_id(post.social_post_id)"></div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else if (post.Sentiment == null)
+                                            {
+                                                <div class="row my-2" v-else-if="post.sentiment == null">
+                                                    <div class="col-lg-4 col-6 text-muted">
+                                                        <div style="width: 35px; height: 19px; background: #ffc107; padding: 3px; border-radius: 5px; color: #fff;"></div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <button onclick="Modal('WebSite','@post.ID')" align="center" class="btn btn-block" data-toggle="modal" data-target="#ModalControlWblist"
+                                                    style="padding: 2px 0 0 0 ; border-radius: 5px; color: #7081b9; font-size: 19px">
+                                                <i class="fa fa-cog"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end meta-box-->
+                        </div>
+                        <div id="ModalControlWblist" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                @Html.Hidden("PostID")
+                                @Html.Hidden("Type")
+                                <!-- Modal content-->
+                                <div class="modal-content" style="border:none;border-radius:0;">
+                                    <div class="modal-header border-0" style="color:#717686; background-color:#8997bd; border-radius:0;">
+                                        <h4 class="modal-title"> <i class="fa-solid fa-sliders"></i> Удирдах</h4>
+                                        <button type="button" class="btn-close white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row" style="margin-bottom:10px">
+                                                <div class="form-group">
+                                                    <label>Төлөв:</label>
+                                                    <select id="Sentiment6" name="Sentiment6" class="browser-default custom-select form-control" style="width:100%">
+                                                        <option selected>Сонгох</option>
+                                                        <option value="Positive">Эерэг</option>
+                                                        <option value="Negative">Сөрөг</option>
+                                                        <option value="Neutral">Саарал</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-bottom:10px">
+                                                <button type="button" class="btn btn-success border-0" style="margin-right:10px; width:215px" onclick="Control(true)">Хадгалах</button>
+                                                <button type="button" class="btn btn-danger border-0" style="width:215px" onclick="Control(false)">Устгах</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--end blog-card-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+
+        </div>
+    }
+</div>
+
+@*
+    <div>
+        <div class="row" data-id="@ViewBag.WebLastID">
+            @foreach (var post in Model)
+            {
+                <div class="col-lg-4" v-for="post in posts" v-bind:key="post.id">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="blog-card">
+                                <div>
+                                    <img src="@post.CoverUrl" class="img-fluid rounded" />
+                                </div>
+                                <!--positive-->
+                                @if (post.Sentiment == "Positive")
+                                {
+                                    <div class="row mb-3" v-if="post.sentiment == 'positive'">
+                                        <div class="col-lg-9 col-6">
+                                            <a :href="post.url" target="_blank" style="color:#0fb36c"><i class="fas fa-link"></i>@post.Link</a>
+                                        </div>
+                                        <div class="col-lg-3 col-6">
+                                            <button class="btn btn-sm data-post-btn-success" data-bs-toggle="modal" data-bs-target="#modal_sentiment" v-on:click="get_post_id(post.social_post_id)">Эерэг</button>
+                                        </div>
+                                    </div>
+                                }
+                                else if (post.Sentiment == "Negative")
+                                {
+                                    <div class="row mb-3" v-else-if="post.sentiment == 'negative'">
+                                        <div class="col-lg-9 col-6">
+                                            <a :href="post.url" target="_blank" style="color:#f55"><i class="fas fa-link"></i>@post.Link</a>
+                                        </div>
+                                        <div class="col-lg-3 col-6">
+                                            <button class="btn btn-sm data-post-btn-danger text-white" data-bs-toggle="modal" data-bs-target="#modal_sentiment" v-on:click="get_post_id(post.social_post_id)">Сөрөг</button>
+                                        </div>
+                                    </div>
+                                }
+                                else if (post.Sentiment == "Neutral")
+                                {
+                                    <div class="row mb-3" v-else-if="post.sentiment == 'neutral'">
+                                        <div class="col-lg-9 col-6">
+                                            <a :href="post.url" target="_blank" style="color:#0fb36c"><i class="fas fa-link"></i>@post.Link</a>
+                                        </div>
+                                        <div class="col-lg-3 col-6 text-muted">
+                                            <button class="btn btn-sm btn-main" data-bs-toggle="modal" data-bs-target="#modal_sentiment" v-on:click="get_post_id(post.social_post_id)">Саармаг</button>
+                                        </div>
+                                    </div>
+                                }
+                                else if (post.Sentiment == null)
+                                {
+                                    <div class="row mb-3" v-else-if="post.sentiment == null">
+                                        <div class="col-lg-8 col-6">
+                                            <a :href="post.url" target="_blank" style="color:#0fb36c"><i class="fas fa-link"></i>@post.Link</a>
+                                        </div>
+                                        <div class="col-lg-4 col-6 text-muted">
+                                            <span class="badge badge-soft-secondary fw-semibold p-2">Тодорхойлж байна</span>
+                                        </div>
+                                    </div>
+                                }
+                                <h5 class="my-3">
+                                    @post.Title
+                                </h5>
+                                <a href="@post.Link" class="float-left text-dark" target="_blank">
+                                    <p class="text-justify">@post.Body</p>
+                                </a>
+                                    <hr class="hr-dashed">
+                                    <div class="d-flex justify-content-between">
+                                <div class="text-muted">
+                                   <small><i class="mdi mdi-clock-outline"></i> @post.DateTime</small>
+                                </div>
+                                        <div class="align-self-center">
+                                           
+                                    </div>
+                                </div>
+                        </div><!--end blog-card-->
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+        }
+    </div>
+</div>
+*@
+<script>
+    function Modal(type, ID) {
+        //   alert(type);
+        //   alert(ID);
+        $('#PostID').val(ID);
+        $('#Type').val(type);
+
+        $("#ModalControlWblist").modal('show');
+    }
+    function Control(IsEdit) {
+        if (IsEdit == false) {
+            if (window.confirm("Та устгахдаа итгэлтэй байна уу?") == false)
+                return;
+        }
+
+
+        var PostID = $("#PostID").val();
+        var Type = $("#Type").val();
+       @* var PostID = 'all';
+        var Type = 'all';*@
+        var Sentiment = $('#Sentiment6').val();
+        var UserId = document.getElementById("UserID").value;
+
+        if (Type == 'all') {
+            var checkboxes = document.querySelectorAll('.checkbox[type=checkbox]:checked')
+            for (var i = 0; i < checkboxes.length; i++) {
+                console.log(checkboxes[i].getAttribute('data-type'));
+                console.log(checkboxes[i].getAttribute('data-postId'));
+
+                Type = checkboxes[i].getAttribute('data-type');
+                PostID = checkboxes[i].getAttribute('data-postId');
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Home/Control',
+                    async: false,
+                    data: { 'PostID': PostID, 'Type': Type, 'Sentiment': Sentiment, 'IsEdit': IsEdit, 'UserId': UserId },
+                    success: function (data) {
+                        //console.log(data);
+                        //alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+                        //$('#ModalControl').modal('hide');
+                        console.log(i + ': succeed');
+                    },
+                    error: function () {
+                        alert('Алдаа гарлаа');
+                    }
+                });
+                new Promise(done => setTimeout(() => done(), 500));
+            }
+            alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+            $('#ModalControlWblist').modal('hide');
+            checkCheckbox(false);
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/Control',
+            data: { 'PostID': PostID, 'Type': Type, 'Sentiment': Sentiment, 'IsEdit': IsEdit, 'UserId': UserId },
+            success: function (data) {
+                //console.log(data);
+                alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+                $('#ModalControlWblist').modal('hide');
+                checkCheckbox(false);
+            },
+            error: function () {
+                alert('Алдаа гарлаа');
+            }
+        });
+    }
+
+    var typeAll = false;
+    function checkCheckbox(value) {
+        var checkboxes = document.querySelectorAll('.checkbox[type=checkbox]')
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = value;
+        }
+        typeAll = value;
+    }
+
+    $("#type-selector").change(function () {
+        if ($("#type-selector").val() == 'list') {
+            var UserId = document.getElementById("UserID").value;
+            document.getElementById('main-body').style.display = "none";
+            $.ajax({
+                type: "POST",
+                url: '/Home/SmartNewsCusList',
+                data: { 'ID': UserId },
+                success: function (data) {
+                    $("#main-body").html(data);
+                    //console.log(data);
+                },
+            });
+        }
+    });
+
+
+</script>

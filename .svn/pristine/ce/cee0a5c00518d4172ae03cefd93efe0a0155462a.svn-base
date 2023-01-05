@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+        @Html.AntiForgeryToken()
+
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <span class="ms-1 nav-user-name hidden-sm">@User.Identity.GetUserName()</span>
+                        <img src="~/Content/Images/user_icon.png" alt="profile-user" class="rounded-circle thumb-xs" />
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        @*                        <a class="dropdown-item" href="~/Account/UserProfile"><i data-feather="user" class="align-self-center icon-xs icon-dual me-1"></i> Профайл</a>
+        <a class="dropdown-item" href="~/Manage/ChangePassword"><i data-feather="settings" class="align-self-center icon-xs icon-dual me-1"></i> Нууц үг солих</a>*@
+                        <div class="dropdown-divider mb-0"></div>
+                        <a class="dropdown-item" href="~/Manage/ChangePassword"><i data-feather="settings" class="align-self-center icon-xs icon-dual me-1"></i> Нууц үг солих</a>
+                        <a class="dropdown-item" href="~/Account/Login"><i data-feather="power" class="align-self-center icon-xs icon-dual me-1"></i> Гарах</a>
+                    </div>
+                </li>
+        @*   <li class="dropdown dropdown-user nav-item" style="border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9">
+                <a class="dropdown-toggle nav-link dropdown-user-link" herf=""data-toggle="dropdown"><span class="mr-1 user-name text-bold-600"><i class="fa fa-angle-down"></i> @User.Identity.GetUserName()</span><span class="avatar avatar-online"><img src="~/Content/Images/user_icon.png" alt="avatar" /><i></i></span></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="~/Account/UserProfile"><i class="ft-user"></i> Профайл</a>
+                    <a class="dropdown-item" href="~/Manage/ChangePassword"><i class="ft-lock"></i> Нууц үг солих</a>
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i> Гарах</a>
+                </div>
+            </li>*@
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">@Html.ActionLink("Бүртгүүлэх", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Нэвтрэх", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}
+
+@*<li class="dropdown">
+    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-bs-toggle="dropdown" href="#" role="button"
+       aria-haspopup="false" aria-expanded="false">
+        <span class="ms-1 nav-user-name hidden-sm">Nick</span>
+        <img src="assets/images/users/user-5.jpg" alt="profile-user" class="rounded-circle thumb-xs" />
+    </a>
+    <div class="dropdown-menu dropdown-menu-end">
+        <a class="dropdown-item" href="#"><i data-feather="user" class="align-self-center icon-xs icon-dual me-1"></i> Profile</a>
+        <a class="dropdown-item" href="#"><i data-feather="settings" class="align-self-center icon-xs icon-dual me-1"></i> Settings</a>
+        <div class="dropdown-divider mb-0"></div>
+        <a class="dropdown-item" href="#"><i data-feather="power" class="align-self-center icon-xs icon-dual me-1"></i> Logout</a>
+    </div>
+            </li>*@

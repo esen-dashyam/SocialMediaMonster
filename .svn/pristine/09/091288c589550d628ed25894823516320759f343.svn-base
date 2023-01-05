@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SocialMonster.Models.MenuModels>
+@*@model IEnumerable<SocialMonster.Models.SystemUserModels>*@
+
+<ul class="metismenu left-sidenav-menu">
+    @{ var a = Model.Count();}
+    @foreach (var user in Model)
+    {
+        if (user.Level == 0)
+        {
+            if (user.childMenu == 1)
+            {
+                <li>
+                    <a href="javascript: void(0);"><i data-feather="power" class="align-self-center menu-icon"></i><span>@user.Name</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        @foreach (var user2 in Model)
+                        {
+                            if (user.ID == user2.parentID)
+                            {
+                                if (user2.childMenu == 1)
+                                {
+                                    <li>
+                                        <a href="javascript: void(0);"><i class="ti-control-record"></i>@user2.Name <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                        <ul class="nav-second-level" aria-expanded="false">
+                                            @foreach (var user3 in Model)
+                                            {
+                                                if (user2.ID == user3.parentID)
+                                                {
+                                                    <li><a class="menu-item" href="~/Home/SmartNewsCus/@user3.ID">@user3.Name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item"><a class="menu-item" href="~/Home/SmartNewsCus/@user2.ID"><i data-feather="power" class="align-self-center menu-icon"></i>@user2.Name</a></li>
+                                }
+                            }
+                        }
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item"><a class="menu-item" href="~/Home/SmartNewsCus/@user.ID" +DyV><i data-feather="power" class="align-self-center menu-icon"></i>@user.Name</a></li>
+            }
+        }
+
+    }
+</ul>

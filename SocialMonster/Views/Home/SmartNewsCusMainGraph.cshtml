@@ -1,0 +1,250 @@
+﻿<div class="card">
+    <div class="card-header"><span style="padding-bottom:6px;border-bottom:2px solid #6771dc;color:#6771dc">Нийгмийн сүлжээн дэх хандалтын үзүүлэлт(30 хоногоор)</span></div>
+    <div class="card-content">
+        <div class="card-body">
+            @*<canvas id="line-chart" width="800" height="200"></canvas>*@
+            <!--<div id="chartdiv"></div>-->
+            <canvas id="chart-div" height="100"></canvas>
+        </div>
+    </div>
+</div>
+
+<div id="OtherChartCheck" align="center" style="font-size:25px;" val="1"> <button class="btn btn-primary" id="OtherChartBtn" onclick="OtherChartCheck(this);">Дэлгэрэнгүй</button> </div>
+
+<div class="row mt-2" id="OtherCharts" style="display:none;">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <p><h4>Facebook дэх хандалтын үзүүлэлт(30 хоногоор)</h4></p>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <canvas id="fb-chart" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="card">
+            <div class="card-header">
+                <h4>Twitter дэх хандалтын үзүүлэлт(30 хоногоор)</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <canvas id="tw-chart" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="card">
+            <div class="card-header">
+                <h4>Веб сайт дэх хандалтын үзүүлэлт(30 хоногоор)</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <canvas id="web-chart" height="100"></canvas>
+                </div>
+            </div>
+
+        </div>
+        <hr />
+    </div>
+</div>
+@*<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>*@
+<script>
+            function OtherChartCheck() {
+                if ($("#OtherChartCheck").attr("val") == "0") {
+
+                    $("#OtherCharts").css("display", "none");
+                    $("#OtherChartCheck").attr("val", "1");
+                    $("#OtherChartBtn").html("Дэлгэрэнгүй");
+                } else {
+                    $("#OtherCharts").css("display", "block");
+                    $("#OtherChartCheck").attr("val", "0");
+                    $("#OtherChartBtn").html("Хаах");
+                }
+            }
+
+            var chart1 = new Chart(document.getElementById("fb-chart"), {
+                type: 'line',
+                data: {
+                    labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                    datasets: [{
+                        data: @ViewBag.FbPosChartCount,
+                        label: "Эерэг",
+                        borderColor: "#3b5998",
+                        fill: false
+                    }, {
+                        data: @ViewBag.FbNegChartCount,
+                            label:  "Сөрөг",
+                        borderColor: "#1dcaff",
+                        fill: false
+                    }, {
+                        data: @ViewBag.FbNeuChartCount,
+                            label:  "Саармаг",
+                        borderColor: "#f4a641",
+                        fill: false
+                    }]
+                }
+            });
+            var chart2 = new Chart(document.getElementById("tw-chart"), {
+                type: 'line',
+                data: {
+                    labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                    datasets: [{
+                        data: @ViewBag.TwPosChartCount,
+                        label: "Эерэг",
+                        borderColor: "#3b5998",
+                        fill: false
+                    }, {
+                        data: @ViewBag.TwNegChartCount,
+                            label:  "Сөрөг",
+                        borderColor: "#1dcaff",
+                        fill: false
+                    }, {
+                        data: @ViewBag.TwNeuChartCount,
+                            label:  "Саармаг",
+                        borderColor: "#f4a641",
+                        fill: false
+                    }]
+                }
+            });
+
+    var chart2 = new Chart(document.getElementById("chart-div"), {
+                type: 'line',
+                data: {
+                    labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                    datasets: [{
+                        data: @ViewBag.WebPosChartCount,
+                        label: "Эерэг",
+                        borderColor: "#3b5998",
+                        fill: false
+                    }, {
+                        data: @ViewBag.WebNegChartCount,
+                            label:  "Сөрөг",
+                        borderColor: "#1dcaff",
+                        fill: false
+                    }, {
+                        data: @ViewBag.WebNeuChartCount,
+                            label:  "Саармаг",
+                        borderColor: "#f4a641",
+                        fill: false
+                    }]
+                }
+            });
+        var chart = new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+
+            data: {
+                labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                datasets: [{
+                    data: @ViewBag.facebookChartCount,
+                    label: "Facebook",
+                    borderColor: "#3b5998",
+                    fill: false
+                }, {
+                    data: @ViewBag.twitterChartCount,
+                    label: "Twitter",
+                    borderColor: "#1dcaff",
+                    fill: false
+                }, {
+                    data: @ViewBag.websiteChartCount,
+                    label: "Website",
+                    borderColor: "#f4a641",
+                    fill: false
+                }
+                ]
+            }
+        });
+</script>
+<script>
+    var chart = new Chart(document.getElementById("chart-div"), {
+                        type: 'line',
+
+                        data: {
+                            labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                            datasets: [{
+                                data: @ViewBag.facebookChartCount1,
+                                label: "Facebook",
+                                borderColor: "#3b5998",
+                                fill: false
+                            }, {
+                                data: @ViewBag.twitterChartCount1,
+                                label: "Twitter",
+                                borderColor: "#1dcaff",
+                                fill: false
+                            }, {
+                                data: @ViewBag.websiteChartCount1,
+                                label: "Website",
+                                borderColor: "#f4a641",
+                                fill: false
+                            }
+                            ]
+                        }
+     });
+</script>
+<!--
+<script>
+    am4core.ready(function () {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create chart instance
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+        // Add data
+        chart.data = [
+                @{
+                    string js_data = "";
+                    for (int i=0;i<30; i++)
+                    {
+                        js_data = js_data +
+                                     "{"
+                                     + "'year':'" + (i+1) + "',"
+                                     + "'facebook': " + ViewBag.fbCount[i] + ","
+                                     + "'twitter': " + ViewBag.twCount[i] + ","
+                                     + "'web':" + ViewBag.webCount[i] + ","
+                                     + "},";
+
+                    }
+                }
+                @Html.Raw(js_data)
+
+        ];
+
+        // Create axes
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "year";
+        categoryAxis.title.text = "Нийгмийн сүлжээ";
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.renderer.minGridDistance = 20;
+        categoryAxis.renderer.cellStartLocation = 0.1;
+        categoryAxis.renderer.cellEndLocation = 0.9;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = 0;
+        valueAxis.title.text = "Expenditure (M)";
+
+        // Create series
+        function createSeries(field, name, stacked) {
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.dataFields.valueY = field;
+            series.dataFields.categoryX = "year";
+            series.name = name;
+            series.columns.template.tooltipText = "{name}: [bold]{valueY}[/]";
+            series.stacked = stacked;
+            series.columns.template.width = am4core.percent(95);
+        }
+
+        createSeries("facebook", "Фэйсбүүк", false);
+        createSeries("twitter", "Твиттер", true);
+        createSeries("web", "Вэб мэдээ", true);
+
+        // Add legend
+        chart.legend = new am4charts.Legend();
+
+    }); // end am4core.ready()
+</script>
+

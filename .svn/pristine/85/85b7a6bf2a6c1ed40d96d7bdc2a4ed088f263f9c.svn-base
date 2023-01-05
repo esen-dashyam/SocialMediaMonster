@@ -1,0 +1,40 @@
+﻿<div class="card card-shadow" style="max-height:440px;">
+
+
+        <div class="card-header card-header-transparent py-20">
+            <div class="btn-group dropdown">
+                <p>НИЙТ БҮРТГЭЛ</p>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <canvas id="line-chart" style="width:100%;"></canvas>
+        </div>
+</div>
+<script>
+         var chart = new Chart(document.getElementById("line-chart"), {
+                        type: 'line',
+
+                        data: {
+                            labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                            datasets: [{
+                                data: @ViewBag.facebookChartCount1,
+                                label: "Facebook",
+                                borderColor: "#3b5998",
+                                fill: false
+                            }, {
+                                data: @ViewBag.twitterChartCount1,
+                                label: "Twitter",
+                                borderColor: "#1dcaff",
+                                fill: false
+                            }, {
+                                data: @ViewBag.websiteChartCount1,
+                                label: "Website",
+                                borderColor: "#f4a641",
+                                fill: false
+                            }
+                            ]
+                        }
+     });
+</script>

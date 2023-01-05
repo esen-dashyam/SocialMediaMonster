@@ -1,0 +1,25 @@
+﻿<table class="table table-bordered table-striped" id="mainTbl">
+    <tr>
+        <th>#</th>
+        <th>Овог нэр</th>
+        <th>Утас </th>
+        <th>Имэйл </th>
+        <th></th>
+    </tr>
+
+    @{ int @counter = 0; }
+    @foreach (var m in @ViewBag.PersonData)
+    {
+        counter = counter + 1;
+        <tr>
+            <td>@counter</td>
+            <td>@m.SureName.@m.Name</td>
+            <td>@m.Mobile</td>
+            <td>@m.Email</td>
+            <td>
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Update" onclick="UpdateModal(this);" data-id="@m.ID" />
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Delete" onclick="DeleteModal(this);" id="del" data-id="@m.ID" />
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "HotTopicRatingResult";
+}
+
+@if (@ViewBag.TopicRatingData != null)
+{
+    foreach (var m in @ViewBag.TopicRatingData)
+    {
+        <tr class="item">
+            <td>
+                <div>
+                    <a href="~/Home/HotTopicDtl/@m.ID/" style="color:white">
+                        <img src="@m.ImageURL" width="150" />
+                    </a>
+                </div>
+                <div style="position:absolute; background:rgba(0,0,0,0.5); padding:5px; margin-top:-30px; width:150px;">
+                    <a href="~/Home/HotTopicDtl/@m.ID/" style="color:white">@m.Title</a>
+                </div>
+            </td>
+            <td data-id="@m.ID" data-sentiment="Positive" data-type="Fb" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;">@m.Fbpositive</td>
+            <td data-id="@m.ID" data-sentiment="Neutral" data-type="Fb" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.Fbneutral</td>
+            <td data-id="@m.ID" data-sentiment="Negative" data-type="Fb" group-id="@m.GroupID"  onclick="LoadDtl(this);" style="cursor:pointer;"> @m.Fbnegative</td>
+            <td data-id="@m.ID" data-sentiment="Positive" data-type="Tw" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.Twpositive</td>
+            <td data-id="@m.ID" data-sentiment="Neutral" data-type="Tw" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.Twneutral</td>
+            <td data-id="@m.ID" data-sentiment="Negative" data-type="Tw" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.Twnegative</td>
+            <td data-id="@m.ID" data-sentiment="Positive" data-type="Web" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.Webpositive </td>
+            <td data-id="@m.ID" data-sentiment="Neutral" data-type="Web" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;">@m.Webneutral</td>
+            <td data-id="@m.ID" data-sentiment="Negative" data-type="Web" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.Webnegative</td>
+            <td data-id="@m.ID" data-sentiment="All" data-type="Fb" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.countFb</td>
+            <td data-id="@m.ID" data-sentiment="All" data-type="Tw" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.countTw</td>
+            <td data-id="@m.ID" data-sentiment="All" data-type="Web" group-id="@m.GroupID" onclick="LoadDtl(this);" style="cursor:pointer;"> @m.countWeb</td>
+            <td> @m.countAll</td>
+        </tr>
+    }
+}
+
+

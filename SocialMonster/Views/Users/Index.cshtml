@@ -1,0 +1,532 @@
+﻿@{
+    ViewBag.Title = "Хэрэглэгчийн статистик";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/pages/single-page.css">
+<div class="row">
+        <div class="col-lg-8  col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title float-left">
+                        Нийгмийн сүлжээ
+                    </h4>
+                </div>
+                <div class="card-body mt-1">
+                    <div class="table-responsive">
+                        <table id="active-accounts" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0">Ранк</th>
+                                    <th class="border-top-0">Сүлжээ</th>
+                                    <th class="border-top-0">Хэрэглэгчийн тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="ac-symbol jello">
+                                            <i class="la la-facebook"></i>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">#1</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">Facebook</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-hol-name">@ViewBag.FacebookUsersCount</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="ac-symbol current">
+                                            <i class="la la-twitter"></i>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">#2</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">Twitter</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-hol-name">@ViewBag.TwitterUsersCount</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="ac-symbol loan">
+                                            <i class="la la-rss"></i>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">#3</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">Web</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-hol-name">@ViewBag.WebUsersCount</div>
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                    <td class="align-middle">
+                                        <div class="ac-symbol saving">
+                                            <i class="la la-instagram"></i>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">Instagram</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-hol-name">0</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="ac-symbol loan">
+                                            <i class="la la-reddit"></i>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">Reddit</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-hol-name">0</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="ac-symbol loan">
+                                            <i class="la la-youtube"></i>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">Youtube</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-hol-name">1</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="ac-symbol joint">
+                                            <i class="la la-vk"></i>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-type">VK</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="ac-hol-name">0</div>
+                                    </td>
+                                </tr>*@
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Хэрэглэгчдийн төрөл</h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <canvas id="doughnut-chart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div align="right">
+            @if (ViewBag.Date != 2000)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Бүгд", "Index", new { Date = 0 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 2000)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Бүгд", "Index", new { Date = 0 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 1)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 1 өдөр", "Index", new { Date = 1 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 1)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 1 өдөр", "Index", new { Date = 1 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 5)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 5 өдөр", "Index", new { Date = 5 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 5)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 5 өдөр", "Index", new { Date = 5 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 7)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 7 өдөр", "Index", new { Date = 7 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 7)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 7 өдөр", "Index", new { Date = 7 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 14)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 14 өдөр", "Index", new { Date = 14 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 14)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 14 өдөр", "Index", new { Date = 14 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 30)
+            {
+            <div class="btn btn-success">
+                @Html.ActionLink("Сүүлийн 1 сар", "Index", new { Date = 30 }, new { Style = "color:White;" })
+            </div>
+            }
+            @if (ViewBag.Date == 30)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 1 сар", "Index", new { Date = 30 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 365)
+            {
+            <div class="btn btn-success">
+                @Html.ActionLink("Сүүлийн 1 жил", "Index", new { Date = 0 }, new { Style = "color:White;" })
+            </div>
+            }
+            @if (ViewBag.Date == 365)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 1 жил", "Index", new { Date = 0 }, new { Style = "color:White;" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+
+     <div class="col-lg-6  col-md-6">
+         <div class="card">
+             <div class="card-header">
+                 <h4 class="card-title">Facebook-ийн топ хэрэглэгчид</h4>
+                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                 <div class="heading-elements">
+                     <ul class="list-inline mb-0">
+                         <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="card-content">
+                 <div id="new-orders" class="media-list position-relative">
+                     <div class="table-responsive">
+                         <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                             <thead>
+                                 <tr>
+                                     <th class="border-top-0"></th>
+                                     <th class="border-top-0">Ранк</th>
+                                     <th class="border-top-0">Хэрэглэгчийн нэр</th>
+                                     <th class="border-top-0">Постын тоо</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                @{int counter = 1; }
+                                @foreach (var user in ViewBag.mostPostedUsers)
+                                {
+                                 <tr>
+                                     <td class="align-middle">
+                                         <div class="ac-symbol ie">
+                                             <i class="la la-facebook-square"></i>
+                                         </div>
+                                     </td>
+                                     <td class="text-truncate">#@counter</td>
+                                     @{counter = counter + 1; }
+                                     <td class="text-truncate"><a href="https://www.facebook.com/@user.fb_ID">@user.fb_Name</a></td>
+                                     <td class="text-truncate">@user.fb_Count</td>
+                                 </tr>
+                                }
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+    <div class="col-lg-6  col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Twitter-ийн топ хэрэглэгчид</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0">Ранк</th>
+                                    <th class="border-top-0">Хэрэглэгчийн нэр</th>
+                                    <th class="border-top-0">Tweet тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int counter1 = 1; }
+                                @foreach (var userData in ViewBag.mostTweetedUsers)
+                                {
+
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="ac-symbol current">
+                                                <i class="la la-twitter"></i>
+                                            </div>
+                                        </td>
+                                        <td class="text-truncate">#@counter1</td>
+                                        @{counter1 = counter1 + 1; }
+                                        <td class="text-truncate"><a href="https://www.twitter.com/@userData.UserName">@userData.UserName</a></td>
+                                        <td class="text-truncate">@userData.TweetNumber</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-6  col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Facebook-ийн хамгийн их пост нь шэйрлэгдсэн хэрэглэгчид</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0">Ранк</th>
+                                    <th class="border-top-0">Хэрэглэгчийн нэр</th>
+                                    <th class="border-top-0">Шэйрлэгдсэн тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int counter4 = 1; }
+                                @foreach (var user in ViewBag.mostSharedUsers)
+                                {
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="ac-symbol ie">
+                                                <i class="la la-facebook-square"></i>
+                                            </div>
+                                        </td>
+                                        <td class="text-truncate">#@counter4</td>
+                                        @{counter4 = counter4 + 1; }
+                                        <td class="text-truncate"><a href="https://www.facebook.com/@user.fb_ID">@user.fb_Name</a></td>
+                                        <td class="text-truncate">@user.fb_shareCount</td>
+                                    </tr>
+                                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="col-lg-6  col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Хамгийн их нийтлэлтэй вэбсайтууд</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0">Ранк</th>
+                                    <th class="border-top-0">Вэбсайтын нэр</th>
+                                    <th class="border-top-0">Нийтлэлийн тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int counter2 = 1; }
+                                @foreach (var user in ViewBag.topWebSites)
+                                {
+
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="ac-symbol loan">
+                                                <i class="la la-rss"></i>
+                                            </div>
+                                        </td>
+                                        <td class="text-truncate">#@counter2</td>
+                                        @{counter2 = counter2 + 1; }
+                                        <td class="text-truncate">@user.web_name</td>
+                                        <td class="text-truncate">@user.web_count</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="col-lg-6  col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Хамгийн их коммент бичсэн Facebook хэрэглэгчид</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0">Ранк</th>
+                                    <th class="border-top-0">Хэрэглэгчийн нэр</th>
+                                    <th class="border-top-0">Коммент тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int counter3 = 1; }
+                                @foreach (var user in ViewBag.topCommentUsers)
+                                {
+
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="ac-symbol ie8">
+                                                <i class="la la-facebook-f"></i>
+                                            </div>
+                                        </td>
+                                        <td class="text-truncate">#@counter3</td>
+                                        @{counter3 = counter3 + 1; }
+                                        <td class="text-truncate"><a href="https://www.facebook.com/@user.cmt_id">@user.cmt_name</a></td>
+                                        <td class="text-truncate">@user.cmt_count</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Content/app-assets/vendors/js/ui/jquery.sticky.js"></script>
+<script src="~/Content/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
+<script src="~/Content/app-assets/vendors/js/charts/chart.min.js"></script>
+<script>
+    new Chart(document.getElementById("doughnut-chart"), {
+        type: 'doughnut',
+        data: {
+            labels: ["Facebook", "Twitter", "Web"],
+            datasets: [
+                {
+                    label: "Хэрэглэгч",
+                    backgroundColor: ["#3e95cd", "#00acee", "#dcba9f"],
+                    data: [@ViewBag.FacebookUsersCount, @ViewBag.TwitterUsersCount, @ViewBag.WebUsersCount]
+                }
+            ]
+        },
+        //options: {
+        //    title: {
+        //        display: true,
+        //        text: 'Хэрэглэгчийн нийгмийн сүлжээний төрлүүд'
+        //    }
+        //}
+    });
+    function customDate(a)  //person 1
+    {
+        var date = 0;
+        if (a == "") {
+            var date = 0;
+        } else {
+            var date = a;
+        }
+
+
+        $.ajax({
+            type: "POST",
+            url: '/Users/Index',
+            data: {'Date': date},
+            success: function (data) {
+                $("#person1").html(data);
+            },
+            error: function () {
+                alert('Error occured');
+            }
+        });
+    }
+</script>

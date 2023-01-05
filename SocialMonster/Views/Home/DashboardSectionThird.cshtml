@@ -1,0 +1,201 @@
+﻿<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Сүүлийн нийтлэлүүд</h4>
+        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+            </ul>
+        </div>
+    </div>
+    <div class="card-content">
+        <div class="table-responsive">
+            <table id="recent-orders" class="table table-hover table-xl mb-0">
+                <thead>
+                    <tr>
+                        <th class="border-top-0">Sentiment</th>
+                        <th class="border-top-0">Линк</th>
+                        <th class="border-top-0" style="width:20%">Аккаунт</th>
+                        <th class="border-top-0">Зураг</th>
+                        <th class="border-top-0">Категори</th>
+                        <th class="border-top-0">Хандалтын тоо</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var post in ViewBag.FbDash)
+                    {
+                        <tr>
+                            @if (post.Sentiment != null)
+                            {
+                                <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>@post.Sentiment </td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>Тооцоолж байгаа</td>
+                            }
+                            @if (post.Link != null)
+                            {
+                                if (post.Message != null)
+                                {
+                                    <td class="text-truncate"><a href="@post.Link">@post.Message</a></td>
+                                }
+                                else
+                                {
+                                    <td class="text-truncate"><a href="@post.Link">Энд дарна уу!</a></td>
+                                }
+                            }
+                            else
+                            {
+                                <td class="text-truncate"><p>Холбоос байхгүй</p></td>
+                            }
+                            <td class="text-truncate width:100px">
+
+                                <a href="https://www.facebook.com/@post.FromID">@post.FromName</a>
+                            </td>
+                            <td class="text-truncate p-1">
+                                @if (post.FullPicture != null)
+                                {
+
+                                    <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="@post.FullPicture" style="height:50px; width:50px;" alt="Avatar">
+
+                                }
+                            </td>
+                            <td>
+                                <h6 class="ff-label-wrapper" style="font-family:sans-serif; font-weight:600; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                                    <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                        <i class="ff-icon-inner" style="margin-bottom:0; background-color:#3b5998; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                            <span class="ff-label-text" style="margin-bottom:0">facebook</span>
+                                        </i>
+                                    </i>
+                                </h6>
+                            </td>
+
+                            @if (post.SharedCount != null)
+                            {
+                                <td class="text-truncate text-center">@post.SharedCount</td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"></td>
+                            }
+                        </tr>
+                    }
+                    @foreach (var post in ViewBag.TwitDash)
+                    {
+                        <tr>
+                            @if (post.Sentiment != null)
+                            {
+                                <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>@post.Sentiment </td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>Тооцоолж байгаа</td>
+                            }
+                            @if (post.StatusID != null)
+                            {
+                                <td class="text-truncate"> <a href="https://www.twitter.com/statuses/@post.StatusID" target="_blank">@post.Text</a></td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"><p>Холбоос байхгүй</p></td>
+                            }
+                            <td class="text-truncate">
+
+                                @if (post.ScreenName != null)
+                                {
+                                    <a href="https://www.twitter.com/@post.ScreenNameResponse" target="_blank">
+                                        @post.ScreenName
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="https://www.twitter.com/@post.ScreenNameResponse" target="_blank">
+                                        @post.Name
+                                    </a>
+                                }
+                            </td>
+                            <td class="text-truncate p-1">
+                                @if (post.ProfileImageUrl != null)
+                                {
+                                    <img src=@post.ProfileImageUrl style="width:50px; height:50px;">
+                                }
+                            </td>
+                            <td>
+
+                                <h6 class="ff-label-wrapper" style="font-weight:600; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                                    <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                        <i class="ff-icon-inner" style="margin-bottom:0; background-color:#1dcaff; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                            <span class="ff-label-text" style="margin-bottom:0">twitter</span>
+                                        </i>
+                                    </i>
+                                </h6>
+
+                            </td>
+
+
+                            @if (post.RetweetCount != null)
+                            {
+                                <td class="text-truncate text-center">@post.RetweetCount</td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"></td>
+                            }
+                        </tr>
+                    }
+                    @foreach (var post in ViewBag.WebDash)
+                    {
+                        <tr>
+                            @if (post.Sentiment != null)
+                            {
+                                <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>@post.Sentiment </td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>Тооцоолж байгаа</td>
+                            }
+                            @if (post.Url != null)
+                            {
+                                <td class="text-truncate"><a href="@post.Url">@post.Title</a></td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"><p>Холбоос байхгүй</p></td>
+                            }
+                            <td class="text-truncate">
+                                @if (post.Reporter != null)
+                                {
+                                    <span style="width:100px !important">@post.Reporter</span>
+                                }
+                            </td>
+                            <td class="text-truncate p-1">
+                                @if (post.CoverUrl != null)
+                                {
+                                    <img class="media-object rounded no-border-top-radius no-border-bottom-radius" src=@post.CoverUrl style="height:50px; width:50px;">
+
+                                }
+                            </td>
+                            <td>
+                                <h6 class="ff-label-wrapper" style="font-family:sans-serif; font-weight:600;z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                                    <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                        <i class="ff-icon-inner" style="margin-bottom:0; background-color:#f4a641; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                            <span class="ff-label-text" style="margin-bottom:0">website</span>
+                                        </i>
+                                    </i>
+                                </h6>
+                            </td>
+
+                            @if (post.CommentCount != null)
+                            {
+                                <td class="text-truncate text-center">@post.CommentCount</td>
+                            }
+                            else
+                            {
+                                <td class="text-truncate"></td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

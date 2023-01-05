@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SocialMonster.Models.FbComment>
+@foreach (var comment in Model)
+{
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4 p-2">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col text-right">
+                            <a href="https://www.facebook.com/@comment.FromID">
+                                <strong class="mb-2" style="color:#005DD4">@comment.FromName</strong>
+                                <img src="~/Content/Images/user_icon.png" style="border-radius:50%;height:50px;width:50px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="alert alert-light border-0 text-right mt-1">
+                        <a class="btn btn-sm btn-info text-white" target="_blank" href="@Url.Action("FullReport_getCommentsByPost", "FacebookReport")?postID=@comment.PostID.ToString()"><i class="fa fa-facebook"></i> Пост харах</a>
+                        <button class="btn btn-sm btn-success"><i class="fa fa-key"></i> Түлхүүр үг</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col m-1 p-2 pl-0 pr-0" style="background-color:#ececec;border-radius:30px;border-top-left-radius:0px;color:#000">
+                    <div class="facebook-list-user mb-2">
+                        <div>
+                            @if (comment.Sentiment == "Neutral")
+                            {
+                                <div class="float-right">
+                                    <button class="sentiment-neutral" data-toggle="modal" data-target="#modalSentiment" onclick="setCommentID('@comment.ID')">Саарал</button>
+                                </div>
+                            }
+                            else if (comment.Sentiment == null)
+                            {
+                                <div class="float-right">
+                                    <button class="sentiment-neutral" data-toggle="modal" data-target="#modalSentiment" onclick="setCommentID('@comment.ID')">Саарал</button>
+                                </div>
+                            }
+                            else if (comment.Sentiment == "Positive")
+                            {
+                                <div class="float-right">
+                                    <button class="sentiment-positive" data-toggle="modal" data-target="#modalSentiment" onclick="setCommentID('@comment.ID')">Эерэг</button>
+                                </div>
+                            }
+                            else if (comment.Sentiment == "Negative")
+                            {
+                                <div class="float-right">
+                                    <button class="sentiment-negative" data-toggle="modal" data-target="#modalSentiment" onclick="setCommentID('@comment.ID')">Сөрөг</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <p class="text-justify">@comment.Message</p>
+                    <hr class="mt-3">
+                    <div class="row">
+                        <div class="col-5 text-left"><small style="font-weight:700">@comment.Likes Like 0 Shares</small></div>
+                        <div class="col-7 text-right"><small style="font-weight:700">@comment.CreateTime</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <hr>
+}
+<div class="row">
+    <div class="col text-center">
+        @for (int i = 1; i <= ViewBag.pageCount; i++)
+        {
+            <button class="btn btn-sm btn-warning mr-1 mb-1" onclick="commentGrid('@i')">@i</button>
+        }
+    </div>
+</div>

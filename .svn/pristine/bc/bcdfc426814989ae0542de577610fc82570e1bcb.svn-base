@@ -1,0 +1,133 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+@{
+    ViewBag.Title = "Фэйсбүүкийн постууд";
+}
+<input type="hidden" id="personID" value="@ViewBag.personID">
+<div class="card">
+    <div class="card-header"><h4 class="card-title">Сонгогдсон хэрэглэгчтэй холбоотой постуудын жагсаалт</h4></div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4 mb-2">
+                    <input type="text" class="form-control" placeholder="Хайх" id="input_search" />
+                </div>
+                <div class="col-sm-4 mb-2">
+                    <button class="btn btn-info" data-toggle="modal" data-target="#name" onclick="createReport()"><i class="fa fa-plus-circle"></i> Судалгаа үүсгэх</button>
+                </div>
+            </div>
+            <div class="col-12" id="result">
+                @foreach (var post in Model)
+                {
+                    <div class="row mb-2 facebook-report">
+                        <div class="col-md-4 pt-5 text-center">
+                            <input class="form-control-xs" name="checkbox" id="@post.ID" type="checkbox" />
+                            <p>Сонгох</p>
+                        </div>
+                        <div class="col-md-8 post-box">
+                            <div class="facebook-list-user mb-2">
+                                <a href="https://www.facebook.com/@post.FromID" target="_blank">
+                                    <img src="~/Content/app-assets/images/fb_logo.png" style="border-radius:50%;height:30px;width:30px;">
+                                    <strong class="mb-2" style="color:#005DD4">@post.FromName</strong>
+                                </a>
+                            </div>
+                            @if (@post.FullPicture != "NULL")
+                            {
+                                <p><img src="@post.FullPicture" style="width:100%;" /></p>
+                            }
+                            <p class="text-justify"><a href="@post.PermalinkUrl" target="_blank" style="color:#333">@post.Message</a></p>
+                            <hr>
+                            <div class="row text-primary">
+                                <div class="col-6 text-left">
+                                    <p>@post.UpdateTime</p>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <p>0 Коммент @post.SharedCount Шэйр</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-12" id="insert"></div>
+            <center><button class="btn btn-success btn-md" onclick="GetNext()">Дахиад</button></center>
+        </div>
+    </div>
+</div>
+<div id="name" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Судалгааны нэр өгөх</p>
+                @using (Html.BeginForm("CreateReport", "FacebookReport", FormMethod.Post))
+                {
+                    <input id="list_ids" name="list_ids" type="hidden" />
+                    <input type="hidden" name="personID" value="@ViewBag.personID">
+                    <input name="ReportName" class="form-control mb-2" placeholder="Судалгааны нэр">
+                    <div class="row">
+                        <div class="col-6 text-right">
+                            <button type="submit" class="btn btn-sm btn-success">Батлах</button>
+                        </div>
+                        <div class="col-6 text-left">
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Болих</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+    function search() {
+        var result = $("#result");
+        result.html("");
+        result.append('<div class="d-flex justify-content-center mt-5 mb-5"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+        $.ajax({
+            type: "GET",
+            url: '/Post/SearchPosts',
+            data: { 'personID': personID, 'text': text },
+            success: function (data) {
+                result.html("");
+                result.html(data);
+            },
+        });
+    }
+    var skipNumber = 0;
+    function GetNext() {
+        skipNumber++;
+        var insert = $("#insert");
+        var personID = document.getElementById("personID").value;
+        insert.html("");
+        insert.append('<div class="d-flex justify-content-center mt-5 mb-5"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+        //alert(skipNumber);
+        $.ajax({
+            type: "POST",
+            url: '/FacebookReport/ListFacebookPost_GetNextPosts',
+            data: { 'personID': personID, 'skipNumber': skipNumber },
+            success: function (data) {
+                insert.html("");
+                insert.html(data);
+            },
+        });
+    }
+    function createReport() {
+        var checked = [];
+        $.each($('input[name="checkbox"]:checked'), function () {
+            checked.push(this.id);
+        });
+        document.getElementById("list_ids").value = checked;
+        //ids = JSON.stringify({ 'ids': checked });
+        //$.ajax({
+        //    contentType: 'application/json; charset=utf-8',
+        //    dataType: 'json',
+        //    type: 'POST',
+        //    url: '/FacebookReport/CreateReport',
+        //    data: ids,
+        //    success: function (data) {
+        //    },
+        //});
+    }
+</script>

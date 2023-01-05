@@ -1,0 +1,2 @@
+﻿<h3 class="success">@ViewBag.CommentCount</h3>
+<h6>Фэйсбүүк сэтгэгдэл</h6>

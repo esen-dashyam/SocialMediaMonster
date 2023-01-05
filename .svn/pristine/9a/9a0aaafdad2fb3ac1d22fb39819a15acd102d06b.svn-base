@@ -1,0 +1,292 @@
+﻿@model SocialMonster.Models.ReportGraph
+@{
+    ViewBag.Title = "FullReport_getGraph";
+}
+<div class="row mb-3">
+    <div class="col-md-6">
+        <canvas id="commentSentiment-chart" width="750" height="650"></canvas>
+    </div>
+    <div class="col-md-6">
+        <canvas id="commentSentiment-none-fake-chart" width="750" height="650"></canvas>
+    </div>
+</div>
+<hr>
+<div class="row mt-2">
+    <div class="col-md-6">
+        <h5>Нийт сэтгэгдэл</h5>
+        <div class="table-responsive mb-2">
+            <table id="ListPost" class="table table-bordered">
+                <thead class="text-dark">
+                    <tr>
+                        <th></th>
+                        <th class="text-center">Комментын тоо</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>Эерэг</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-success round">@Model.positiveCount</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o danger font-medium-1 mr-1"></i>Сөрөг</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-danger round">@Model.negativeCount</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o font-medium-1 mr-1"></i> Саарал</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-outline-secondary round">@Model.neutralCount</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><strong>Нийт</strong></td>
+                        <td class="text-truncate text-center"><strong>@(Model.positiveCount + Model.negativeCount + Model.neutralCount)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h5>Бодит болон троллоор ангилсан сэтгэгдлийн тоо</h5>
+        <div class="table-responsive mb-2">
+            <table id="ListPost" class="table table-bordered">
+                <thead class="text-dark">
+                    <tr>
+                        <th></th>
+                        <th class="text-center">Бодит</th>
+                        <th class="text-center">Тролл</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>Эерэг</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-success round">@Model.positiveCount_no_fake</button></td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-success round">@(Model.positiveCount - Model.positiveCount_no_fake)</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o danger font-medium-1 mr-1"></i>Сөрөг</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-danger round">@Model.negativeCount_no_fake</button></td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-danger round">@(Model.negativeCount - Model.negativeCount_no_fake)</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o font-medium-1 mr-1"></i> Саарал</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-outline-secondary round">@Model.neutralCount_no_fake</button></td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-outline-secondary round">@(Model.neutralCount - Model.neutralCount_no_fake)</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><strong>Нийт</strong></td>
+                        <td class="text-truncate text-center"><strong>@(Model.positiveCount_no_fake + Model.negativeCount_no_fake + Model.neutralCount_no_fake)</strong></td>
+                        <td class="text-truncate text-center"><strong>@(Model.positiveCount + Model.negativeCount + Model.neutralCount - Model.positiveCount_no_fake - Model.negativeCount_no_fake - Model.neutralCount_no_fake)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h5>Хэрэглэгчийн ангилал</h5>
+        <canvas id="account1-chart" width="750" height="650"></canvas>
+    </div>
+    <div class="col-md-6">
+        <h5>Хэрэглэгчийн ангилал-1/Хүснэгтээр/</h5>
+        <div class="table-responsive mb-2">
+            <table class="table table-bordered">
+                <thead class="text-dark">
+                    <tr>
+                        <th></th>
+                        <th class="text-center">Аккаунтын тоо</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>Бодит</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-success round">@(Model.realUserCount_with_address + Model.realUserCount)</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o danger font-medium-1 mr-1"></i>Хуурамч</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-danger round">@Model.trollUserCount</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><strong>Нийт</strong></td>
+                        <td class="text-truncate text-center"><strong>@(Model.realUserCount + Model.realUserCount_with_address + Model.trollUserCount)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5>Хэрэглэгчийн ангилал-2/Хүснэгтээр/</h5>
+        <div class="table-responsive mb-2">
+            <table class="table table-bordered">
+                <thead class="text-dark">
+                    <tr>
+                        <th></th>
+                        <th class="text-center">Аккаунтын тоо</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i>Тулгалт хийгдсэн</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-success round">@Model.realUserCount_with_address</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>Тулгалт хийгдээгүй</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-warning round">@Model.realUserCount</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><i class="la la-dot-circle-o danger font-medium-1 mr-1"></i>Хуурамч</td>
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-danger round">@Model.trollUserCount</button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate"><strong>Нийт</strong></td>
+                        <td class="text-truncate text-center"><strong>@(Model.realUserCount + Model.realUserCount_with_address + Model.trollUserCount)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>Хэрэглэгчийн ангилал/Хот, хөдөө/</h5>
+        <canvas id="user-hot-huduu-chart" width="800" height="250"></canvas>
+    </div>
+    <div class="col-md-6">
+    </div>
+</div>
+<hr>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>Хэрэглэгчийн ангилал-Эерэг</h5>
+        <canvas id="user-hot-huduu-chart-positive" width="800" height="250"></canvas>
+    </div>
+    <div class="col-md-6">
+    </div>
+</div>
+<hr>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <h5>Хэрэглэгчийн ангилал-Сөрөг</h5>
+        <canvas id="user-hot-huduu-chart-negative" width="800" height="250"></canvas>
+    </div>
+    <div class="col-md-6">
+    </div>
+</div>
+<hr>
+<script>
+    new Chart(document.getElementById("commentSentiment-chart"), {
+        type: 'doughnut',
+        data: {
+            labels: ["Эерэг", "Сөрөг", "Саарал"],
+            datasets: [
+                {
+                    label: "Тоо",
+                    backgroundColor: ["#5cb85c", "#d9534f", "#eee"],
+                    data: [@Model.positiveCount, @Model.negativeCount, @Model.neutralCount]
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Судалгаанд хамрагдсан сэтгэгдлүүдийн хандлага'
+            }
+        }
+    });
+    new Chart(document.getElementById("commentSentiment-none-fake-chart"), {
+        type: 'doughnut',
+        data: {
+            labels: ["Эерэг", "Сөрөг", "Саарал"],
+            datasets: [
+                {
+                    label: "Тоо",
+                    backgroundColor: ["#5cb85c", "#d9534f", "#eee"],
+                    data: [@Model.positiveCount_no_fake, @Model.negativeCount_no_fake, @Model.neutralCount_no_fake]
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Хуурамч аккаунтуудыг хассан сэтгэгдлүүдийн хандлага'
+            }
+        }
+    });
+    new Chart(document.getElementById("account1-chart"), {
+        type: 'doughnut',
+        data: {
+            labels: ["Тролл бичигч", "Хаягийн тулгалт хийгдээдгүй", "Хаягийн тулгалт хийгдсэн"],
+            datasets: [
+                {
+                    label: "Тоо",
+                    backgroundColor: ["#d9534f", "#F4B400", "#5cb85c"],
+                    data: [@Model.trollUserCount, @Model.realUserCount, @Model.realUserCount_with_address]
+                }
+            ]
+        },
+        //options: {
+        //    title: {
+        //        display: true,
+        //        text: 'Хуурамч аккаунтуудыг хассан сэтгэгдлүүдийн хандлага'
+        //    }
+        //}
+    });
+    new Chart(document.getElementById("user-hot-huduu-chart"), {
+        type: 'bar',
+        data: {
+            labels: ["Улаанбаатар","Архангай", "Баян-Өлгий", "Баянхонгор", "Булган", "Говь-Алтай", "Говьсүмбэр", "Дархан-Уул", "Дорноговь", "Дорнод", "Дундговь", "Завхан", "Орхон", "Өвөрхангай", "Өмнөговь", "Сүхбаатар", "Сэлэнгэ", "Төв", "Увс", "Ховд", "Хөвсгөл", "Хэнтий"],
+            datasets: [
+                {
+                label: "Хэрэглэгчийн тоо",
+                backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
+                data: @Model.listAimagAccountCount,
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          //title: {
+          //  display: true,
+          //  text: 'Predicted world population (millions) in 2050'
+          //}
+        }
+    });
+    new Chart(document.getElementById("user-hot-huduu-chart-positive"), {
+        type: 'bar',
+        data: {
+            labels: ["Улаанбаатар","Архангай", "Баян-Өлгий", "Баянхонгор", "Булган", "Говь-Алтай", "Говьсүмбэр", "Дархан-Уул", "Дорноговь", "Дорнод", "Дундговь", "Завхан", "Орхон", "Өвөрхангай", "Өмнөговь", "Сүхбаатар", "Сэлэнгэ", "Төв", "Увс", "Ховд", "Хөвсгөл", "Хэнтий"],
+            datasets: [
+                {
+                label: "Хэрэглэгчийн тоо",
+                backgroundColor: ["#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c","#5cb85c"],
+                data: @Model.listAimagAccountCount_positive,
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          //title: {
+          //  display: true,
+          //  text: 'Predicted world population (millions) in 2050'
+          //}
+        }
+    });
+    new Chart(document.getElementById("user-hot-huduu-chart-negative"), {
+        type: 'bar',
+        data: {
+            labels: ["Улаанбаатар","Архангай", "Баян-Өлгий", "Баянхонгор", "Булган", "Говь-Алтай", "Говьсүмбэр", "Дархан-Уул", "Дорноговь", "Дорнод", "Дундговь", "Завхан", "Орхон", "Өвөрхангай", "Өмнөговь", "Сүхбаатар", "Сэлэнгэ", "Төв", "Увс", "Ховд", "Хөвсгөл", "Хэнтий"],
+            datasets: [
+                {
+                label: "Хэрэглэгчийн тоо",
+                backgroundColor: ["#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f","#d9534f"],
+                data: @Model.listAimagAccountCount_negative,
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          //title: {
+          //  display: true,
+          //  text: 'Predicted world population (millions) in 2050'
+          //}
+        }
+    });
+</script>

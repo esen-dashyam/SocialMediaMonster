@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SocialMonster.Models.FbComment>
+<div class="col">
+    <div class="table-responsive mb-2">
+        <table class="table table-striped">
+            <tbody>
+                @foreach (var comment in Model)
+                {
+                    <tr>
+                        <td class="text-justify">@comment.Message</td>
+                        @if (comment.Sentiment == "Positive")
+                        {
+                            <td class="text-truncate bg-success text-white">@comment.Sentiment</td>
+                        }
+                        else if (comment.Sentiment == "Negative")
+                        {
+                            <td class="text-truncate bg-danger text-white">@comment.Sentiment</td>
+                        }
+                        else if (comment.Sentiment == "Neutral")
+                        {
+                            <td class="text-truncate bg-secondary text-white">@comment.Sentiment</td>
+                        }
+                        else if (comment.Sentiment == null)
+                        {
+                            <td class="text-truncate bg-secondary text-white">@comment.Sentiment</td>
+                        }
+
+                        <td class="text-truncate text-center"><button class="btn btn-sm btn-success mr-1" onclick="setSentiment('@comment.ID','Positive')">Эерэг</button><button class="btn btn-sm btn-danger mr-1" onclick="setSentiment('@comment.ID','Negative')">Сөрөг</button><button class="btn btn-sm btn-secondary" onclick="setSentiment('@comment.ID','Neutral')">Саарал</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

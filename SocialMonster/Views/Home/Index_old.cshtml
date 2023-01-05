@@ -1,0 +1,436 @@
+﻿@{
+    ViewBag.Title = "Нүүр хуудас";
+}
+<link href="~/Content/comment.css" rel="stylesheet">
+<div class="row">
+    <div class="col-xl-3 col-lg-4 col-12">
+        <div class="card pull-up bg-hexagons">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left" id="fbCount">
+                            <div class="spinner-grow" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <h6>Фэйсбүүк пост</h6>
+                        </div>
+                        <div>
+                            <i class="icon-note primary font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    @*<div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                            <div class="progress-bar bg-gradient-x-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-12">
+        <div class="card pull-up bg-hexagons">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left" id="commentCount">
+                            <div class="spinner-grow" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <h6>Фэйсбүүк сэтгэгдэл</h6>
+                        </div>
+                        <div>
+                            <i class="la la-comments primary font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    @*<div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                            <div class="progress-bar bg-gradient-x-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+        <div class="card pull-up bg-hexagons">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left">
+                            <h3 class="primary">@ViewBag.FbGroupCount.ToString("#,##0")</h3>
+                            <h6>Фэйсбүүк хуудас</h6>
+                        </div>
+                        <div>
+                            <i class="la la-group primary font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    @*<div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                            <div class="progress-bar bg-gradient-x-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-12">
+        <div class="card pull-up bg-hexagons">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left" id="tweetCount">
+                            <div class="spinner-grow" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <h6>Твиттер жиргээ</h6>
+                        </div>
+                        <div>
+                            <i class="icon-social-twitter info font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    @*<div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                            <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-12">
+        <div class="card pull-up bg-hexagons">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left">
+                            <h3 class="info">@ViewBag.TwitterUserCount.ToString("#,##0")</h3>
+                            <h6>Твиттер хэрэглэгч</h6>
+                        </div>
+                        <div>
+                            <i class="icon-user info font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    @*<div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                            <div class="progress-bar bg-gradient-x2-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-12">
+        <div class="card pull-up bg-hexagons">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left" id="webCount">
+                            <h3 class="warning">@ViewBag.WebPostCount.ToString("#,##0")</h3>
+                            <h6>Вэб нийтлэл</h6>
+                        </div>
+                        <div>
+                            <i class="icon-link warning font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    @*<div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                            <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-12">
+        <div class="card pull-up bg-hexagons">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left">
+                            <h3 class="warning">@ViewBag.WebsiteCount.ToString("#,##0")</h3>
+                            <h6>Вэб хуудас</h6>
+                        </div>
+                        <div>
+                            <i class="icon-globe warning font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    @*<div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                            <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-12">
+        <div class="card pull-up">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="media-body text-left" id="positivePercent">
+                            <h3 class="success">@ViewBag.TotalPostivePercent%</h3>
+                            <h6>Нийгмийн хандлага</h6>
+                        </div>
+                        <div>
+                            <i class="icon-heart success font-large-2 float-right"></i>
+                        </div>
+                    </div>
+                    <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                        <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: @ViewBag.TotalPostivePercent%" aria-valuenow="@ViewBag.TotalPostivePercent" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ statistic -->
+<!-- Products sell and New Orders -->
+
+
+
+<div class="row match-height">
+    <div class="col-xl-8 col-lg-12" id="ecommerceChartView">
+        <div class="card card-shadow" style="max-height:440px;">
+            <div class="card-header card-header-transparent py-20">
+                <div class="btn-group dropdown">
+                    <p>НИЙТ БҮРТГЭЛ</p>
+                </div>
+            </div>
+            <div class="card-body mb-4" id="graphCardBody">
+                <center><button class="btn btn-danger box-shadow-2 mr-1" onclick="GetMainGraph()"><i class="ft-bar-chart"></i> Сүүлийн 30 хоногийн мэдээний урсгалын граф</button></center>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="topUsers" class="col-xl-4 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Идэвхитэй аккаунтууд</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a onclick="GetTopTwitterUsers()"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body mb-4" id="twitterUserBody">
+                <center><button class="btn btn-danger box-shadow-2 mr-1" onclick="GetTopTwitterUsers()"><i class="ft-users"></i> Идэвхтэй хэрэглэгч</button></center>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div id="CommentAndTweets" class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"></h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content mb-4" id="commentTweetBody">
+                <center><button class="btn btn-danger box-shadow-2 mr-1" onclick="GetLatestCommentAndTweets()">Сүүлд нэмэгдсэн коммент болон твитүүд</button></center>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--/ Products sell and New Orders -->
+<!-- Recent Transactions -->
+<div class="row">
+    <div id="recentPosts" class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Сүүлийн нийтлэлүүд</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content mb-4" id="recentPostBody">
+                <center><button class="btn btn-danger box-shadow-2 mr-1" onclick="GetLatestPosts()">Сүүлийн нийтлэлүүдийг үзэх</button></center>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    function GetMainGraph() {
+        $("#graphCardBody").html("");
+        $("#graphCardBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/LoadDashboardMainGraph',
+                success: function (data) {
+                    //alert(data);
+                    $("#ecommerceChartView").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    function GetTopTwitterUsers() {
+        $("#twitterUserBody").html("");
+        $("#twitterUserBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/TopUserTwitter',
+                success: function (data) {
+                    //alert(data);
+                    $("#topUsers").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    function GetLatestCommentAndTweets() {
+        $("#commentTweetBody").html("");
+        $("#commentTweetBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/DashboardSectionSecond',
+                success: function (data) {
+                    //alert(data);
+                    $("#CommentAndTweets").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    function GetLatestPosts() {
+        $("#recentPostBody").html("");
+        $("#recentPostBody").append('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+             $.ajax({
+                type: "GET",
+                url: '/Home/DashboardSectionThird',
+                success: function (data) {
+                    //alert(data);
+                    $("#recentPosts").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    //function getCommentCount() {
+    //     $.ajax({
+    //            type: "GET",
+    //            url: '/Home/CommentCount',
+    //            success: function (data) {
+    //                //alert(data);
+    //                $("#commentCount").html(data);
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //            }
+    //        });
+    //}
+    //function getFbCount() {
+    //     $.ajax({
+    //            type: "GET",
+    //            url: '/Home/FbCount',
+    //            success: function (data) {
+    //                //alert(data);
+    //                $("#fbCount").html(data);
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //            }
+    //        });
+    //}
+    function getPositivePercent() {
+         $.ajax({
+                type: "GET",
+                url: '/Home/PositivePercent',
+                success: function (data) {
+                    //alert(data);
+                    $("#positivePercent").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+    //function getWebCount() {
+    //     $.ajax({
+    //            type: "GET",
+    //            url: '/Home/WebPostCount',
+    //            success: function (data) {
+    //                //alert(data);
+    //                $("#webCount").html(data);
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //            }
+    //        });
+    //}
+    // function getTweetCount() {
+    //     $.ajax({
+    //            type: "GET",
+    //            url: '/Home/TweetCount',
+    //            success: function (data) {
+    //                //alert(data);
+    //                $("#tweetCount").html(data);
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //            }
+    //        });
+    //}
+    //setInterval(getFbCount, 4000);
+    //setInterval(getWebCount,5000);
+    //setInterval(getTweetCount, 2000);
+    //setInterval(getPositivePercent, 3000);
+    //setInterval(getCommentCount, 2500);
+    setInterval(function () {
+        var SetData = $("#fbCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/FbCountCustom",
+            //contentType: "html",
+            //cache: false,
+            //async: false,
+            success: function (result) {
+                SetData.html("");
+                var Data = '<h3 class="primary">'+result.toLocaleString('en')+'</h3><h6>Фэйсбүүк пост</h6>';
+                SetData.append(Data);
+            }
+        });
+    }, 11000);
+    setInterval(function () {
+        var SetData = $("#commentCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/CommentCountCustom",
+            success: function (result) {
+                SetData.html("");
+                var Data = '<h3 class="primary">'+result.toLocaleString('en')+'</h3><h6>Фэйсбүүк сэтгэгдэл</h6>';
+                SetData.append(Data);
+            }
+        });
+    }, 3500);
+    setInterval(function () {
+        var SetData = $("#webCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/WebPostCountCustom",
+            success: function (result) {
+                SetData.html("");
+                var Data = '<h3 class="warning">'+result.toLocaleString('en')+'</h3><h6>Вэб нийтлэл</h6>';
+                SetData.append(Data);
+            }
+        });
+    }, 20000);
+    setInterval(function () {
+        var SetData = $("#tweetCount");
+
+        $.ajax({
+            type: "post",
+            url: "/Home/TweetCountCustom",
+            success: function (result) {
+                SetData.html("");
+                var Data = '<h3 class="info">'+result.toLocaleString('en')+'</h3><h6>Твиттер жиргээ</h6>';
+                SetData.append(Data);
+            }
+        });
+    }, 3000);
+</script>

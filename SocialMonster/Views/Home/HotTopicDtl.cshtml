@@ -1,0 +1,292 @@
+﻿<link href="~/Content/member.css" rel="stylesheet">
+@{
+    ViewBag.Title = "HotTopicDtl";
+}
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400&amp;subset=cyrillic" rel="stylesheet">
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<br />
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body pt-5">
+
+            <center><img src=@ViewBag.TopicImage style="width:270px; height:200px; border-radius:50%; border:0px" /></center>
+            <h4 class="card-title text-center" style="font-size:2em; color:#212020">@ViewBag.TopicTitle</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <center><h3 style="margin-top:20px;">Нийгмийн сүлжээн дэх хандалтын үзүүлэлт(30 хоногоор)</h3></center>
+    <canvas id="line-chart" width="800" height="200"></canvas>
+</div>
+
+
+
+<br>
+<div align="right">
+    <button type="button" class="btn btn-success active" onclick="HotTopicDtlLoad('All');">Бүгд</button>
+    <button type="button" class="btn btn-success active" onclick="HotTopicDtlLoad('Positive');">Эерэг</button>
+    <button type="button" class="btn btn-success" onclick="HotTopicDtlLoad('Negative');">Сөрөг</button>
+    <button type="button" class="btn btn-success" onclick="HotTopicDtlLoad('Neutral');">Саармаг</button>
+</div><br>
+<div align="right">
+    <button type="button" class="btn btn-success active" onclick="Filter('Date');">Он сараар</button>
+    <button type="button" class="btn btn-success active" onclick="Filter('Count');">Хандалтаар</button>
+</div>
+<br>
+
+
+
+
+
+<div class="row" id="SmartMain" data-id="@ViewBag.TopicID">
+    <div class="col-sm-4" style="border-right:1px solid #ccc;" id="FbLoad">
+        <div class="list-group1" style="padding:5px;" id="FbList" data-id="@ViewBag.FbLastID">
+            @foreach (var post in ViewBag.FbData)
+            {
+                <span>
+                    <div class="border card news-feed-card-bg text-black " style="font-family:Roboto;padding:10px; color:black;  border-left:none !important;border-top:none !important; border-right:none !important;">
+
+                        <div class="" style="width:100%; height:100%; overflow:hidden;">
+                            @if (@post.FullPicture != null)
+                            {
+                                if (@post.Link.ToString().Contains("youtube") == true)
+                                {
+                                    <iframe style="width:100%; height:100%" allow="accelerometer" allowFullScreen frameborder="0" src="@post.Link.ToString().Replace("watch?v=", "embed/").Replace("&feature=youtu.be","")"></iframe>
+                                }
+                                else
+                                {
+                                    <a href="@post.Link" class="" target="_blank">
+                                        <img src="@post.FullPicture" style="width:100%; height:100%">
+                                    </a>
+                                }
+                            }
+                        </div>
+
+                        <h6 class="ff-label-wrapper" style="position:absolute; top:-10px; font-family:sans-serif; font-weight:600; right:10px; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                            <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                <i class="ff-icon-inner" style="margin-bottom:0; background-color:#3b5998; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                    <span class="ff-label-text" style="margin-bottom:0">facebook</span>
+                                </i>
+                            </i>
+                        </h6>
+
+                        <div style="line-height:18px;">
+                            <a href="https://www.facebook.com/@post.FromID" class="float-left" target="_blank">
+                                @post.FromName
+                            </a><br />
+                            <div class="float-right" style="font-style:italic; color:#ccc;"> @post.UpdateTime </div><br />
+                            <div style="text-align:justify;">
+                                <a href="https://www.facebook.com/@post.PostID" class="float-left" target="_blank" style="color:black">
+                                    @if (post.Message != null)
+                                    {
+                                        @post.Message
+                                    }
+                                    else if (post.Story != null)
+                                    {
+                                        @post.Story
+                                    }
+                                    else if (post.Caption != null)
+                                    {
+                                        @post.Caption
+                                    }
+                                    else if (post.Description != null)
+                                    {
+                                        <a href="@post.ID"></a>
+                                        @post.Description
+                                    }
+                                </a>
+                            </div>
+                        </div>
+                        <div align="right" style="font-size:10px;">
+                            @if (post.Sentiment == null)
+                            {
+                                <div align="center" style=" background:#ffc107; float:right; padding:3px; border-radius:5px; color:#fff;">Тооцоолж байгаа</div>
+                            }
+                            else if (post.Sentiment == "Positive")
+                            {
+                                <div align="center" style="width:100px !important; background:#28a745; float:right; padding:3px; border-radius:5px; color:#fff;">Эерэг</div>
+
+                            }
+                            else if (post.Sentiment == "Negative")
+                            {
+                                <div align="center" style="width:100px !important; background:#dc3545; float:right; padding:3px; border-radius:5px; color:#fff;">Сөрөг</div>
+                            }
+                            else if (post.Sentiment == "Neutral")
+                            {
+                                <div align="center" style="width:100px !important; background:#6c757d; float:right; padding:3px; border-radius:5px; color:#fff;">Саармаг</div>
+                            }
+                        </div>
+                    </div>
+
+                </span>
+            }
+
+        </div>
+    </div>
+
+    <div class="col-sm-4 list-group2" style="border-right:1px solid #ccc;" id="TwitterLoad">
+        <div class="list-group2" style="padding:5px;" id="TwitterList" data-id="@ViewBag.TwitterLastID">
+            @foreach (var post in ViewBag.TwitterData)
+            {
+                <div class="border card news-feed-card-bg text-black " style=" font-family:Roboto;padding:10px; color:black;border-left:none !important;border-top:none !important; border-right:none !important;">
+                    <blockquote class="twitter-tweet" data-lang="en">
+                        @if (@post.ScreenName is null)
+                        {
+                               <a href="http://twitter.com/@post.ScreenNameResponse/status/@post.StatusID"></a>
+                        }
+                        else
+                        {
+                               <a href="http://twitter.com/@post.ScreenName/status/@post.StatusID"></a>
+                        }
+                    </blockquote>
+                    <div align="right" style="font-size:10px;">
+                        @if (post.Sentiment == null)
+                        {
+                            <div align="center" style=" background:#ffc107; float:right; padding:3px; border-radius:5px; color:#fff;">Тооцоолж байгаа</div>
+                        }
+                        else if (post.Sentiment == "Positive")
+                        {
+                            <div align="center" style="width:100px !important; background:#28a745; float:right; padding:3px; border-radius:5px; color:#fff;">Эерэг</div>
+
+                        }
+                        else if (post.Sentiment == "Negative")
+                        {
+                            <div align="center" style="width:100px !important; background:#dc3545; float:right; padding:3px; border-radius:5px; color:#fff;">Сөрөг</div>
+                        }
+                        else if (post.Sentiment == "Neutral")
+                        {
+                            <div align="center" style="width:100px !important; background:#6c757d; float:right; padding:3px; border-radius:5px; color:#fff;">Саармаг</div>
+                        }
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <div class="col-sm-4 list-group3" id="WebSiteLoad">
+        <div class="list-group3" style="padding:5px;" id="WebSiteList" data-id="@ViewBag.WebLastID">
+            @foreach (var post in ViewBag.WebSiteData)
+            {
+                <span>
+                    <div class="border card news-feed-card-bg text-black " style="font-family:Roboto;padding:10px; color:black; border-left:none !important;border-top:none !important; border-right:none !important;">
+                        <a href="@post.Url" target="_blank">
+                            <img src="@post.CoverUrl" style="width:100%">
+                        </a>
+                        <div>
+                            <a href="@post.Url" target="_blank" style=" float:left;color:black"><b>@post.Title</b></a>
+                        </div>
+                        <div align="right" style="font-style:italic;"><a href="@post.Url" target="_blank">@post.Url</a></div>
+                        <div align="right" style="font-style:italic; color:#ccc;">@post.DateTime</div>
+                        <div style="text-align:justify;">
+                            <a href="@post.Url" target="_blank" style="color:black">@post.Body</a>
+                        </div>
+                        <h6 class="ff-label-wrapper" style="position:absolute; top:-10px; font-family:sans-serif; font-weight:600; right:10px; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                            <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                <i class="ff-icon-inner" style="margin-bottom:0; background-color:#f4a641; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                    <span class="ff-label-text" style="margin-bottom:0">website</span>
+                                </i>
+                            </i>
+                        </h6>
+
+                             <div align="right" style="font-size:10px;">
+                        @if (post.Sentiment == null)
+                        {
+                            <div align="center" style=" background:#ffc107; float:right; padding:3px; border-radius:5px; color:#fff;">Тооцоолж байгаа</div>
+                        }
+                        else if (post.Sentiment == "Positive")
+                        {
+                            <div align="center" style="width:100px !important; background:#28a745; float:right; padding:3px; border-radius:5px; color:#fff;">Эерэг</div>
+
+                        }
+                        else if (post.Sentiment == "Negative")
+                        {
+                            <div align="center" style="width:100px !important; background:#dc3545; float:right; padding:3px; border-radius:5px; color:#fff;">Сөрөг</div>
+                        }
+                        else if (post.Sentiment == "Neutral")
+                        {
+                            <div align="center" style="width:100px !important; background:#6c757d; float:right; padding:3px; border-radius:5px; color:#fff;">Саармаг</div>
+                        }
+                    </div>
+
+
+                    </div>
+                </span>
+            }
+
+        </div>
+    </div>
+</div>
+<div id="dialog"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script>
+    var Sentiment = "default";
+
+                    var chart = new Chart(document.getElementById("line-chart"), {
+                        type: 'line',
+
+                        data: {
+                            labels: [30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+                            datasets: [{
+                                data: @ViewBag.facebookChartCount,
+                                label: "Facebook",
+                                borderColor: "#3b5998",
+                                fill: false
+                            }, {
+                                data: @ViewBag.twitterChartCount,
+                                label: "Twitter",
+                                borderColor: "#1dcaff",
+                                fill: false
+                            }, {
+                                data: @ViewBag.websiteChartCount,
+                                label: "Website",
+                                borderColor: "#f4a641",
+                                fill: false
+                            }
+                            ]
+                        }
+    });
+
+
+
+
+    function HotTopicDtlLoad(a) {
+        Sentiment = a;
+        var CusID = $("#SmartMain").attr("data-id");
+        $.ajax({
+            type: "POST",
+            url: '/Home/HotTopicDtlLoad',
+            data: { 'id': CusID, 'Sentiment': a },
+            success: function (data) {
+                $("#SmartMain").html(data);
+            },
+            error: function () {
+                alert('error occured');
+            }
+        });
+    };
+    function Filter(a) {
+        var CusID = $("#SmartMain").attr("data-id");
+        $.ajax({
+            type: "POST",
+            url: '/Home/HotTopicDtlFilter',
+            data: { 'id': CusID, 'Filter': a, 'Sentiment': Sentiment },
+            success: function (data) {
+                $("#SmartMain").html(data);
+            },
+            error: function () {
+                alert('error occured');
+            }
+        }
+        );
+    };
+
+</script>

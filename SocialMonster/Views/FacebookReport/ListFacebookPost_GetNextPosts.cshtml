@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+@{
+    ViewBag.Title = "GetNextPosts";
+}
+
+@foreach (var post in Model)
+{
+    <div class="row mb-2 facebook-report">
+        <div class="col-md-4 pt-5 text-center">
+            <input class="form-control-xs" name="checkbox" id="@post.ID" type="checkbox" />
+            <p>Сонгох</p>
+        </div>
+        <div class="col-md-8 post-box">
+            <div class="facebook-list-user mb-2">
+                <a href="https://www.facebook.com/@post.FromID" target="_blank">
+                    <img src="~/Content/app-assets/images/fb_logo.png" style="border-radius:50%;height:30px;width:30px;">
+                    <strong class="mb-2" style="color:#005DD4">@post.FromName</strong>
+                </a>
+            </div>
+            @if (@post.FullPicture != "NULL")
+            {
+                <p><img src="@post.FullPicture" style="width:100%;" /></p>
+            }
+            <p class="text-justify"><a href="@post.PermalinkUrl" target="_blank" style="color:#333">@post.Message</a></p>
+            <hr>
+            <div class="row text-primary">
+                <div class="col-6 text-left">
+                    <p>@post.UpdateTime</p>
+                </div>
+                <div class="col-6 text-right">
+                    <p>0 Коммент @post.SharedCount Шэйр</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

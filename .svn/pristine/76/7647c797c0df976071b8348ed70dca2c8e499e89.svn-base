@@ -1,0 +1,288 @@
+﻿@{
+    ViewBag.Title = "Ухаалаг мэдээ";
+}
+@model SocialMonster.Models.SystemUserModels
+<input type="hidden" id="UserID" value="@Model.ID"/>
+<div class="card">
+    <div class="card-body p-0" style="background-color: #3254b0;">
+        <div class="row m-0">
+            <div class="col-sm-12 col-md-5 p-0">
+                <img src=@Model.Picture style="width: 100%;" class="img-fluid" />
+            </div>
+            <div class="col-sm-12 col-md-7 p-2 pl-4 text-white">
+
+                @if (Model.Surename.Length > 1)
+                {
+                    <h5 class="text-center text-warning mt-1" style="font-size:2em;color:#fff"><span>@Model.Surename</span><span class="text-uppercase"> @Model.Name</span></h5>
+                }
+                else
+                {
+                    <h5 class="text-center text-warning mt-1" style="font-size:2em;color:#fff"><span>@Model.Surename</span><span class="text-uppercase">.@Model.Name</span></h5>
+                }
+                <p class="text-center text-warning"><strong>@Model.Description</strong></p>
+                @if (Model.FacebookAccount == "")
+                {
+                    <p><i class="fa fa-facebook"></i> Facebook хуудас: <strong>Хоосон</strong></p>
+                }
+                else
+                {
+                    <p><i class="fa fa-facebook"></i> Facebook хуудас: <strong>facebook.com/@Model.FacebookAccount</strong></p>
+                }
+                @if (Model.TwitterAccount == "")
+                {
+                    <p><i class="fa fa-twitter"></i> Twitter хаяг: <strong>Хоосон</strong></p>
+                }
+                else
+                {
+                    <p><i class="fa fa-twitter"></i> Twitter хаяг: <strong>twitter.com/@Model.TwitterAccount</strong></p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-12 mt-2">
+        <input class="form-control" id="input-text" type="text" placeholder="хайх үгээ оруулна уу" />
+    </div>
+    <div class="col-md-4 col-sm-12 mt-2">
+        <select id="select-type" class="form-control">
+            <option value="0">-- төрөл --</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Twitter">Twitter</option>
+            <option value="Website">Вэбсайт</option>
+        </select>
+    </div>
+    <div class="col-md-4 col-sm-12 mt-2">
+        <select id="select-sentiment" class="form-control">
+            <option value="0">-- хандлага --</option>
+            <option value="Positive">Эерэг</option>
+            <option value="Negative">Сөрөг</option>
+            <option value="Neutral">Саарал</option>
+        </select>
+    </div>
+    <div class="col-md-4 col-sm-12 mt-2">
+        <p>Эхлэх хугацаа</p>
+        <input class="form-control" type="datetime-local" id="date-start">
+    </div>
+    <div class="col-md-4 col-sm-12 mt-2">
+        <p>Дуусах хугацаа</p>
+        <input class="form-control" type="datetime-local" id="date-end">
+    </div>
+    <div class="col-md-4 col-sm-12 mt-2">
+        <button class="btn btn-primary btn-block" onclick="search()">Хайх</button>
+    </div>
+</div>
+<div id="main-box">
+    <div id="main-box2">
+        @foreach (var row in ViewBag.alldata)
+        {
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="card-header">
+                                @if (row.Type == "Facebook")
+                                {
+                                    <h4 class="card-title d-none d-sm-block"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" width="40" height="40"><a href="" target="_blank" style="color:#1778F2 !important;font-size:12px;font-weight:700;" class="ml-1">@row.From</a></h4>
+                                    <h4 class="card-title d-block d-sm-none"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" width="40" height="40"></h4>
+                                    <p class="card-title d-block d-sm-none"><a href="" target="_blank" style="color:#1778F2 !important;font-size:12px;font-weight:700;">@row.From</a></p>
+                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                }
+                                else if (row.Type == "Twitter")
+                                {
+                                    <h4 class="card-title d-none d-sm-block"><img src="https://www.pngkey.com/png/full/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" width="40" height="40"><a href="https://twitter.com/@row.FromURL" style="color:#1778F2 !important;font-size:12px;font-weight:700;" class="ml-1">@row.From</a></h4>
+                                    <h4 class="card-title d-block d-sm-none"><img src="https://www.pngkey.com/png/full/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" width="40" height="40"></h4>
+                                    <p class="card-title d-block d-sm-none"><a href="https://twitter.com/@row.FromURL" target="_blank" style="color:#1778F2 !important;font-size:12px;font-weight:700;">@row.From</a></p>
+                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                }
+                                else if (row.Type == "Website")
+                                {
+
+                                }
+                                <div class="heading-elements">
+                                    @if (row.Type == "Facebook")
+                                    {
+                                        <span class="badge badge-dark badge-lg">Фэйсбүүк</span>
+                                    }
+                                    else if (row.Type == "Twitter")
+                                    {
+                                        <span class="badge badge-dark badge-lg">Твиттер</span>
+                                    }
+                                    else if (row.Type == "Website")
+                                    {
+                                        <span class="badge badge-dark badge-lg">Вэбсайт</span>
+                                    }
+                                    @if (row.Sentiment == "Positive")
+                                    {
+                                        <span class="badge badge-success badge-lg">Эерэг</span>
+                                    }
+                                    else if (row.Sentiment == "Negative")
+                                    {
+                                        <span class="badge badge-danger badge-lg">Сөрөг</span>
+                                    }
+                                    else if (row.Sentiment == "Neutral")
+                                    {
+                                        <span class="badge badge-dark badge-lg">Саарал</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <!-- project-info -->
+                        <div class="card-body row p-md-2 p-sm-1" style="padding-top:0px !important;padding-bottom:0px !important">
+                            <div class="col-md-4 mt-2 mb-2">
+                                @if (row.FullPicture != "")
+                                {
+                                    <img src="@row.FullPicture" width="100%">
+                                }
+                                else
+                                {
+                                    <img src="https://www.lebronjames.com/dA/14ce536824/lbj_share.jpg" width="100%">
+                                }
+
+                            </div>
+                            <div class="col-md-8">
+                                <p><i class="la la-clock-o"></i> @row.Date.ToString("yyyy-MM-dd")</p>
+
+                                @if (row.Title != "")
+                                {
+                                    <h4 style="font-weight:600"><a href="@row.URL">@row.Title</a></h4>
+                                }
+                                @if (row.Type == "Twitter")
+                                {
+                                    <p><a href="https://twitter.com/@row.FromURL/status/@row.URL" class="text-dark">@row.Text</a></p>
+                                }
+                                else
+                                {
+                                    <p><a href="@row.URL" class="text-dark">@row.Text</a></p>
+                                }
+
+                            </div>
+                        </div>
+                        <!-- project-info -->
+                        <div class="card-body p-3" style="padding-top:0px !important;padding-bottom:20px !important">
+                            <!--
+                        <div class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1">
+                            <span>Үйлдэл</span>
+                        </div>
+                        -->
+                            <div class="row">
+                                <div class="col text-right">
+                                    <button class="btn" onclick="Modal('@row.Type','@row.ID')" style="color:#202020; background-color:#d9d9d9" data-toggle="modal" data-target="#ModalControl">Хандлагыг өөрчлөх</button>
+                                    <button class="btn" onclick="Modal('@row.Type','@row.ID')" style="color:#202020; background-color:#d9d9d9" data-toggle="modal" data-target="#ModalControl"><i class="la la-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            @for (int i = 1; i < ViewBag.pageCount; i++)
+            {
+                <button class="btn btn-sm btn-light text-dark" onclick="loadPage(@i)">@i</button>
+            }
+        </div>
+    </div>
+</div>
+<div id="ModalControl" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        @Html.Hidden("PostID")
+        @Html.Hidden("Type")
+        <!-- Modal content-->
+        <div class="modal-content" style="border:none;border-radius:0;">
+            <div class="modal-header border-0" style="color:#717686; background-color:#f4f4f4; box-shadow:0px 1px 4px 0px #888; border-radius:0;">
+                <h4 class="modal-title">Удирдах</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="form-group">
+                            <label>Төлөв:</label>
+                            <select id="Sentiment" name="Sentiment" class="browser-default custom-select form-control" width="400" style="width:400px">
+                                <option selected>Сонгох</option>
+                                <option value="Positive">Эерэг</option>
+                                <option value="Negative">Сөрөг</option>
+                                <option value="Neutral">Саарал</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px">
+                        <button type="button" class="btn btn-success border-0" style="margin-right:10px" onclick="Control(true)">Хадгалах</button>
+                        <button type="button" class="btn btn-danger border-0" onclick="Control(false)">Устгах</button>
+                    </div>
+                </div>
+                @*<div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Хаах</button>
+                    </div>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    function search() {
+        var text = document.getElementById("input-text").value;
+        var type = document.getElementById("select-type").value;
+        var sentiment = document.getElementById("select-sentiment").value;
+        var userID = document.getElementById("UserID").value;
+        var date_start = document.getElementById("date-start").value;
+        var date_end = document.getElementById("date-end").value;
+        $("#main-box").html("");
+        $.ajax({
+            type: "GET",
+            url: '/Home/SmartNewsCusList_Result',
+            data: { 'userID': userID, 'text': text, 'type': type, 'sentiment': sentiment, 'start': date_start, 'end': date_end },
+            success: function (data) {
+                $("#main-box").html(data);
+            }
+        });
+    }
+    function loadPage(pageNumber) {
+        $("#main-box2").html("");
+        var userID=document.getElementById("UserID").value;
+        $.ajax({
+            type: "POST",
+            url: '/Home/SmartNewsCusList_page',
+            data: { 'ID': userID, 'page': pageNumber},
+            success: function (data) {
+                $("#main-box2").html(data);
+            }
+        });
+    }
+    function Control(IsEdit) {
+        if (IsEdit == false) {
+            if (window.confirm("Та устгахдаа итгэлтэй байна уу?") == false)
+                return;
+        }
+        var PostID = $("#PostID").val();
+        var Type = $("#Type").val();
+        var Sentiment = $('#Sentiment').val();
+        var UserId = document.getElementById("UserID").value;
+        $.ajax({
+            type: "POST",
+            url: '/Home/Control',
+            data: { 'PostID': PostID, 'Type': Type, 'Sentiment': Sentiment, 'IsEdit': IsEdit, 'UserId': UserId },
+            success: function (data) {
+                console.log(data);
+                alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+                $('#ModalControl').modal('hide');
+            },
+            error: function () {
+                alert('Алдаа гарлаа');
+            }
+        });
+    }
+    function Modal(type, ID) {
+        //alert(type);
+        //alert(ID);
+        $('#PostID').val(ID);
+        $('#Type').val(type);
+
+        //$("#ModalControl").modal('show');
+    }
+</script>

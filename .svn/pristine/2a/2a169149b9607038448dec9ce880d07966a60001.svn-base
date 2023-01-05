@@ -1,0 +1,2 @@
+﻿<h3 class="info">@ViewBag.Count</h3>
+<h6>Твиттер жиргээ</h6>

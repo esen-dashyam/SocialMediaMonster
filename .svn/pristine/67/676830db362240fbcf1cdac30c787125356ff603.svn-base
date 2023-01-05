@@ -1,0 +1,354 @@
+﻿
+@{
+    if (this.User.IsInRole("Shunkhlai") || !this.User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_Layout3.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+
+    <link href="~/Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/" rel="stylesheet" type="text/css" />
+    <link href="~/Content/app-assets/vendors/css/pickers/daterange/daterangepicker.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container-fluid">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="page-title"> Профайл</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="~/Home/Index">BOARD.MN</a></li>
+                                <li class="breadcrumb-item active">Профайл</li>
+                            </ol>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end page-title-box-->
+            </div>
+            <!--end col-->
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <!--ehlel-->
+                            <div class="col-lg-3 mb-4">
+                                <div class="d-flex justify-content-center">
+
+                                    <img src="~/Content/Images/user_icon.png" alt="profile-image" class="rounded-circle pimg-profile-page">
+
+                                </div>
+                                <h4>Шунхлай групп</h4>
+                                <a class="btn btn-md btn-main-white btn-block" href="~/Account/EditUserProfile">Профайл засах</a>
+                                <ul class="list-unstyled personal-detail mt-3 mb-3">
+                                    <li><i data-feather="pocket" class="board-md-icon me-2"></i>Энд хэрэгэгчийн ID номер  ab011114</li>
+                                    <li><i data-feather="mail" class="board-md-icon me-2"></i>Энд Имейл байрлана  test@board.mn</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-9">
+                                <ul class="nav-border nav nav-pills nav-profile-page mb-0" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active pb-0" id="my_objects_tab" data-bs-toggle="pill" href="#my_objects"><i data-feather="layers" class="board-md-icon me-2"></i> Бүртгэлүүд</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link pb-0" id="my_account_tab" data-bs-toggle="pill" href="#my_account"><i data-feather="credit-card" class="board-md-icon me-2"></i> Миний багц</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="my_objects" role="tabpanel" aria-labelledby="my_objects_tab">
+                                        <div class="row pt-4">
+                                            <!-- end foreach ywaad dotroh buh burtgeliig tsugluulna-->
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body pt-1 pb-1">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="media">
+                                                                    <!-- end hereglegchiin zurag horog bairlana-->
+                                                                    <img src="http://199.192.20.185/assets/images/brand-logo/logo-board-blue-100.jpg" alt="user" class="thumb-xl align-self-center">
+                                                                    <div class="media-body ms-3 align-self-center">
+                                                                        <p class="mt-3 mb-0">
+                                                                            <a href="#" class="text-primary"><strong>П. Батсайхан (Нэр)</strong></a>
+                                                                            <span class="badge-object-type ms-3"> Хувь хүн </span>
+                                                                        </p>
+
+                                                                        <p class="text-justify"><small>Апу компани-гий захирал etc description байршина</small></p>
+                                                                        <p class="mt-3">
+                                                                            <small class="text-muted me-3">
+                                                                                <a href="#">
+
+                                                                                    <i class="mdi mdi-circle-outline font-11 text-success"></i> Идэвхтэй
+                                                                                </a>
+
+                                                                            </small>
+                                                                            <small class="me-3"><a href="{{route('data.main', [$object->system_object->id])}}"><i data-feather="share-2" class="board-md-icon"></i> 0</a></small>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end foreach duusna-->
+                                        </div>
+                                        <!--bulgaa-->
+                                        <div class="col-lg-5.5">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <h4 class="card-title">Activity</h4>
+                                                        </div><!--end col-->
+                                                        <div class="col-auto">
+                                                            <div class="dropdown">
+                                                                <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    All<i class="las la-angle-down ms-1"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <a class="dropdown-item" href="#">Purchases</a>
+                                                                    <a class="dropdown-item" href="#">Emails</a>
+                                                                </div>
+                                                            </div>
+                                                        </div><!--end col-->
+                                                    </div>  <!--end row-->
+                                                </div><!--end card-header-->
+                                                <div class="card-body">
+                                                    <div class="project-overview-activity" data-simplebar>
+                                                        <div class="activity">
+                                                            <div class="activity-info">
+                                                                <div class="icon-info-activity">
+                                                                    <i class="las la-user-clock bg-soft-primary"></i>
+                                                                </div>
+                                                                <div class="activity-info-text">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <p class="text-muted mb-0 font-13 w-75">
+                                                                            <span>Donald</span>
+                                                                            updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                                        </p>
+                                                                        <small class="text-muted">10 Min ago</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="activity-info">
+                                                                <div class="icon-info-activity">
+                                                                    <i class="mdi mdi-timer-off bg-soft-primary"></i>
+                                                                </div>
+                                                                <div class="activity-info-text">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <p class="text-muted mb-0 font-13 w-75">
+                                                                            <span>Lucy Peterson</span>
+                                                                            was added to the group, group name is <a href="">Overtake</a>
+                                                                        </p>
+                                                                        <small class="text-muted">50 Min ago</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="activity-info">
+                                                                <div class="icon-info-activity">
+                                                                    <img src="assets/images/users/user-5.jpg" alt="" class="rounded-circle thumb-md">
+                                                                </div>
+                                                                <div class="activity-info-text">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <p class="text-muted mb-0 font-13 w-75">
+                                                                            <span>Joseph Rust</span>
+                                                                            opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                                        </p>
+                                                                        <small class="text-muted">10 hours ago</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="activity-info">
+                                                                <div class="icon-info-activity">
+                                                                    <i class="mdi mdi-clock-outline bg-soft-primary"></i>
+                                                                </div>
+                                                                <div class="activity-info-text">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <p class="text-muted mb-0 font-13 w-75">
+                                                                            <span>Donald</span>
+                                                                            updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                                        </p>
+                                                                        <small class="text-muted">Yesterday</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="activity-info">
+                                                                <div class="icon-info-activity">
+                                                                    <i class="mdi mdi-alert-outline bg-soft-primary"></i>
+                                                                </div>
+                                                                <div class="activity-info-text">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <p class="text-muted mb-0 font-13 w-75">
+                                                                            <span>Lucy Peterson</span>
+                                                                            was added to the group, group name is <a href="">Overtake</a>
+                                                                        </p>
+                                                                        <small class="text-muted">14 Nov 2019</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="activity-info">
+                                                                <div class="icon-info-activity">
+                                                                    <img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle thumb-md">
+                                                                </div>
+                                                                <div class="activity-info-text">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <p class="text-muted mb-0 font-13 w-75">
+                                                                            <span>Joseph Rust</span>
+                                                                            opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                                        </p>
+                                                                        <small class="text-muted">15 Nov 2019</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!--end activity-->
+                                                    </div><!--end analytics-dash-activity-->
+                                                </div>  <!--end card-body-->
+                                            </div><!--end card-->
+                                        </div><!--end col-->
+                                        <!--bulgaa-->
+                                    </div><!--end tab-pane-->
+                                    <div class="tab-pane fade" id="my_account" role="tabpanel" aria-labelledby="my_account_tab">
+                                        <div class="row justify-content-center mt-4">
+                                            <div class="col-lg-7">
+
+                                                <div class="card card-price">
+                                                    <div class="card-body">
+                                                        <div class="pricingTable1 text-center">
+                                                            <h5 class="pt-3 pb-2 m-0">Стандарт багц</h5>
+                                                            <div class="p-3">
+                                                                <h3 class="amount amount-border d-inline-block">₮500'000</h3>
+                                                                <small class="font-12 text-muted">/сар</small>
+                                                            </div>
+                                                            <div class="p-3">
+                                                                <strong>{{\Carbon\Carbon::parse($plan->expire_date)->diff(\Carbon\Carbon::now())->days}} хоног үлдсэн</strong>
+                                                            </div>
+                                                            <hr class="hr-dashed">
+                                                            <ul class="list-unstyled pricing-content-2 text-left py-3 border-0 mb-0">
+                                                                <li>3 бүртгэл</li>
+                                                                <li>Facebook</li>
+                                                                <li>Twitter</li>
+                                                                <li>LinkedIn</li>
+                                                                <li>Website</li>
+                                                            </ul>
+                                                        </div><!--end pricingTable-->
+                                                    </div><!--end card-body-->
+                                                </div> <!--end card-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+    <!-- jQuery  -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/js/waves.js"></script>
+    <script src="~/Content/assets/js/feather.min.js"></script>
+    <script src="~/Content/assets/js/simplebar.min.js"></script>
+</body>
+<!-- end huuchin code ni baina
+     <div class="card-body">
+
+         <div class="card-text">
+             <p>Хэрэглэгчийн мэдээлэл</p>
+         </div>
+
+         <form class="form">
+             <div class="form-body">
+                 <h4 class="form-section"><i class="la la-eye"></i> Ерөнхий мэдээлэл</h4>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput1">Овог</label>
+                             <input type="text" id="userinput1" class="form-control border-primary" placeholder="" name="fname">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput2">Нэр</label>
+                             <input type="text" id="userinput2" class="form-control border-primary" placeholder="" name="lname">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput3">Дэлгэцийн нэр</label>
+                             <input type="text" id="userinput3" class="form-control border-primary" placeholder="" name="username">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput4">Хоч</label>
+                             <input type="text" id="userinput4" class="form-control border-primary" placeholder="" name="nickname">
+                         </div>
+                     </div>
+                 </div>
+
+                 <h4 class="form-section"><i class="ft-mail"></i> Холбоо барих & Био</h4>
+
+                 <div class="form-group">
+                     <label for="userinput5">И-мэйл</label>
+                     <input class="form-control border-primary" type="email" placeholder="email" id="userinput5">
+                 </div>
+
+                 <div class="form-group">
+                     <label for="userinput6">Вэбсайт</label>
+                     <input class="form-control border-primary" type="url" placeholder="http://" id="userinput6">
+                 </div>
+
+                 <div class="form-group">
+                     <label>Утасны дугаар</label>
+                     <input class="form-control border-primary" id="userinput7" type="tel" placeholder="">
+                 </div>
+
+                 <div class="form-group">
+                     <label for="userinput8">Био</label>
+                     <textarea id="userinput8" rows="5" class="form-control border-primary" name="bio" placeholder="Bio"></textarea>
+                 </div>
+
+             </div>
+
+             <div class="form-actions text-right">
+                 <button type="button" class="btn btn-warning mr-1">
+                     <i class="ft-x"></i> Болих
+                 </button>
+                 <button type="submit" class="btn btn-primary">
+                     <i class="la la-check-square-o"></i> Өөрчлөх
+                 </button>
+             </div>
+         </form>
+
+     </div>
+-->

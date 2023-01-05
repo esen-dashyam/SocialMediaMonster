@@ -1,0 +1,323 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+
+    <link href="~/Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/" rel="stylesheet" type="text/css" />
+    <link href="~/Content/app-assets/vendors/css/pickers/daterange/daterangepicker.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container-fluid">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="page-title"> Профайл засах</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="~/Home/Index">BOARD.MN</a></li>
+                                <li class="breadcrumb-item"><a href="~/Account/UserProfile">Профайл</a></li>
+                                <li class="breadcrumb-item active">Профайл засах</li>
+                            </ol>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end page-title-box-->
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+        <div class="row mt-3 mb-2 d-flex justify-content-center">
+            <div class="col">
+                <ul class="nav-border justify-content-center nav nav-pills nav-profile-page mb-0" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active pb-0" id="general_tab" data-bs-toggle="pill" href="#general">Ерөнхий</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pb-0" id="picture_tab" data-bs-toggle="pill" href="#picture">Зураг</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pb-0" id="password_tab" data-bs-toggle="pill" href="#password">Нууц үг</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row justify-content-center pt-5">
+            <div class="col-lg-5 col-md-8">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general_tab">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="m-0">Ерөнхий мэдээлэл</h6>
+                                    </div><!--end col-->
+                                </div>  <!--end row-->
+                            </div><!--end card-header-->
+                            <div class="card-body">
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8">
+                                        <label>Нэр:</label>
+                                        <input class="form-control" type="text" value="{{Шунхлай групп}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8">
+                                        <label>Тайлбар:</label>
+                                        <textarea class="form-control" name="description" placeholder="Тайлбар"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8">
+                                        <label>Утасны дугаар:</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{$user->phone_number}}" placeholder="Утасны дугаар">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8 offset-lg-3 text-center">
+                                        <button type="submit" class="btn btn-sm btn-main-white"><i class="fas fa-save me-1"></i>Хадгалах</button>
+                                        <button type="button" class="btn btn-sm btn-main-white"><i class="fas fa-undo me-1"></i>Болих</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end tab-pane-->
+                    <div class="tab-pane fade" id="picture" role="tabpanel" aria-labelledby="picture_tab">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <h6 class="m-0">Зураг солих</h6>
+                            </div><!--end card-header-->
+                            <div class="card-body">
+                                <div class="form-group mb-4 text-center">
+                                    <div class="text-center mb-2">
+                                        <!--end zuragnii php code orj irne-->
+                                        <img src="{{asset('assets/images/users/user-5.jpg')}}" style="width:150px;height:150px;border-radius:3px;border:1px solid #d9d9d9" />
+                                    </div>
+                                    <a href="#" class="btn btn-main-white btn-sm text-center" data-bs-toggle="modal" data-bs-target="#modal_image_change">Зураг солих</a>
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div>
+                    <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password_tab">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <h6 class="m-0">Нууц үг солих</h6>
+                            </div><!--end card-header-->
+                            <div class="card-body">
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8">
+                                        <label>Одоогийн нууц үг:</label>
+                                        <input class="form-control" type="password" placeholder="Нууц үг">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8">
+                                        <label>Шинэ нууц үг:</label>
+                                        <input class="form-control" type="password" placeholder="Шинэ нууц үг">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8">
+                                        <label>Дахин оруулах:</label>
+                                        <input class="form-control" type="password" placeholder="Шинэ нууц үгийг дахин оруулах">
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-lg-9 col-xl-8 offset-lg-3 text-center">
+                                        <button type="submit" class="btn btn-sm btn-main-white"><i class="fas fa-save me-1"></i>Хадгалах</button>
+                                        <button type="button" class="btn btn-sm btn-main-white"><i class="fas fa-undo me-1"></i>Болих</button>
+                                    </div>
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div>
+                </div><!--end tab-content-->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- container -->
+    <!-- Modal Image Upload-->
+    <div class="modal fade" id="modal_image_change" tabindex="-1" aria-labelledby="modal_image_change_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background:#fff;">
+                    <h5 class="modal-title text-dark" id="modal_image_change_label">Профайл зураг оруулах</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row text-center">
+                        <div class="col-12 text-center">
+                            <div id="main-cropper" style="border-radius:10px"></div>
+                        </div>
+                        <div class="col-12">
+                            <label class="custom-file-label"> Зөвхөн PNG, JPG</label>
+                            <a id="btn_image_select" class="button">
+                                <div class="custom-file">
+                                    <input type="file" name="upload" id="select" class="form-control custom-file-input" accept="image/png, image/jpeg">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_image_save" class="btn btn-sm btn-main-white"><i class="fas fa-save me-1"></i>Хадгалах</button>
+                    <button type="button" class="btn btn-sm btn-main-white" data-bs-dismiss="modal"><i class="fas fa-undo me-1"></i>Болих</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery  -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/js/waves.js"></script>
+    <script src="~/Content/assets/js/feather.min.js"></script>
+    <script src="~/Content/assets/js/simplebar.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" rel="stylesheet" type="text/css" />
+    
+    
+</body>
+<script>
+    var main_cropper = $('#main-cropper').croppie({
+            viewport: { width: 260, height: 260 },
+            boundary: { width: 300, height: 300 },
+            // showZoomer: true,
+            url: 'assets/images/users/blank.PNG',
+    });
+
+    function readFile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#main-cropper').croppie('bind', {
+                    url: e.target.result
+                });
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $('#btn_image_select input').on('change', function () { readFile(this); });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('#btn_image_save').on('click', function() {
+        $("#btn_image_save").attr("disabled", true);
+        $('#btn_image_save').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Уншиж байна');
+        main_cropper.croppie('result',{
+            type: 'canvas',
+            size: 'original',
+        }).then(function(response){
+        $.ajax({
+            url:"{{route('profile-image-upload')}}",
+            type: "POST",
+            dataType: 'json',
+            data:{"image": response},
+            success:function(data)
+                {
+                    location.reload();
+                }
+            });
+        })
+    });
+
+</script>
+
+<!-- end huuchin code ni baina
+     <div class="card-body">
+
+         <div class="card-text">
+             <p>Хэрэглэгчийн мэдээлэл</p>
+         </div>
+
+         <form class="form">
+             <div class="form-body">
+                 <h4 class="form-section"><i class="la la-eye"></i> Ерөнхий мэдээлэл</h4>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput1">Овог</label>
+                             <input type="text" id="userinput1" class="form-control border-primary" placeholder="" name="fname">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput2">Нэр</label>
+                             <input type="text" id="userinput2" class="form-control border-primary" placeholder="" name="lname">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput3">Дэлгэцийн нэр</label>
+                             <input type="text" id="userinput3" class="form-control border-primary" placeholder="" name="username">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="userinput4">Хоч</label>
+                             <input type="text" id="userinput4" class="form-control border-primary" placeholder="" name="nickname">
+                         </div>
+                     </div>
+                 </div>
+
+                 <h4 class="form-section"><i class="ft-mail"></i> Холбоо барих & Био</h4>
+
+                 <div class="form-group">
+                     <label for="userinput5">И-мэйл</label>
+                     <input class="form-control border-primary" type="email" placeholder="email" id="userinput5">
+                 </div>
+
+                 <div class="form-group">
+                     <label for="userinput6">Вэбсайт</label>
+                     <input class="form-control border-primary" type="url" placeholder="http://" id="userinput6">
+                 </div>
+
+                 <div class="form-group">
+                     <label>Утасны дугаар</label>
+                     <input class="form-control border-primary" id="userinput7" type="tel" placeholder="">
+                 </div>
+
+                 <div class="form-group">
+                     <label for="userinput8">Био</label>
+                     <textarea id="userinput8" rows="5" class="form-control border-primary" name="bio" placeholder="Bio"></textarea>
+                 </div>
+
+             </div>
+
+             <div class="form-actions text-right">
+                 <button type="button" class="btn btn-warning mr-1">
+                     <i class="ft-x"></i> Болих
+                 </button>
+                 <button type="submit" class="btn btn-primary">
+                     <i class="la la-check-square-o"></i> Өөрчлөх
+                 </button>
+             </div>
+         </form>
+
+     </div>
+-->

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+@foreach (var post in Model)
+{
+    <div class="card news-feed-card-bg">
+        <div class="card-content mb-2">
+            <div class="card-body">
+                <div class="" style="width:100%; height:100%; overflow:hidden;">
+                    @if (@post.FullPicture != null)
+                    {
+                        {
+                            <a href="@post.Link" class="" target="_blank">
+                                <img src="@post.FullPicture" style="width:100%; height:100%">
+                            </a>
+                        }
+                    }
+                </div>
+
+                <p class="text-white text-italic" style="position:absolute;border-radius:4px; top:15px; right:10px;padding:0px 10px 0px 10px; background-color:#3b5998;font-size:12px;">
+                    ФЭЙСБҮҮК
+                </p>
+
+                <div style="line-height:18px;">
+                    <a href="https://www.facebook.com/@post.FromID" class="float-left text-info darken-2" target="_blank">
+                        @post.FromName
+                    </a><br>
+                    <div class="float-right" style="font-style:italic; color:#ccc;"> <small>@post.UpdateTime</small> </div><br />
+                    <div style="text-align:justify;">
+                        <a href="https://www.facebook.com/@post.PostID" class="float-left text-dark" target="_blank">
+                            @if (post.Message != null)
+                            {
+                                @post.Message
+                            }
+                            else if (post.Story != null)
+                            {
+                                @post.Story
+                            }
+                            else if (post.Caption != null)
+                            {
+                                @post.Caption
+                            }
+                            else if (post.Description != null)
+                            {
+                                <a href="@post.ID"></a>
+                                @post.Description
+                            }
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SocialMonster.Models.LargeTextModels>
+@{
+    Layout = "";
+}
+<html>
+<head>
+    <title>Twitter Word Cloud - Social Monster</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/app-assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/app-assets/images/logo/favicon-32x32.png">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-tag-cloud.min.js"></script>
+</head>
+<body>
+    @{int counter = 1; int counter2 = 41;
+    }
+    @foreach (var word in Model)
+    {
+        <input type="hidden" id="@counter" value="@word.word" />
+        <input type="hidden" id="@counter2" value="@word.count" />
+        counter++;
+        counter2++;
+    }
+    <div id="container" style="width: 100%; height: 100%;"></div>
+</body>
+</html>
+<script>
+    var data = [
+        { "x": document.getElementById("1").value, value: document.getElementById("41").value },
+        { "x": document.getElementById("2").value, value: document.getElementById("42").value },
+        { "x": document.getElementById("3").value, value: document.getElementById("43").value },
+        { "x": document.getElementById("4").value, value: document.getElementById("44").value },
+        { "x": document.getElementById("5").value, value: document.getElementById("45").value },
+        { "x": document.getElementById("6").value, value: document.getElementById("46").value },
+        { "x": document.getElementById("7").value, value: document.getElementById("47").value },
+        { "x": document.getElementById("8").value, value: document.getElementById("48").value },
+        { "x": document.getElementById("9").value, value: document.getElementById("49").value },
+        { "x": document.getElementById("10").value, value: document.getElementById("50").value },
+        { "x": document.getElementById("11").value, value: document.getElementById("51").value },
+        { "x": document.getElementById("12").value, value: document.getElementById("52").value },
+        { "x": document.getElementById("13").value, value: document.getElementById("53").value },
+        { "x": document.getElementById("14").value, value: document.getElementById("54").value },
+        { "x": document.getElementById("15").value, value: document.getElementById("55").value },
+        { "x": document.getElementById("16").value, value: document.getElementById("56").value },
+        { "x": document.getElementById("17").value, value: document.getElementById("57").value },
+        { "x": document.getElementById("18").value, value: document.getElementById("58").value },
+        { "x": document.getElementById("19").value, value: document.getElementById("59").value },
+        { "x": document.getElementById("20").value, value: document.getElementById("60").value },
+        { "x": document.getElementById("21").value, value: document.getElementById("61").value },
+        { "x": document.getElementById("22").value, value: document.getElementById("62").value },
+        { "x": document.getElementById("23").value, value: document.getElementById("63").value },
+        { "x": document.getElementById("24").value, value: document.getElementById("64").value },
+        { "x": document.getElementById("25").value, value: document.getElementById("65").value },
+        { "x": document.getElementById("26").value, value: document.getElementById("66").value },
+        { "x": document.getElementById("27").value, value: document.getElementById("67").value },
+        { "x": document.getElementById("28").value, value: document.getElementById("68").value },
+        { "x": document.getElementById("29").value, value: document.getElementById("69").value },
+        { "x": document.getElementById("30").value, value: document.getElementById("70").value },
+        { "x": document.getElementById("31").value, value: document.getElementById("71").value },
+        { "x": document.getElementById("32").value, value: document.getElementById("72").value },
+        { "x": document.getElementById("33").value, value: document.getElementById("73").value },
+        { "x": document.getElementById("34").value, value: document.getElementById("74").value },
+        { "x": document.getElementById("35").value, value: document.getElementById("75").value },
+        { "x": document.getElementById("36").value, value: document.getElementById("76").value },
+        { "x": document.getElementById("37").value, value: document.getElementById("77").value },
+        { "x": document.getElementById("38").value, value: document.getElementById("78").value },
+        { "x": document.getElementById("39").value, value: document.getElementById("79").value },
+        { "x": document.getElementById("40").value, value: document.getElementById("80").value },
+    ];
+
+    // create a chart and set the data
+    chart = anychart.tagCloud(data);
+    // set the container element
+    chart.container("container");
+    // initiate chart display
+    chart.draw();
+</script>
+
+

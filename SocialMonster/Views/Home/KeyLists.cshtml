@@ -1,0 +1,30 @@
+﻿<table class="table table-bordered table-striped" id="mainTbl">
+    <tr>
+        <th></th>
+        <th>Key1</th>
+        <th>Key2</th>
+        <th>Latin1</th>
+        <th>Latin2</th>
+        <th>KeyType</th>
+        <th></th>
+    </tr>
+
+    @{ int @counter = 0; }
+    @foreach (var m in @ViewBag.PersonKeyData)
+    {
+        counter = counter + 1;
+        <tr>
+            <td>@counter</td>
+            <td>@m.Key1</td>
+            <td>@m.Key2</td>
+            <td>@m.Latin1</td>
+            <td>@m.Latin2</td>
+            <td>@m.TypeName</td>
+            <td>
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Update" onclick="UpdateModal(this);" data-Key1="@m.Key1" data-Key2="@m.Key2" data-Key3="@m.Key3" data-Key4="@m.Key4"
+                       data-Latin1="@m.Latin1" data-Latin2="@m.Latin2" data-Latin3="@m.Latin3" data-Latin4="@m.Latin4" data-Type="@m.Type" data-PersonID="@m.PersonID" data-id="@m.ID" />
+                <input type="button" class="btn btn-sm btn-success btn-block" value="Delete" onclick="DeleteModal(this);" id="del" data-id="@m.ID" />
+            </td>
+        </tr>
+    }
+</table>

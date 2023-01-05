@@ -1,0 +1,1731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetUserClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SureName" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facebook_CommentRemover">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Facebook_Groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ObjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProfileID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="SourceName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CategorySectorID" Type="uniqueidentifier" />
+          <Property Name="CategoryOperationID" Type="uniqueidentifier" />
+          <Property Name="IsRealTimeMonitor" Type="bit" />
+          <Property Name="IsElectional" Type="bit" />
+          <Property Name="IsRemove" Type="bit" />
+          <Property Name="IsAds" Type="bit" />
+          <Property Name="AccessToken" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Facebook_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ObjectID" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="CheckedDate" Type="datetime" />
+          <Property Name="IsPrivateAccout" Type="bit" />
+          <Property Name="IsRealTimeMonitor" Type="bit" />
+          <Property Name="IsElectional" Type="bit" />
+          <Property Name="IsRemove" Type="bit" />
+          <Property Name="IsAds" Type="bit" />
+          <Property Name="AccessToken" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CommentID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ObjectID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FromID" Type="nvarchar" MaxLength="150" />
+          <Property Name="FromName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="PositiveCount" Type="int" />
+          <Property Name="NegativeCount" Type="int" />
+          <Property Name="Sentiment" Type="nvarchar" MaxLength="10" />
+          <Property Name="Sentiment_Confirmed" Type="bit" />
+          <Property Name="Question" Type="bit" />
+          <Property Name="Likes" Type="int" />
+          <Property Name="RegisteredDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_Hottopic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostID" Type="uniqueidentifier" />
+          <Property Name="HottopicID" Type="uniqueidentifier" />
+          <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostID" Type="uniqueidentifier" />
+          <Property Name="PersonID" Type="uniqueidentifier" />
+          <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_SubAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AttachmentID" Type="uniqueidentifier" />
+          <Property Name="TargetID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TargetURL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MediaURL" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Facebook_Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PageID" Type="uniqueidentifier" />
+          <Property Name="GroupID" Type="uniqueidentifier" />
+          <Property Name="PostID" Type="nvarchar" MaxLength="100" />
+          <Property Name="FromID" Type="nvarchar" MaxLength="500" />
+          <Property Name="FromName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Story" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="SharedCount" Type="int" />
+          <Property Name="PermalinkUrl" Type="nvarchar(max)" />
+          <Property Name="Caption" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="FullPicture" Type="nvarchar(max)" />
+          <Property Name="Link" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Picture" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="nvarchar(max)" />
+          <Property Name="ObjectID" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentID" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.Google.SearchResult' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Google_SearchResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SearchKeyID" Type="uniqueidentifier" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" />
+          <Property Name="Url" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SearchType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="System_Groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentID" Type="uniqueidentifier" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Level" Type="int" />
+        </EntityType>
+        <EntityType Name="System_Hottopics">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageURL" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="System_Keys">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Key1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Key2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Key3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Key4" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lattin1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lattin2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lattin3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lattin4" Type="nvarchar" MaxLength="100" />
+          <Property Name="KeyTypeID" Type="uniqueidentifier" />
+          <Property Name="PersonID" Type="uniqueidentifier" />
+          <Property Name="GroupID" Type="uniqueidentifier" />
+          <Property Name="HoptopicID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="System_KeyTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Order" Type="int" />
+        </EntityType>
+        <EntityType Name="System_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surename" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupID" Type="uniqueidentifier" />
+          <Property Name="FacebookPageID1" Type="uniqueidentifier" />
+          <Property Name="FacebookPageID2" Type="uniqueidentifier" />
+          <Property Name="FacebookPageID3" Type="uniqueidentifier" />
+          <Property Name="FacebookGroupID1" Type="uniqueidentifier" />
+          <Property Name="FacebookGroupID2" Type="uniqueidentifier" />
+          <Property Name="FacebookGroupID3" Type="uniqueidentifier" />
+          <Property Name="TwitterUserID1" Type="uniqueidentifier" />
+          <Property Name="TwitterUserID2" Type="uniqueidentifier" />
+          <Property Name="TwitterUserID3" Type="uniqueidentifier" />
+          <Property Name="WebSiteID1" Type="uniqueidentifier" />
+          <Property Name="WebSiteID2" Type="uniqueidentifier" />
+          <Property Name="WebSiteID3" Type="uniqueidentifier" />
+          <Property Name="Picture" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Monitoring.dbo.System.Questions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="System_Questions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lattin1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lattin2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lattin3" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="System_View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonID1" Type="uniqueidentifier" />
+          <Property Name="PersonID2" Type="uniqueidentifier" />
+          <Property Name="PersonID3" Type="uniqueidentifier" />
+          <Property Name="GroupID1" Type="uniqueidentifier" />
+          <Property Name="GroupID2" Type="uniqueidentifier" />
+          <Property Name="GroupID3" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Twitter_Tweet_Hottopic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TweetID" Type="uniqueidentifier" />
+          <Property Name="HottopicID" Type="uniqueidentifier" />
+          <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Twitter_Tweet_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TweetID" Type="uniqueidentifier" />
+          <Property Name="PersonID" Type="uniqueidentifier" />
+          <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Twitter_Tweets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TwitterUserID" Type="uniqueidentifier" />
+          <Property Name="TweetID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="ScreenName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Source" Type="nvarchar" MaxLength="300" />
+          <Property Name="StatusID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RetweetCount" Type="int" />
+          <Property Name="Retweeted" Type="bit" />
+          <Property Name="FullText" Type="nvarchar" MaxLength="100" />
+          <Property Name="Language" Type="nvarchar" MaxLength="10" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" />
+          <Property Name="TrimUser" Type="bit" />
+          <Property Name="Truncated" Type="bit" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="HashEntity1" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HashEntity2" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HashEntity3" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SymbolEntity1" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SymbolEntity2" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SymbolEntity3" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UrlEntity1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntityDisplayUrl1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntityExpandedUrl1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntity2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntityDisplayUrl2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntityExpandedUrl2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntity3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntityDisplayUrl3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UrlEntityExpandedUrl3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiy1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyDisplayUrl1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyMediaUrl1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyVideoInfo1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntity2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyDisplayUrl2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyMediaUrl2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyVideoInfo2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntity3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyDisplayUrl3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyMediaUrl3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MediaEntitiyVideoInfo3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UserMentionEntity1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UserMentionEntityScreenName1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UserMentionEntity2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UserMentionEntityScreenName2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UserMentionEntity3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UserMentionEntityScreenName3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RegisteredDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Twitter_User_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TwitterUserID" Type="uniqueidentifier" />
+          <Property Name="ContributorsEnabled" Type="bit" />
+          <Property Name="Count" Type="int" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Cursor" Type="bigint" />
+          <Property Name="DefaultProfile" Type="bit" />
+          <Property Name="DefaultProfileImage" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="FavoritesCount" Type="int" />
+          <Property Name="FollowRequestSent" Type="bit" />
+          <Property Name="FollowersCount" Type="int" />
+          <Property Name="Following" Type="bit" />
+          <Property Name="FriendsCount" Type="int" />
+          <Property Name="GeoEnabled" Type="bit" />
+          <Property Name="ImageSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="IncludeEntities" Type="bit" />
+          <Property Name="IsTranslator" Type="bit" />
+          <Property Name="Lang" Type="nvarchar" MaxLength="50" />
+          <Property Name="LangResponse" Type="nvarchar" MaxLength="50" />
+          <Property Name="ListedCount" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notifications" Type="bit" />
+          <Property Name="Page" Type="int" />
+          <Property Name="ProfileBackgroundColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileBackgroundImageUrl" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ProfileBackgroundImageUrlHttps" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ProfileBackgroundTile" Type="bit" />
+          <Property Name="ProfileBannerUrl" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ProfileImage" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ProfileImageUrl" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ProfileImageUrlHttps" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ProfileLinkColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileSidebarBorderColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileSidebarFillColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileTextColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileUseBackgroundImage" Type="bit" />
+          <Property Name="Protected" Type="bit" />
+          <Property Name="Query" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ScreenName" Type="nvarchar" MaxLength="300" />
+          <Property Name="ScreenNameList" Type="nvarchar" MaxLength="300" />
+          <Property Name="ScreenNameResponse" Type="nvarchar" MaxLength="300" />
+          <Property Name="ShowAllInlineMedia" Type="bit" />
+          <Property Name="SkipStatus" Type="bit" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="4000" />
+          <Property Name="StatusesCount" Type="int" />
+          <Property Name="TimeZone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="UserIDResponse" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserIdList" Type="nvarchar" MaxLength="50" />
+          <Property Name="UtcOffset" Type="int" />
+          <Property Name="Verified" Type="bit" />
+        </EntityType>
+        <EntityType Name="Twitter_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="300" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SureName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Followers" Type="int" />
+          <Property Name="Following" Type="int" />
+          <Property Name="Likes" Type="int" />
+          <Property Name="TweetNumber" Type="int" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDay" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="JoinedDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="isChecked" Type="bit" />
+          <Property Name="ReadDate" Type="datetime" />
+          <Property Name="Level" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="500" />
+          <Property Name="CommentCheckedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WebSite_Post_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebSiteID" Type="uniqueidentifier" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Website_Post_Hottopic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostID" Type="uniqueidentifier" />
+          <Property Name="HottopicID" Type="uniqueidentifier" />
+          <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Website_Post_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostID" Type="uniqueidentifier" />
+          <Property Name="PersonID" Type="uniqueidentifier" />
+          <Property Name="Sentiment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WebSite_PostList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebSiteID" Type="uniqueidentifier" />
+          <Property Name="RawData" Type="nvarchar" MaxLength="4000" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WebSite_Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" />
+          <Property Name="Reporter" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="CommentCount" Type="int" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="PostListID" Type="uniqueidentifier" />
+          <Property Name="CoverUrl" Type="nvarchar(max)" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="RawData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="WebSites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SiteName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Url" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="SiteColorCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="PostListTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="HtmlTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="TitleTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="CoverTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="BodyTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateTimeTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReporterTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="CommentTagID" Type="nvarchar" MaxLength="100" />
+          <Property Name="CommentInput" Type="nvarchar" MaxLength="100" />
+          <Property Name="CommentSubmit" Type="nvarchar" MaxLength="100" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="isHiddenHTML" Type="bit" />
+          <Property Name="isContainComments" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="MonitoringModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facebook_CommentRemover" EntityType="Self.Facebook_CommentRemover" Schema="dbo" Table="Facebook.CommentRemover" store:Type="Tables" />
+          <EntitySet Name="Facebook_Groups" EntityType="Self.Facebook_Groups" Schema="dbo" Table="Facebook.Groups" store:Type="Tables" />
+          <EntitySet Name="Facebook_Pages" EntityType="Self.Facebook_Pages" Schema="dbo" Table="Facebook.Pages" store:Type="Tables" />
+          <EntitySet Name="Facebook_Post_Comments" EntityType="Self.Facebook_Post_Comments" Schema="dbo" Table="Facebook.Post.Comments" store:Type="Tables" />
+          <EntitySet Name="Facebook_Post_Hottopic" EntityType="Self.Facebook_Post_Hottopic" Schema="dbo" Table="Facebook.Post.Hottopic" store:Type="Tables" />
+          <EntitySet Name="Facebook_Post_Person" EntityType="Self.Facebook_Post_Person" Schema="dbo" Table="Facebook.Post.Person" store:Type="Tables" />
+          <EntitySet Name="Facebook_Post_SubAttachment" EntityType="Self.Facebook_Post_SubAttachment" Schema="dbo" Table="Facebook.Post.SubAttachment" store:Type="Tables" />
+          <EntitySet Name="Facebook_Posts" EntityType="Self.Facebook_Posts" Schema="dbo" Table="Facebook.Posts" store:Type="Tables" />
+          <EntitySet Name="System_Groups" EntityType="Self.System_Groups" Schema="dbo" Table="System.Groups" store:Type="Tables" />
+          <EntitySet Name="System_Hottopics" EntityType="Self.System_Hottopics" Schema="dbo" Table="System.Hottopics" store:Type="Tables" />
+          <EntitySet Name="System_Keys" EntityType="Self.System_Keys" Schema="dbo" Table="System.Keys" store:Type="Tables" />
+          <EntitySet Name="System_KeyTypes" EntityType="Self.System_KeyTypes" Schema="dbo" Table="System.KeyTypes" store:Type="Tables" />
+          <EntitySet Name="System_Person" EntityType="Self.System_Person" Schema="dbo" Table="System.Person" store:Type="Tables" />
+          <EntitySet Name="System_View" EntityType="Self.System_View" Schema="dbo" Table="System.View" store:Type="Tables" />
+          <EntitySet Name="Twitter_Tweet_Hottopic" EntityType="Self.Twitter_Tweet_Hottopic" Schema="dbo" Table="Twitter.Tweet.Hottopic" store:Type="Tables" />
+          <EntitySet Name="Twitter_Tweet_Person" EntityType="Self.Twitter_Tweet_Person" Schema="dbo" Table="Twitter.Tweet.Person" store:Type="Tables" />
+          <EntitySet Name="Twitter_Tweets" EntityType="Self.Twitter_Tweets" Schema="dbo" Table="Twitter.Tweets" store:Type="Tables" />
+          <EntitySet Name="Twitter_User_Details" EntityType="Self.Twitter_User_Details" Schema="dbo" Table="Twitter.User.Details" store:Type="Tables" />
+          <EntitySet Name="Twitter_Users" EntityType="Self.Twitter_Users" Schema="dbo" Table="Twitter.Users" store:Type="Tables" />
+          <EntitySet Name="WebSite_Post_Comments" EntityType="Self.WebSite_Post_Comments" Schema="dbo" Table="WebSite.Post.Comments" store:Type="Tables" />
+          <EntitySet Name="Website_Post_Hottopic" EntityType="Self.Website_Post_Hottopic" Schema="dbo" Table="Website.Post.Hottopic" store:Type="Tables" />
+          <EntitySet Name="Website_Post_Person" EntityType="Self.Website_Post_Person" Schema="dbo" Table="Website.Post.Person" store:Type="Tables" />
+          <EntitySet Name="WebSite_PostList" EntityType="Self.WebSite_PostList" Schema="dbo" Table="WebSite.PostList" store:Type="Tables" />
+          <EntitySet Name="WebSite_Posts" EntityType="Self.WebSite_Posts" Schema="dbo" Table="WebSite.Posts" store:Type="Tables" />
+          <EntitySet Name="WebSites" EntityType="Self.WebSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetRoles].[Id] AS [Id], 
+    [AspNetRoles].[Name] AS [Name]
+    FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserClaims].[Id] AS [Id], 
+    [AspNetUserClaims].[UserId] AS [UserId], 
+    [AspNetUserClaims].[ClaimType] AS [ClaimType], 
+    [AspNetUserClaims].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [AspNetUserClaims]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserLogins].[LoginProvider] AS [LoginProvider], 
+    [AspNetUserLogins].[ProviderKey] AS [ProviderKey], 
+    [AspNetUserLogins].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [AspNetUserLogins]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserRoles].[UserId] AS [UserId], 
+    [AspNetUserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Google_SearchResult" EntityType="Self.Google_SearchResult" store:Type="Tables" store:Schema="dbo" store:Name="Google.SearchResult">
+            <DefiningQuery>SELECT 
+    [Google_SearchResult].[ID] AS [ID], 
+    [Google_SearchResult].[SearchKeyID] AS [SearchKeyID], 
+    [Google_SearchResult].[Title] AS [Title], 
+    [Google_SearchResult].[Url] AS [Url], 
+    [Google_SearchResult].[Description] AS [Description], 
+    [Google_SearchResult].[SearchType] AS [SearchType]
+    FROM [dbo].[Google.SearchResult] AS [Google_SearchResult]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="System_Questions" EntityType="Self.System_Questions" store:Type="Tables" store:Schema="dbo" store:Name="System.Questions">
+            <DefiningQuery>SELECT 
+    [System_Questions].[ID] AS [ID], 
+    [System_Questions].[Question] AS [Question], 
+    [System_Questions].[Lattin1] AS [Lattin1], 
+    [System_Questions].[Lattin2] AS [Lattin2], 
+    [System_Questions].[Lattin3] AS [Lattin3]
+    FROM [dbo].[System.Questions] AS [System_Questions]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SureName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facebook_CommentRemover">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Facebook_Groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ObjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ObjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SourceName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CategorySectorID" Type="Guid" />
+          <Property Name="CategoryOperationID" Type="Guid" />
+          <Property Name="IsRealTimeMonitor" Type="Boolean" />
+          <Property Name="IsElectional" Type="Boolean" />
+          <Property Name="IsRemove" Type="Boolean" />
+          <Property Name="IsAds" Type="Boolean" />
+          <Property Name="AccessToken" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Facebook_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ObjectID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="CheckedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsPrivateAccout" Type="Boolean" />
+          <Property Name="IsRealTimeMonitor" Type="Boolean" />
+          <Property Name="IsElectional" Type="Boolean" />
+          <Property Name="IsRemove" Type="Boolean" />
+          <Property Name="IsAds" Type="Boolean" />
+          <Property Name="AccessToken" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PostID" Type="Guid" Nullable="false" />
+          <Property Name="CommentID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ObjectID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FromID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FromName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="PositiveCount" Type="Int32" />
+          <Property Name="NegativeCount" Type="Int32" />
+          <Property Name="Sentiment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Sentiment_Confirmed" Type="Boolean" />
+          <Property Name="Question" Type="Boolean" />
+          <Property Name="Likes" Type="Int32" />
+          <Property Name="RegisteredDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_Hottopic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PostID" Type="Guid" />
+          <Property Name="HottopicID" Type="Guid" />
+          <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PostID" Type="Guid" />
+          <Property Name="PersonID" Type="Guid" />
+          <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Facebook_Post_SubAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="AttachmentID" Type="Guid" />
+          <Property Name="TargetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TargetURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Facebook_Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PageID" Type="Guid" />
+          <Property Name="GroupID" Type="Guid" />
+          <Property Name="PostID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FromID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FromName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Story" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="SharedCount" Type="Int32" />
+          <Property Name="PermalinkUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Caption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ObjectID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="System_Groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Guid" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int32" />
+        </EntityType>
+        <EntityType Name="System_Hottopics">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="System_Keys">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Key1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Key2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Key3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Key4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lattin1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lattin2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lattin3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lattin4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KeyTypeID" Type="Guid" />
+          <Property Name="PersonID" Type="Guid" />
+          <Property Name="GroupID" Type="Guid" />
+          <Property Name="HoptopicID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="System_KeyTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" />
+        </EntityType>
+        <EntityType Name="System_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupID" Type="Guid" />
+          <Property Name="FacebookPageID1" Type="Guid" />
+          <Property Name="FacebookPageID2" Type="Guid" />
+          <Property Name="FacebookPageID3" Type="Guid" />
+          <Property Name="FacebookGroupID1" Type="Guid" />
+          <Property Name="FacebookGroupID2" Type="Guid" />
+          <Property Name="FacebookGroupID3" Type="Guid" />
+          <Property Name="TwitterUserID1" Type="Guid" />
+          <Property Name="TwitterUserID2" Type="Guid" />
+          <Property Name="TwitterUserID3" Type="Guid" />
+          <Property Name="WebSiteID1" Type="Guid" />
+          <Property Name="WebSiteID2" Type="Guid" />
+          <Property Name="WebSiteID3" Type="Guid" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="System_View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonID1" Type="Guid" />
+          <Property Name="PersonID2" Type="Guid" />
+          <Property Name="PersonID3" Type="Guid" />
+          <Property Name="GroupID1" Type="Guid" />
+          <Property Name="GroupID2" Type="Guid" />
+          <Property Name="GroupID3" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Twitter_Tweet_Hottopic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="TweetID" Type="Guid" />
+          <Property Name="HottopicID" Type="Guid" />
+          <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Twitter_Tweet_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="TweetID" Type="Guid" />
+          <Property Name="PersonID" Type="Guid" />
+          <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Twitter_Tweets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="TwitterUserID" Type="Guid" />
+          <Property Name="TweetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="ScreenName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="StatusID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RetweetCount" Type="Int32" />
+          <Property Name="Retweeted" Type="Boolean" />
+          <Property Name="FullText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TrimUser" Type="Boolean" />
+          <Property Name="Truncated" Type="Boolean" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="HashEntity1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="HashEntity2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="HashEntity3" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SymbolEntity1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SymbolEntity2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SymbolEntity3" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntity1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntityDisplayUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntityExpandedUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntity2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntityDisplayUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntityExpandedUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntity3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntityDisplayUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UrlEntityExpandedUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiy1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyDisplayUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyMediaUrl1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyVideoInfo1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntity2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyDisplayUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyMediaUrl2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyVideoInfo2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntity3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyDisplayUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyMediaUrl3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MediaEntitiyVideoInfo3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UserMentionEntity1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UserMentionEntityScreenName1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UserMentionEntity2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UserMentionEntityScreenName2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UserMentionEntity3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UserMentionEntityScreenName3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="RegisteredDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Twitter_User_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="TwitterUserID" Type="Guid" />
+          <Property Name="ContributorsEnabled" Type="Boolean" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Cursor" Type="Int64" />
+          <Property Name="DefaultProfile" Type="Boolean" />
+          <Property Name="DefaultProfileImage" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FavoritesCount" Type="Int32" />
+          <Property Name="FollowRequestSent" Type="Boolean" />
+          <Property Name="FollowersCount" Type="Int32" />
+          <Property Name="Following" Type="Boolean" />
+          <Property Name="FriendsCount" Type="Int32" />
+          <Property Name="GeoEnabled" Type="Boolean" />
+          <Property Name="ImageSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IncludeEntities" Type="Boolean" />
+          <Property Name="IsTranslator" Type="Boolean" />
+          <Property Name="Lang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LangResponse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ListedCount" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notifications" Type="Boolean" />
+          <Property Name="Page" Type="Int32" />
+          <Property Name="ProfileBackgroundColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileBackgroundImageUrl" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileBackgroundImageUrlHttps" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileBackgroundTile" Type="Boolean" />
+          <Property Name="ProfileBannerUrl" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImageUrl" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImageUrlHttps" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileLinkColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileSidebarBorderColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileSidebarFillColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileTextColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileUseBackgroundImage" Type="Boolean" />
+          <Property Name="Protected" Type="Boolean" />
+          <Property Name="Query" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ScreenName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ScreenNameList" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ScreenNameResponse" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ShowAllInlineMedia" Type="Boolean" />
+          <Property Name="SkipStatus" Type="Boolean" />
+          <Property Name="Slug" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="StatusesCount" Type="Int32" />
+          <Property Name="TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="UserIDResponse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserIdList" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UtcOffset" Type="Int32" />
+          <Property Name="Verified" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Twitter_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SureName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Followers" Type="Int32" />
+          <Property Name="Following" Type="Int32" />
+          <Property Name="Likes" Type="Int32" />
+          <Property Name="TweetNumber" Type="Int32" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="JoinedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isChecked" Type="Boolean" />
+          <Property Name="ReadDate" Type="DateTime" Precision="3" />
+          <Property Name="Level" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CommentCheckedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="WebSite_Post_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="WebSiteID" Type="Guid" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Website_Post_Hottopic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PostID" Type="Guid" />
+          <Property Name="HottopicID" Type="Guid" />
+          <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Website_Post_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PostID" Type="Guid" />
+          <Property Name="PersonID" Type="Guid" />
+          <Property Name="Sentiment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WebSite_PostList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="WebSiteID" Type="Guid" />
+          <Property Name="RawData" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="WebSite_Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reporter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommentCount" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostListID" Type="Guid" />
+          <Property Name="CoverUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RawData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WebSites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="SiteName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="SiteColorCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PostListTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HtmlTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CoverTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BodyTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateTimeTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReporterTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommentTagID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommentInput" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommentSubmit" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="isHiddenHTML" Type="Boolean" />
+          <Property Name="isContainComments" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Google_SearchResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="SearchKeyID" Type="Guid" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SearchType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="System_Questions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lattin1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lattin2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lattin3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="MonitoringEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Facebook_CommentRemover" EntityType="Self.Facebook_CommentRemover" />
+          <EntitySet Name="Facebook_Groups" EntityType="Self.Facebook_Groups" />
+          <EntitySet Name="Facebook_Pages" EntityType="Self.Facebook_Pages" />
+          <EntitySet Name="Facebook_Post_Comments" EntityType="Self.Facebook_Post_Comments" />
+          <EntitySet Name="Facebook_Post_Hottopic" EntityType="Self.Facebook_Post_Hottopic" />
+          <EntitySet Name="Facebook_Post_Person" EntityType="Self.Facebook_Post_Person" />
+          <EntitySet Name="Facebook_Post_SubAttachment" EntityType="Self.Facebook_Post_SubAttachment" />
+          <EntitySet Name="Facebook_Posts" EntityType="Self.Facebook_Posts" />
+          <EntitySet Name="System_Groups" EntityType="Self.System_Groups" />
+          <EntitySet Name="System_Hottopics" EntityType="Self.System_Hottopics" />
+          <EntitySet Name="System_Keys" EntityType="Self.System_Keys" />
+          <EntitySet Name="System_KeyTypes" EntityType="Self.System_KeyTypes" />
+          <EntitySet Name="System_Person" EntityType="Self.System_Person" />
+          <EntitySet Name="System_View" EntityType="Self.System_View" />
+          <EntitySet Name="Twitter_Tweet_Hottopic" EntityType="Self.Twitter_Tweet_Hottopic" />
+          <EntitySet Name="Twitter_Tweet_Person" EntityType="Self.Twitter_Tweet_Person" />
+          <EntitySet Name="Twitter_Tweets" EntityType="Self.Twitter_Tweets" />
+          <EntitySet Name="Twitter_User_Details" EntityType="Self.Twitter_User_Details" />
+          <EntitySet Name="Twitter_Users" EntityType="Self.Twitter_Users" />
+          <EntitySet Name="WebSite_Post_Comments" EntityType="Self.WebSite_Post_Comments" />
+          <EntitySet Name="Website_Post_Hottopic" EntityType="Self.Website_Post_Hottopic" />
+          <EntitySet Name="Website_Post_Person" EntityType="Self.Website_Post_Person" />
+          <EntitySet Name="WebSite_PostList" EntityType="Self.WebSite_PostList" />
+          <EntitySet Name="WebSite_Posts" EntityType="Self.WebSite_Posts" />
+          <EntitySet Name="WebSites" EntityType="Self.WebSites" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
+          <EntitySet Name="Google_SearchResult" EntityType="Self.Google_SearchResult" />
+          <EntitySet Name="System_Questions" EntityType="Self.System_Questions" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MonitoringModelStoreContainer" CdmEntityContainer="MonitoringEntities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MonitoringModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SureName" ColumnName="SureName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_CommentRemover">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_CommentRemover">
+              <MappingFragment StoreEntitySet="Facebook_CommentRemover">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_Groups">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_Groups">
+              <MappingFragment StoreEntitySet="Facebook_Groups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="ProfileName" ColumnName="ProfileName" />
+                <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+                <ScalarProperty Name="CategorySectorID" ColumnName="CategorySectorID" />
+                <ScalarProperty Name="CategoryOperationID" ColumnName="CategoryOperationID" />
+                <ScalarProperty Name="IsRealTimeMonitor" ColumnName="IsRealTimeMonitor" />
+                <ScalarProperty Name="IsElectional" ColumnName="IsElectional" />
+                <ScalarProperty Name="IsRemove" ColumnName="IsRemove" />
+                <ScalarProperty Name="IsAds" ColumnName="IsAds" />
+                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_Pages">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_Pages">
+              <MappingFragment StoreEntitySet="Facebook_Pages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CheckedDate" ColumnName="CheckedDate" />
+                <ScalarProperty Name="IsPrivateAccout" ColumnName="IsPrivateAccout" />
+                <ScalarProperty Name="IsRealTimeMonitor" ColumnName="IsRealTimeMonitor" />
+                <ScalarProperty Name="IsElectional" ColumnName="IsElectional" />
+                <ScalarProperty Name="IsRemove" ColumnName="IsRemove" />
+                <ScalarProperty Name="IsAds" ColumnName="IsAds" />
+                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_Post_Comments">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Comments">
+              <MappingFragment StoreEntitySet="Facebook_Post_Comments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="FromID" ColumnName="FromID" />
+                <ScalarProperty Name="FromName" ColumnName="FromName" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="PositiveCount" ColumnName="PositiveCount" />
+                <ScalarProperty Name="NegativeCount" ColumnName="NegativeCount" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+                <ScalarProperty Name="Sentiment_Confirmed" ColumnName="Sentiment_Confirmed" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_Post_Hottopic">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Hottopic">
+              <MappingFragment StoreEntitySet="Facebook_Post_Hottopic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="HottopicID" ColumnName="HottopicID" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_Post_Person">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_Person">
+              <MappingFragment StoreEntitySet="Facebook_Post_Person">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_Post_SubAttachment">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_Post_SubAttachment">
+              <MappingFragment StoreEntitySet="Facebook_Post_SubAttachment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
+                <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+                <ScalarProperty Name="TargetURL" ColumnName="TargetURL" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="MediaURL" ColumnName="MediaURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facebook_Posts">
+            <EntityTypeMapping TypeName="MonitoringModel.Facebook_Posts">
+              <MappingFragment StoreEntitySet="Facebook_Posts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="FromID" ColumnName="FromID" />
+                <ScalarProperty Name="FromName" ColumnName="FromName" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Story" ColumnName="Story" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="SharedCount" ColumnName="SharedCount" />
+                <ScalarProperty Name="PermalinkUrl" ColumnName="PermalinkUrl" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FullPicture" ColumnName="FullPicture" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_Groups">
+            <EntityTypeMapping TypeName="MonitoringModel.System_Groups">
+              <MappingFragment StoreEntitySet="System_Groups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_Hottopics">
+            <EntityTypeMapping TypeName="MonitoringModel.System_Hottopics">
+              <MappingFragment StoreEntitySet="System_Hottopics">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_Keys">
+            <EntityTypeMapping TypeName="MonitoringModel.System_Keys">
+              <MappingFragment StoreEntitySet="System_Keys">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Key1" ColumnName="Key1" />
+                <ScalarProperty Name="Key2" ColumnName="Key2" />
+                <ScalarProperty Name="Key3" ColumnName="Key3" />
+                <ScalarProperty Name="Key4" ColumnName="Key4" />
+                <ScalarProperty Name="Lattin1" ColumnName="Lattin1" />
+                <ScalarProperty Name="Lattin2" ColumnName="Lattin2" />
+                <ScalarProperty Name="Lattin3" ColumnName="Lattin3" />
+                <ScalarProperty Name="Lattin4" ColumnName="Lattin4" />
+                <ScalarProperty Name="KeyTypeID" ColumnName="KeyTypeID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="HoptopicID" ColumnName="HoptopicID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_KeyTypes">
+            <EntityTypeMapping TypeName="MonitoringModel.System_KeyTypes">
+              <MappingFragment StoreEntitySet="System_KeyTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_Person">
+            <EntityTypeMapping TypeName="MonitoringModel.System_Person">
+              <MappingFragment StoreEntitySet="System_Person">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surename" ColumnName="Surename" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="FacebookPageID1" ColumnName="FacebookPageID1" />
+                <ScalarProperty Name="FacebookPageID2" ColumnName="FacebookPageID2" />
+                <ScalarProperty Name="FacebookPageID3" ColumnName="FacebookPageID3" />
+                <ScalarProperty Name="FacebookGroupID1" ColumnName="FacebookGroupID1" />
+                <ScalarProperty Name="FacebookGroupID2" ColumnName="FacebookGroupID2" />
+                <ScalarProperty Name="FacebookGroupID3" ColumnName="FacebookGroupID3" />
+                <ScalarProperty Name="TwitterUserID1" ColumnName="TwitterUserID1" />
+                <ScalarProperty Name="TwitterUserID2" ColumnName="TwitterUserID2" />
+                <ScalarProperty Name="TwitterUserID3" ColumnName="TwitterUserID3" />
+                <ScalarProperty Name="WebSiteID1" ColumnName="WebSiteID1" />
+                <ScalarProperty Name="WebSiteID2" ColumnName="WebSiteID2" />
+                <ScalarProperty Name="WebSiteID3" ColumnName="WebSiteID3" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_View">
+            <EntityTypeMapping TypeName="MonitoringModel.System_View">
+              <MappingFragment StoreEntitySet="System_View">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PersonID1" ColumnName="PersonID1" />
+                <ScalarProperty Name="PersonID2" ColumnName="PersonID2" />
+                <ScalarProperty Name="PersonID3" ColumnName="PersonID3" />
+                <ScalarProperty Name="GroupID1" ColumnName="GroupID1" />
+                <ScalarProperty Name="GroupID2" ColumnName="GroupID2" />
+                <ScalarProperty Name="GroupID3" ColumnName="GroupID3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Twitter_Tweet_Hottopic">
+            <EntityTypeMapping TypeName="MonitoringModel.Twitter_Tweet_Hottopic">
+              <MappingFragment StoreEntitySet="Twitter_Tweet_Hottopic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TweetID" ColumnName="TweetID" />
+                <ScalarProperty Name="HottopicID" ColumnName="HottopicID" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Twitter_Tweet_Person">
+            <EntityTypeMapping TypeName="MonitoringModel.Twitter_Tweet_Person">
+              <MappingFragment StoreEntitySet="Twitter_Tweet_Person">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TweetID" ColumnName="TweetID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Twitter_Tweets">
+            <EntityTypeMapping TypeName="MonitoringModel.Twitter_Tweets">
+              <MappingFragment StoreEntitySet="Twitter_Tweets">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TwitterUserID" ColumnName="TwitterUserID" />
+                <ScalarProperty Name="TweetID" ColumnName="TweetID" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="RetweetCount" ColumnName="RetweetCount" />
+                <ScalarProperty Name="Retweeted" ColumnName="Retweeted" />
+                <ScalarProperty Name="FullText" ColumnName="FullText" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="TrimUser" ColumnName="TrimUser" />
+                <ScalarProperty Name="Truncated" ColumnName="Truncated" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HashEntity1" ColumnName="HashEntity1" />
+                <ScalarProperty Name="HashEntity2" ColumnName="HashEntity2" />
+                <ScalarProperty Name="HashEntity3" ColumnName="HashEntity3" />
+                <ScalarProperty Name="SymbolEntity1" ColumnName="SymbolEntity1" />
+                <ScalarProperty Name="SymbolEntity2" ColumnName="SymbolEntity2" />
+                <ScalarProperty Name="SymbolEntity3" ColumnName="SymbolEntity3" />
+                <ScalarProperty Name="UrlEntity1" ColumnName="UrlEntity1" />
+                <ScalarProperty Name="UrlEntityDisplayUrl1" ColumnName="UrlEntityDisplayUrl1" />
+                <ScalarProperty Name="UrlEntityExpandedUrl1" ColumnName="UrlEntityExpandedUrl1" />
+                <ScalarProperty Name="UrlEntity2" ColumnName="UrlEntity2" />
+                <ScalarProperty Name="UrlEntityDisplayUrl2" ColumnName="UrlEntityDisplayUrl2" />
+                <ScalarProperty Name="UrlEntityExpandedUrl2" ColumnName="UrlEntityExpandedUrl2" />
+                <ScalarProperty Name="UrlEntity3" ColumnName="UrlEntity3" />
+                <ScalarProperty Name="UrlEntityDisplayUrl3" ColumnName="UrlEntityDisplayUrl3" />
+                <ScalarProperty Name="UrlEntityExpandedUrl3" ColumnName="UrlEntityExpandedUrl3" />
+                <ScalarProperty Name="MediaEntitiy1" ColumnName="MediaEntitiy1" />
+                <ScalarProperty Name="MediaEntitiyDisplayUrl1" ColumnName="MediaEntitiyDisplayUrl1" />
+                <ScalarProperty Name="MediaEntitiyMediaUrl1" ColumnName="MediaEntitiyMediaUrl1" />
+                <ScalarProperty Name="MediaEntitiyVideoInfo1" ColumnName="MediaEntitiyVideoInfo1" />
+                <ScalarProperty Name="MediaEntity2" ColumnName="MediaEntity2" />
+                <ScalarProperty Name="MediaEntitiyDisplayUrl2" ColumnName="MediaEntitiyDisplayUrl2" />
+                <ScalarProperty Name="MediaEntitiyMediaUrl2" ColumnName="MediaEntitiyMediaUrl2" />
+                <ScalarProperty Name="MediaEntitiyVideoInfo2" ColumnName="MediaEntitiyVideoInfo2" />
+                <ScalarProperty Name="MediaEntity3" ColumnName="MediaEntity3" />
+                <ScalarProperty Name="MediaEntitiyDisplayUrl3" ColumnName="MediaEntitiyDisplayUrl3" />
+                <ScalarProperty Name="MediaEntitiyMediaUrl3" ColumnName="MediaEntitiyMediaUrl3" />
+                <ScalarProperty Name="MediaEntitiyVideoInfo3" ColumnName="MediaEntitiyVideoInfo3" />
+                <ScalarProperty Name="UserMentionEntity1" ColumnName="UserMentionEntity1" />
+                <ScalarProperty Name="UserMentionEntityScreenName1" ColumnName="UserMentionEntityScreenName1" />
+                <ScalarProperty Name="UserMentionEntity2" ColumnName="UserMentionEntity2" />
+                <ScalarProperty Name="UserMentionEntityScreenName2" ColumnName="UserMentionEntityScreenName2" />
+                <ScalarProperty Name="UserMentionEntity3" ColumnName="UserMentionEntity3" />
+                <ScalarProperty Name="UserMentionEntityScreenName3" ColumnName="UserMentionEntityScreenName3" />
+                <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Twitter_User_Details">
+            <EntityTypeMapping TypeName="MonitoringModel.Twitter_User_Details">
+              <MappingFragment StoreEntitySet="Twitter_User_Details">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TwitterUserID" ColumnName="TwitterUserID" />
+                <ScalarProperty Name="ContributorsEnabled" ColumnName="ContributorsEnabled" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Cursor" ColumnName="Cursor" />
+                <ScalarProperty Name="DefaultProfile" ColumnName="DefaultProfile" />
+                <ScalarProperty Name="DefaultProfileImage" ColumnName="DefaultProfileImage" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FavoritesCount" ColumnName="FavoritesCount" />
+                <ScalarProperty Name="FollowRequestSent" ColumnName="FollowRequestSent" />
+                <ScalarProperty Name="FollowersCount" ColumnName="FollowersCount" />
+                <ScalarProperty Name="Following" ColumnName="Following" />
+                <ScalarProperty Name="FriendsCount" ColumnName="FriendsCount" />
+                <ScalarProperty Name="GeoEnabled" ColumnName="GeoEnabled" />
+                <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+                <ScalarProperty Name="IncludeEntities" ColumnName="IncludeEntities" />
+                <ScalarProperty Name="IsTranslator" ColumnName="IsTranslator" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="LangResponse" ColumnName="LangResponse" />
+                <ScalarProperty Name="ListedCount" ColumnName="ListedCount" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Notifications" ColumnName="Notifications" />
+                <ScalarProperty Name="Page" ColumnName="Page" />
+                <ScalarProperty Name="ProfileBackgroundColor" ColumnName="ProfileBackgroundColor" />
+                <ScalarProperty Name="ProfileBackgroundImageUrl" ColumnName="ProfileBackgroundImageUrl" />
+                <ScalarProperty Name="ProfileBackgroundImageUrlHttps" ColumnName="ProfileBackgroundImageUrlHttps" />
+                <ScalarProperty Name="ProfileBackgroundTile" ColumnName="ProfileBackgroundTile" />
+                <ScalarProperty Name="ProfileBannerUrl" ColumnName="ProfileBannerUrl" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+                <ScalarProperty Name="ProfileImageUrlHttps" ColumnName="ProfileImageUrlHttps" />
+                <ScalarProperty Name="ProfileLinkColor" ColumnName="ProfileLinkColor" />
+                <ScalarProperty Name="ProfileSidebarBorderColor" ColumnName="ProfileSidebarBorderColor" />
+                <ScalarProperty Name="ProfileSidebarFillColor" ColumnName="ProfileSidebarFillColor" />
+                <ScalarProperty Name="ProfileTextColor" ColumnName="ProfileTextColor" />
+                <ScalarProperty Name="ProfileUseBackgroundImage" ColumnName="ProfileUseBackgroundImage" />
+                <ScalarProperty Name="Protected" ColumnName="Protected" />
+                <ScalarProperty Name="Query" ColumnName="Query" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="ScreenNameList" ColumnName="ScreenNameList" />
+                <ScalarProperty Name="ScreenNameResponse" ColumnName="ScreenNameResponse" />
+                <ScalarProperty Name="ShowAllInlineMedia" ColumnName="ShowAllInlineMedia" />
+                <ScalarProperty Name="SkipStatus" ColumnName="SkipStatus" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="StatusesCount" ColumnName="StatusesCount" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserIDResponse" ColumnName="UserIDResponse" />
+                <ScalarProperty Name="UserIdList" ColumnName="UserIdList" />
+                <ScalarProperty Name="UtcOffset" ColumnName="UtcOffset" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Twitter_Users">
+            <EntityTypeMapping TypeName="MonitoringModel.Twitter_Users">
+              <MappingFragment StoreEntitySet="Twitter_Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SureName" ColumnName="SureName" />
+                <ScalarProperty Name="Followers" ColumnName="Followers" />
+                <ScalarProperty Name="Following" ColumnName="Following" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="TweetNumber" ColumnName="TweetNumber" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="JoinedDate" ColumnName="JoinedDate" />
+                <ScalarProperty Name="isChecked" ColumnName="isChecked" />
+                <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CommentCheckedDate" ColumnName="CommentCheckedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebSite_Post_Comments">
+            <EntityTypeMapping TypeName="MonitoringModel.WebSite_Post_Comments">
+              <MappingFragment StoreEntitySet="WebSite_Post_Comments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WebSiteID" ColumnName="WebSiteID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Post_Hottopic">
+            <EntityTypeMapping TypeName="MonitoringModel.Website_Post_Hottopic">
+              <MappingFragment StoreEntitySet="Website_Post_Hottopic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="HottopicID" ColumnName="HottopicID" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Post_Person">
+            <EntityTypeMapping TypeName="MonitoringModel.Website_Post_Person">
+              <MappingFragment StoreEntitySet="Website_Post_Person">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebSite_PostList">
+            <EntityTypeMapping TypeName="MonitoringModel.WebSite_PostList">
+              <MappingFragment StoreEntitySet="WebSite_PostList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WebSiteID" ColumnName="WebSiteID" />
+                <ScalarProperty Name="RawData" ColumnName="RawData" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebSite_Posts">
+            <EntityTypeMapping TypeName="MonitoringModel.WebSite_Posts">
+              <MappingFragment StoreEntitySet="WebSite_Posts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Reporter" ColumnName="Reporter" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="PostListID" ColumnName="PostListID" />
+                <ScalarProperty Name="CoverUrl" ColumnName="CoverUrl" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="RawData" ColumnName="RawData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebSites">
+            <EntityTypeMapping TypeName="MonitoringModel.WebSites">
+              <MappingFragment StoreEntitySet="WebSites">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="SiteColorCode" ColumnName="SiteColorCode" />
+                <ScalarProperty Name="PostListTagID" ColumnName="PostListTagID" />
+                <ScalarProperty Name="HtmlTagID" ColumnName="HtmlTagID" />
+                <ScalarProperty Name="TitleTagID" ColumnName="TitleTagID" />
+                <ScalarProperty Name="CoverTagID" ColumnName="CoverTagID" />
+                <ScalarProperty Name="BodyTagID" ColumnName="BodyTagID" />
+                <ScalarProperty Name="DateTimeTagID" ColumnName="DateTimeTagID" />
+                <ScalarProperty Name="ReporterTagID" ColumnName="ReporterTagID" />
+                <ScalarProperty Name="CommentTagID" ColumnName="CommentTagID" />
+                <ScalarProperty Name="CommentInput" ColumnName="CommentInput" />
+                <ScalarProperty Name="CommentSubmit" ColumnName="CommentSubmit" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="isHiddenHTML" ColumnName="isHiddenHTML" />
+                <ScalarProperty Name="isContainComments" ColumnName="isContainComments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MonitoringModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MonitoringModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MonitoringModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="MonitoringModel.AspNetUserRoles">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Google_SearchResult">
+            <EntityTypeMapping TypeName="MonitoringModel.Google_SearchResult">
+              <MappingFragment StoreEntitySet="Google_SearchResult">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SearchKeyID" ColumnName="SearchKeyID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SearchType" ColumnName="SearchType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_Questions">
+            <EntityTypeMapping TypeName="MonitoringModel.System_Questions">
+              <MappingFragment StoreEntitySet="System_Questions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Lattin1" ColumnName="Lattin1" />
+                <ScalarProperty Name="Lattin2" ColumnName="Lattin2" />
+                <ScalarProperty Name="Lattin3" ColumnName="Lattin3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

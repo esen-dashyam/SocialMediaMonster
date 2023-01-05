@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "pieChartPerson";
+}
+<style>
+    #chartContainer_tooltip {
+        background: #000 !important;
+    }
+</style>
+<div id="chartContainer" class="well" style="  margin: 0 auto;  text-align: center;"></div>
+
+<script>
+    if (@ViewBag.twt1 == 0 && @ViewBag.fbk1 == 0 && @ViewBag.twt1 == 0 && @ViewBag.twt2 == 0 && @ViewBag.fbk2 == 0 && @ViewBag.twt2 == 0 && @ViewBag.twt3 == 0 && @ViewBag.fbk3 == 0 && @ViewBag.twt3 == 0) {
+
+    } else {
+        //pie chart data start
+        var sampleData = [{
+            value: @ViewBag.person1Cnt,
+            label: "@ViewBag.PerName1",
+            drilldown: [{
+                value: @ViewBag.fbk1,
+                label: "Facebook",
+                drilldown: []
+            }, {
+                value: @ViewBag.twt1,
+                label: "Twitter",
+                drilldown: []
+            }, {
+                value: @ViewBag.web1,
+                label: "WebSite",
+                drilldown: []
+            }]
+        }, {
+            value: @ViewBag.person2Cnt,
+            label: "@ViewBag.PerName2",
+            drilldown: [{
+                value: @ViewBag.web2,
+                label: "WebSite",
+                drilldown: []
+            }, {
+                value: @ViewBag.fbk2,
+                label: "Facebook",
+                drilldown: []
+            }, {
+                value: @ViewBag.twt2,
+                label: "Twitter",
+                drilldown: []
+            }]
+        }, {
+            value: @ViewBag.person3Cnt,
+            label: "@ViewBag.PerName3",
+            drilldown: [{
+                value: @ViewBag.web3,
+                label: "WebSite",
+                drilldown: []
+            }, {
+                value: @ViewBag.fbk3,
+                label: "Facebook",
+                drilldown: []
+            }, {
+                value: @ViewBag.twt3,
+                label: "Twitter",
+                drilldown: []
+            }]
+            }];
+        
+
+        var config = {
+            containerId: "chartContainer",
+            width: 500,
+            height: 500,
+            data: sampleData,
+            heading: {
+                text: "Нийгмийн сүлжээний харьцуулалт",
+                pos: "top"
+            },
+            
+            label: function (d) {
+                return d.data.label + ":" + d.data.value;
+            },
+            inner: "drilldown",
+            transition: "linear",
+            transitionDuration: 500,
+            donutRadius: 50,
+            labelColor: "white",
+            stroke: "#eee",
+            strokeWidth: 3,
+            drilldownTransition: "linear",
+            drilldownTransitionDuration: 0,
+            highlightColor: "#c00"
+        };
+        var samplePie = new psd3.Pie(config);
+
+        //pie chart data end
+    }
+</script>

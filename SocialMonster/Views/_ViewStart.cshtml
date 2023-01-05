@@ -1,0 +1,10 @@
+﻿@{
+    if (this.User.IsInRole("Shunkhlai") || !this.User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_Layout3.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}

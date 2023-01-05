@@ -1,0 +1,184 @@
+﻿@model IEnumerable<SocialMonster.Models.VotersModel>
+@{
+    ViewBag.Title = "Иргэдийн жагсаалт";
+}
+<div class="card">
+    <div class="card-header"><h4>ЖАГСААЛТ</h4></div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4 mb-2">
+                    <input type="text" class="form-control" placeholder="Хайх" id="input_search" />
+                </div>
+                @*<div class="col-sm-3 mb-2">
+                    <select class="form-control">
+                        <option>-- Хүйс --</option>
+                        <option value="male">Эр</option>
+                        <option value="female">Эм</option>
+                    </select>
+                </div>*@
+                <div class="col-sm-4 mb-2">
+                    <select id="aimag" class="form-control" onchange="GetSum()">
+                        <option>-- Аймаг --</option>
+                        @foreach (var aimag in ViewBag.Aimag)
+                        {
+                            <option value="@aimag.ID">@aimag.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-sm-4 mb-2">
+                    <select id="sum" class="form-control" onchange="GetSumResult()">
+                        <option>-- Сум --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-success mb-2" onclick="Search()">Хайх</button>
+                    <a href="~/Users/ListPeople" class="btn btn-danger mb-2">Хайлт цэвэрлэх</a>
+                </div>
+            </div>
+            <div id="Result">
+                <div class="table-responsive mb-2">
+                    <table id="ListPeople" class="table table-striped">
+                        <thead class="bg-info text-white">
+                            <tr>
+                                <th class="border-top-0"></th>
+                                <th class="border-top-0">Овог</th>
+                                <th class="border-top-0">Нэр</th>
+                                <th class="border-top-0">Нас</th>
+                                <th class="border-top-0">Хүйс</th>
+                                <th class="border-top-0">Регистр</th>
+                                <th class="border-top-0">Аймаг</th>
+                                <th class="border-top-0">Сум</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var person in Model)
+                            {
+                                <tr>
+                                    <td class="text-truncate"><a href="@Url.Action("PersonDetails", "Users")?ID=@person.ID" target="_blank" class="text-danger"><i class="fa fa-eye"></i> Үзэх</a></td>
+                                    <td class="text-truncate">@person.Surename</td>
+                                    <td class="text-truncate">@person.Name</td>
+                                    <td class="text-truncate">@person.Age</td>
+                                    <td class="text-truncate">@person.Sex</td>
+                                    <td class="text-truncate">@person.Register</td>
+                                    <td class="text-truncate">@person.Aimag</td>
+                                    <td class="text-truncate">@person.Sum</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div id="pagination">
+                    @if (ViewBag.pageCount > 10)
+                    {
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            <a class="btn btn-sm text-white btn-warning mb-2" id="@i" onClick="Page(this.id)">@i</a>
+                        }
+                        <span> . . . <a class="btn btn-sm text-white btn-warning mb-2" id="@ViewBag.pageCount" onClick="Page(this.id)">@ViewBag.pageCount</a></span>
+                    }
+                    else
+                    {
+                        for (int i = 1; i <= ViewBag.pageCount; i++)
+                        {
+                            <a class="btn btn-sm text-white btn-warning mb-2" id="@i" onClick="Page(this.id)">@i</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    function Page(clicked_id) {
+        var pageNumber = clicked_id;
+        var aimagID = document.getElementById("aimag").value;
+        var sumID = document.getElementById("sum").value;
+        $("#ListPeople").html('<div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+        var searchText = document.getElementById("input_search").value;        
+        $.ajax({
+            type: "post",
+            url: "/Users/ListPeopleResult",
+            data: { 'searchText': searchText, 'pageNumber': pageNumber,'aimagID': aimagID,'sumID': sumID },
+            success: function (data) {
+                $("#Result").html(data);
+            },
+        });
+    }
+    function Search() {
+        var searchText = document.getElementById("input_search").value;
+        $("#ListPeople").html('<div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+        var aimagID = document.getElementById("aimag").value;
+        var sumID = document.getElementById("sum").value;
+        $.ajax({
+            type: "post",
+            url: "/Users/ListPeopleResult",
+            data: { 'searchText': searchText, 'pageNumber': 0,'aimagID': aimagID, 'sumID': sumID},
+            success: function (data) {
+                $("#Result").html(data);
+
+            },
+        });
+    }
+    function GetSum() {
+        var aimagID = document.getElementById("aimag").value;
+        var sumList = $("#sum");
+        $("#sum").html('<option>-- Сум --</option>');
+        $.ajax({
+            type: "GET",
+            url: "/Users/GetSum",
+            data: { 'aimagID': aimagID },
+            success: function (result) {
+                    if (result.length > 0) {
+                        $.each(result, function (index, value) {
+                            var Data = '<option value="' + value.ID+'">'+ value.Name+'</option>';
+                            sumList.append(Data);
+                        });
+                    }
+                    else {
+                        var Data = '<option>Үр дүн олдсонгүй</option>';
+                        aimagList.append(Data);
+                    }
+            }
+        });
+    }
+    function GetSumResult() {
+        var aimagID = document.getElementById("aimag").value;
+        var sumID = document.getElementById("sum").value;
+        var searchText = document.getElementById("input_search").value;
+        $("#ListPeople").html('<div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+        $.ajax({
+            type: "post",
+            url: "/Users/ListPeopleResult",
+            data: { 'searchText': searchText, 'pageNumber': 0,'aimagID': aimagID, 'sumID': sumID },
+            success: function (data) {
+                $("#Result").html(data);
+
+            },
+        });
+    }
+    //window.addEventListener('load', function () {
+    //    var aimagList = $("$op_aimag").html();
+    //    alert(aimagList);
+    //    $.ajax({
+    //        type: "GET",
+    //        url: '/Users/GetAimag',
+    //        success: function (result) {
+    //                if (result.length > 0) {
+    //                    $.each(result, function (index, value) {
+    //                        var Data = '<option value="' + value.ID+ '">'+ value.Name+'</option>';
+    //                        //var Data = "<hr><br>"+value.Name;
+    //                        aimagList.append(Data);
+    //                    });
+    //                }
+    //                else {
+    //                    var Data = '<option>Үр дүн олдсонгүй</option>';
+    //                    aimagList.append(Data);
+    //                }
+    //        }
+    //    });
+    //});
+</script>

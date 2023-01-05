@@ -1,0 +1,9 @@
+﻿.container::-webkit-scrollbar {
+    display: none;
+}
+#single{
+    margin:5px!important;
+}
+#tweetCard{
+    margin-left:10px;
+}

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SocialMonster.Models.ReportModel>
+@{
+    ViewBag.Title = "GetPersonReports";
+}
+<div class="row mb-2 mt-4">
+    <div class="col">
+        <a class="btn btn-success" href="@Url.Action("ListFacebookPost", "FacebookReport")?ID=@ViewBag.personID">+ Судалгаа нэмэх</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="table-responsive mb-2">
+            <table id="ListPost" class="table table-striped">
+                <thead class="">
+                    <tr>
+                        <th class="border-top-0">Нэр</th>
+                        <th class="border-top-0">Огноо</th>
+                        <th class="border-top-0"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var report in Model)
+                    {
+                    <tr>
+                        <td><a class="text-dark" href="@Url.Action("FullReport", "FacebookReport")?reportID=@report.ID"><strong>@report.Name</strong></a></td>
+                        <td>@report.Date</td>
+                        <td class="text-truncate"><a href="@Url.Action("FullReport", "FacebookReport")?reportID=@report.ID" class="btn btn-sm btn-warning text-white mr-1"><i class="fa fa-eye"></i> Үзэх</a><button class="btn btn-sm btn-danger" onclick="DeleteReport('@report.ID')"><i class="fa fa-trash"></i> Устгах</button></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

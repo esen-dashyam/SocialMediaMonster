@@ -1,0 +1,10 @@
+﻿<br />
+@foreach (var comm in ViewBag.FbCommData)
+{
+    <div style="float:left;"><span class="badge badge-info">>@comm.FromName</span></div>
+    <div align="right" style="font-style:italic; color:#ccc;">@comm.CreateTime</div>
+    <div style="text-align:justify;">
+        <a href="https://www.facebook.com/@comm.CommentID" target="_blank" style="color:black">@comm.Message</a>
+    </div>
+    <hr />
+}

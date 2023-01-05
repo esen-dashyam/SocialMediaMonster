@@ -1,0 +1,221 @@
+﻿
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400&amp;subset=cyrillic" rel="stylesheet">
+<input type="button" class="btn btn-sm btn-black" value="back" onclick="document.location.reload(true)" />
+
+<div class="row" id="SmartMain">
+
+    <div class="col-sm-4" style="border-right:1px solid #ccc;" id="FbLoad">
+        <div class="list-group1" style="padding:5px;" id="FbList">
+            @foreach (var post in ViewBag.FbData)
+            {
+                <span>
+                    <div class="border card news-feed-card-bg text-black " style="font-family:Roboto;padding:10px; color:black;  border-left:none !important;border-top:none !important; border-right:none !important;">
+
+                        <div class="" style="width:100%; height:100%; overflow:hidden;">
+                            @if (@post.FullPicture != null)
+                            {
+                                if (@post.Link.ToString().Contains("youtube") == true)
+                                {
+                                    <iframe style="width:100%; height:100%" allow="accelerometer" allowFullScreen frameborder="0" src="@post.Link.ToString().Replace("watch?v=", "embed/").Replace("&feature=youtu.be","")"></iframe>
+                                }
+                                else
+                                {
+                                    <a href="@post.Link" class="">
+                                        <img src="@post.FullPicture" style="width:100%; height:100%">
+                                    </a>
+                                }
+                            }
+                        </div>
+
+                        <h6 class="ff-label-wrapper" style="position:absolute; top:-10px; font-family:sans-serif; font-weight:600; right:10px; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                            <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                <i class="ff-icon-inner" style="margin-bottom:0; background-color:#3b5998; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                    <span class="ff-label-text" style="margin-bottom:0">facebook</span>
+                                </i>
+                            </i>
+                        </h6>
+
+
+                        <div style="line-height:18px;">
+                            <a href="https://www.facebook.com/@post.FromID" class="float-left" target="_blank">
+                                @post.FromName
+                            </a><br />   <div class="float-right" style="font-style:italic; color:#ccc;"> @post.UpdateTime </div><br />
+                            <div style="text-align:justify;">
+                                <a href="https://www.facebook.com/@post.PostID" class="float-left" target="_blank" style="color:black">
+                                    @if (post.Message != null)
+                                    {
+                                        @post.Message
+                                    }
+                                    else if (post.Story != null)
+                                    {
+                                        @post.Story
+                                    }
+                                    else if (post.Caption != null)
+                                    {
+                                        @post.Caption
+                                    }
+                                    else if (post.Description != null)
+                                    {
+                                        <a href="@post.ID"></a>
+                                        @post.Description
+                                    }
+                                </a>
+
+
+                            </div>
+
+                        </div>
+                        <div align="right" style="font-size:10px;">
+                            @if (post.Sentiment == null)
+                            {
+                                <div align="center" style=" background:#ffc107; float:right; padding:3px; border-radius:5px; color:#fff;">Тооцоолж байгаа</div>
+                            }
+                            else if (post.Sentiment == "Positive")
+                            {
+                                <div align="center" style="width:100px !important; background:#28a745; float:right; padding:3px; border-radius:5px; color:#fff;">Эерэг</div>
+
+                            }
+                            else if (post.Sentiment == "Negative")
+                            {
+                                <div align="center" style="width:100px !important; background:#dc3545; float:right; padding:3px; border-radius:5px; color:#fff;">Сөрөг</div>
+                            }
+                            else if (post.Sentiment == "Neutral")
+                            {
+                                <div align="center" style="width:100px !important; background:#6c757d; float:right; padding:3px; border-radius:5px; color:#fff;">Саармаг</div>
+                            }
+                        </div>
+                    </div>
+
+                </span>
+            }
+
+        </div>
+    </div>
+
+    <div class="col-sm-4 list-group2" style="border-right:1px solid #ccc;" id="TwitterLoad">
+        <div class="list-group2" style="padding:5px;" id="TwitterList" data-id="@ViewBag.TwitterLastID">
+            @foreach (var post in ViewBag.TwitterData)
+            {
+                <span>
+                    <div class="border card news-feed-card-bg text-black " style=" font-family:Roboto;padding:10px; color:black;border-left:none !important;border-top:none !important; border-right:none !important;">
+                        <a href="https://www.twitter.com/@post.ScreenNameResponse" target="_blank"><img src=@post.ProfileImageUrl class="rounded-circle" width="50px" height="50px" /></a>
+                        <a href="https://www.twitter.com/@post.ScreenNameResponse" target="_blank" style="color:black">
+                            @post.ScreenName
+                        </a>
+                        <div align="right" style="font-style:italic; color:#ccc;">@post.CreatedAt</div>
+                        <div style="text-align:justify;">
+                            <a href="https://www.twitter.com/statuses/@post.StatusID" target="_blank" style="color:black">@post.Text</a>
+                        </div>
+
+                        @if (@post.UrlEntityExpandedUrl1 != null)
+                        {
+                            if (@post.UrlEntityExpandedUrl1.ToString().Contains("youtube") == true)
+                            {
+                                <iframe style="width:100%; height:100%" ; allow="accelerometer" allowFullScreen frameborder="0" src="@post.UrlEntityExpandedUrl1.ToString().Replace("watch?v=", "embed/").Replace("&feature=youtu.be","")"></iframe>
+                            }
+                            else
+                            {
+                                <a href="" class="" target="_blank">
+                                    <blockquote class="twitter-tweet" data-lang="en">
+                                        <a href="@post.UrlEntityExpandedUrl1?ref_src=twsrc%5Etfw"></a>
+                                    </blockquote>
+                                </a>
+                            }
+                        }
+
+                        @if (@post.MediaEntitiyMediaUrl1 != null)
+                        {
+                            if (@post.MediaEntitiyMediaUrl1.ToString().Contains("youtube") == true)
+                            {
+                                <iframe style="width:100%; height:100%" allow="accelerometer" allowFullScreen frameborder="0" src="@post.MediaEntitiyMediaUrl1.ToString().Replace("watch?v=", "embed/").Replace("&feature=youtu.be","")"></iframe>
+                            }
+                            else
+                            {
+                                <blockquote class="twitter-tweet" data-lang="en">
+                                    <a href="@post.MediaEntitiyMediaUrl1?ref_src=twsrc%5Etfw"></a>
+                                </blockquote>
+                            }
+                        }
+
+                        <h6 class="ff-label-wrapper" style="position:absolute; top:-10px; right:10px; font-family:sans-serif; font-weight:600; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                            <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                <i class="ff-icon-inner" style="margin-bottom:0; background-color:#1dcaff; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                    <span class="ff-label-text" style="margin-bottom:0">twitter</span>
+                                </i>
+                            </i>
+                        </h6>
+                        <div align="right" style="font-size:10px;">
+                            @if (post.Sentiment == null)
+                            {
+                                <div align="center" style=" background:#ffc107; float:right; padding:3px; border-radius:5px; color:#fff;">Тооцоолж байгаа</div>
+                            }
+                            else if (post.Sentiment == "Positive")
+                            {
+                                <div align="center" style="width:100px !important; background:#28a745; float:right; padding:3px; border-radius:5px; color:#fff;">Эерэг</div>
+
+                            }
+                            else if (post.Sentiment == "Negative")
+                            {
+                                <div align="center" style="width:100px !important; background:#dc3545; float:right; padding:3px; border-radius:5px; color:#fff;">Сөрөг</div>
+                            }
+                            else if (post.Sentiment == "Neutral")
+                            {
+                                <div align="center" style="width:100px !important; background:#6c757d; float:right; padding:3px; border-radius:5px; color:#fff;">Саармаг</div>
+                            }
+                        </div>
+                    </div>
+                </span>
+            }
+
+        </div>
+    </div>
+
+    <div class="col-sm-4 list-group3" id="WebSiteLoad">
+        <div class="list-group3" style="padding:5px;" id="WebSiteList" data-id="@ViewBag.WebLastID">
+            @foreach (var post in ViewBag.WebSiteData)
+            {<span>
+                    <div class="border card news-feed-card-bg text-black " style="font-family:Roboto;padding:10px; color:black; border-left:none !important;border-top:none !important; border-right:none !important;">
+                        <a href="@post.Url" target="_blank">
+                            <img src="@post.CoverUrl" style="width:100%;">
+                        </a>
+                        <div>
+                            <a href="@post.Url" target="_blank" style=" float:left;width:75%;color:black"><B>@post.Title</B></a>
+                        </div>
+                        <div align="right" style="font-style:italic; color:#ccc;"><a href="@post.Url" target="_blank">@post.Url</a></div>
+                        <div align="right" style="font-style:italic; color:#ccc;">@post.DateTime</div>
+                        <div style="text-align:justify;">
+                            <a href="@post.Url" target="_blank" style="color:black"> @post.Body</a>
+                        </div>
+                        <h6 class="ff-label-wrapper" style="position:absolute; top:-10px; font-family:sans-serif; font-weight:600; right:10px; margin:7% 0 0 7%; z-index:2; line-height:1.2em; padding:0; font-size:0.750em; color:#000; border:0; ">
+                            <i class="ff-icon ff-label-page_timeline" style="border-color:white; width:auto; height:auto; border:none; font-family:inherit; border-radius:50%; display:inline-block">
+                                <i class="ff-icon-inner" style="margin-bottom:0; background-color:#f4a641; position:relative; width:auto; height:auto; padding:3px 5px; border-radius:3px; font-size:10px; color:white; letter-spacing:1px; text-transform:uppercase; font-family:inherit; line-height:18px;">
+                                    <span class="ff-label-text" style="margin-bottom:0">website</span>
+                                </i>
+                            </i>
+                        </h6>
+                        <div align="right" style="font-size:10px;">
+                            @if (post.Sentiment == null)
+                            {
+                                <div align="center" style=" background:#ffc107; float:right; padding:3px; border-radius:5px; color:#fff;">Тооцоолж байгаа</div>
+                            }
+                            else if (post.Sentiment == "Positive")
+                            {
+                                <div align="center" style="width:100px !important; background:#28a745; float:right; padding:3px; border-radius:5px; color:#fff;">Эерэг</div>
+
+                            }
+                            else if (post.Sentiment == "Negative")
+                            {
+                                <div align="center" style="width:100px !important; background:#dc3545; float:right; padding:3px; border-radius:5px; color:#fff;">Сөрөг</div>
+                            }
+                            else if (post.Sentiment == "Neutral")
+                            {
+                                <div align="center" style="width:100px !important; background:#6c757d; float:right; padding:3px; border-radius:5px; color:#fff;">Саармаг</div>
+                            }
+                        </div>
+                    </div>
+                </span>
+            }
+
+        </div>
+    </div>
+</div>

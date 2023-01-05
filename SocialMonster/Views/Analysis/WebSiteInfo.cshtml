@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SocialMonster.Models.WebSitePost>
+
+@{
+    ViewBag.Title = "WebSiteInfo";
+}
+<div class="card">
+    <div class="card-header">WebSite POST</div>
+    <div class="card-body">
+
+        @foreach (var post in Model)
+        {
+            <div style="padding:10px; border-bottom:1px solid #eee; font-family:Roboto;">
+                <div style="float:left;"><B>@post.Title</B></div>
+                <div align="right" style="font-style:italic; color:#ccc;"><a href="@post.Link" target="_blank">@post.Link</a></div>
+                <div style="text-align:justify;">@post.Text</div>
+            </div>
+        }
+
+        <div align="right"><a id="@ViewData["peopleID"]" class="btn btn-sm webSiteDetail" name="seeBtn"> Дэлгэрэнгүй </a></div>
+    </div>
+</div>
+
+
+
+<script>
+
+    $(".webSiteDetail").click(function () {
+
+        var PersonID = $(this).attr("id");
+
+        $.ajax({
+            type: "POST",
+            url: '/Analysis/WebsitePosts',
+            data: { 'PeopleID': PersonID },
+            success: function (data) {
+                // alert(data);
+                $("#MainSection").html(data);
+            },
+            error: function () {
+                alert('Error occured');
+            }
+        });
+
+    });
+
+
+</script>

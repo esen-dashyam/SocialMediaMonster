@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Мэдээллийн эх сурвалж | Судалгаа | Статистик</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/app-assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/images/favicon-board.ico">
+
+    <!-- jvectormap -->
+    <link href="~/Content/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+
+    <!-- App css -->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/NewCss/app.min.css" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="">
+    <div class="left-sidenav">
+        <!-- LOGO -->
+        <div class="brand">
+            <a href="~/Home/Index" class="logo">
+                <span>
+                    <img alt="modern admin logo" src="~/Content/images/logo-board-medium.png" height="50px">
+                </span>
+            </a>
+        </div>
+        <!--end logo-->
+        <div class="menu-content h-100" data-simplebar>
+            @{
+                Html.RenderAction("RenderMenu");
+            }
+            <button type="button" class="btn btn-sm btn-soft-primary" data-bs-toggle="modal" data-bs-target="#MenuModal" style="width:98%; margin-left:3px">
+                 Цэс нэмэх
+            </button>
+        </div>
+
+    </div>
+    <div class="modal fade" id="MenuModal" tabindex="-1" aria-labelledby="exampleModalLiveLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLiveLabel"> Цэс нэмэх</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Эцэг сонгох</label>
+                            <select class="form-select" aria-label="Default select example" id="menuLevel">
+                                <option selected value="0">Эцэг байхгүйгээр нэмэх</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Нэр:</label>
+                            <input type="text" class="form-control" id="Name" placeholder="Нэр">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Гарчгийн нэр:</label>
+                            <input type="text" class="form-control" id="Tittlename" placeholder="Гарчгийн нэр">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">
+                                Бидний тухай:
+                            </label>
+                            <textarea type="text" class="form-control" id="Description" placeholder="Бидний тухай"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Лого зураг:</label>
+                            <input type="file" class="form-control" id="Picture" placeholder="Зураг" onchange="previewImage()">
+                        </div>
+                        <div class="form-group" id="ImagePreviewDiv" style="display:none">
+                            <img id="ImagePreview" src="" height="200" alt="Image preview...">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Хаах</button>
+                    <button type="button" onclick="NewMenu()" class="btn btn-primary">Хадгалах</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <!-- Top Bar Start -->
+        <div class="topbar">
+            <!-- Navbar -->
+            <nav class="navbar-custom">
+                <ul class="list-unstyled topbar-nav float-end mb-0">
+                    <li class="dropdown hide-phone">
+                        <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-bs-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+                            <i data-feather="search" class="topbar-icon"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end dropdown-lg p-0">
+                            <!-- Top Search Bar -->
+                            <div class="app-search-topbar">
+                                <form action="#" method="get">
+                                    <input type="search" name="search" class="from-control top-search mb-0" placeholder="Type text...">
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-bs-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+                            <i data-feather="bell" class="align-self-center topbar-icon"></i>
+                            <span class="badge bg-danger rounded-pill noti-icon-badge">2</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+
+                            <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                                Notifications <span class="badge bg-primary rounded-pill">2</span>
+                            </h6>
+                            <div class="notification-menu" data-simplebar>
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i data-feather="shopping-cart" class="align-self-center icon-xs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">10 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-1.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Meeting with designers</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">40 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i data-feather="users" class="align-self-center icon-xs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">UX 3 Task complete.</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">1 hr ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-5.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 hrs ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i data-feather="check-circle" class="align-self-center icon-xs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Payment Successfull</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                            </div>
+                            <!-- All-->
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                                View all <i class="fi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </li>
+                    @Html.Partial("_LoginPartial")
+                </ul><!--end topbar-nav-->
+
+                <ul class="list-unstyled topbar-nav mb-0">
+                    <li>
+                        <button class="nav-link button-menu-mobile">
+                            <i data-feather="menu" class="align-self-center topbar-icon"></i>
+                        </button>
+                    </li>
+                   @* <li class="creat-btn">
+                        <div class="nav-link">
+                            <a class=" btn btn-sm btn-soft-primary" href="#" role="button"><i class="fas fa-plus me-2"></i>Бүртгэл нэмэх</a>
+                        </div>
+                    </li>*@
+                </ul>
+
+            </nav>
+            <!-- end navbar-->
+        </div>
+        <!-- Top Bar End -->
+        <!-- Page Content-->
+        <div class="page-content">
+            <div class="container-fluid">
+                @RenderBody()
+
+            </div><!-- container -->
+
+            <footer class="footer text-center text-sm-start">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> UNIT LLC <span class="text-muted d-none d-sm-inline-block float-end">
+                    Board.mn <i class="mdi mdi-heart text-danger"></i> Verion 3.0.1
+                </span>
+            </footer><!--end footer-->
+        </div>
+        <!-- end page content -->
+    </div>
+
+    <script>
+        var Picture = "";
+        function previewImage() {
+            var preview = document.getElementById("ImagePreview");
+            var file = document.getElementById("Picture").files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                Picture = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+            document.getElementById("ImagePreviewDiv").style.display = "block";
+
+        }
+        function NewMenu() {
+            var menuLevel = $("#menuLevel").val();
+            var Name = $("#Name").val();
+            var Tittlename = $("#Tittlename").val();
+            var Description = $("#Description").val();
+            var LogoPhoto = $("#LogoPhoto").val();
+            $.ajax({
+                type: "POST",
+                url: '/Home/NewMenu',
+                data: { 'menuLevel': menuLevel, 'Name': Name, 'Picture': Picture, 'Tittlename': Tittlename, 'Description': Description},
+                success: function () {
+                     alert("Үйлдлийн амжилттай хийж дуусгалаа!");
+                    $('#MenuModal').modal('hide');
+                    location.reload();
+                }
+            })
+        }
+    </script>
+
+    @*<script src="assets/pages/jquery.analytics_dashboard.init.js"></script>*@
+    <script>
+        $(document).ready(function () {
+          @*  $.ajax({
+                type: "POST",
+                url: '/Home/MenuDataTake',
+                dataType: "json",
+                context: document.body,
+                success: function (data) {
+                    $('#MenuLsoad').metisMenu('dispose');
+                    $('#MenusLoad').metisMenu();-->
+             <!--var k = '<ul class="metismenu left-sidenav-menu"><li><a href = "javascript: void(0);" ><i data-feather="power" class="align-self-center menu-icon"></i><span>Улс төр</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a><ul class="nav-second-level" aria-expanded="false"><li><a href="javascript: void(0);"><i class="ti-control-record"></i>Төрийн 3 Өндөрлөг <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a><ul class="nav-second-level" aria-expanded="false"><li><a class="nav-link" href="~/Home/SmartNewsCus/c264b9f9-15f0-4294-96d9-183fe81f68b4">У.Хүрэлсүх(Монгол Улсын Ерөнхийлөгч)</a></li><li><a href="~/Home/SmartNewsCus/890e3752-2bc7-4e4a-884d-5b9ac4c8643b">Л.Оюун-Эрдэнэ (Монгол Улсын Ерөнхий сайд)</a></li><li><a href="~/Home/SmartNewsCus/a42264d0-c0a4-4e58-a0c1-ca91990d0d23">Г.Зандаршатар (Улсын Их Хурлын Дарга)</a></li></ul></li></ul></li ></ul>';
+                    var p = '<ul id="metismenu"><li class="mm-active"><a class="has-arrow" href="#" aria-expanded="true">Menu 1</a><ul>...</ul></li><li><a class="has-arrow" href="#" aria-expanded="false">Menu 2</a><ul>...</ul</li>...</ul>';-->
+
+                    var k = '<ul class="metismenu left-sidenav-menu"><li>'
+                    var l = 0;
+                    for (var b = 0; data.data.length > b; b++) {
+                        if (data.data[b].Level == 0) {
+                            k = k + '<a href="javascript: void(0);"><i data-feather="power" class="align-self-center menu-icon"></i><span>' + data.data[b].Name + '</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>'
+                        }
+                        for (var a = 0; data.data.length > a; a++) {
+                            if (data.data[a].Level == 1) {
+                                if (data.data[b].ID == data.data[a].parentID) {
+                                    k = k + '<ul><li><a href="javascript: void(0);"><i class="ti-control-record"></i>' + data.data[a].Name + ' <span class="menu-arrow left-has-menu"></span></a> '
+                                    for (var s = 0; data.data.length > s; s++) {
+                                        if (data.data[s].Level == 2) {
+                                            if (data.data[a].ID == data.data[s].parentID) {
+                                                k = k + '<ul><li><a href="javascript: void(0);"><i class="ti-control-record"></i>' + data.data[s].Name + ' <span class="menu-arrow left-has-menu"></span></a> </li></ul>'
+
+                                            }
+                                        }
+                                    }
+                                    k = k + '</li></ul>';
+                                }
+                            }
+                        }
+
+                    }
+                    k = k + '</li></ul>'
+                        for (var b = 0; data.data.length > b; b++) {
+                            if (data.data[b].Level == 0) {
+                                k = k + '<li class="nav-item"><a href = "javascript: void(0);" ><i data-feather="power" class="align-self-center menu-icon"></i><span>' + data.data[b].Name + '</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>'
+                                for (var a = 0; data.data.length > a; a++) {
+                                    if (data.data[a].parentID == data.data[b].ID) {
+                                        k = k + '<ul class="nav-second-level" aria-expanded="false">'
+                                        break;
+                                    }
+                                }
+                            k = k + '</li>';
+                            }
+
+                        }
+                        k = k + '</ul>';
+
+                    },
+                error: function () {
+                    alert('error')
+                }
+
+            });*@
+
+            $('#menuLevel').empty();
+            $.ajax({
+                type: "POST",
+                url: '/Home/MenuDataTake',
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    var z = '<option selected value="0">Эцэг цэс байхгүйгээр нэмэх</option>'
+                    for (var b = 0; data.data.length > b; b++) {
+                            z = z + '<option value="' + data.data[b].ID + '">' + data.data[b].Name + '</option>'
+                    }
+                    $('#menuLevel').append(z);
+                },
+                error: function () {
+                    alert('error')
+                }
+            });
+
+        });
+
+
+    </script>
+    <script src="~/Content/assets/js/NewJs/jquery.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/moment.js"></script>
+    <script src="~/Content/assets/js/NewJs/metismenu.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/waves.js"></script>
+
+    <script src="~/Content/assets/js/NewJs/feather.min.js"></script>
+    <script src="~/Content/assets/js/NewJs/simplebar.min.js"></script>
+
+    <script src="~/Content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Content/assets/plugins/apex-charts/apexcharts.min.js"></script>
+    <script src="~/Content/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/Content/assets/plugins/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+    <script src="~/Content/assets/pages/jquery.analytics_dashboard.init.js"></script>
+    <script src="~/Content/assets/js/NewJs/app.js"></script>
+
+</body>
+</html>

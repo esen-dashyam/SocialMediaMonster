@@ -1,0 +1,326 @@
+﻿
+@{
+    ViewBag.Title = "PersonKeyList";
+}
+
+
+    <p style="font-size:20px;">
+        @foreach (var p in @ViewBag.PersonData)
+        {
+            @p.SureName <span>.</span> @p.Name;
+        }
+    </p>
+    <section id="mainPersonKey" data-id="@ViewBag.KeyPersonID">
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <div class="" id="messageDiv"></div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-sm btn-success addBtn" value="Нэмэх" />
+                    <input type="button" class="btn btn-sm btn-black" value="Болих" onclick="document.location.reload(true)" />
+                </div>
+                <hr />
+                <div id="KeyMainDiv">
+                <table class="table table-bordered table-striped" id="mainTbl">
+                    <tr>
+                        <th></th>
+                        <th>Key1</th>
+                        <th>Key2</th>
+                        <th>Key3</th>
+                        <th>Key4</th>
+                        <th>Latin1</th>
+                        <th>Latin2</th>
+                        <th>Latin3</th>
+                        <th>Latin4</th>
+                        <th>KeyType</th>
+                        <th></th>
+                    </tr>
+
+                    @{ int @counter = 0; }
+                    @foreach (var m in @ViewBag.PersonKeyData)
+                    {
+                        counter = counter + 1;
+                        <tr>
+                            <td>@counter</td>
+                            <td>@m.Key1</td>
+                            <td>@m.Key2</td>
+                            <td>@m.Key3</td>
+                            <td>@m.Key4</td>
+                            <td>@m.Latin1</td>
+                            <td>@m.Latin2</td>
+                            <td>@m.Latin3</td>
+                            <td>@m.Latin4</td>
+                            <td>@m.TypeName</td>
+                            <td>
+                                <input type="button" class="btn btn-sm btn-success btn-block" value="Update" onclick="UpdateModal(this);" data-Key1="@m.Key1" data-Key2="@m.Key2" data-Key3="@m.Key3" data-Key4="@m.Key4"
+                                       data-Latin1="@m.Latin1" data-Latin2="@m.Latin2" data-Latin3="@m.Latin3" data-Latin4="@m.Latin4" data-Type="@m.Type" data-PersonID="@m.PersonID" data-id="@m.ID" />
+                                <input type="button" class="btn btn-sm btn-success btn-block" value="Delete" onclick="DeleteModal(this);" id="del"  data-id="@m.ID"/>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+
+<div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Түлхүүр үг нэмэх</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group  mt-lg">
+                            <input type="hidden" name="PersonID" id="PersonID" value="@ViewBag.KeyPersonID" />
+                            <input type="hidden" name="ID" id="ID" value="" />
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>
+                                        <label class="">Key1</label>
+                                        <input type="text" class="form-control" name="key1" id="key1" value="" />
+                                        <span class="key1Span"></span>
+                                    </td>
+
+                                    <td>
+                                        <label class="">Key2</label>
+                                        <input type="text" class="form-control" name="key2" id="key2" value="" />
+                                        <span class="key2Span"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="">Key3</label>
+                                        <input type="text" class="form-control" name="key3" id="key3" value="" />
+                                        <span class="key3Span"></span>
+                                    </td>
+                                    <td>
+                                        <label class="">Key4</label>
+                                        <input type="text" class="form-control" name="key4" id="key4" value="" />
+                                        <span class="key4Span"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="">Latin1</label>
+                                        <input type="text" class="form-control" name="latin1" id="latin1" value="" />
+                                        <span class="latin1Span"></span>
+                                    </td>
+                                    <td>
+                                        <label class="">Latin2</label>
+                                        <input type="text" class="form-control" name="latin2" id="latin2" value="" />
+                                        <span class="latin2Span"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="">Latin3</label>
+                                        <input type="text" class="form-control" name="latin3" id="latin3" value="" />
+                                        <span class="latin3Span"></span>
+                                    </td>
+                                    <td>
+                                        <label class="">Latin4</label>
+                                        <input type="text" class="form-control" name="latin4" id="latin4" value="" />
+
+                                        <span class="latin4Span"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="">Төрөл</label>
+                            <select class="form-control" name="KeyType" id="KeyType">
+                                <option value=""> Төрөл сонгох </option>
+                                @foreach (var m in ViewBag.PersonKeyTypes)
+                                {
+                                    <option value="@m.ID"> @m.Description </option>
+                                }
+                            </select>
+                            <span class="KeyTypeSpan"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary submit" val="1">Хадгалах</button>
+                <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Болих</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalDel" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <input type="hidden" name="ID" id="KeyID" value="" />
+                <h5 class="modal-title">Delete Key</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+       
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary delete" val="1">Delete</button>
+                <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function UpdateModal(e) {
+        $("#key1").val($(e).attr("data-Key1"));
+        $("#key2").val($(e).attr("data-Key2"));
+        $("#key3").val($(e).attr("data-Key3"));
+        $("#key4").val($(e).attr("data-Key4"));
+
+        $("#latin1").val($(e).attr("data-Latin1"));
+        $("#latin2").val($(e).attr("data-Latin2"));
+        $("#latin3").val($(e).attr("data-Latin3"));
+        $("#latin4").val($(e).attr("data-Latin4"));
+
+        $("#KeyType").val($(e).attr("data-Type"));
+        $("#ID").val($(e).attr("data-ID"));
+
+        $(".submit").attr("val", "0");
+        $("#myModal").modal('show');
+    }
+
+
+    function DeleteModal(e) {
+        $("#KeyID").val($(e).attr("data-ID"));
+        $("#myModalDel").modal('show');
+    }
+
+    $(".addBtn").click(function () {
+        $("#key1").val("");
+        $("#key2").val("");
+        $("#key3").val("");
+        $("#key4").val("");
+
+        $("#latin1").val("");
+        $("#latin2").val("");
+        $("#latin3").val("");
+        $("#latin4").val("");
+
+        $(".submit").attr("val", "1");
+        $("#myModal").modal('show');
+    });
+
+    $(".delete").click(function () {
+
+        $.ajax({
+            type: "GET",
+            url: '/Home/DeleteKey',
+            data: {"ID":" "+ $("#KeyID").val() +" "},
+            success: function (data) {
+                $("#myModalDel").modal('hide');
+                $.ajax({
+                    type: "GET",
+                    url: '/Home/KeyLists',
+                    data: { "ID": "" + $("#mainPersonKey").attr("data-id") + "" },
+                    success: function (data) {
+                        $("#KeyMainDiv").html(data);
+                    },
+                    error: function () {
+                        alert('Error occured');
+                    }
+                });
+            },
+            error: function () { }
+        });
+    });
+        
+
+    $(".submit").click(function () {
+        var returnValidate = Validate();
+      
+        if (returnValidate) {
+            if ($(this).attr("val") == "1") {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/InsertKey",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{"key1":"' + $("#key1").val() + '","Key2":"' + $("#key2").val() + '","Key3":"' + $("#key3").val() + '","Key4":"' + $("#key4").val() + '", "Latin1": "' + $("#latin1").val() + '","Latin2":"' + $("#latin2").val() +
+                        '","Latin3":"' + $("#latin3").val() + '","Latin4":"' + $("#latin4").val() + '" ,"Type":"' + $("#KeyType").val() + '","PersonID":"' + $("#PersonID").val() + '"}',
+                    dataType: "html",
+                    success: function (result, status, xhr) {
+                        $("#myModal").modal('hide');
+                        $.ajax({
+                            type: "GET",
+                            url: '/Home/KeyLists',
+                            data: { "ID": "" + $("#mainPersonKey").attr("data-id") + "" },
+                            success: function (data) {
+                                $("#KeyMainDiv").html(data);
+                            },
+                            error: function () {
+                                alert('Error occured');
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) { }
+                });
+            } else {
+               
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/UpdateKey",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{"key1":"' + $("#key1").val() + '","Key2":"' + $("#key2").val() + '","Key3":"' + $("#key3").val() + '","Key4":"' + $("#key4").val() + '", "Latin1": "' + $("#latin1").val() + '","Latin2":"' + $("#latin2").val() +
+                        '","Latin3":"' + $("#latin3").val() + '","Latin4":"' + $("#latin4").val() + '" ,"Type":"' + $("#KeyType").val() + '","PersonID":"' + $("#PersonID").val() + '","ID":"' + $("#ID").val() + '"}',
+                    dataType: "html",
+                    success: function (result, status, xhr) {
+                        $("#myModal").modal('hide');
+                        $.ajax({
+                            type: "GET",
+                            url: '/Home/KeyLists',
+                            data: { "ID": "" + $("#mainPersonKey").attr("data-id") + "" },
+                            success: function (data) {
+                                $("#KeyMainDiv").html(data);
+                            },
+                            error: function () {
+                                alert('Error occured');
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+            }
+        }
+        return false;
+
+        function Validate() {
+            var errorCounter = 0;
+            $(".validSpan").text("");
+
+
+            if ($("#key1").val() == "") {
+                $(".key1Span").text("Please enter value");
+                errorCounter++;
+            }
+
+            if ($("#latin1").val() == "") {
+                $(".latin1Span").text("Please enter value");
+                errorCounter++;
+            }
+
+            if ($("#KeyType").val() == "") {
+                $(".KeyTypeSpan").text("Please enter value");
+                errorCounter++;
+            }
+
+
+            if (errorCounter == 0) {
+                return true;
+            }
+        }
+    });
+
+</script>

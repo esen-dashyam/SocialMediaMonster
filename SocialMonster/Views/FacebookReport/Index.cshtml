@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SocialMonster.Models.Person>
+@{
+    ViewBag.Title = "Судалгаа";
+}
+
+<div class="card" style="min-height:500px;">
+    <div class="card-header"><h4>Судалгааны жагсаалт</h4></div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <code>Жагсаалтаас сонгоно уу</code>
+                    <select id="listPerson" class="custom-select" onchange="GetPersonReport()">
+                        <option>-- Сонгох --</option>
+                        @foreach (var person in Model)
+                        {
+                            <option value="@person.ID">@person.SureName @person.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+            <hr>
+            <div id="result">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function GetPersonReport() {
+        var personID = $('#listPerson').val();
+        $('#result').html('<div class="d-flex justify-content-center mt-5 pt-5 mb-5"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+        $.ajax({
+            type: "GET",
+            url: '/FacebookReport/Index_GetPersonReports',
+            data: { 'personID': personID },
+            success: function (result) {
+                $('#result').html(result);
+            }
+        });
+    }
+    function DeleteReport(reportID) {
+        var personID = $('#listPerson').val();
+        $('#result').html("");
+        $.ajax({
+            type: "GET",
+            url: '/FacebookReport/DeleteReport',
+            data: { 'reportID': reportID, 'personID': personID },
+            success: function (result) {
+                $('#result').html(result);
+            }
+        });
+    }
+</script>

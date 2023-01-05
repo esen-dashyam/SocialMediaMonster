@@ -1,0 +1,333 @@
+﻿
+@{
+    ViewBag.Title = "Түлхүүр үг";
+}
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div align="right">
+            @if (ViewBag.Date != 2000)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Бүгд", "Index", new { KeyDate = 0 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 2000)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Бүгд", "Index", new { KeyDate = 0 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 1)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 1 өдөр", "Index", new { KeyDate = 1 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 1)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 1 өдөр", "Index", new { KeyDate = 1 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 5)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 5 өдөр", "Index", new { KeyDate = 5 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 5)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 5 өдөр", "Index", new { KeyDate = 5 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 7)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 7 өдөр", "Index", new { KeyDate = 7 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 7)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 7 өдөр", "Index", new { KeyDate = 7 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 14)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 14 өдөр", "Index", new { KeyDate = 14 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 14)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 14 өдөр", "Index", new { KeyDate = 14 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 30)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 1 сар", "Index", new { KeyDate = 30 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 30)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 1 сар", "Index", new { KeyDate = 30 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date != 365)
+            {
+                <div class="btn btn-success">
+                    @Html.ActionLink("Сүүлийн 1 жил", "Index", new { KeyDate = 0 }, new { Style = "color:White;" })
+                </div>
+            }
+            @if (ViewBag.Date == 365)
+            {
+                <div class="btn btn-warning">
+                    @Html.ActionLink("Сүүлийн 1 жил", "Index", new { KeyDate = 0 }, new { Style = "color:White;" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-12  col-md-12">
+         <div class="card">
+            <div class="card-header">
+                <center><h4 class="card-title">FACEBOOK ПОСТ</h4></center>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4  col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Нэг үг</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Үг</th>
+                                    <th class="border-top-0">Тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var row in ViewBag.topOneWord)
+                                {
+                                        <tr>
+                                            <td class="text-truncate"><a href="@Url.Action("ResultList", "KeyWord")?value=@row.topWord&date=@ViewBag.Date">@row.topWord</a></td>
+                                            <td class="text-truncate">@row.topCount</td>
+                                        </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4  col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">2 үг</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Үг</th>
+                                    <th class="border-top-0">Тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var row in ViewBag.topTwoWord)
+                                {
+                                    <tr>
+                                        <td class="text-truncate"><a href="@Url.Action("ResultList", "KeyWord")?value=@row.topWord&date=@ViewBag.Date">@row.topWord</a></td>
+                                        <td class="text-truncate">@row.topCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4  col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">3 үг</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Үг</th>
+                                    <th class="border-top-0">Тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var row in ViewBag.topThreeWord)
+                                {
+                                    <tr>
+                                        <td class="text-truncate"><a href="@Url.Action("ResultList", "KeyWord")?value=@row.topWord&date=@ViewBag.Date">@row.topWord</a></td>
+                                        <td class="text-truncate">@row.topCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12  col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <center><h4 class="card-title">ВЭБ ПОСТ</h4></center>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4  col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Нэг үг</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Үг</th>
+                                    <th class="border-top-0">Тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var row in ViewBag.webOneWord)
+                                {
+                                    <tr>
+                                        <td class="text-truncate"><a href="@Url.Action("ResultList", "KeyWord")?value=@row.topWord&date=@ViewBag.Date">@row.topWord</a></td>
+                                        <td class="text-truncate">@row.topCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4  col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">2 үг</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Үг</th>
+                                    <th class="border-top-0">Тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var row in ViewBag.webTwoWord)
+                                {
+                                    <tr>
+                                        <td class="text-truncate"><a href="@Url.Action("ResultList", "KeyWord")?value=@row.topWord&date=@ViewBag.Date">@row.topWord</a></td>
+                                        <td class="text-truncate">@row.topCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4  col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">3 үг</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="new-orders" class="media-list position-relative">
+                    <div class="table-responsive">
+                        <table id="new-orders-table" class="table alt-pagination table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Үг</th>
+                                    <th class="border-top-0">Тоо</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var row in ViewBag.webThreeWord)
+                                {
+                                    <tr>
+                                        <td class="text-truncate"><a href="@Url.Action("ResultList", "KeyWord")?value=@row.topWord&date=@ViewBag.Date">@row.topWord</a></td>
+                                        <td class="text-truncate">@row.topCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,181 @@
+﻿@model IEnumerable<SocialMonster.Models.FbPost>
+
+
+@foreach (var post in Model)
+{
+    if (Request.Cookies["isListView"].Value.ToString() == "1")
+    {
+        <div style="border-radius: 10px; " class="card news-feed-card-bg smart-news-box">
+            <div class="card-content mb-1" name="post">
+                <div class="card-body">
+                    <div class="" style="width:100%; height:100%; overflow:hidden;">
+                        @if (@post.FullPicture != null)
+                        {
+                            {
+                                <a href="@post.Link" class="" target="_blank">
+                                    <img src="~/@post.FullPicture" onError="this.style.display = 'none';" style="width:100%; height:100%">
+                                </a>
+                            }
+                        }
+                    </div>
+
+                    <div style="line-height:18px;">
+                        <a href="https://www.facebook.com/@post.FromID" class="float-left" style="color:#0067D4 !important" target="_blank">
+                            @post.FromName
+                        </a><br>
+                        <div class="float-right" style="font-style:italic; color:#ccc;">@post.UpdateTime </div><br />
+                        <div style="text-align:justify;">
+                            <a href="https://www.facebook.com/@post.PostID" class="float-left text-dark" target="_blank">
+                                @if (post.Message != null)
+                                {
+                                    @post.Message
+                                }
+                                else if (post.Story != null)
+                                {
+                                    @post.Story
+                                }
+                                else if (post.Caption != null)
+                                {
+                                    @post.Caption
+                                }
+                                else if (post.Description != null)
+                                {
+                                    <a href="@post.ID"></a>
+                                    @post.Description
+                                }
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style=" border-top: 1px solid #e3ebf6;">
+                    <div style="display:flex;align-items:center; justify-content:end" class="">
+                        <div class=" col-sm-auto">
+                            <input type="checkbox" class="checkbox form-check-input" data-type="Facebook" data-postid="@post.ID" style="width:19px !important;height:19px; margin-top:0" />
+                        </div>
+                        <div style="padding:0 7px 0 7px; border-right: 1px solid #e3ebf6" class="col-sm-auto">
+
+                            @if (post.Sentiment == null)
+                            {
+                                <div align="right" style="width: 55px !important; height: 25px; background: #ffc107; padding: 3px; border-radius: 5px; color: #fff; text-align: center;"></div>
+                            }
+                            else if (post.Sentiment == "Positive")
+                            {
+                                <div align="right" style="width: 60px !important; height: 25px; background: #28a745; padding: 3px; border-radius: 5px; color: #fff; text-align: center;">Эерэг</div>
+
+                            }
+                            else if (post.Sentiment == "Negative")
+                            {
+                                <div align="right" style="width: 60px !important; height: 25px; background: #dc3545; padding: 3px; color: #fff; border-radius: 5px; text-align: center; ">Сөрөг</div>
+                            }
+                            else if (post.Sentiment == "Neutral")
+                            {
+                                <div align="right" style="width: 60px !important; height: 25px; background: #6c757d; padding: 3px; border-radius: 5px; color: #fff; text-align: center; ">Саармаг</div>
+                            }
+                        </div>
+                        <div class="col-sm-auto">
+                            <button onclick="Modal('Facebook','@post.ID')" data-toggle="modal" data-target="#ModalControl"
+                                    class="btn btn-block" style="padding: 2px 0 0 4px; border-radius: 5px; color: #7081b9; font-size: 19px ">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+
+        <span>
+            <div style="border-radius: 10px; " class="card news-feed-card-bg smart-news-box">
+                <div class="card-content mb-1" name="post">
+                    @if (!post.PermalinkUrl.Contains("group"))
+                    {
+                        <div class="card-body">
+                            <div class="fb-post" data-href="@post.PermalinkUrl" data-width="auto"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="" style="width:100%; height:100%; overflow:hidden;">
+                                @if (@post.FullPicture != null)
+                                {
+                                    {
+                                        <a href="@post.Link" class="" target="_blank">
+                                            <img src="@post.FullPicture" style="width:100%; height:100%">
+                                        </a>
+                                    }
+                                }
+                            </div>
+
+                            <div style="line-height:18px;">
+                                <a href="https://www.facebook.com/@post.FromID" class="float-left" style="color:#0067D4 !important" target="_blank">
+                                    @post.FromName
+                                </a><br>
+                                <div class="float-right" style="font-style:italic; color:#ccc;"> @post.UpdateTime </div><br />
+                                <div style="text-align:justify;">
+                                    <a href="https://www.facebook.com/@post.PostID" class="float-left text-dark" target="_blank">
+                                        @if (post.Message != null)
+                                        {
+                                            @post.Message
+                                        }
+                                        else if (post.Story != null)
+                                        {
+                                            @post.Story
+                                        }
+                                        else if (post.Caption != null)
+                                        {
+                                            @post.Caption
+                                        }
+                                        else if (post.Description != null)
+                                        {
+                                            <a href="@post.ID"></a>
+                                            @post.Description
+                                        }
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="container" style=" border-top: 1px solid #e3ebf6;">
+                    <div style="display:flex;align-items:center; justify-content:end" class="">
+                        <div class=" col-sm-auto">
+                            <input type="checkbox" class="checkbox form-check-input" data-type="Facebook" data-postid="@post.ID" style="width:19px !important;height:19px; margin-top:0" />
+                        </div>
+                        <div style="padding:0 7px 0 7px; border-right: 1px solid #e3ebf6" class="col-sm-auto">
+
+                            @if (post.Sentiment == null)
+                            {
+                                <div align="right" style="width: 35px !important; height: 19px; background: #ffc107; padding: 3px; border-radius: 5px; color: #fff;"></div>
+                            }
+                            else if (post.Sentiment == "Positive")
+                            {
+                                <div align="right" style="width: 35px !important; height: 19px; background: #28a745; padding: 3px; border-radius: 5px; color: #fff; "></div>
+
+                            }
+                            else if (post.Sentiment == "Negative")
+                            {
+                                <div align="right" style="width: 35px !important; height: 19px; background: #dc3545; padding: 3px; color: #fff; border-radius: 5px; "></div>
+                            }
+                            else if (post.Sentiment == "Neutral")
+                            {
+                                <div align="right" style="width:35px !important; height: 19px; background: #6c757d; padding: 3px; border-radius: 5px; color: #fff; "></div>
+                            }
+                        </div>
+                        <div class="col-sm-auto">
+                            <button onclick="Modal('Facebook','@post.ID')" data-toggle="modal" data-target="#ModalControl"
+                                    class="btn btn-block" style="padding: 2px 0 0 4px; border-radius: 5px; color: #7081b9; font-size: 19px ">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </span>
+    }
+}

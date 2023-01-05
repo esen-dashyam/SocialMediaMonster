@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SocialMonster.Models.ReportAccount>
+<div class="table-responsive mb-2">
+    <table id="ListPost" class="table table-striped">
+        <thead class="bg-info text-white">
+            <tr>
+                <th class="border-top-0">Нэр</th>
+                <th class="border-top-0">Хуурамч</th>
+                <th class="border-top-0">Овог</th>
+                <th class="border-top-0">Нэр</th>
+                <th class="border-top-0">Нас</th>
+                <th class="border-top-0">Хүйс</th>
+                <th class="border-top-0">Аймаг</th>
+                <th class="border-top-0">Сум</th>
+                <th class="border-top-0"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var account in Model)
+            {
+            <tr>
+                <td><a href="https://www.facebook.com/@account.AccountID" target="_blank" style="color:#0026ff">@account.AccountName</a></td>
+                @if (account.FakeOrReal == null)
+                {
+                    <td class="text-truncate"><button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#modalFakeOrReal" onclick="setAccountID('@account.AccountID')">Тохируулах</button></td>
+                }
+                else if (account.FakeOrReal == "Fake")
+                {
+                    <td class="text-truncate"><button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalFakeOrReal" onclick="setAccountID('@account.AccountID')">Хуурамч</button></td>
+                }
+                <td class="text-truncate">@account.FName</td>
+                <td class="text-truncate">@account.LName</td>
+                <td class="text-truncate"></td>
+                <td class="text-truncate">@account.Sex</td>
+                <td class="text-truncate">@account.Aimag</td>
+                <td class="text-truncate">@account.Sum</td>
+                <td class="text-truncate"><a href="@Url.Action("FullReport", "FacebookReport")?reportID=@account.AccountName" class="btn btn-sm btn-danger text-white"><i class="fa fa-eye"></i> Үзэх</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col text-center">
+        @for (int i = 1; i <= ViewBag.pageCount; i++)
+        {
+            <button class="btn btn-sm btn-warning mr-1 mb-1" onclick="accountList('@i')">@i</button>
+        }
+    </div>
+</div>

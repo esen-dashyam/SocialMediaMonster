@@ -1,0 +1,285 @@
+﻿
+@{
+    ViewBag.Title = "NotfUser";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<p style="font-size:20px;">
+    @foreach (var p in @ViewBag.AspUserData)
+    {
+        @p.SureName <span>.</span> @p.Name;
+    }
+</p>
+
+<section id="mainPersonID" data-id="@ViewBag.NotfPersonID">
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <div class="" id="messageDiv"></div>
+            <div class="form-group">
+                <input type="button" class="btn btn-sm btn-success addBtn" onclick="NotfModal(this);" value="Insert" data-id="@ViewBag.NotfPersonID" data-id1="@foreach (var m in @ViewBag.PersonData)
+                { @m.ID } " />
+                <a href="~/Home/Notification" type="button" class="btn btn-sm btn-black">Болих</a>
+            </div>
+            <hr />
+            <div id="NotfMainDiv">
+                <table class="table table-bordered table-striped" id="mainTbl">
+                    <tr>
+                        <th>#</th>
+                        <th>Овог нэр</th>
+                        <th>Утас </th>
+                        <th>Имэйл </th>
+                        <th></th>
+                    </tr>
+                    @{ int @counter = 0; }
+                    @foreach (var m in @ViewBag.PersonData)
+                    {
+                        counter = counter + 1;
+                        <tr>
+                            <td>@counter</td>
+                            <td>@m.SureName.@m.Name</td>
+                            <td>@m.Mobile</td>
+                            <td>@m.Email</td>
+                            <td>
+                                <input type="button" class="btn btn-sm btn-success btn-block" value="Update" onclick="UpdateModal(this);" data-userID="@m.AspNetUserID" data-perID="@m.PersonID" data-id="@m.ID" data-phone="@m.Mobile" data-email="@m.Email" />
+                                <input type="button" class="btn btn-sm btn-success btn-block" value="Delete" onclick="DeleteModal(this);" id="del" data-id="@m.ID" />
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="notfModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <input type="hidden" name="userID" id="userID" value="" />
+
+                <h5 class="modal-title">Add Notification</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <!--style="height:250px; overflow-y:scroll;"-->                    
+                    <select name="persons" id="persons" class="form-control Insert" style="display:none;">
+                        <option value=""> Select Person </option>
+
+                        @foreach (var s in ViewBag.SysPersonData)
+                        {
+                          
+                    <option value="@s.ID"> @s.SureName.@s.Name </option>
+                            
+                        }
+
+
+
+                    </select>
+
+                           <select name="persons" id="persons1" class="form-control Update" style="display:none;">
+                        <option value=""> Select Person </option>
+
+                        @foreach (var s in ViewBag.SysPersonData1)
+                        {
+                           
+                    <option value="@s.ID"> @s.SureName.@s.Name </option>
+                            
+                        }
+
+
+
+                    </select>
+                    <input type="hidden" name="ID" id="ID" value="" />
+                    <span class="personSpan"></span>
+                </div>
+                <div class="form-group">
+                    <label> Утас  </label>
+                    <input type="text" name="phone" id="phone" class="form-control" value="" />
+                    <span class="phoneSpan"></span>
+                </div>
+                <div class="form-group">
+                    <label> Имэйл хаяг </label>
+                    <input type="text" class="form-control" id="email" name="email" value="" />
+                    <span class="mailSpan"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary submit" val="1">Add</button>
+                <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="notfModalDel" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <input type="hidden" name="ID" id="userIDDel" value="" />
+                <h5 class="modal-title">Delete Person Info</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary delete" val="1">Delete</button>
+                <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //edit modal
+    function UpdateModal(e) {
+        $(".Insert").css("display", "none");
+        $(".Update").css("display", "block");
+        $("#persons1").val($(e).attr("data-perID"));
+        $("#phone").val($(e).attr("data-phone"));
+        $("#email").val($(e).attr("data-email"));
+        $("#userID").val($(e).attr("data-userID"));
+
+        $("#ID").val($(e).attr("data-id"));        
+     
+        $(".submit").attr("val", "0");
+        $("#notfModal").modal('show');
+    }
+
+
+    //add modal
+    function NotfModal(e) {
+        $("#userID").val($(e).attr("data-id"));
+        $("#notfModal").modal('show');
+    }
+    //delete modal
+    function DeleteModal(e) {
+        $("#userIDDel").val($(e).attr("data-ID"));
+        $("#notfModalDel").modal('show');
+    }
+
+    $(".addBtn").click(function () {
+        $("#persons").val("");
+        $("#phone").val("");
+        $("#email").val("");
+        $(".Insert").css("display", "block");
+        $(".Update").css("display", "none");
+        $(".submit").attr("val", "1");
+        $("#notfModal").modal('show');
+    });
+
+
+
+
+
+
+
+
+
+    $(".submit").click(function () {
+        var returnValidate = Validate();
+
+        if (returnValidate) {
+            if ($(this).attr("val") == "1") {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/NotfInsert",
+                    contentType: "application/json; charset=utf-8", 
+                    data: '{"persons":"' + $("#persons").val() + '","userID":"' + $("#userID").val() + '", "phone":"' + $("#phone").val() + '","email":"' + $("#email").val() + '"}',
+                    dataType: "html",
+                    success: function (result, status, xhr) {
+                        $("#notfModal").modal('hide');
+                        $.ajax({
+                            type: "GET",
+                            url: '/Home/NotfUserList',
+                            data: { "ID": "" + $("#mainPersonID").attr("data-id") + "" },
+                            success: function (data) {
+                                $("#NotfMainDiv").html(data);
+                            },
+                            error: function () {
+                                alert('Error occured');
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) { }
+                });
+            } else {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/NotfUpdate",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{"persons":"' + $("#persons1").val() + '","userID":"' + $("#userID").val() + '", "phone":"' + $("#phone").val() + '","email":"' + $("#email").val() + '","ID":"' + $("#ID").val() + '"}',
+                    dataType: "html",
+                    success: function (result, status, xhr) {
+                        $("#notfModal").modal('hide');
+                        $.ajax({
+                            type: "GET",
+                            url: '/Home/NotfUserList',
+                            data: { "ID": "" + $("#mainPersonID").attr("data-id") + "" },
+                            success: function (data) {
+                                $("#NotfMainDiv").html(data);
+                            },
+                            error: function () {
+                                alert('Error occured');
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+            }
+        }
+        return false;
+
+        function Validate() {
+            var errorCounter = 0;
+            $(".validSpan").text("");
+
+            if ($("#persons").val() == "") {
+                $(".personSpan").text("Please enter value");
+                errorCounter++;
+            }
+
+            if ($("#phone").val() == "") {
+                $(".phoneSpan").text("Please enter value");
+                errorCounter++;
+            }
+
+            if ($("#email").val() == "") {
+                $(".mailSpan").text("Please enter value");
+                errorCounter++;
+            }
+
+            if (errorCounter == 0) {
+                return true;
+            }
+        }
+    });
+
+    $(".delete").click(function () {
+
+        $.ajax({
+            type: "GET",
+            url: '/Home/NotfDelete',
+            data: { "ID": " " + $("#userIDDel").val() + " " },
+            success: function (data) {
+                $("#notfModalDel").modal('hide');
+                $.ajax({
+                    type: "GET",
+                    url: '/Home/NotfUserList',
+                    data: { "ID": "" + $("#mainPersonID").attr("data-id") + "" },
+                    success: function (data) {
+                        $("#NotfMainDiv").html(data);
+                    },
+                    error: function () {
+                        alert('Error occured');
+                    }
+                });
+            },
+            error: function () { }
+        });
+    });
+
+</script>

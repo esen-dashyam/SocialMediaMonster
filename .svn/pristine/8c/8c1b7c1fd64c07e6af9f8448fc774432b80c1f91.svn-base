@@ -1,0 +1,113 @@
+﻿@model IEnumerable<SocialMonster.Models.FbComment>
+@{
+    ViewBag.Title = "Постын комментууд";
+}
+<input type="hidden" id="postID" value="@ViewBag.postID" />
+<div class="card">
+    <div class="card-header">
+        Пост
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col m-lg-3" style="padding:15px;border-radius:6px;box-shadow:0 0 2px 1px #00000059;">
+                    <div class="facebook-list-user mb-2">
+                        <a href="https://www.facebook.com/@ViewBag.Post.FromID">
+                            <img src="~/Content/Images/user_icon.png" style="border-radius:50%;height:30px;width:30px;">
+                            <strong class="mb-2" style="color:#005DD4">@ViewBag.Post.FromName</strong>
+                        </a>
+                    </div>
+                    @if (@ViewBag.Post.FullPicture != "NULL")
+                    {
+                        <p><img src="@ViewBag.Post.FullPicture" style="width:100%;" /></p>
+                    }
+                    <p class="text-justify"><a href="@ViewBag.Post.PermalinkUrl" style="color:#333">@ViewBag.Post.Message</a></p>
+                    <hr>
+                    <div class="row text-danger">
+                        <div class="col-6 text-left">
+                            <p>@ViewBag.Post.UpdateTime</p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p>0 Comments @ViewBag.Post.SharedCount Shares</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="comments" class="row">
+                <div class="col">
+                    <div class="table-responsive mb-2">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Текст</th>
+                                    <th class="border-top-0">Агуулга</th>
+                                    <th class="border-top-0">Агуулга тохируулах</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var comment in Model)
+                                {
+                                    <tr>
+                                        <td class="text-justify">@comment.Message</td>
+                                        @if (comment.Sentiment == "Positive")
+                                        {
+                                            <td class="text-truncate bg-success text-white">Эерэг</td>
+                                        }
+                                        else if (comment.Sentiment == "Negative")
+                                        {
+                                            <td class="text-truncate bg-danger text-white">Сөрөг</td>
+                                        }
+                                        else if (comment.Sentiment == "Neutral")
+                                        {
+                                            <td class="text-truncate bg-secondary text-white">Саарал</td>
+                                        }
+                                        else if (comment.Sentiment == null)
+                                        {
+                                            <td class="text-truncate bg-secondary text-white">Саарал</td>
+                                        }
+
+                                        <td class="text-truncate text-center"><button class="btn btn-sm btn-success mr-1" onclick="setSentiment('@comment.ID','Positive')">Эерэг</button><button class="btn btn-sm btn-danger mr-1" onclick="setSentiment('@comment.ID','Negative')">Сөрөг</button><button class="btn btn-sm btn-secondary" onclick="setSentiment('@comment.ID','Neutral')">Саарал</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    @for (int i = 1; i <= ViewBag.pageCount; i++)
+                    {
+                        <button class="btn btn-sm btn-warning mr-1" onclick="page('@i')">@i</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function setSentiment(commentID, type) {
+        $.ajax({
+            type: "POST",
+            url: '/FacebookReport/FullReport_setSentimentCommentByPost',
+            data: { 'commentID': commentID, 'type': type },
+            success: function (data) {
+                alert('Амжилттай');
+            },
+        });
+    }
+    function page(pageNumber) {
+        var postID = document.getElementById("postID").value;
+        $('#comments').html('');
+        $('#comments').html('<div class="col"><div class="d-flex justify-content-center mt-5 mb-5"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></div>');
+        $.ajax({
+            type: "POST",
+            url: '/FacebookReport/FullReport_getCommentsByPost_page',
+            data: { 'pageNumber': pageNumber, 'postID': postID },
+            success: function (data) {
+                $('#comments').html('');
+                $('#comments').html(data);
+            },
+        });
+    }
+</script>

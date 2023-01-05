@@ -1,0 +1,669 @@
+﻿@model SocialMonster.Models.SystemUserModels
+@{
+    ViewBag.Title = "Анализ";
+}
+<link href="~/Content/assets/css/NewCss/app.min.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400&amp;subset=cyrillic" rel="stylesheet">
+<link href="~/Content/app-assets/css/pages/search.css" rel="stylesheet" type="text/css">
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<input type="hidden" id="FbLatestID" value="1" />
+<input type="hidden" id="TwLatestID" value="1" />
+<input type="hidden" id="WebLatestID" value="1" />
+@*<input type="hidden" id="UserID" value="@Model.ID"> *@
+<input type="hidden" id="UserID" value="8902d568-4f77-4874-97b8-f7dd7bc6d655">
+<script src="https://kit.fontawesome.com/893ff05b10.js" crossorigin="anonymous"></script>
+<!--bulgaa 2022-05-11 apex chart add graph-->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+
+<div class="row" id="SmartMain">
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="page-title">Анализ</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">BOARD.MN</a></li>
+                            <li class="breadcrumb-item">Анализ</li>
+                            <li class="breadcrumb-item">@Model.Surename @Model.Name</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end row-->
+    <!-- end page title end breadcrumb -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="background:#f9f9f9; border:0">
+                <div class="card-body">
+                    <div class="row">
+                        <div style="width:100px;">
+                            @if (Model.Picture == null)
+                            {
+                                <img src="http://199.192.20.185/assets/images/brand-logo/logo-board-blue-100.jpg" height="80" style="border-radius:4px" />
+                            }
+                            else
+                            {
+                                <img src="@Model.Picture" height="80" style="border-radius:4px" />
+                            }
+                        </div>
+                        <div class="dastone-profile_user-detail">
+                            <h5 class="dastone-user-name">@Model.Surename @Model.Name</h5>
+                            <p class="mb-0 dastone-user-name-post">@Model.Description</p>
+                        </div>
+                    </div><!--end row-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!-- End row -->
+
+    <div class="row">
+        <div class="col-6 col-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#7081B9" class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                            </svg>
+                        </div><!--end col-->
+                        <div class="col-8">
+                            <span class="h5">@ViewBag.FbData</span>
+                            <h6 class="text-uppercase text-muted m-0">facebook</h6>
+                        </div><!--end col-->
+                    </div> <!-- end row -->
+                </div><!--end card-body-->
+            </div> <!--end card-body-->
+        </div><!--end col-->
+        <div class="col-6 col-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#7081B9" class="bi bi-twitter" viewBox="0 0 16 16">
+                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                            </svg>
+                        </div><!--end col-->
+                        <div class="col-8">
+                            <span class="h5">@ViewBag.TwitterData</span>
+                            <h6 class="text-uppercase text-muted m-0">twitter</h6>
+                        </div><!--end col-->
+                    </div> <!-- end row -->
+                </div><!--end card-body-->
+            </div> <!--end card-body-->
+        </div><!--end col-->
+        <div class="col-6 col-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div><!--end col-->
+                        <div class="col-8">
+                            <span class="h5">0</span>
+                            <h6 class="text-uppercase text-muted m-0">instagram</h6>
+                        </div><!--end col-->
+                    </div> <!-- end row -->
+                </div><!--end card-body-->
+            </div> <!--end card-body-->
+        </div><!--end col-->
+        <div class="col-6 col-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+
+                        </div><!--end col-->
+                        <div class="col-8">
+                            <span class="h5">0</span>
+                            <h6 class="text-uppercase text-muted m-0">linkedin</h6>
+                        </div><!--end col-->
+                    </div> <!-- end row -->
+                </div><!--end card-body-->
+            </div> <!--end card-body-->
+        </div><!--end col-->
+        <div class="col-6 col-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+
+                        </div><!--end col-->
+                        <div class="col-8">
+                            <span class="h5">0</span>
+                            <h6 class="text-uppercase text-muted m-0">youtube</h6>
+                        </div><!--end col-->
+                    </div> <!-- end row -->
+                </div><!--end card-body-->
+            </div> <!--end card-body-->
+        </div><!--end col-->
+        <div class="col-6 col-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+
+                        </div><!--end col-->
+                        <div class="col-8">
+                            <span class="h5">@ViewBag.WebSiteData</span>
+                            <h6 class="text-uppercase text-muted m-0">вэбсайт</h6>
+                        </div><!--end col-->
+                    </div> <!-- end row -->
+                </div><!--end card-body-->
+            </div> <!--end card-body-->
+        </div><!--end col-->
+    </div>
+
+    <div class="col-auto">
+        <div class="dropdown">
+            <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Хугацаа сонгох<i class="las la-angle-down ms-1"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="@Url.Action("AnalysisToday", "Home", new { id2 = ViewBag.id, })">Сүүлийн 24 цаг</a>
+                <a class="dropdown-item" href="~/Home/AnalysisOfLastThreeDays">Сүүлийн 3 хоног</a>
+                <a class="dropdown-item" href="~/Home/AnalysisOfWeek">Сүүлийн долоо хоног</a>
+                <a class="dropdown-item" href="~/Home/AnalysisOfTwoWeeks">Сүүлийн 2 долоо хоног</a>
+                <a class="dropdown-item" href="~/Home/AnalysisOfMonthlyData">Сүүлийн сар</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xll-3 col-xl-4 col-md-6">
+            <div class="card">
+                <!-- <div class="card-chart-header-active"></div> -->
+                <div class="card-header" style="border-bottom:0;">
+                    <h6><span class="card-chart-title">Хэвлэл мэдээллийн хэрэгсэл</span><i class="far fa-question-circle ms-2"></i></h6>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div id="chart1" class="apex-charts"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h6 class="bg-light-alt py-3 px-2 mb-0">
+                                    Хэвлэл мэдээллийн хэрэгслээр гарч байгаа мэдээлэл
+                                </h6>
+                            </div>
+                            <div id="chart1_table" class="table-responsive mt-2">
+                                <table class="table border-dashed mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Төрөл</th>
+                                            <th class="text-end">Тоо</th>
+                                            <th class="text-end">Хувь</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="fa-solid fa-globe"></i> Вэбсайт</td>
+                                            <td class="text-end">@ViewBag.WebSiteData</td>
+                                            <td class="text-end">100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa-solid fa-tv"></i> Телевиз</td>
+                                            <td class="text-end">0</td>
+                                            <td class="text-end">0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa-solid fa-newspaper"></i> Сонин, сэтгүүл</td>
+                                            <td class="text-end">0</td>
+                                            <td class="text-end">0%</td>
+                                        </tr>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /div-->
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-xll-3 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header" style="border-bottom:0;">
+                    <h6><span class="card-chart-title">Нийгмийн сүлжээ</span><i class="far fa-question-circle ms-2"></i></h6>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div id="chart2" class="apex-charts"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h6 class="bg-light-alt py-3 px-2 mb-0">
+                                    Нийгмийн сүлжээнд дэх нийтлэгдсэн мэдээлэл
+                                </h6>
+                            </div>
+                            <div id="chart2_table" class="table-responsive mt-2">
+                                <table class="table border-dashed mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Төрөл</th>
+                                            <th class="text-end">Тоо</th>
+                                            <th class="text-end">Хувь</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="fa-brands fa-facebook"></i> Facebook</td>
+                                            <td class="text-end">@ViewBag.FbData</td>
+                                            <td class="text-end">@ViewBag.PercentageFb%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa-brands fa-twitter"></i> Twitter</td>
+                                            <td class="text-end">@ViewBag.TwitterData</td>
+                                            <td class="text-end">@ViewBag.PercentageTwitter%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa-brands fa-instagram"></i> Instagram</td>
+                                            <td class="text-end">0</td>
+                                            <td class="text-end">0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa-brands fa-linkedin"></i> LinkedIn</td>
+                                            <td class="text-end">0</td>
+                                            <td class="text-end">0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa-brands fa-youtube"></i> Youtube</td>
+                                            <td class="text-end">0</td>
+                                            <td class="text-end">0%</td>
+                                        </tr>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /div-->
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-xll-3 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header" style="border-bottom:0;">
+                    <h6><span class="card-chart-title">Нийгмийн сүлжээ/ХМХэрэгсэл</span><i class="far fa-question-circle ms-2"></i></h6>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div id="chart4" class="apex-charts"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h6 class="bg-light-alt py-3 px-2 mb-0">
+                                    Нийгмийн сүлжээ болон уламжлалт мэдээллийн хэрэгслээр гарч буй мэдээллийн эзлэх хувь
+                                </h6>
+                            </div>
+                            <div id="chart4_table" class="table-responsive mt-2">
+                                <table class="table border-dashed mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Төрөл</th>
+                                            <th class="text-end">Тоо</th>
+                                            <th class="text-end">Хувь</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="fa-solid fa-globe"></i> Нийгмийн сүлжээ</td>
+                                            <td class="text-end">@ViewBag.socialAll</td>
+                                            <td class="text-end">@ViewBag.PercentageFb%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa-solid fa-tv"></i> Хэвлэл мэдээллийн хэрэгсэл</td>
+                                            <td class="text-end">@ViewBag.tvAll</td>
+                                            <td class="text-end">@(100- @ViewBag.PercentageFb)%</td>
+                                        </tr>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /div-->
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-xll-3 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header" style="border-bottom:0;">
+                    <h6><span class="card-chart-title">Хандлага</span><i class="far fa-question-circle ms-2"></i></h6>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div id="chart3" class="apex-charts"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h6 class="bg-light-alt py-3 px-2 mb-0">
+                                    Интернэт дэх мэдээллийн хандлагын хувь
+                                </h6>
+                            </div>
+                            <div id="chart3_table" class="table-responsive mt-2">
+                                <table class="table border-dashed mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Хандлага</th>
+                                            <th class="text-end">Тоо</th>
+                                            <th class="text-end">Хувь</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i data-feather="plus-circle" class="text-success board-md-icon me-1"></i> Эерэг</td>
+                                            <td class="text-end">@ViewBag.PositiveWb</td>
+                                            <td class="text-end">@((ViewBag.PositiveWb * 100)/(ViewBag.NeutralWb + ViewBag.NegativeWb + ViewBag.PositiveWb))%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-feather="minus-circle" class="text-danger board-md-icon me-1"></i> Сөрөг</td>
+                                            <td class="text-end">@ViewBag.NegativeWb</td>
+                                            <td class="text-end">@((ViewBag.NegativeWb * 100)/(ViewBag.NeutralWb + ViewBag.NegativeWb + ViewBag.PositiveWb))%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-feather="circle" class="text-secondary board-md-icon me-1"></i> Саармаг</td>
+                                            <td class="text-end">@ViewBag.NeutralWb</td>
+                                            <td class="text-end">@((ViewBag.NeutralWb*100)/(ViewBag.NeutralWb + ViewBag.NegativeWb + ViewBag.PositiveWb))%</td>
+                                        </tr>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /div-->
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-xll-3 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header" style="border-bottom:0;">
+                    <h6><span><i class="fa-brands fa-facebook"></i> Facebook хандлага</span><i class="far fa-question-circle ms-2"></i></h6>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div id="chart5" class="apex-charts"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h6 class="bg-light-alt py-3 px-2 mb-0">
+                                    Facebook дэх @Model.Name-ийн тухай бичигдсэн нийт постын эерэг, сөрөг хандлагын эзлэх хувь
+                                </h6>
+                            </div>
+                            <div id="chart5_table" class="table-responsive mt-2">
+                                <table class="table border-dashed mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Хандлага</th>
+                                            <th class="text-end">Тоо</th>
+                                            <th class="text-end">Хувь</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i data-feather="plus-circle" class="text-success board-md-icon me-1"></i> Эерэг</td>
+                                            <td class="text-end">@ViewBag.PositiveFb</td>
+                                            <td class="text-end">@((ViewBag.PositiveFb * 100)/(ViewBag.NeutralFb + ViewBag.NegativeFb + ViewBag.PositiveFb))%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-feather="minus-circle" class="text-danger board-md-icon me-1"></i> Сөрөг</td>
+                                            <td class="text-end">@ViewBag.NegativeFb</td>
+                                            <td class="text-end">@((ViewBag.NegativeFb * 100)/(ViewBag.NeutralFb + ViewBag.NegativeFb + ViewBag.PositiveFb))%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-feather="circle" class="text-secondary board-md-icon me-1"></i> Саармаг</td>
+                                            <td class="text-end">@ViewBag.NeutralFb</td>
+                                            <td class="text-end">@((ViewBag.NeutralFb*100)/(ViewBag.NeutralFb + ViewBag.NegativeFb + ViewBag.PositiveFb))%</td>
+                                        </tr>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /div-->
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-xll-3 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header" style="border-bottom:0;">
+                    <h6><span><i class="fa-brands fa-twitter"></i> Twitter хандлага</span><i class="far fa-question-circle ms-2"></i></h6>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div id="chart6" class="apex-charts"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h6 class="bg-light-alt py-3 px-2 mb-0">
+                                    Твиттер дэх @Model.Name-ийн тухай бичигдсэн нийт tweet дэх эерэг, сөрөг хандлагын эзлэх хувь
+                                </h6>
+                            </div>
+                            <div id="chart6_table" class="table-responsive mt-2">
+                                <table class="table border-dashed mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Хандлага</th>
+                                            <th class="text-end">Тоо</th>
+                                            <th class="text-end">Хувь</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i data-feather="plus-circle" class="text-success board-md-icon me-1"></i> Эерэг</td>
+                                            <td class="text-end">@ViewBag.PositiveTW</td>
+                                            <td class="text-end">@((ViewBag.PositiveTW * 100)/(ViewBag.NeutralTW + ViewBag.NegativeTW + ViewBag.PositiveTW))%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-feather="minus-circle" class="text-danger board-md-icon me-1"></i> Сөрөг</td>
+                                            <td class="text-end">@ViewBag.NegativeTW</td>
+                                            <td class="text-end">@((ViewBag.NegativeTW * 100)/(ViewBag.NeutralTW + ViewBag.NegativeTW + ViewBag.PositiveTW))%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-feather="circle" class="text-secondary board-md-icon me-1"></i> Саармаг</td>
+                                            <td class="text-end">@ViewBag.NeutralTW</td>
+                                            <td class="text-end">@((ViewBag.NeutralTW*100)/(ViewBag.NeutralTW + ViewBag.NegativeTW + ViewBag.PositiveTW))%</td>
+                                        </tr>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /div-->
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
+    <div class="row">
+        <div class="col">
+            <div class="card card-chart">
+                <div class="card-chart-header-active"></div>
+                <div class="card-header" style="border-bottom:0;">
+                    <h6><span class="card-chart-title">Хамгийн их дурьдагдсан үг</span><i class="far fa-question-circle ms-2"></i></h6>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h6><i class="fa-brands fa-facebook"></i> Фэйсбүүк</h6>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Үг</th>
+                                        <th scope="col">Тоо</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{var i = 1;}
+                                    @foreach (var word in ViewBag.FbWords)
+                                    {
+                                        <tr>
+                                            <th scope="row">@i</th>
+                                            <td>@word.word</td>
+                                            <td>@word.count</td>
+                                            @{i++;}
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-4">
+                            <h6><i class="fa-solid fa-globe"></i> Вэб сайт</h6>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Үг</th>
+                                        <th scope="col">Тоо</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{var a = 1;}
+                                    @foreach (var word in ViewBag.WbWords)
+                                    {
+                                        <tr>
+                                            <th scope="row">@a</th>
+                                            <td>@word.word</td>
+                                            <td>@word.count</td>
+                                            @{a++;}
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-4">
+                            <h6><i class="fa-brands fa-twitter"></i> Твиттер</h6>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Үг</th>
+                                        <th scope="col">Тоо</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{var j = 1;}
+                                    @foreach (var word in ViewBag.TwWords)
+                                    {
+                                        <tr>
+                                            <th scope="row">@j</th>
+                                            <td>@word.word</td>
+                                            <td>@word.count</td>
+                                            @{j++;}
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h2 class="card-title text-center">Twitter</h2>
+            </div><!--end col-->
+        </div>  <!--end row-->
+    </div><!--end card-header-->
+    <div class="card-body">
+        <div class="" id="MainGraph">
+            <div id="TwitterAnalyze" class="apex-charts"></div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h2 class="card-title text-center">Facebook</h2>
+            </div><!--end col-->
+        </div>  <!--end row-->
+    </div><!--end card-header-->
+    <div class="card-body">
+        <div class="" id="MainGraph">
+            <div id="FacebookAnalyze" class="apex-charts"></div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h2 class="card-title text-center">Website</h2>
+            </div><!--end col-->
+        </div>  <!--end row-->
+    </div><!--end card-header-->
+    <div class="card-body">
+        <div class="" id="MainGraph">
+            <div id="WebsiteAnalyze" class="apex-charts"></div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/assets/plugins/apex-charts/apexcharts.min.js"></script>
+<script src="~/Content/assets/plugins/apex-charts/irregular-data-series.js"></script>
+<script src="~/Content/assets/plugins/apex-charts/ohlc.js"></script>
+<script>
+    var media = [@ViewBag.WebSiteData, 0, 0];
+    var social = [@ViewBag.FbData, @ViewBag.TwitterData, 0, 0, 0];
+    var sentiment = [@ViewBag.PositiveWb, @ViewBag.NegativeWb, @ViewBag.NeutralWb];
+    var fb_sentiment = [@ViewBag.PositiveFB, @ViewBag.NegativeFB, @ViewBag.NeutralFB];
+    var tw_sentiment = [@ViewBag.PositiveTW, @ViewBag.NegativeTW, @ViewBag.NeutralTW];
+    var last_months_url = [28, 0, 0, 0, 0, 0, 0, 0];
+  @*  var date_url = "<?php echo e(route('analysis.date-range')); ?>";
+    var latest_data_url = "<?php echo e(route('analysis.latest-data', [$object->id])); ?>";
+    var last_months_url = [28, 0, 0];
+    var object_id = "<?php echo e($object->id); ?>";
+    var token = '<?php echo e(csrf_token()); ?>';*@
+    var social_x_traditional = [@ViewBag.tvAll, @ViewBag.socialAll];
+
+    //bulgaa 2022-05-11 begin
+@*    window.addEventListener('load', function () {
+        var userID = document.getElementById("UserID").value;
+        console.log(userID);
+        $.ajax({
+            type: "GET",
+            url: '/Home/AnalyzeMainGraph',
+            data: { 'id': userID },
+            success: function (data) {
+                $("#MainGraph").html(data);
+            },
+        });
+    });*@
+    const TwPosChartCount = @ViewBag.TwPosChartCount;
+    const TwNegChartCount = @ViewBag.TwNegChartCount;
+    const TwNeuChartCount = @ViewBag.TwNeuChartCount;
+
+    const FbPosChartCount = @ViewBag.FbPosChartCount;
+    const FbNegChartCount = @ViewBag.FbNegChartCount;
+    const FbNeuChartCount = @ViewBag.FbNeuChartCount;
+
+    const WebPosChartCount = @ViewBag.WebPosChartCount;
+    const WebNegChartCount = @ViewBag.WebNegChartCount;
+    const WebNeuChartCount = @ViewBag.WebNeuChartCount;
+
+    //ashiglagdahgui
+    const twitterChartCount1 = "";
+    const facebookChartCount1 = "";
+    const websiteChartCount1 = "";
+    //bulgaa 2022-05-11 end
+</script>
+<script src="~/Content/assets/pages/page_analysis.js"></script>
+
