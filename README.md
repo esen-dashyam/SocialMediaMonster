@@ -4,17 +4,17 @@ This a web that I was modifying.Primary usage of this application is to perform 
 instagram,
 
 
-#This is the link to the web 
+# This is the link to the web 
 https://board.mn/
 
 
 However this projected is not finished you may need to logic twice or thrice in order to enter the project.
 
 This is an example access 
-#Login
+# Login
 
 shunkhlaimedia@board.mn
 
-#The password
+# The password
 
 Tester123.
