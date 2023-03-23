@@ -1,7 +1,7 @@
 # SocialMediaMonster
 
-This a web that I was modifying.Primary usage of this application is to perform crawl data from web browsers and social media platforms such as facebook,Twitter,Linkedin,
-instagram,
+This a web that I was modifying.Primary usage of this application is to crawl data from web browsers and social media platforms such as facebook,Twitter,Linkedin,
+instagram, and then perform the sentiment on the posts 
 
 
 # This is the link to the web 
