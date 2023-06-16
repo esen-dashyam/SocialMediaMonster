@@ -5,7 +5,7 @@ instagram
 
 
 # This is the link to the web 
-https://board.mn/
+https://sumbee.mn/
 
 
 However this projected is not finished you may need to login twice or thrice in order to enter the project.
