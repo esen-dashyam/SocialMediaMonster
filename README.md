@@ -1,6 +1,6 @@
 # SocialMediaMonster
 
-This a web that I was modifying.Primary usage of this application is to crawl data from web browsers and social media platforms such as facebook,Twitter,Linkedin,
+This a web that I created during my undergraduate studies.Primary usage of this application is to crawl data from web browsers and social media platforms such as facebook,Twitter,Linkedin,
 instagram
 
 
